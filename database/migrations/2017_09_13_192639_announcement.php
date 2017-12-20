@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Post as PostModel;
+//use App\Models\Post as PostModel;
 
-class Post extends Migration
+class Announcement extends Migration
 {
     /**
      * Run the migrations.
@@ -15,18 +15,24 @@ class Post extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('announcements', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->string('site',100);
+            $table->decimal('amount',10,2);
             $table->string('header',100)->nullable();
-            $table->string('short_content',200)->nullable();
+            $table->string('short_content',400)->nullable();
             $table->longText('content')->nullable();
+            //features
+            $table->string('type',100)->nullable();
+            $table->string('area',100)->nullable();
+            $table->string('area',100)->nullable();
+
             $table->boolean('deleted')->default(0);
             $table->timestamps();
         });
 
         //auto inser posts
-        $defaultPosts = json_decode( Storage::get('default_posts') , true );
+        /*$defaultPosts = json_decode( Storage::get('default_posts') , true );
         foreach ($defaultPosts as $defaultPost)
         {
             $post                   = new PostModel();
@@ -35,7 +41,7 @@ class Post extends Migration
             $post->short_content    = $defaultPost['short_content'];
             $post->content          = $defaultPost['content'];
             $post->save();
-        }
+        }*/
     }
 
     /**

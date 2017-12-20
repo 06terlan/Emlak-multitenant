@@ -49,14 +49,4 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
 
 /* frontend */
 //homepage
-Route::get('{home?}', 'HomeController@index')->where('home','home');
-
-//about
-Route::get('/about', 'AboutController@index');
-
-//post
-Route::get('/post/{which?}', 'HomeController@post')->where('which','[0-9]{1,}');
-
-//contact
-Route::get('/contact', 'ContactController@index');
-Route::post('/contact', 'ContactController@save');
+Route::get('{home?}', function($home = ""){ return redirect('admin/home'); })->where('home','home');
