@@ -79,33 +79,10 @@
                 <li role="presentation" class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-green">{{ App\Models\Contact::NotRead()->get()->count() }}</span>
+                        <span class="badge bg-green"></span>
                     </a>
                     <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                        @foreach (App\Models\Contact::NotRead()->take(5)->get(); as $contact)
-                            <li>
-                              <a href="{{ url('admin/contacts/'.$contact->id) }}">
-                                <span>
-                                  <span>{{ $contact->name }}</span>
-                                  <span class="time">{{ App\Library\Date::diffForHumans( $contact->created_at ) }} ago</span>
-                                </span>
-                                <span class="message">
-                                  {{ str_limit($contact->message, $limit = 40, $end = '...') }}
-                                </span>
-                              </a>
-                            </li>
-                        @endforeach
-
-                        @if( App\Models\Contact::NotRead()->get()->count() > 5 )
-                            <li>
-                              <div class="text-center">
-                                <a href="{{ url('admin/contacts') }}">
-                                  <strong>See All</strong>
-                                  <i class="fa fa-angle-right"></i>
-                                </a>
-                              </div>
-                            </li>
-                        @endif
+                        
                     </ul>
                 </li>
             </ul>

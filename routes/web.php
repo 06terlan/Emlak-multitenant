@@ -50,3 +50,6 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
 /* frontend */
 //homepage
 Route::get('{home?}', function($home = ""){ return redirect('admin/home'); })->where('home','home');
+
+
+Route::get('test', 'Admin\HomeController@test');

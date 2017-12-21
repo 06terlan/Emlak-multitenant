@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Announcement extends Model
 {
     //not deleted datas
     public static function realPost()
