@@ -17,4 +17,9 @@ class Announcement extends Model
     {
     	return $this->hasOne('App\User', 'id', 'user_id');
     }
+
+    public function isLinkExist($link)
+    {
+        return $query->where('link', '=', $link)->count() > 0 ? true : false;
+    }
 }

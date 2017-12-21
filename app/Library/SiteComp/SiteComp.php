@@ -4,6 +4,7 @@ namespace App\Library\SiteComp;
 
 use App\Library\Dom\Dom;
 use App\Library\ErrorLog;
+use App\Models\Announcement;
 
 class SiteComp
 {
@@ -48,20 +49,26 @@ class SiteComp
             $realDate	= $this->createDate($date);
             if($htmlAlt === false || $realDate === false ){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [dateDom]"); continue; }
 
-            dump($header,$content,$amount,$date); exit();
-            $this->checkLinkExist( $link );
+            $this->InsetCheck( $link, $header, $content, $amount, $realDate );
         }
     }
 
-    private function createDate( $link, $header, $content, $amount, $realDate )
+    private function createDate( $date )
     {
     	if(preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1])\.(0[1-9]|1[0-2])\.[0-9]{4}$/",$date)) return date("m/d/Y",strtotime($date));
 
     	return false;
     }
 
-    private function InsetCheck(  )
+    private function InsetCheck( $link, $header, $content, $amount, $realDate )
     {
+    	if( $realDate == date("m/d/Y") && !Announcement::isLinkExist($link) )
+    	{
+    		dump($header,$content,$amount,$date); exit();
+    		
+    		return true;
+    	}
 
+    	return false;
     }
 }
