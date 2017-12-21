@@ -10,6 +10,7 @@ use App\Library\Date;
 
 use App\Library\Dom\Dom;
 use App\Library\ErrorLog;
+use App\Library\SiteComp\SiteComp;
 
 class HomeController extends Controller
 {
@@ -35,7 +36,7 @@ class HomeController extends Controller
 
     public function test()
     {
-        $dom = new Dom();
+        /*$dom = new Dom();
         $html = $dom->file_get_html('http://emlak.az/elanlar/?ann_type=1&tip[]=3');
         
         if($html === false) dump("Seife acilmir");
@@ -49,9 +50,17 @@ class HomeController extends Controller
             $htmlAlt = $dom->file_get_html($loction.$link);
             if($htmlAlt === false) dump("Alt Seife acilmir");
 
+            $header     = $htmlAlt->find(".panel .title")[0]->innertext;
+            $content    = $htmlAlt->find(".left-bar .desc")[0]->innertext;
+            $amount     = $htmlAlt->find(".left-bar .price .m")[0]->plaintext;
+            $date       = $htmlAlt->find(".box-panel .date strong")[0]->plaintext;
+            $dates      = @$htmlAlt->find(".box-panel .date strong sdasd")[0]->plaintext;
+            //$content    = $htmlAlt->find(".left-bar .desc")[0]->innertext;
+            //$content    = $htmlAlt->find(".left-bar .desc")[0]->innertext;
+            //$content    = $htmlAlt->find(".left-bar .desc")[0]->innertext;
 
-            dump($htmlAlt); exit();
-        }
+            dump($header,$content,$amount,$date,$dates); exit();
+        }*/
         
         //dump($emlaks);
         
@@ -59,6 +68,18 @@ class HomeController extends Controller
 
 $errorLog->error("6");
 dump($errorLog->errorCount);*/
+
+        $siteComp = new SiteComp([
+                'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=3',
+                'objectsDom'    => 'div.ticket-list .ticket',
+                'linkDom'       => '.title a',
+                'location'      => 'http://emlak.az',
+                'headerDom'     => '.panel .title',
+                'contentDom'    => '.left-bar .desc',
+                'amountDom'     => '.left-bar .price .m',
+                'dateDom'       => '.box-panel .date strong'
+            ]);
+
         return "sad";
     }
 
