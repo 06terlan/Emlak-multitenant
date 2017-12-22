@@ -34,41 +34,51 @@ class SiteComp
             if($link === null){ $this->errorLog->error("[" . $this->location . "] Link tapilmadi -> [" . $link . "]"); continue; }
             
             $htmlAlt = $this->dom->file_get_html($this->location.$link);
-            if($htmlAlt === false){ $this->errorLog->error("[" . $this->location . "] Obyek acilmir -> [" . $this->location.$link . "]"); continue; }
+            if($htmlAlt === null){ $this->errorLog->error("[" . $this->location . "] Obyek acilmir -> [" . $this->location.$link . "]"); continue; }
 
             $header     = @$htmlAlt->find( $dataArr['headerDom'] )[0]->innertext;
-            if($htmlAlt === false){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi [headerDom]"); continue; }
+            if($htmlAlt === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi [headerDom]"); continue; }
 
             $content    = @$htmlAlt->find( $dataArr['contentDom'] )[0]->innertext;
-            if($htmlAlt === false){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [contentDom]"); continue; }
+            if($htmlAlt === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [contentDom]"); continue; }
 
             $amount     = @$htmlAlt->find( $dataArr['amountDom'] )[0]->plaintext;
-            if($htmlAlt === false){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [amountDom]"); continue; }
+            if($htmlAlt === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [amountDom]"); continue; }
 
             $date       = @$htmlAlt->find( $dataArr['dateDom'] )[0]->plaintext;
             $realDate	= $this->createDate($date);
-            if($htmlAlt === false || $realDate === false ){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [dateDom]"); continue; }
+            if($htmlAlt === null || $realDate === false ){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [dateDom]"); continue; }
 
-            $this->InsetCheck( $link, $header, $content, $amount, $realDate );
+            if(!$this->InsetCheck( $link, $header, $content, $amount, $realDate ))
+            {
+            	break;
+            }
         }
     }
 
     private function createDate( $date )
     {
-    	if(preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1])\.(0[1-9]|1[0-2])\.[0-9]{4}$/",$date)) return date("m/d/Y",strtotime($date));
+    	if(preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1])\.(0[1-9]|1[0-2])\.[0-9]{4}$/",$date)) return date("Y-m-d",strtotime($date));
 
     	return false;
     }
 
     private function InsetCheck( $link, $header, $content, $amount, $realDate )
     {
-    	if( $realDate == date("m/d/Y") && !Announcement::isLinkExist($link) )
+    	if( $realDate == date("Y-m-d") && !Announcement::isLinkExist($link) )
     	{
-    		dump($header,$content,$amount,$date); exit();
-    		
+    		$announcement = new Announcement();
+    		$announcement->link = $link;
+    		$announcement->header = $header;
+    		$announcement->amount = (float)str_replace([' '], '', $amount);
+    		$announcement->content = $content;
+    		$announcement->date = $realDate;
+    		$announcement->save();
     		return true;
     	}
 
     	return false;
     }
+
+
 }
