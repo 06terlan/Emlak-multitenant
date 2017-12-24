@@ -36,7 +36,7 @@ class HomeController extends Controller
 
     public function test()
     {
-        /*$siteComp = new SiteComp([
+        $siteComp = new SiteComp([
                 'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=3',
                 'objectsDom'    => 'div.ticket-list .ticket',
                 'linkDom'       => '.title a',
@@ -44,8 +44,9 @@ class HomeController extends Controller
                 'headerDom'     => '.panel .title',
                 'contentDom'    => '.left-bar .desc',
                 'amountDom'     => '.left-bar .price .m',
-                'dateDom'       => '.box-panel .date strong'
-            ]);*/
+                'dateDom'       => '.box-panel .date strong',
+                'type'          => 'new_bulding'
+            ]);
 
         return "sad";
     }

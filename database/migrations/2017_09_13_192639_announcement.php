@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\Storage;
-//use App\Models\Post as PostModel;
 
 class Announcement extends Migration
 {
@@ -24,7 +22,7 @@ class Announcement extends Migration
             //features
             //$table->string('type',50)->nullable();
             //$table->smallInteger('area')->unsigned()->nullable();
-            //$table->tinyInteger('roomCount')->unsigned()->nullable();
+            $table->string('type',50)->nullable();
             $table->decimal('amount',10,2)->nullable();
 
             $table->date('date')->nullable();

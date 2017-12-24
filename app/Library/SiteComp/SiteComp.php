@@ -22,10 +22,10 @@ class SiteComp
         $this->linkListHtml = $this->dom->file_get_html($dataArr['link']);
 
         if($this->linkListHtml === false) $this->errorLog->error("[" . $this->location . "] Seife acilmir -> [" . $link . "]");
-        else $this->getObjectData( $dataArr );
+        //else $this->getObjectData( $dataArr );
     }
 
-    private function getObjectData( $dataArr )
+    public function getObjectData( $dataArr )
     {
     	$objects = $this->linkListHtml->find( $dataArr['objectsDom'] );
     	foreach ($objects as $object)
@@ -65,7 +65,7 @@ class SiteComp
 
     private function InsetCheck( $link, $header, $content, $amount, $realDate )
     {
-    	if( $realDate == date("Y-m-d") && !Announcement::isLinkExist($link) )
+    	if( !Announcement::isLinkExist($link) )
     	{
     		$announcement = new Announcement();
     		$announcement->link = $link;
@@ -74,6 +74,9 @@ class SiteComp
     		$announcement->content = $content;
     		$announcement->date = $realDate;
     		$announcement->save();
+
+    		usleep(1000 * 100);
+
     		return true;
     	}
 

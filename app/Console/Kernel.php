@@ -29,8 +29,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('getData:get')
                  ->timezone('Asia/Baku')
+                 ->hourly();
                  //->dailyAt('23:58');
-                 ->twiceDaily(9, 23);
+                 //->twiceDaily(9, 23);
     }
 
     /**
