@@ -10,17 +10,17 @@ use Illuminate\Support\Facades\Storage;
 class ErrorLog
 {
 	private $fileName 		= null;
-	private $maxErrorCount 	= 0; 
-
+	private $maxErrorCount 	= 0;
 	public $errorCount 		= 0;
-
 	public $AllError   		= [];
+	private $debug          = null;
 
 
-	function __construct($fileName, $maxErrorCount = 300)
+	function __construct($fileName, $maxErrorCount = 300, $debug = false)
 	{
 		$this->fileName = $fileName;
 		$this->maxErrorCount = $maxErrorCount;
+		$this->debug = $debug;
 
 		$this->checkFile();
 		$this->getAllError();
@@ -28,7 +28,6 @@ class ErrorLog
 
 	private function checkFile()
 	{
-		dump(Storage::exists($this->fileName));
 		!Storage::exists($this->fileName) ? Storage::put($this->fileName," ") : "";
 	}
 
@@ -56,5 +55,11 @@ class ErrorLog
 
 		$this->checkCount();
 		Storage::put($this->fileName, implode("\n", $this->AllError));
+
+		if( $this->debug === true )
+		{
+            var_dump($error);
+            exit();
+        }
 	}
 }
