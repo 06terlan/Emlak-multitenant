@@ -22,6 +22,7 @@
                                 <th>Full Name</th>
                                 <th>Email</th>
                                 <th>Login</th>
+                                <th>Role</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -32,6 +33,7 @@
                                     <td>{{ $user->fullname() }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->login }}</td>
+                                    <td>{{ $user->getRole() }}</td>
                                     <th>
                                         <a href="{{ url('admin/users/addEdit/' . $user->id ) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
                                         @if( Auth::user()->id != $user->id )

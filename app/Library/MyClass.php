@@ -12,6 +12,22 @@ class MyClass
         "png","jpg","jpeg"
     ];
 
+    /**
+     * Available announcement types
+     */
+    public static $announcementTypes =
+    [
+        'new_bulding' => 'Yeni tikili',
+        'old_building' => 'Kohne tikili',
+        'house' => 'Heyet evi',
+        'villa' => 'Villa',
+        'garden_house' => 'Bag evi',
+        'office' => 'Ofis',
+        'garage' => 'Qaraj',
+        'land' => 'Torpa',
+        'object' => 'Obyekt'
+    ];
+
     /*
 	* Admin role
     */

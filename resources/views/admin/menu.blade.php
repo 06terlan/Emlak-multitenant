@@ -29,9 +29,7 @@
                     @if (Auth::user()->role == App\Library\MyClass::ADMIN_ROLE)
                         <li><a href="{{ URL::to('admin/users') }}"><i class="fa fa-user"></i> Users </a></li>
                     @endif
-                    <li><a href="{{ URL::to('admin/posts') }}"><i class="fa fa-share-alt"></i> Posts </a></li>
-                    <li><a href="{{ URL::to('admin/about') }}"><i class="fa fa-info-circle"></i> About </a></li>
-                    <li><a href="{{ URL::to('admin/contacts') }}"><i class="fa fa-envelope"></i> Contact </a></li>
+                    <li><a href="{{ route('announcement') }}"><i class="fa fa-share-alt"></i> Elanlar </a></li>
                 </ul>
             </div>
         </div>

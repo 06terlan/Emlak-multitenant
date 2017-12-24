@@ -37,17 +37,17 @@ class HomeController extends Controller
     public function test()
     {
         //
-        $siteComp = (new SiteComp([
-                'link'          => 'https://bina.az/alqi-satqi/menziller/yeni-tikili',
-                'objectsDom'    => [['.items_list', 1] , ['.items-i']],
-                'linkDom'       => 'a.item_link',
-                'location'      => 'https://bina.az',
-                'headerDom'     => '.price_header .services-container h1',
-                'contentDom'    => '.side article',
-                'amountDom'     => '.price .price-val',
-                'dateDom'       => '.info .item_info',
-                'type'          => 'new_bulding'
-            ]))->getObjectData();
+        /*$siteComp = (new SiteComp([
+            'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=1',
+            'objectsDom'    => 'div.ticket-list .ticket',
+            'linkDom'       => '.title a',
+            'location'      => 'http://emlak.az',
+            'headerDom'     => '.panel .title',
+            'contentDom'    => '.left-bar .desc',
+            'amountDom'     => '.left-bar .price .m',
+            'dateDom'       => '.box-panel .date strong',
+            'type'          => 'new_bulding'
+        ]))->getObjectData();*/
 
 
 

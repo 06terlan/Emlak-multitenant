@@ -32,19 +32,11 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
 	});
 
 	//post
-	Route::get('posts', 'Admin\PostController@index');
-	Route::get('posts/addEdit/{id}', 'Admin\PostController@addEdit')->where('which','[0-9]{1,}');
-	Route::post('posts/addEdit/{id}', 'Admin\PostController@addEditPost')->where('which','[0-9]{1,}');
-	Route::get('posts/delete/{id}', 'Admin\PostController@delete')->where('which','[0-9]{1,}');
+	Route::get('announcement', 'Admin\PostController@index')->name('announcement');
+	//Route::get('posts/addEdit/{id}', 'Admin\PostController@addEdit')->where('which','[0-9]{1,}');
+	//Route::post('posts/addEdit/{id}', 'Admin\PostController@addEditPost')->where('which','[0-9]{1,}');
+	Route::get('announcement/delete/{id}', 'Admin\PostController@delete')->where('which','[0-9]{1,}')->name('announcement_delete');
 
-	//about
-	Route::get('about', 'Admin\AboutController@index');
-	Route::post('about', 'Admin\AboutController@save');
-
-	//contact
-	Route::get('contacts', 'Admin\ContactController@index');
-	Route::get('contacts/delete/{id}', 'Admin\ContactController@delete')->where('which','[0-9]{1,}');
-	Route::get('contacts/{id}', 'Admin\ContactController@info')->where('which','[0-9]{1,}');
 });
 
 /* frontend */

@@ -48,6 +48,19 @@ class User extends Authenticatable
         }
     }
 
+    public function getRole()
+    {
+        switch ($this->role)
+        {
+            case 1:
+                return 'Admin';
+            case 2:
+                return 'Author';
+            default:
+                return '';
+        }
+    }
+
     //delete profil pic if it is exist
     public function deletePic()
     {
