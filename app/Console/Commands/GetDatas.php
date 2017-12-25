@@ -45,7 +45,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=1',
             'objectsDom'    => 'div.ticket-list .ticket',
-            'linkDom'       => '.title a',
+            'linkDom'       => ['.title a', 0],
             'location'      => 'http://emlak.az',
             'headerDom'     => '.panel .title',
             'contentDom'    => '.left-bar .desc',
@@ -60,7 +60,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=2',
             'objectsDom'    => 'div.ticket-list .ticket',
-            'linkDom'       => '.title a',
+            'linkDom'       => ['.title a', 0],
             'location'      => 'http://emlak.az',
             'headerDom'     => '.panel .title',
             'contentDom'    => '.left-bar .desc',
@@ -75,7 +75,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=3',
             'objectsDom'    => 'div.ticket-list .ticket',
-            'linkDom'       => '.title a',
+            'linkDom'       => ['.title a', 0],
             'location'      => 'http://emlak.az',
             'headerDom'     => '.panel .title',
             'contentDom'    => '.left-bar .desc',
@@ -90,7 +90,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=10',
             'objectsDom'    => 'div.ticket-list .ticket',
-            'linkDom'       => '.title a',
+            'linkDom'       => ['.title a', 0],
             'location'      => 'http://emlak.az',
             'headerDom'     => '.panel .title',
             'contentDom'    => '.left-bar .desc',
@@ -105,7 +105,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=4',
             'objectsDom'    => 'div.ticket-list .ticket',
-            'linkDom'       => '.title a',
+            'linkDom'       => ['.title a', 0],
             'location'      => 'http://emlak.az',
             'headerDom'     => '.panel .title',
             'contentDom'    => '.left-bar .desc',
@@ -120,7 +120,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=5',
             'objectsDom'    => 'div.ticket-list .ticket',
-            'linkDom'       => '.title a',
+            'linkDom'       => ['.title a', 0],
             'location'      => 'http://emlak.az',
             'headerDom'     => '.panel .title',
             'contentDom'    => '.left-bar .desc',
@@ -135,7 +135,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=6',
             'objectsDom'    => 'div.ticket-list .ticket',
-            'linkDom'       => '.title a',
+            'linkDom'       => ['.title a', 0],
             'location'      => 'http://emlak.az',
             'headerDom'     => '.panel .title',
             'contentDom'    => '.left-bar .desc',
@@ -150,7 +150,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=7',
             'objectsDom'    => 'div.ticket-list .ticket',
-            'linkDom'       => '.title a',
+            'linkDom'       => ['.title a', 0],
             'location'      => 'http://emlak.az',
             'headerDom'     => '.panel .title',
             'contentDom'    => '.left-bar .desc',
@@ -165,7 +165,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=8',
             'objectsDom'    => 'div.ticket-list .ticket',
-            'linkDom'       => '.title a',
+            'linkDom'       => ['.title a', 0],
             'location'      => 'http://emlak.az',
             'headerDom'     => '.panel .title',
             'contentDom'    => '.left-bar .desc',
@@ -181,7 +181,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://vipemlak.az/yeni-tikili',
             'objectsDom'    => '.indexhold .pranto',
-            'linkDom'       => 'a',
+            'linkDom'       => ['a', 0],
             'location'      => 'http://vipemlak.az',
             'headerDom'     => 'article h1',
             'contentDom'    => '#openhalf .infotd100',
@@ -196,7 +196,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://vipemlak.az/kohne-tikili',
             'objectsDom'    => '.indexhold .pranto',
-            'linkDom'       => 'a',
+            'linkDom'       => ['a', 0],
             'location'      => 'http://vipemlak.az',
             'headerDom'     => 'article h1',
             'contentDom'    => '#openhalf .infotd100',
@@ -211,7 +211,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://vipemlak.az/heyet-evi-villa',
             'objectsDom'    => '.indexhold .pranto',
-            'linkDom'       => 'a',
+            'linkDom'       => ['a', 0],
             'location'      => 'http://vipemlak.az',
             'headerDom'     => 'article h1',
             'contentDom'    => '#openhalf .infotd100',
@@ -226,7 +226,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://vipemlak.az/obyekt-ofis',
             'objectsDom'    => '.indexhold .pranto',
-            'linkDom'       => 'a',
+            'linkDom'       => ['a', 0],
             'location'      => 'http://vipemlak.az',
             'headerDom'     => 'article h1',
             'contentDom'    => '#openhalf .infotd100',
@@ -241,7 +241,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'http://vipemlak.az/torpaq',
             'objectsDom'    => '.indexhold .pranto',
-            'linkDom'       => 'a',
+            'linkDom'       => ['a', 0],
             'location'      => 'http://vipemlak.az',
             'headerDom'     => 'article h1',
             'contentDom'    => '#openhalf .infotd100',
@@ -257,7 +257,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'https://bina.az/alqi-satqi/menziller/yeni-tikili',
             'objectsDom'    => [['.items_list', 1] , ['.items-i']],
-            'linkDom'       => 'a.item_link',
+            'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
             'contentDom'    => '.side article',
@@ -272,7 +272,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'https://bina.az/alqi-satqi/menziller/kohne-tikili',
             'objectsDom'    => [['.items_list', 1] , ['.items-i']],
-            'linkDom'       => 'a.item_link',
+            'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
             'contentDom'    => '.side article',
@@ -287,7 +287,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'https://bina.az/alqi-satqi/evler',
             'objectsDom'    => [['.items_list', 1] , ['.items-i']],
-            'linkDom'       => 'a.item_link',
+            'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
             'contentDom'    => '.side article',
@@ -302,7 +302,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'https://bina.az/alqi-satqi/ofisler',
             'objectsDom'    => [['.items_list', 1] , ['.items-i']],
-            'linkDom'       => 'a.item_link',
+            'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
             'contentDom'    => '.side article',
@@ -317,7 +317,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'https://bina.az/alqi-satqi/baglar',
             'objectsDom'    => [['.items_list', 1] , ['.items-i']],
-            'linkDom'       => 'a.item_link',
+            'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
             'contentDom'    => '.side article',
@@ -332,7 +332,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'https://bina.az/alqi-satqi/qarajlar',
             'objectsDom'    => [['.items_list', 1] , ['.items-i']],
-            'linkDom'       => 'a.item_link',
+            'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
             'contentDom'    => '.side article',
@@ -347,7 +347,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'https://bina.az/alqi-satqi/torpaq',
             'objectsDom'    => [['.items_list', 1] , ['.items-i']],
-            'linkDom'       => 'a.item_link',
+            'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
             'contentDom'    => '.side article',
@@ -362,7 +362,7 @@ class GetDatas extends Command
         $count = (new SiteComp([
             'link'          => 'https://bina.az/alqi-satqi/obyektler',
             'objectsDom'    => [['.items_list', 1] , ['.items-i']],
-            'linkDom'       => 'a.item_link',
+            'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
             'contentDom'    => '.side article',
@@ -372,6 +372,142 @@ class GetDatas extends Command
         ]))->getObjectData();
         $bar->advance();
         $this->info(" vipemlak.az [object] count: ".$count." \n");
+        #endregion
+        #region tap.az
+        //new_bulding
+        $count = (new SiteComp([
+            'link'          => 'http://tap.az/all/real-estate/apartments?utf8=✓&keywords=&p[747]=3849',
+            'objectsDom'    => '.categories-products .products .products-i',
+            'linkDom'       => '$this',
+            'location'      => 'http://tap.az',
+            'headerDom'     => '.lot-header .title-container h1',
+            'contentDom'    => '.lot-body .lot-text',
+            'amountDom'     => '.lot-header .price .price-val',
+            'dateDom'       => '.aside-page .lot-info',
+            'type'          => 'new_bulding'
+        ]))->getObjectData();
+        $bar->advance();
+        $this->info(" tap.az [new_bulding] count: ".$count." \n");
+
+        //old_building
+        $count = (new SiteComp([
+            'link'          => 'http://tap.az/all/real-estate/apartments?utf8=✓&keywords=&p[747]=3850',
+            'objectsDom'    => '.categories-products .products .products-i',
+            'linkDom'       => '$this',
+            'location'      => 'http://tap.az',
+            'headerDom'     => '.lot-header .title-container h1',
+            'contentDom'    => '.lot-body .lot-text',
+            'amountDom'     => '.lot-header .price .price-val',
+            'dateDom'       => '.aside-page .lot-info',
+            'type'          => 'old_building'
+        ]))->getObjectData();
+        $bar->advance();
+        $this->info(" tap.az [old_building] count: ".$count." \n");
+
+        //garden_house
+        $count = (new SiteComp([
+            'link'          => 'http://tap.az/all/real-estate/houses-villas-cottages?utf8=✓&keywords=&q[region_id]=&p[835]=7432',
+            'objectsDom'    => '.categories-products .products .products-i',
+            'linkDom'       => '$this',
+            'location'      => 'http://tap.az',
+            'headerDom'     => '.lot-header .title-container h1',
+            'contentDom'    => '.lot-body .lot-text',
+            'amountDom'     => '.lot-header .price .price-val',
+            'dateDom'       => '.aside-page .lot-info',
+            'type'          => 'garden_house'
+        ]))->getObjectData();
+        $bar->advance();
+        $this->info(" tap.az [garden_house] count: ".$count." \n");
+
+        //house
+        $count = (new SiteComp([
+            'link'          => 'http://tap.az/all/real-estate/houses-villas-cottages?utf8=✓&keywords=&q[region_id]=&p[835]=7431',
+            'objectsDom'    => '.categories-products .products .products-i',
+            'linkDom'       => '$this',
+            'location'      => 'http://tap.az',
+            'headerDom'     => '.lot-header .title-container h1',
+            'contentDom'    => '.lot-body .lot-text',
+            'amountDom'     => '.lot-header .price .price-val',
+            'dateDom'       => '.aside-page .lot-info',
+            'type'          => 'house'
+        ]))->getObjectData();
+        $bar->advance();
+        $this->info(" tap.az [house] count: ".$count." \n");
+
+        //villa
+        $count = (new SiteComp([
+            'link'          => 'http://tap.az/all/real-estate/houses-villas-cottages?utf8=✓&keywords=&q[region_id]=&p[835]=7433',
+            'objectsDom'    => '.categories-products .products .products-i',
+            'linkDom'       => '$this',
+            'location'      => 'http://tap.az',
+            'headerDom'     => '.lot-header .title-container h1',
+            'contentDom'    => '.lot-body .lot-text',
+            'amountDom'     => '.lot-header .price .price-val',
+            'dateDom'       => '.aside-page .lot-info',
+            'type'          => 'villa'
+        ]))->getObjectData();
+        $bar->advance();
+        $this->info(" tap.az [villa] count: ".$count." \n");
+
+        //office
+        $count = (new SiteComp([
+            'link'          => 'http://tap.az/all/real-estate/commercial-real-estate?utf8=✓&keywords=&p[820]=4165',
+            'objectsDom'    => '.categories-products .products .products-i',
+            'linkDom'       => '$this',
+            'location'      => 'http://tap.az',
+            'headerDom'     => '.lot-header .title-container h1',
+            'contentDom'    => '.lot-body .lot-text',
+            'amountDom'     => '.lot-header .price .price-val',
+            'dateDom'       => '.aside-page .lot-info',
+            'type'          => 'office'
+        ]))->getObjectData();
+        $bar->advance();
+        $this->info(" tap.az [office] count: ".$count." \n");
+
+        //object
+        $count = (new SiteComp([
+            'link'          => 'http://tap.az/all/real-estate/commercial-real-estate?utf8=✓&keywords=&p[820]=4166',
+            'objectsDom'    => '.categories-products .products .products-i',
+            'linkDom'       => '$this',
+            'location'      => 'http://tap.az',
+            'headerDom'     => '.lot-header .title-container h1',
+            'contentDom'    => '.lot-body .lot-text',
+            'amountDom'     => '.lot-header .price .price-val',
+            'dateDom'       => '.aside-page .lot-info',
+            'type'          => 'object'
+        ]))->getObjectData();
+        $bar->advance();
+        $this->info(" tap.az [object] count: ".$count." \n");
+
+        //land
+        $count = (new SiteComp([
+            'link'          => 'http://tap.az/all/real-estate/land',
+            'objectsDom'    => '.categories-products .products .products-i',
+            'linkDom'       => '$this',
+            'location'      => 'http://tap.az',
+            'headerDom'     => '.lot-header .title-container h1',
+            'contentDom'    => '.lot-body .lot-text',
+            'amountDom'     => '.lot-header .price .price-val',
+            'dateDom'       => '.aside-page .lot-info',
+            'type'          => 'land'
+        ]))->getObjectData();
+        $bar->advance();
+        $this->info(" tap.az [land] count: ".$count." \n");
+
+        //garage
+        $count = (new SiteComp([
+            'link'          => 'http://tap.az/all/real-estate/garages',
+            'objectsDom'    => '.categories-products .products .products-i',
+            'linkDom'       => '$this',
+            'location'      => 'http://tap.az',
+            'headerDom'     => '.lot-header .title-container h1',
+            'contentDom'    => '.lot-body .lot-text',
+            'amountDom'     => '.lot-header .price .price-val',
+            'dateDom'       => '.aside-page .lot-info',
+            'type'          => 'garage'
+        ]))->getObjectData();
+        $bar->advance();
+        $this->info(" tap.az [garage] count: ".$count." \n");
         #endregion
 
     }

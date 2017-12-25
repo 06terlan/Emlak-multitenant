@@ -38,17 +38,16 @@ class HomeController extends Controller
     {
         //
         /*$siteComp = (new SiteComp([
-            'link'          => 'http://emlak.az/elanlar/?ann_type=1&tip[]=1',
-            'objectsDom'    => 'div.ticket-list .ticket',
-            'linkDom'       => '.title a',
-            'location'      => 'http://emlak.az',
-            'headerDom'     => '.panel .title',
-            'contentDom'    => '.left-bar .desc',
-            'amountDom'     => '.left-bar .price .m',
-            'dateDom'       => '.box-panel .date strong',
+            'link'          => 'http://tap.az/all/real-estate/apartments?utf8=%E2%9C%93&p[747]=3850',
+            'objectsDom'    => '.categories-products .products .products-i',
+            'linkDom'       => '$this',
+            'location'      => 'http://tap.az',
+            'headerDom'     => '.lot-header .title-container h1',
+            'contentDom'    => '.lot-body .lot-text',
+            'amountDom'     => '.lot-header .price .price-val',
+            'dateDom'       => '.aside-page .lot-info',
             'type'          => 'new_bulding'
-        ]))->getObjectData();*/
-
+        ], true))->getObjectData();*/
 
 
         return "Count: ".$siteComp;

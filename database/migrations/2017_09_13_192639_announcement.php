@@ -15,7 +15,7 @@ class Announcement extends Migration
     {
         Schema::create('announcements', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('link',200)->unique();
+            $table->string('link',200);
             $table->string('header',200)->nullable();
             //$table->string('short_content',500)->nullable();
             $table->longText('content')->nullable();

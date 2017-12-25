@@ -6,6 +6,9 @@ use App\Library\Dom\Dom;
 use App\Library\ErrorLog;
 use App\Models\Announcement;
 
+//ini
+set_time_limit(60 * 45);
+
 class SiteComp
 {
 	private $linkListHtml = null;
@@ -36,7 +39,7 @@ class SiteComp
 
     	foreach ($objects as $object)
         {
-            $link = @$object->find( $this->dataArr['linkDom'] )[0]->href;//for link
+            $link = $this->findEr($object, $this->dataArr['linkDom'])->href; //for link
             if($link === null){ $this->errorLog->error("[" . $this->location . "] Link tapilmadi -> [" . $link . "]"); continue; }
 
             $htmlAlt = $this->dom->file_get_html($this->location.$link);
@@ -122,10 +125,15 @@ class SiteComp
             else return $this->findEr($where, $find[0], (isset($find[1])?$find[1]:false) );
         }
 
-        if($index === false) return @$where->find( $find );
+        if($index === false)
+        {
+            if( $find === '$this' ) return $where;
+            else return @$where->find( $find );
+        }
         else
         {
-            return @$where->find( $find)[$index];
+            if( $find === '$this' ) return $where[$index];
+            return @$where->find($find)[$index];
         }
     }
 }
