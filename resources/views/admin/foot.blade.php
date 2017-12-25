@@ -20,3 +20,21 @@
 @yield('scripts')
 {!! Html::script('admin/assets/build/js/custom.min.js') !!}
 
+<script>
+    $(function() {
+        var lastId = {{ (int)App\Models\Announcement::todayAnnouncements()->first()->id }};
+        var notficationCount = {{ App\Models\Announcement::todayAnnouncements()->count() }};
+
+        function getNewAnn()
+        {
+            var currentNotficationCount = $("#menu1>li").length;
+
+            $.post( "{{ route('getLastAnnouncementAjax') }}", { lastId: lastId, _token: "{{ csrf_token() }}", currentNotficationCount: currentNotficationCount }, function( data ) {
+                console.log(data);
+                setTimeout(getNewAnn, 3000);
+            });
+        }
+        setTimeout(getNewAnn, 3000);
+    });
+</script>
+

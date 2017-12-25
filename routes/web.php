@@ -31,11 +31,13 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
 		Route::get('users/delete/{id}', 'Admin\UsersController@delete')->where('which','[0-9]{1,}');
 	});
 
-	//post
+	//announcement
 	Route::get('announcement', 'Admin\PostController@index')->name('announcement');
 	Route::get('announcement/info/{announcement}', 'Admin\PostController@InfoAction')->where('which','[0-9]{1,}')->name('announcement_info');
     Route::get('announcement/delete/{id}', 'Admin\PostController@delete')->where('which','[0-9]{1,}')->name('announcement_delete');
-	//Route::post('posts/addEdit/{id}', 'Admin\PostController@addEditPost')->where('which','[0-9]{1,}');
+
+    //ajax
+    Route::post('announcement/getLast', 'Admin\AjaxController@getLastAnnouncement')->name('getLastAnnouncementAjax');
 
 });
 
