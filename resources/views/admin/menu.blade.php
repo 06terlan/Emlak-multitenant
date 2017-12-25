@@ -74,13 +74,42 @@
                     </ul>
                 </li>
 
+                @php
+                    $count = App\Models\Announcement::todayAnnouncements()->count();
+                    $countStr = $count;
+                    if( $countStr > \App\Library\MyClass::INFO_COUNT ) $countStr = \App\Library\MyClass::INFO_COUNT."+";
+                @endphp
+
                 <li role="presentation" class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-green"></span>
+                        <span class="badge bg-green">{{ $countStr }}</span>
                     </a>
-                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                        
+                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu" style="height:280px;overflow-y: auto;">
+                        @foreach (App\Models\Announcement::todayAnnouncements()->take(\App\Library\MyClass::INFO_COUNT)->get() as $announcement)
+                            <li>
+                                <a href="{{ route('announcement_info', $announcement->id) }}">
+                                <span>
+                                  <span>{{  str_limit(strip_tags($announcement->header), 25, '...') }}</span>
+                                  <span class="time">{{ App\Library\Date::diffForHumans( $announcement->created_at ) }} ago</span>
+                                </span>
+                                    <span class="message">
+                                  {{ str_limit(strip_tags($announcement->content), 40, '...') }}
+                                </span>
+                                </a>
+                            </li>
+                        @endforeach
+
+                        @if( $count > \App\Library\MyClass::INFO_COUNT )
+                            <li>
+                                <div class="text-center">
+                                    <a href="{{ route('announcement') }}">
+                                        <strong>See All</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        @endif
                     </ul>
                 </li>
             </ul>

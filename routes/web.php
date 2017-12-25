@@ -33,9 +33,9 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
 
 	//post
 	Route::get('announcement', 'Admin\PostController@index')->name('announcement');
-	//Route::get('posts/addEdit/{id}', 'Admin\PostController@addEdit')->where('which','[0-9]{1,}');
+	Route::get('announcement/info/{id}', 'Admin\PostController@InfoAction')->where('which','[0-9]{1,}')->name('announcement_info');
+    Route::get('announcement/delete/{id}', 'Admin\PostController@delete')->where('which','[0-9]{1,}')->name('announcement_delete');
 	//Route::post('posts/addEdit/{id}', 'Admin\PostController@addEditPost')->where('which','[0-9]{1,}');
-	Route::get('announcement/delete/{id}', 'Admin\PostController@delete')->where('which','[0-9]{1,}')->name('announcement_delete');
 
 });
 

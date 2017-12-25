@@ -47,4 +47,9 @@ class MyClass
     * row count
     */
     const ROW_COUNT = 5;
+
+    /*
+    * info count
+    */
+    const INFO_COUNT = 50;
 }

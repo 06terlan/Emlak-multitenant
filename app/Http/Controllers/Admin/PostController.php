@@ -12,11 +12,11 @@ class PostController extends Controller
 {
     public function index()
     {
-        $announcements = Announcement::realPost()->paginate( MyClass::ADMIN_ROW_COUNT );
+        $announcements = Announcement::realAnnouncements()->paginate( MyClass::ADMIN_ROW_COUNT );
         return view('admin.post.announcements',['announcements' => $announcements]);
     }
 
-    public function addEdit($id)
+    public function InfoAction($id)
     {
     	$dataToBlade = [
     		'id'	=> $id,

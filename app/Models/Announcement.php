@@ -2,15 +2,22 @@
 
 namespace App\Models;
 
+use App\Library\Date;
 use Illuminate\Database\Eloquent\Model;
 use App\Library\MyClass;
 
 class Announcement extends Model
 {
     //not deleted datas
-    public static function realPost()
+    public static function realAnnouncements()
     {
     	return self::where('deleted' , 0)->orderBy('created_at', 'desc');
+    }
+
+    //today
+    public static function todayAnnouncements()
+    {
+        return self::where('date' , Date::d(null, "Y-m-d"))->orderBy('id', 'desc');
     }
 
     public static function isLinkExist($link)
