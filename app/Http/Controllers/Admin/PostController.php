@@ -16,14 +16,13 @@ class PostController extends Controller
         return view('admin.post.announcements',['announcements' => $announcements]);
     }
 
-    public function InfoAction($id)
+    public function InfoAction(Announcement $announcement)
     {
     	$dataToBlade = [
-    		'id'	=> $id,
-            'Post' 	=> Post::find($id)
+            'announcement' 	=> $announcement
         ];
 
-        return view('admin.post.postAddEdit',$dataToBlade);
+        return view('admin.post.announcement_info',$dataToBlade);
     }
 
     public function delete($id)

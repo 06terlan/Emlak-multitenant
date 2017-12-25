@@ -7,7 +7,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Announcements</h2>
+                    <h2>Elanlar</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                     </ul>
@@ -38,6 +38,7 @@
                                     <td>{{ App\Library\Date::d($announcement->date,'d-m-Y') }}</td>
                                     <td><a target="_blank" href="{{ $announcement->link }}"> Link </a> </td>
                                     <th>
+                                        <a href="{{ route('announcement_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
                                         <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                     </th>
                                 </tr>
