@@ -37,17 +37,31 @@ class HomeController extends Controller
     public function test()
     {
         //
-        /*$siteComp = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/apartments?utf8=%E2%9C%93&p[747]=3850',
-            'objectsDom'    => '.categories-products .products .products-i',
-            'linkDom'       => '$this',
-            'location'      => 'http://tap.az',
-            'headerDom'     => '.lot-header .title-container h1',
-            'contentDom'    => '.lot-body .lot-text',
-            'amountDom'     => '.lot-header .price .price-val',
-            'dateDom'       => '.aside-page .lot-info',
-            'type'          => 'new_bulding'
-        ], true))->getObjectData();*/
+        //house
+        $siteComp = (new SiteComp([
+            'link'          => 'http://vipemlak.az/heyet-evi-villa',
+            'objectsDom'    => '.indexhold .pranto',
+            'linkDom'       => ['a', 0],
+            'location'      => 'http://vipemlak.az',
+            'headerDom'     => 'article h1',
+            'contentDom'    => '#openhalf .infotd100',
+            'amountDom'     => '.infotd2 span',
+            'dateDom'       => '.clearfix .viewsbb',
+            'type'          => 'house'
+        ]))->getObjectData();
+
+        //object
+        $siteComp += (new SiteComp([
+            'link'          => 'http://vipemlak.az/obyekt-ofis',
+            'objectsDom'    => '.indexhold .pranto',
+            'linkDom'       => ['a', 0],
+            'location'      => 'http://vipemlak.az',
+            'headerDom'     => 'article h1',
+            'contentDom'    => '#openhalf .infotd100',
+            'amountDom'     => '.infotd2 span',
+            'dateDom'       => '.clearfix .viewsbb',
+            'type'          => 'object'
+        ]))->getObjectData();
 
 
         return "Count: ".$siteComp;

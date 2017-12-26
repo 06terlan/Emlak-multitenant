@@ -6,9 +6,6 @@ use App\Library\Dom\Dom;
 use App\Library\ErrorLog;
 use App\Models\Announcement;
 
-//ini
-set_time_limit(60 * 45);
-
 class SiteComp
 {
 	private $linkListHtml = null;
@@ -31,15 +28,24 @@ class SiteComp
         return $this;
     }
 
+    private function __destruct()
+    {
+        unset($this->dom);
+        unset($this->errorLog);
+        unset($this->location);
+        unset($this->dataArr);
+        unset($this->linkListHtml);
+    }
+
     public function getObjectData( $toDay = true )
     {
         $count = 0;
-    	$objects = $this->findEr( $this->linkListHtml, $this->dataArr['objectsDom'] );
+    	$objects = @$this->findEr( $this->linkListHtml, $this->dataArr['objectsDom'] );
         if($objects === null){ $this->errorLog->error("[" . $this->location . "] Obyektler tapilmadi"); return 0; }
 
     	foreach ($objects as $object)
         {
-            $link = $this->findEr($object, $this->dataArr['linkDom'])->href; //for link
+            $link = @$this->findEr($object, $this->dataArr['linkDom'])->href; //for link
             if($link === null){ $this->errorLog->error("[" . $this->location . "] Link tapilmadi -> [" . $link . "]"); continue; }
 
             $htmlAlt = $this->dom->file_get_html($this->location.$link);
@@ -111,6 +117,8 @@ class SiteComp
 
     private function findEr($where, $find, $index = false)
     {
+        if($where === null || $where === false) return null;
+
         if( is_array($find) )
         {
             if( is_array($find[0]) )

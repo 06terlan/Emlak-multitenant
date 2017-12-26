@@ -5,6 +5,9 @@ namespace App\Console\Commands;
 use App\Library\SiteComp\SiteComp;
 use Illuminate\Console\Command;
 
+//ini
+set_time_limit(60 * 45);
+
 class GetDatas extends Command
 {
     /**
@@ -38,7 +41,7 @@ class GetDatas extends Command
      */
     public function handle()
     {
-        $bar = $this->output->createProgressBar(3);
+        $bar = $this->output->createProgressBar(31);
 
         #region emlak.az
         //new_bulding
@@ -53,8 +56,9 @@ class GetDatas extends Command
             'dateDom'       => '.box-panel .date strong',
             'type'          => 'new_bulding'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" emlak.az [new_bulding] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //new_bulding
         $count = (new SiteComp([
@@ -68,8 +72,9 @@ class GetDatas extends Command
             'dateDom'       => '.box-panel .date strong',
             'type'          => 'old_building'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" emlak.az [old_building] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //new_bulding
         $count = (new SiteComp([
@@ -83,8 +88,9 @@ class GetDatas extends Command
             'dateDom'       => '.box-panel .date strong',
             'type'          => 'house'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" emlak.az [house] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //villa
         $count = (new SiteComp([
@@ -98,8 +104,9 @@ class GetDatas extends Command
             'dateDom'       => '.box-panel .date strong',
             'type'          => 'villa'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" emlak.az [villa] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //garden_house
         $count = (new SiteComp([
@@ -113,8 +120,9 @@ class GetDatas extends Command
             'dateDom'       => '.box-panel .date strong',
             'type'          => 'garden_house'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" emlak.az [garden_house] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //office
         $count = (new SiteComp([
@@ -128,8 +136,9 @@ class GetDatas extends Command
             'dateDom'       => '.box-panel .date strong',
             'type'          => 'office'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" emlak.az [office] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //garage
         $count = (new SiteComp([
@@ -143,8 +152,9 @@ class GetDatas extends Command
             'dateDom'       => '.box-panel .date strong',
             'type'          => 'garage'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" emlak.az [garage] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //land
         $count = (new SiteComp([
@@ -158,8 +168,9 @@ class GetDatas extends Command
             'dateDom'       => '.box-panel .date strong',
             'type'          => 'land'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" emlak.az [land] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //object
         $count = (new SiteComp([
@@ -173,8 +184,9 @@ class GetDatas extends Command
             'dateDom'       => '.box-panel .date strong',
             'type'          => 'object'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" emlak.az [object] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
         #endregion
         #region vipemlak.az
         //new_bulding
@@ -189,8 +201,9 @@ class GetDatas extends Command
             'dateDom'       => '.clearfix .viewsbb',
             'type'          => 'new_bulding'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [new_bulding] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //old_building
         $count = (new SiteComp([
@@ -204,8 +217,9 @@ class GetDatas extends Command
             'dateDom'       => '.clearfix .viewsbb',
             'type'          => 'old_building'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [old_building] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //house
         $count = (new SiteComp([
@@ -219,8 +233,9 @@ class GetDatas extends Command
             'dateDom'       => '.clearfix .viewsbb',
             'type'          => 'house'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [house] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //object
         $count = (new SiteComp([
@@ -234,8 +249,9 @@ class GetDatas extends Command
             'dateDom'       => '.clearfix .viewsbb',
             'type'          => 'object'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [object] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //land
         $count = (new SiteComp([
@@ -249,8 +265,9 @@ class GetDatas extends Command
             'dateDom'       => '.clearfix .viewsbb',
             'type'          => 'land'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [land] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
         #endregion
         #region bina.az
         //new_bulding
@@ -265,8 +282,9 @@ class GetDatas extends Command
             'dateDom'       => '.info .item_info',
             'type'          => 'new_bulding'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [new_bulding] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //old_building
         $count = (new SiteComp([
@@ -280,8 +298,9 @@ class GetDatas extends Command
             'dateDom'       => '.info .item_info',
             'type'          => 'old_building'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [old_building] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //house
         $count = (new SiteComp([
@@ -295,8 +314,9 @@ class GetDatas extends Command
             'dateDom'       => '.info .item_info',
             'type'          => 'house'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [house] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //office
         $count = (new SiteComp([
@@ -310,8 +330,9 @@ class GetDatas extends Command
             'dateDom'       => '.info .item_info',
             'type'          => 'office'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [office] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //garden_house
         $count = (new SiteComp([
@@ -325,8 +346,9 @@ class GetDatas extends Command
             'dateDom'       => '.info .item_info',
             'type'          => 'garden_house'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [garden_house] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //garage
         $count = (new SiteComp([
@@ -340,8 +362,9 @@ class GetDatas extends Command
             'dateDom'       => '.info .item_info',
             'type'          => 'garage'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [garage] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //land
         $count = (new SiteComp([
@@ -355,8 +378,9 @@ class GetDatas extends Command
             'dateDom'       => '.info .item_info',
             'type'          => 'land'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [land] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //object
         $count = (new SiteComp([
@@ -370,8 +394,9 @@ class GetDatas extends Command
             'dateDom'       => '.info .item_info',
             'type'          => 'object'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" vipemlak.az [object] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
         #endregion
         #region tap.az
         //new_bulding
@@ -386,8 +411,9 @@ class GetDatas extends Command
             'dateDom'       => '.aside-page .lot-info',
             'type'          => 'new_bulding'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" tap.az [new_bulding] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //old_building
         $count = (new SiteComp([
@@ -401,8 +427,9 @@ class GetDatas extends Command
             'dateDom'       => '.aside-page .lot-info',
             'type'          => 'old_building'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" tap.az [old_building] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //garden_house
         $count = (new SiteComp([
@@ -416,8 +443,9 @@ class GetDatas extends Command
             'dateDom'       => '.aside-page .lot-info',
             'type'          => 'garden_house'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" tap.az [garden_house] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //house
         $count = (new SiteComp([
@@ -431,8 +459,9 @@ class GetDatas extends Command
             'dateDom'       => '.aside-page .lot-info',
             'type'          => 'house'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" tap.az [house] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //villa
         $count = (new SiteComp([
@@ -446,8 +475,9 @@ class GetDatas extends Command
             'dateDom'       => '.aside-page .lot-info',
             'type'          => 'villa'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" tap.az [villa] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //office
         $count = (new SiteComp([
@@ -461,8 +491,9 @@ class GetDatas extends Command
             'dateDom'       => '.aside-page .lot-info',
             'type'          => 'office'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" tap.az [office] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //object
         $count = (new SiteComp([
@@ -476,8 +507,9 @@ class GetDatas extends Command
             'dateDom'       => '.aside-page .lot-info',
             'type'          => 'object'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" tap.az [object] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //land
         $count = (new SiteComp([
@@ -491,8 +523,9 @@ class GetDatas extends Command
             'dateDom'       => '.aside-page .lot-info',
             'type'          => 'land'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" tap.az [land] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
 
         //garage
         $count = (new SiteComp([
@@ -506,8 +539,9 @@ class GetDatas extends Command
             'dateDom'       => '.aside-page .lot-info',
             'type'          => 'garage'
         ]))->getObjectData();
-        $bar->advance();
         $this->info(" tap.az [garage] count: ".$count." \n");
+        $bar->advance();
+        unset($count);
         #endregion
 
     }

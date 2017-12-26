@@ -48,7 +48,7 @@
                                 text: data['announcement'][n]['header'],
                                 type: 'info',
                                 hide: true,
-                                delay: 2000,
+                                delay: 3000,
                                 text_escape: false,
                                 styling: 'bootstrap3'
                             });
@@ -66,7 +66,7 @@
                         else $("#not-count").text(currentNotficationCount);
                     }
 
-                    interval_id = setTimeout(getNewAnn, 1000);
+                    interval_id = setTimeout(getNewAnn, 3000);
                 }
                 else
                 {
@@ -84,7 +84,7 @@
 
         $(window).focus(function() {
             if (!interval_id)
-                interval_id = setTimeout(getNewAnn, 1000);
+                interval_id = setTimeout(getNewAnn, 3000);
         });
 
         $(window).blur(function() {
