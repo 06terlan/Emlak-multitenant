@@ -51,5 +51,5 @@ class MyClass
     /*
     * info count
     */
-    const INFO_COUNT = 50;
+    const INFO_COUNT = 32;
 }

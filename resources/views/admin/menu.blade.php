@@ -83,21 +83,20 @@
                 <li role="presentation" class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-green">{{ $countStr }}</span>
+                        <span class="badge bg-green" id="not-count">{{ $countStr }}</span>
                     </a>
                     <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu" style="height:280px;overflow-y: auto;">
                         @include('admin.notfication', ['announcements' => App\Models\Announcement::todayAnnouncements()->take(\App\Library\MyClass::INFO_COUNT)->get()])
 
-                        @if( $count > \App\Library\MyClass::INFO_COUNT )
-                            <li>
-                                <div class="text-center">
-                                    <a href="{{ route('announcement') }}">
-                                        <strong>See All</strong>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </li>
-                        @endif
+
+                        <li class="more {{ $count > \App\Library\MyClass::INFO_COUNT ? '' : 'hidden' }}">
+                            <div class="text-center">
+                                <a href="{{ route('announcement') }}">
+                                    <strong>See All</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
                     </ul>
                 </li>
             </ul>

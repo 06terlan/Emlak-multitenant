@@ -6,32 +6,35 @@ use App\Library\Date;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
 
 class AjaxController extends Controller
 {
     //
     public function getLastAnnouncement(Request $request)
     {
-        if($request->has('lastId') && $request->get('lastId') > 0 && $request->get('currentNotficationCount') >= 0 )
+        if($request->has('lastId') && $request->get('lastId') >= 0 )
         {
-            $currentNotficationCount = $request->get('currentNotficationCount');
-            $maxNotficationCount = \App\Library\MyClass::INFO_COUNT;
-            $count = $maxNotficationCount - $currentNotficationCount;
+            $lastId = $request->get('lastId');
+            $view = "";
 
-            $count = $count > 0 ? $count : 0;
+            $announcements = Announcement::where('date' , Date::d(null, "Y-m-d"))
+                ->where('id', '>', $request->get('lastId'))
+                ->orderBy('id', 'asc')->take(10)->get()->toArray();
 
-            if($count > 0)
+            if(count($announcements) > 0)
             {
-                $announcements = Announcement::where('date' , Date::d(null, "Y-m-d"))
-                    ->where('id', '>', $request->get('lastId'))
-                    ->orderBy('id', 'asc')->take($count)->get();
+                $announcements = array_reverse($announcements);
+                $lastId = $announcements[0]['id'];
 
-                $view = View::make('my_view', ['name' => $announcements]);
+                $view = View::make('admin.notfication', ['announcements' => $announcements ])->render();
             }
 
             $data =
              [
                  'status' => 'success',
+                 'lastId' => $lastId,
+                 'view' => $view,
                  'announcement' => $announcements
              ];
 

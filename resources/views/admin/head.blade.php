@@ -20,5 +20,9 @@
 {!! Html::style('admin/assets/vendors/jqvmap/dist/jqvmap.min.css') !!}
 <!-- Custom Theme Style -->
 {!! Html::style('admin/assets/build/css/custom.min.css') !!}
+<!-- PNotify -->
+{!! Html::style('admin/assets/vendors/pnotify/dist/pnotify.css') !!}
+{!! Html::style('admin/assets/vendors/pnotify/dist/pnotify.buttons.css') !!}
+{!! Html::style('admin/assets/vendors/pnotify/dist/pnotify.nonblock.css') !!}
 
 @yield('css')
