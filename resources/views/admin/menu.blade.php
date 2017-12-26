@@ -30,6 +30,7 @@
                         <li><a href="{{ URL::to('admin/users') }}"><i class="fa fa-user"></i> Users </a></li>
                     @endif
                     <li><a href="{{ route('announcement') }}"><i class="fa fa-share-alt"></i> Elanlar </a></li>
+                    <li><a href="{{ route('announcement_pro') }}"><i class="fa fa-share-alt-square"></i> Elanlar fərdi əlavə </a></li>
                 </ul>
             </div>
         </div>

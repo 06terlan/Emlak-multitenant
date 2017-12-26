@@ -28,6 +28,24 @@ class MyClass
         'object' => 'Obyekt'
     ];
 
+    /**
+     * Available document types
+     */
+    public static $documentTypes =
+    [
+        1 => 'Çıxarış (Kupça)',
+    ];
+
+    /**
+     * Available repairing types
+     */
+    public static $repairingTypes =
+        [
+            1 => 'Əla təmirli',
+            2 => 'Təmirli',
+            3 => 'Orta təmirli',
+        ];
+
     /*
 	* Admin role
     */

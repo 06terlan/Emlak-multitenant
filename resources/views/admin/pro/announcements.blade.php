@@ -1,0 +1,59 @@
+@extends('admin.masterpage')
+
+@section('content')
+    @include('admin.error')
+
+    <a href="{{ route('announcement_insert',['announcement' => 0]) }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Add</a>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Elanlar</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Başlıq</th>
+                                <th>Content</th>
+                                <th>Tipi</th>
+                                <th>Qiymət</th>
+                                <th>Tarix</th>
+                                <th>Əlavə edən</th>
+                                <th>Əməliyyatlar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($announcements as $announcement )
+                                <tr>
+                                    <td>{{ $announcements->perPage() * ($announcements->currentPage() - 1) + $loop->iteration }}</td>
+                                    <td>{{ $announcement->header }}</td>
+                                    <td>{{ $announcement->getShortContent() }}</td>
+                                    <td>{{ $announcement->getAnnouncementType() }}</td>
+                                    <td>{{ $announcement->amount }}</td>
+                                    <td>{{ App\Library\Date::d($announcement->created_date,'d-m-Y') }}</td>
+                                    <td>{{ $announcement->author()->fullname() }}</td>
+                                    <th>
+                                        <a href="{{ route('announcement_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
+                                        <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                    </th>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            {{ $announcements->links('admin.pagination', ['paginator' => $announcements]) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
