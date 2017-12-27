@@ -55,3 +55,12 @@
         </div>
     </div>
 @endsection
+
+@section('css')
+    {{--  bootstrap-wysiwyg --}}
+    {!! Html::style('admin/assets/vendors/jquery-confirm-master/css/jquery-confirm.css') !!}
+@endsection
+
+@section('scripts')
+    {!! Html::script('admin/assets/vendors/jquery-confirm-master/js/jquery-confirm.js') !!}
+@endsection

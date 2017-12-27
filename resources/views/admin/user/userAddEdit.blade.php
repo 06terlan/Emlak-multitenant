@@ -56,8 +56,9 @@
                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Role</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" name="role" required="">
-                                  <option value="1"> Admin </option>
-                                  <option value="2" selected=""> Author </option>
+                                    @foreach (\App\Library\MyClass::$roles as $typeK => $type)
+                                        <option value="{{ $typeK }}" {{ $typeK == $User['role']? 'selected':'' }}> {{ $type }} </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

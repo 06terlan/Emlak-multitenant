@@ -13,6 +13,15 @@ class MyClass
     ];
 
     /**
+     * Available role types
+     */
+    public static $roles =
+        [
+            1 => 'Admin',
+            2 => 'Author'
+        ];
+
+    /**
      * Available announcement types
      */
     public static $announcementTypes =

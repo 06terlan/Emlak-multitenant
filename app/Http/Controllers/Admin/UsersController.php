@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\UpdateSaveUserRequest;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Validator;
@@ -17,10 +18,18 @@ class UsersController extends Controller
         //$this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $user = User::realUsers();
+
+        if($request->has('fullname')) $user->where(DB::raw('concat(firstname," ",surname)'),'like','%'.$request->get('fullname').'%');
+        if($request->has('email')) $user->where('email', 'like', '%'.$request->get('email').'%');
+        if($request->has('login')) $user->where('login', 'like', '%'.$request->get('login').'%');
+        if($request->has('role')) $user->where(DB::raw("(CASE WHEN 1 THEN 'Admin' ELSE 'Author' END)"), 'like', '%'.$request->get('role').'%');
+
         $dataToBlade = [
-            'Users' => User::realUsers()->get()
+            'Users' => $user->get(),
+            'request' => $request
         ];
         return view('admin.user.users',$dataToBlade);
     }
