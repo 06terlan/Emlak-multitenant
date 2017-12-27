@@ -16,7 +16,8 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <form method="get" action="">
+                    <form method="get" action="" class="formFinder">
+                        <input type="hidden" name="page" value="{{ $request->get("page",1) }}">
                         <table class="table table-striped">
                             <thead>
                                 <tr>

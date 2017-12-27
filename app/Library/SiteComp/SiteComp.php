@@ -49,7 +49,7 @@ class SiteComp
             if($link === null){ $this->errorLog->error("[" . $this->location . "] Link tapilmadi -> [" . $link . "]"); continue; }
 
             $htmlAlt = $this->dom->file_get_html($this->location.$link);
-            if($htmlAlt === null){ $this->errorLog->error("[" . $this->location . "] Obyek acilmir -> [" . $this->location.$link . "]"); continue; }
+            if($htmlAlt === null || $htmlAlt === false){ $this->errorLog->error("[" . $this->location . "] Obyek acilmir -> [" . $this->location.$link . "]"); continue; }
 
             $header     = @$htmlAlt->find( $this->dataArr['headerDom'] )[0]->innertext;
             if($header === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi [headerDom]"); continue; }

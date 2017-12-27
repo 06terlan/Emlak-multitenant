@@ -91,9 +91,15 @@ $(function() {
         }
     });
 
-    $(".mypages .btn-info").click(function(e) {
+    $(".mypages .btn-info[href]").click(function(e) {
         var form = $(".formFinder");
-        //if()
-        return false;
+        if(form.length > 0)
+        {
+            var page = $(this).attr("href").match(/(\d+)$/i)[0];
+            form.find("input[name='page']").val(page);
+            form.submit();
+            return false;
+        }
+        else return true;
     });
 });

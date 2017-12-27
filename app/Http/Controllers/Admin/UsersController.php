@@ -29,8 +29,10 @@ class UsersController extends Controller
         if($request->has('login')) $user->where('login', 'like', '%'.$request->get('login').'%');
         if($request->has('role')) $user->where(DB::raw(MyHelper::createCase(MyClass::$roles, 'role')), 'like', '%'.$request->get('role').'%');
 
+        $user = $user->paginate( MyClass::ADMIN_ROW_COUNT );
+
         $dataToBlade = [
-            'Users' => $user->get(),
+            'Users' => $user,
             'request' => $request
         ];
         return view('admin.user.users',$dataToBlade);
