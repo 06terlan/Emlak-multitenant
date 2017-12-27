@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\ProRequest;
 use App\Library\MyClass;
 use App\Models\ProAnnouncement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 class ProController extends Controller
 {
@@ -26,43 +30,62 @@ class ProController extends Controller
         return view('admin.pro.announcement_add',$dataToBlade);
     }
 
-    public function inserEdit(UpdateSaveUserRequest $request,$id)
+    public function inserEditK(ProRequest $request, $announcement)
     {
-        if($id == 0)
+        if($announcement == 0)
         {
-            $validate = Validator::make($request->all(), ['password' => 'required|string|min:6']);
-            if($validate->fails()) return redirect()->back()->withErrors($validate);
+            $newAnnouncement = new ProAnnouncement();
+            $newAnnouncement->userId = Auth::user()->id;
+            $newAnnouncement->header = Input::get("header");
+            $newAnnouncement->content = Input::get("content");
+            $newAnnouncement->type = Input::get("type");
+            $newAnnouncement->amount = Input::get("amount");
+            $newAnnouncement->area = Input::get("area");
 
-            $user = new User();
-            $user->firstname = Input::get("name");
-            $user->surname = Input::get("surname","");
-            $user->email = Input::get("email");
-            $user->login = Input::get("login");
-            $user->password = Hash::make(Input::get("password"));
-            $user->role = Input::get("role");
+            $newAnnouncement->roomCount = Input::get("roomCount");
+            $newAnnouncement->locatedFloor = Input::get("locatedFloor");
+            $newAnnouncement->floorCount = Input::get("floorCount");
+            $newAnnouncement->documentType = Input::get("documentType");
+            $newAnnouncement->repairing = Input::get("repairing");
 
-            $user->save();
+            $newAnnouncement->save();
         }
         else
         {
-            $user = User::find($id);;
-            $user->firstname = Input::get("name");
-            $user->surname = Input::get("surname","");
-            $user->email = Input::get("email");
-            $user->login = Input::get("login");
-            $user->role = Input::get("role");
+            $editAnnouncement = ProAnnouncement::find($announcement);
+            $editAnnouncement->userId = Auth::user()->id;
+            $editAnnouncement->header = Input::get("header");
+            $editAnnouncement->content = Input::get("content");
+            $editAnnouncement->type = Input::get("type");
+            $editAnnouncement->amount = Input::get("amount");
+            $editAnnouncement->area = Input::get("area");
 
-            if( !empty(Input::get("password","")) )
-            {
-                $validate = Validator::make($request->all(), ['password' => 'required|string|min:6']);
-                if($validate->fails()) return redirect()->back()->withErrors($validate);
+            $editAnnouncement->roomCount = Input::get("roomCount");
+            $editAnnouncement->locatedFloor = Input::get("locatedFloor");
+            $editAnnouncement->floorCount = Input::get("floorCount");
+            $editAnnouncement->documentType = Input::get("documentType");
+            $editAnnouncement->repairing = Input::get("repairing");
 
-                $user->password = Hash::make(Input::get("password"));
-            }
-
-            $user->save();
+            $editAnnouncement->save();
         }
 
-        return redirect("admin/users");
+        return redirect()->route('announcement_pro');
+    }
+
+    public function delete(ProAnnouncement $announcement)
+    {
+        $announcement->deleted = 1;
+        $announcement->save();
+
+        return redirect()->route("announcement_pro");
+    }
+
+    public function InfoAction(ProAnnouncement $announcement)
+    {
+        $dataToBlade = [
+            'announcement' 	=> $announcement
+        ];
+
+        return view('admin.pro.info',$dataToBlade);
     }
 }

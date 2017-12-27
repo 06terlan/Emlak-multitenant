@@ -15,8 +15,7 @@
                 </div>
                 <div class="x_content">
                     <br>
-                    <form autocomplete="off" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ route('announcement_insert',['$announcement' => $id]) }}">
-                        <input type="hidden" name="id" value="{{ $id }}" /> 
+                    <form autocomplete="off" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ route('announcement_insert_act',['announcement' => $id]) }}">
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Header
                             </label>
@@ -46,7 +45,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Sahə
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input required="" type="number" data-validate-minmax="1,255" name="area" type="text" class="form-control" placeholder="Sahə" value="{{ $announcement['area'] }}">
+                                <input required="" type="number" data-validate-minmax="1," name="area" type="text" class="form-control" placeholder="Sahə" value="{{ $announcement['area'] }}">
                             </div>
                         </div>
                         <div class="item form-group">
@@ -96,7 +95,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Content
                             </label>
                             <div class="col-md-9 col-sm-6 col-xs-12">
-                                <textarea id="descr" style="display:none;" name="content">{{ $announcement['content'] }}</textarea>
+                                <textarea id="descr" style="width:100%;height:251px;" name="content">{{ $announcement['content'] }}</textarea>
                             </div>
                         </div>
                         </div>
@@ -122,11 +121,4 @@
 
 @section('scripts')
     {!! Html::script('admin/assets/vendors/validator/validator.js') !!}
-    
-    {{--  bootstrap-wysiwyg --}}
-    {!! Html::script('admin/assets/vendors/summernote/dist/summernote.js') !!}
-
-   <script type="text/javascript">
-       $('#descr').summernote({height: 300});
-   </script>
 @endsection

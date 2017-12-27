@@ -33,13 +33,15 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
 
 	//announcement
 	Route::get('announcement', 'Admin\PostController@index')->name('announcement');
-	Route::get('announcement/info/{announcement}', 'Admin\PostController@InfoAction')->where('which','[0-9]{1,}')->name('announcement_info');
-    Route::get('announcement/delete/{id}', 'Admin\PostController@delete')->where('which','[0-9]{1,}')->name('announcement_delete');
+	Route::get('announcement/info/{announcement}', 'Admin\PostController@InfoAction')->where('announcement','[0-9]{1,}')->name('announcement_info');
+    Route::get('announcement/delete/{id}', 'Admin\PostController@delete')->where('id','[0-9]{1,}')->name('announcement_delete');
 
     //announcement
     Route::get('announcement_pro', 'Admin\ProController@index')->name('announcement_pro');
-    Route::get('announcement/insert/{announcement}', 'Admin\ProController@inserEditAction')->where('which','[0-9]{1,}')->name('announcement_insert');
-    //Route::get('announcement/delete/{id}', 'Admin\PostController@delete')->where('which','[0-9]{1,}')->name('announcement_delete');
+    Route::get('announcement_pro/insert/{announcement}', 'Admin\ProController@inserEditAction')->where('announcement','[0-9]{1,}')->name('announcement_insert');
+    Route::post('announcement_pro/insert_act/{announcement}', 'Admin\ProController@inserEditK')->where('announcement','[0-9]{1,}')->name('announcement_insert_act');
+    Route::get('announcement_pro/delete/{announcement}', 'Admin\ProController@delete')->where('id','[0-9]{1,}')->name('announcement_pro_delete');
+    Route::get('announcement_pro/info/{announcement}', 'Admin\ProController@InfoAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_info');
 
     //ajax
     Route::post('announcement/getLast', 'Admin\AjaxController@getLastAnnouncement')->name('getLastAnnouncementAjax');

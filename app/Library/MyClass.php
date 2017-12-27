@@ -40,11 +40,11 @@ class MyClass
      * Available repairing types
      */
     public static $repairingTypes =
-        [
-            1 => 'Əla təmirli',
-            2 => 'Təmirli',
-            3 => 'Orta təmirli',
-        ];
+    [
+        1 => 'Əla təmirli',
+        2 => 'Təmirli',
+        3 => 'Orta təmirli',
+    ];
 
     /*
 	* Admin role

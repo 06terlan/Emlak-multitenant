@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Library\MyClass;
 use Illuminate\Database\Eloquent\Model;
 
 class ProAnnouncement extends Model
@@ -18,17 +19,6 @@ class ProAnnouncement extends Model
         return $this->hasOne('App\User', 'id', 'userId');
     }
 
-    //today
-    /*public static function todayAnnouncements()
-    {
-        return self::where('date' , Date::d(null, "Y-m-d"))->orderBy('id', 'desc');
-    }
-
-    public static function isLinkExist($link)
-    {
-        return self::where('link', '=', $link)->count() > 0 ? true : false;
-    }
-
     public function getShortContent()
     {
         return mb_strimwidth($this->content, 0, 100, "...");
@@ -37,5 +27,15 @@ class ProAnnouncement extends Model
     public function getAnnouncementType()
     {
         return isset(MyClass::$announcementTypes[$this->type]) ? MyClass::$announcementTypes[$this->type] : "-";
-    }*/
+    }
+
+    public function getDocumentType()
+    {
+        return isset(MyClass::$documentTypes[$this->documentType]) ? MyClass::$documentTypes[$this->documentType] : "-";
+    }
+
+    public function getRepairing()
+    {
+        return isset(MyClass::$repairingTypes[$this->repairing]) ? MyClass::$repairingTypes[$this->repairing] : "-";
+    }
 }

@@ -38,10 +38,11 @@
                                     <td>{{ $announcement->getAnnouncementType() }}</td>
                                     <td>{{ $announcement->amount }}</td>
                                     <td>{{ App\Library\Date::d($announcement->created_date,'d-m-Y') }}</td>
-                                    <td>{{ $announcement->author()->fullname() }}</td>
+                                    <td>{{ $announcement->author->fullname() }}</td>
                                     <th>
-                                        <a href="{{ route('announcement_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
-                                        <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                        <a href="{{ route('announcement_insert',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                                        <a href="{{ route('announcement_pro_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
+                                        <a href="{{ route('announcement_pro_delete',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                     </th>
                                 </tr>
                             @endforeach
