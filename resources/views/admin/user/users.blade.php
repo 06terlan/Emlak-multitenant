@@ -37,7 +37,7 @@
                                     <th>
                                         <a href="{{ url('admin/users/addEdit/' . $user->id ) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
                                         @if( Auth::user()->id != $user->id )
-                                        <a href="{{ url('admin/users/delete/' . $user->id ) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                        <a href="{{ url('admin/users/delete/' . $user->id ) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
                                         @endif
                                     </th>
                                 </tr>

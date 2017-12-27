@@ -98,7 +98,7 @@
                                 <textarea id="descr" style="width:100%;height:251px;" name="content">{{ $announcement['content'] }}</textarea>
                             </div>
                         </div>
-                        </div>
+
                         <div class="ln_solid"></div>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group">
