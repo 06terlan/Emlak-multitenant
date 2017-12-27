@@ -16,7 +16,7 @@
                 </div>
                 <div class="x_content">
                     <form method="get" action="">
-                        <table class="table table-striped">
+                        <table class="table table-striped formFinder">
                             <thead>
                                 <tr>
                                     <th width="40px">#</th>
@@ -69,11 +69,4 @@
 
 @section('scripts')
     {!! Html::script('admin/assets/vendors/jquery-confirm-master/js/jquery-confirm.js') !!}
-    <script>
-        $(".formFind").keypress(function(e) {
-            if(e.which == 13) {
-                $(this).parents("form:eq(0)").submit();
-            }
-        });
-    </script>
 @endsection

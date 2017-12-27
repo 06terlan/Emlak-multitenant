@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <div class="btn-group">
+    <div class="btn-group mypages">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
             <a class="btn btn-info disabled"><span>«</span></a>

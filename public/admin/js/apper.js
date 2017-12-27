@@ -84,4 +84,16 @@ $(function() {
 
         return false;
     });
+
+    $(".formFind").keypress(function(e) {
+        if(e.which == 13) {
+            $(this).parents("form:eq(0)").submit();
+        }
+    });
+
+    $(".mypages .btn-info").click(function(e) {
+        var form = $(".formFinder");
+        //if()
+        return false;
+    });
 });

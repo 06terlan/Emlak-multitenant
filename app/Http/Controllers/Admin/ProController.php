@@ -4,20 +4,36 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\ProRequest;
 use App\Library\MyClass;
+use App\Library\MyHelper;
 use App\Models\ProAnnouncement;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Request;
 
 class ProController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
-        $announcements = ProAnnouncement::realAnnouncements()->paginate( MyClass::ADMIN_ROW_COUNT );
-        return view('admin.pro.announcements',['announcements' => $announcements]);
+        $announcements = ProAnnouncement::realAnnouncements();
+
+        if($request->has('header')) $announcements->where('header', 'like', '%'.$request->get('header').'%');
+        if($request->has('content')) $announcements->where('content', 'like', '%'.$request->get('content').'%');
+        if($request->has('type')) $announcements->where(DB::raw(MyHelper::createCase(MyClass::$announcementTypes, 'type')), 'like', '%'.$request->get('type').'%');
+        if($request->has('amount')) $announcements->where('amount', 'like', '%'.$request->get('amount').'%');
+        if($request->has('date')) $announcements->where(DB::raw("DATE_FORMAT(date, '%d-%m-%Y')"), 'like', '%'.$request->get('date').'%');
+        /*if($request->has('user'))
+        {
+            $request->with('author');
+            //$announcements->where('amount', 'like', '%'.$request->get('amount').'%');
+        }*/
+
+        $announcements = $announcements->paginate( MyClass::ADMIN_ROW_COUNT );
+
+        return view('admin.pro.announcements',['announcements' => $announcements,'request' => $request]);
     }
 
     public function inserEditAction($announcement)

@@ -27,7 +27,7 @@ class Announcement extends Model
 
     public function getShortContent()
     {
-        return mb_strimwidth($this->content, 0, 100, "...");
+        return mb_strimwidth( strip_tags($this->content), 0, 100, "...");
     }
 
     public function getAnnouncementType()

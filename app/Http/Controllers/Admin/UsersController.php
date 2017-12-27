@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Library\MyClass;
+use App\Library\MyHelper;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\UpdateSaveUserRequest;
@@ -25,7 +27,7 @@ class UsersController extends Controller
         if($request->has('fullname')) $user->where(DB::raw('concat(firstname," ",surname)'),'like','%'.$request->get('fullname').'%');
         if($request->has('email')) $user->where('email', 'like', '%'.$request->get('email').'%');
         if($request->has('login')) $user->where('login', 'like', '%'.$request->get('login').'%');
-        if($request->has('role')) $user->where(DB::raw("(CASE WHEN 1 THEN 'Admin' ELSE 'Author' END)"), 'like', '%'.$request->get('role').'%');
+        if($request->has('role')) $user->where(DB::raw(MyHelper::createCase(MyClass::$roles, 'role')), 'like', '%'.$request->get('role').'%');
 
         $dataToBlade = [
             'Users' => $user->get(),

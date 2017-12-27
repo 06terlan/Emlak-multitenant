@@ -14,37 +14,51 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Başlıq</th>
-                                <th>Content</th>
-                                <th>Tipi</th>
-                                <th>Qiymət</th>
-                                <th>Tarix</th>
-                                <th>Link</th>
-                                <th>Əməliyyatlar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($announcements as $announcement )
+                    <form method="get" action="">
+                        <table class="table table-striped">
+                            <thead>
                                 <tr>
-                                    <td>{{ $announcements->perPage() * ($announcements->currentPage() - 1) + $loop->iteration }}</td>
-                                    <td>{{ $announcement->header }}</td>
-                                    <td>{{ $announcement->getShortContent() }}</td>
-                                    <td>{{ $announcement->getAnnouncementType() }}</td>
-                                    <td>{{ $announcement->amount }}</td>
-                                    <td>{{ App\Library\Date::d($announcement->date,'d-m-Y') }}</td>
-                                    <td><a target="_blank" href="{{ $announcement->link }}"> Link </a> </td>
-                                    <th>
-                                        <a href="{{ route('announcement_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
-                                        <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
-                                    </th>
+                                    <th>#</th>
+                                    <th>Başlıq</th>
+                                    <th>Content</th>
+                                    <th>Tipi</th>
+                                    <th>Qiymət</th>
+                                    <th>Tarix</th>
+                                    <th>Link</th>
+                                    <th>Əməliyyatlar</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th><input class="form-control formFind" name="header" value="{{ $request->get("header") }}" placeholder="Başlıq"></th>
+                                    <th><input class="form-control formFind" name="content" value="{{ $request->get("content") }}" placeholder="Content"></th>
+                                    <th><input class="form-control formFind" name="type" value="{{ $request->get("type") }}" placeholder="Tipi"></th>
+                                    <th><input class="form-control formFind" name="amount" value="{{ $request->get("amount") }}" placeholder="Qiymət"></th>
+                                    <th><input class="form-control formFind" name="date" value="{{ $request->get("date") }}" placeholder="Tarix"></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($announcements as $announcement )
+                                    <tr>
+                                        <td>{{ $announcements->perPage() * ($announcements->currentPage() - 1) + $loop->iteration }}</td>
+                                        <td>{{ $announcement->header }}</td>
+                                        <td>{{ $announcement->getShortContent() }}</td>
+                                        <td>{{ $announcement->getAnnouncementType() }}</td>
+                                        <td>{{ $announcement->amount }}</td>
+                                        <td>{{ App\Library\Date::d($announcement->date,'d-m-Y') }}</td>
+                                        <td><a target="_blank" href="{{ $announcement->link }}"> Link </a> </td>
+                                        <th>
+                                            <a href="{{ route('announcement_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
+                                            <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
+                                        </th>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </form>
                     <div class="row">
                         <div class="col-md-12 text-center">
                             {{ $announcements->links('admin.pagination', ['paginator' => $announcements]) }}
