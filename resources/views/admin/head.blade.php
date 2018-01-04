@@ -11,13 +11,8 @@
 {!! Html::style('admin/assets/vendors/font-awesome/css/font-awesome.min.css') !!}
 <!-- NProgress -->
 {!! Html::style('admin/assets/vendors/nprogress/nprogress.css') !!}
-<!-- iCheck -->
-{!! Html::style('admin/assets/vendors/bootstrap/dist/css/bootstrap.min.css') !!}
-
 <!-- bootstrap-progressbar -->
 {!! Html::style('admin/assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') !!}
-<!-- JQVMap -->
-{!! Html::style('admin/assets/vendors/jqvmap/dist/jqvmap.min.css') !!}
 <!-- Custom Theme Style -->
 {!! Html::style('admin/assets/build/css/custom.min.css') !!}
 <!-- PNotify -->
