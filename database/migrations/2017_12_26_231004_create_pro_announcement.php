@@ -26,6 +26,12 @@ class CreateProAnnouncement extends Migration
             $table->smallInteger("floorCount");
             $table->tinyInteger("documentType");
             $table->tinyInteger("repairing");
+
+            $table->string("metro",20)->nullable();
+            $table->string("city", 20)->nullable();
+            $table->string("owner", 40)->nullable();
+            $table->json("mobnom")->nullable();
+
             $table->boolean('deleted')->default(0);
             $table->timestamps();
         });
