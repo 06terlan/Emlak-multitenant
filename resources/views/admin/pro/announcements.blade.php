@@ -58,6 +58,8 @@
 
                                     <th>Əlavə edən</th>
 
+                                    <th>Status</th>
+
                                     <th>Əməliyyatlar</th>
 
                                 </tr>
@@ -82,7 +84,14 @@
 
                                     <th><input class="form-control formFind" name="user" value="{{ $request->get("user") }}" placeholder="Əlavə edən"></th>
 
-                                    <th></th>
+                                    <th>
+                                        <select class="form-control formFind" name="status">
+                                            <option></option>
+                                            @foreach (\App\Library\MyClass::$buttonStatus as $typeK => $type)
+                                                <option value="{{ $typeK }}" {{ $typeK == \Illuminate\Support\Facades\Input::get('status')? 'selected':'' }}> {{ $type }} </option>
+                                            @endforeach
+                                        </select>
+                                    </th>
 
                                     <th></th>
 
@@ -112,14 +121,17 @@
 
                                         <td>{{ $announcement->author->fullname() }}</td>
 
+                                        <td>{!! $announcement->getStatus() !!}</td>
+
                                         <th>
 
-                                            <a href="{{ route('announcement_insert',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                                            <a style="width: 24px;" href="{{ route('announcement_insert',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
 
-                                            <a href="{{ route('announcement_pro_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
+                                            <a style="width: 24px;" href="{{ route('announcement_pro_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
 
-                                            <a href="{{ route('announcement_pro_delete',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
+                                            <a style="width: 24px;" href="{{ route('announcement_pro_delete',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
 
+                                            <a style="width: 24px;" href="{{ route('announcement_pro_status',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="{{ isset(\App\Library\MyClass::$buttonStatus[$announcement->status]) ? \App\Library\MyClass::$buttonStatus[$announcement->status] : '-' }}" class="btn btn-success btn-xs"><i class="fa fa-thumb-tack"></i></a>
                                         </th>
 
                                     </tr>

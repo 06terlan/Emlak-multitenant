@@ -52,6 +52,8 @@ class ProController extends Controller
 
         if($request->has('date')) $announcements->where(DB::raw("DATE_FORMAT(date, '%d-%m-%Y')"), 'like', '%'.$request->get('date').'%');
 
+        if($request->has('status')) $announcements->where('status', $request->get('status'));
+
         /*if($request->has('user'))
 
         {
@@ -112,7 +114,7 @@ class ProController extends Controller
             $newAnnouncement->type = Input::get("type");
 
             $newAnnouncement->buldingType = Input::get("buldingType");
-
+            $newAnnouncement->status = Input::get("buldingType");
 
             $newAnnouncement->amount = Input::get("amount");
 
@@ -160,6 +162,7 @@ class ProController extends Controller
             $editAnnouncement->type = Input::get("type");
 
             $editAnnouncement->buldingType = Input::get("buldingType");
+            $editAnnouncement->status = Input::get("buldingType");
 
             $editAnnouncement->amount = Input::get("amount");
 
@@ -201,10 +204,23 @@ class ProController extends Controller
 
 
     public function delete(ProAnnouncement $announcement)
-
     {
 
         $announcement->deleted = 1;
+
+        $announcement->save();
+
+
+
+        return redirect()->route("announcement_pro");
+
+    }
+
+    public function statusAction(ProAnnouncement $announcement)
+    {
+        $st = $announcement->status;
+
+        $announcement->status = $st == 1 ? 3 : ( $st == 2 ? 4 : ( $st == 3 ? 1 : 2 ) );
 
         $announcement->save();
 

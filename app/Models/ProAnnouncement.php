@@ -26,6 +26,21 @@ class ProAnnouncement extends Model
 
     }
 
+    public function getStatus()
+    {
+        switch ($this->status)
+        {
+            case 1:
+                return "<button style='width:105px;' type='button' class='btn btn-info' >İcarədə deyil </button>";
+            case 2:
+                return "<button style='width:105px;' type='button' class='btn btn-success' >Satılmayıb </button>";
+            case 3:
+                return "<button style='width:105px;' type='button' class='btn btn-warning' >İcarədə </button>";
+            case 4:
+                return "<button style='width:105px;' type='button' class='btn btn-primary' >Satılıb </button>";
+        }
+    }
+
 
 
     //author name

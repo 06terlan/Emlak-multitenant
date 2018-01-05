@@ -9,8 +9,19 @@ namespace App\Library;
 class MyClass
 
 {
+    public static $buttonStatus =
+    [
+        1 => 'İcarədə',
+        2 => 'Satıldı',
+        3 => 'İcarədə deyil',
+        4 => 'Satılmayıb',
+    ];
 
+    /**
 
+     * Available bulding types
+
+     */
     public static $buldingType =
 
     [

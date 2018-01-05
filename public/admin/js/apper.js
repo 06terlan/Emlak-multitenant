@@ -91,6 +91,10 @@ $(function() {
         }
     });
 
+    $("select.formFind").change(function(e) {
+            $(this).parents("form:eq(0)").submit();
+    });
+
     $(".mypages .btn-info[href]").click(function(e) {
         var form = $(".formFinder");
         if(form.length > 0)
