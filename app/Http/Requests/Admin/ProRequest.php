@@ -82,6 +82,8 @@ class ProRequest extends FormRequest
 
             'mobnom'        => 'required|array',
 
+            'user'          => ['required'],
+
         ];
 
     }

@@ -105,7 +105,7 @@ class ProController extends Controller
 
             $newAnnouncement = new ProAnnouncement();
 
-            $newAnnouncement->userId = Auth::user()->id;
+            $newAnnouncement->userId = Input::get("user");
 
             $newAnnouncement->header = Input::get("header");
 
@@ -153,7 +153,7 @@ class ProController extends Controller
 
             $editAnnouncement = ProAnnouncement::find($announcement);
 
-            $editAnnouncement->userId = Auth::user()->id;
+            $editAnnouncement->userId = Input::get("user");
 
             $editAnnouncement->header = Input::get("header");
 

@@ -324,9 +324,9 @@
 
                                 <select class="form-control" name="user" required="">
 
-                                    @foreach (\App\Library\MyClass::$repairingTypes as $user => $user)
+                                    @foreach ( \App\User::realUsers()->get() as $user)
 
-                                        <option value="{{ $user }}" {{ $user == $announcement['user']? 'selected':'' }}> {{ $user }} </option>
+                                        <option value="{{ $user['id'] }}" {{ $user['id'] == $announcement['userId']? 'selected':'' }}> {{ $user->fullname() }} </option>
 
                                     @endforeach
 
