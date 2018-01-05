@@ -19,11 +19,12 @@ class CreateProAnnouncement extends Migration
             $table->string('header',200)->nullable();
             $table->longText('content')->nullable();
             $table->string('type',50)->nullable();
+            $table->tinyInteger("buldingType");
             $table->decimal('amount',10,2)->nullable();
-            $table->integer("area");
-            $table->tinyInteger("roomCount");
-            $table->smallInteger("locatedFloor");
-            $table->smallInteger("floorCount");
+            $table->integer("area")->nullable();
+            $table->tinyInteger("roomCount")->nullable();
+            $table->smallInteger("locatedFloor")->nullable();
+            $table->smallInteger("floorCount")->nullable();
             $table->tinyInteger("documentType");
             $table->tinyInteger("repairing");
 
