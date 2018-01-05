@@ -77,7 +77,11 @@ class Dom
 	    $dom = new Dommr(null, $lowercase, $forceTagsClosed, $target_charset, $stripRN, $defaultBRText, $defaultSpanText);
 	    // For sourceforge users: uncomment the next line and comment the retreive_url_contents line 2 lines down if it is not already done.
 	    
-	    $contents = @file_get_contents($url, $use_include_path, $context, $offset);
+	    $contents = @$this->get_web_page($url);
+
+	    if( $contents['errno'] != 0 /*bad url, timeout, redirect loop*/ || $contents['http_code'] != 200 /*no page, no permissions, no service*/ ) return false;
+        $contents = $contents['content'];
+
 		// Paperg - use our own mechanism for getting the contents as we want to control the timeout.
 		//$contents = retrieve_url_contents($url);
 		if (empty($contents) || strlen($contents) > MAX_FILE_SIZE)
@@ -89,6 +93,45 @@ class Dom
 	    $dom->load($contents, $lowercase, $stripRN);
 	    return $dom;
 	}
+
+    /**
+     * Get a web file (HTML, XHTML, XML, image, etc.) from a URL.  Return an
+     * array containing the HTTP server response header fields and content.
+     */
+    function get_web_page( $url )
+    {
+        $user_agent='Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
+
+        $options = array(
+
+            CURLOPT_CUSTOMREQUEST  =>"GET",        //set request type post or get
+            CURLOPT_POST           =>false,        //set to GET
+            CURLOPT_USERAGENT      => $user_agent, //set user agent
+            CURLOPT_COOKIEFILE     =>"cookie.txt", //set cookie file
+            CURLOPT_COOKIEJAR      =>"cookie.txt", //set cookie jar
+            CURLOPT_RETURNTRANSFER => true,     // return web page
+            CURLOPT_HEADER         => false,    // don't return headers
+            CURLOPT_FOLLOWLOCATION => true,     // follow redirects
+            CURLOPT_ENCODING       => "",       // handle all encodings
+            CURLOPT_AUTOREFERER    => true,     // set referer on redirect
+            CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
+            CURLOPT_TIMEOUT        => 120,      // timeout on response
+            CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
+        );
+
+        $ch      = curl_init( $url );
+        curl_setopt_array( $ch, $options );
+        $content = curl_exec( $ch );
+        $err     = curl_errno( $ch );
+        $errmsg  = curl_error( $ch );
+        $header  = curl_getinfo( $ch );
+        curl_close( $ch );
+
+        $header['errno']   = $err;
+        $header['errmsg']  = $errmsg;
+        $header['content'] = $content;
+        return $header;
+    }
 
 	// get html dom from string
 	public function str_get_html($str, $lowercase=true, $forceTagsClosed=true, $target_charset = DEFAULT_TARGET_CHARSET, $stripRN=true, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT)

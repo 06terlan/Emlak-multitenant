@@ -250,13 +250,19 @@
                             </label>
 
                             <div class="col-md-6 col-sm-6 col-xs-12" id="allNubers">
-                                @foreach (json_decode($announcement['mobnom']) as $typeK => $num)
-                                    <div class="numb">
-                                        <input style="width: 80%;display: inline-block;" required="" type="tel" data-validate-minmax="1," name="mobnom[]" type="text" class="form-control" value="{{ $num }}" placeholder="Nömrə">
-                                        <button type="button" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                @endforeach
-
+                                @if($announcement['mobnom'] != "")
+                                    @foreach (json_decode($announcement['mobnom']) as $typeK => $num)
+                                        <div class="numb">
+                                            <input style="width: 80%;display: inline-block;" required="" type="tel" data-validate-minmax="1," name="mobnom[]" type="text" class="form-control" value="{{ $num }}" placeholder="Nömrə">
+                                            <button type="button" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
+                                        </div>
+                                    @endforeach
+                                @else
+                                        <div class="numb">
+                                            <input style="width: 80%;display: inline-block;" required="" type="tel" data-validate-minmax="1," name="mobnom[]" type="text" class="form-control" value="" placeholder="Nömrə">
+                                            <button type="button" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
+                                        </div>
+                                @endif
                                 <button type="button" class="btn btn-success addNumber">+ Add</button>
                             </div>
 
@@ -341,8 +347,6 @@
 @section('css')
 
     {{--  bootstrap-wysiwyg --}}
-
-    {!! Html::style('admin/assets/vendors/summernote/dist/summernote.css') !!}
 
 @endsection
 

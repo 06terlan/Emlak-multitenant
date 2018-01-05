@@ -4,7 +4,7 @@ $(function() {
 
     function getNewAnn()
     {
-        $.post( "announcement/getLast", { lastId: lastId, _token: _token }, function( data ) {
+        $.post( link, { lastId: lastId, _token: _token }, function( data ) {
             //console.log(data);
 
             var currentNotficationCount = $("#menu1>li:not(.more)").length;

@@ -18,5 +18,6 @@
     var lastId = {{ App\Models\Announcement::todayAnnouncements()->first() != null ? App\Models\Announcement::todayAnnouncements()->first()->id : 0 }};
     var notficationCount = {{ \App\Library\MyClass::INFO_COUNT }};
     var _token = "{{ csrf_token() }}";
+    var link = "{{ route('getLastAnnouncementAjax') }}";
 </script>
 {!! Html::script('admin/js/apper.js') !!}

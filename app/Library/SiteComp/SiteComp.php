@@ -28,7 +28,7 @@ class SiteComp
         return $this;
     }
 
-    private function __destruct()
+    public function __destruct()
     {
         unset($this->dom);
         unset($this->errorLog);
