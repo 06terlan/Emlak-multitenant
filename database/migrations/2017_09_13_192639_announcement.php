@@ -24,6 +24,8 @@ class Announcement extends Migration
             $table->string('site',100)->nullable();
             $table->string('type',50)->nullable();
             $table->decimal('amount',10,2)->nullable();
+            $table->string("owner", 40)->nullable();
+            $table->json("mobnom")->nullable();
 
             $table->date('date')->nullable();
             $table->boolean('deleted')->default(0);

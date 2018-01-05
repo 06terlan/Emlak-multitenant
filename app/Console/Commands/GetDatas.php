@@ -54,6 +54,8 @@ class GetDatas extends Command
             'contentDom'    => '.left-bar .desc',
             'amountDom'     => '.left-bar .price .m',
             'dateDom'       => '.box-panel .date strong',
+            'owner'         => ['.left-bar .seller-data .name-seller', 0],
+            'mobnom'        => ['.left-bar .seller-data .phone', 0],
             'type'          => 'new_bulding'
         ]))->getObjectData();
         $this->info(" emlak.az [new_bulding] count: ".$count." \n");
@@ -70,6 +72,8 @@ class GetDatas extends Command
             'contentDom'    => '.left-bar .desc',
             'amountDom'     => '.left-bar .price .m',
             'dateDom'       => '.box-panel .date strong',
+            'owner'         => ['.left-bar .seller-data .name-seller', 0],
+            'mobnom'        => ['.left-bar .seller-data .phone', 0],
             'type'          => 'old_building'
         ]))->getObjectData();
         $this->info(" emlak.az [old_building] count: ".$count." \n");
@@ -86,6 +90,8 @@ class GetDatas extends Command
             'contentDom'    => '.left-bar .desc',
             'amountDom'     => '.left-bar .price .m',
             'dateDom'       => '.box-panel .date strong',
+            'owner'         => ['.left-bar .seller-data .name-seller', 0],
+            'mobnom'        => ['.left-bar .seller-data .phone', 0],
             'type'          => 'house'
         ]))->getObjectData();
         $this->info(" emlak.az [house] count: ".$count." \n");
@@ -102,6 +108,8 @@ class GetDatas extends Command
             'contentDom'    => '.left-bar .desc',
             'amountDom'     => '.left-bar .price .m',
             'dateDom'       => '.box-panel .date strong',
+            'owner'         => ['.left-bar .seller-data .name-seller', 0],
+            'mobnom'        => ['.left-bar .seller-data .phone', 0],
             'type'          => 'villa'
         ]))->getObjectData();
         $this->info(" emlak.az [villa] count: ".$count." \n");
@@ -118,6 +126,8 @@ class GetDatas extends Command
             'contentDom'    => '.left-bar .desc',
             'amountDom'     => '.left-bar .price .m',
             'dateDom'       => '.box-panel .date strong',
+            'owner'         => ['.left-bar .seller-data .name-seller', 0],
+            'mobnom'        => ['.left-bar .seller-data .phone', 0],
             'type'          => 'garden_house'
         ]))->getObjectData();
         $this->info(" emlak.az [garden_house] count: ".$count." \n");
@@ -134,6 +144,8 @@ class GetDatas extends Command
             'contentDom'    => '.left-bar .desc',
             'amountDom'     => '.left-bar .price .m',
             'dateDom'       => '.box-panel .date strong',
+            'owner'         => ['.left-bar .seller-data .name-seller', 0],
+            'mobnom'        => ['.left-bar .seller-data .phone', 0],
             'type'          => 'office'
         ]))->getObjectData();
         $this->info(" emlak.az [office] count: ".$count." \n");
@@ -150,6 +162,8 @@ class GetDatas extends Command
             'contentDom'    => '.left-bar .desc',
             'amountDom'     => '.left-bar .price .m',
             'dateDom'       => '.box-panel .date strong',
+            'owner'         => ['.left-bar .seller-data .name-seller', 0],
+            'mobnom'        => ['.left-bar .seller-data .phone', 0],
             'type'          => 'garage'
         ]))->getObjectData();
         $this->info(" emlak.az [garage] count: ".$count." \n");
@@ -166,6 +180,8 @@ class GetDatas extends Command
             'contentDom'    => '.left-bar .desc',
             'amountDom'     => '.left-bar .price .m',
             'dateDom'       => '.box-panel .date strong',
+            'owner'         => ['.left-bar .seller-data .name-seller', 0],
+            'mobnom'        => ['.left-bar .seller-data .phone', 0],
             'type'          => 'land'
         ]))->getObjectData();
         $this->info(" emlak.az [land] count: ".$count." \n");
@@ -182,6 +198,8 @@ class GetDatas extends Command
             'contentDom'    => '.left-bar .desc',
             'amountDom'     => '.left-bar .price .m',
             'dateDom'       => '.box-panel .date strong',
+            'owner'         => ['.left-bar .seller-data .name-seller', 0],
+            'mobnom'        => ['.left-bar .seller-data .phone', 0],
             'type'          => 'object'
         ]))->getObjectData();
         $this->info(" emlak.az [object] count: ".$count." \n");
@@ -199,6 +217,8 @@ class GetDatas extends Command
             'contentDom'    => '#openhalf .infotd100',
             'amountDom'     => '.infotd2 span',
             'dateDom'       => '.clearfix .viewsbb',
+            'owner'         => ['#openhalf .infotd2', 4],
+            'mobnom'        => ['#openhalf .infotd2', 5],
             'type'          => 'new_bulding'
         ]))->getObjectData();
         $this->info(" vipemlak.az [new_bulding] count: ".$count." \n");
@@ -215,6 +235,8 @@ class GetDatas extends Command
             'contentDom'    => '#openhalf .infotd100',
             'amountDom'     => '.infotd2 span',
             'dateDom'       => '.clearfix .viewsbb',
+            'owner'         => ['#openhalf .infotd2', 4],
+            'mobnom'        => ['#openhalf .infotd2', 5],
             'type'          => 'old_building'
         ]))->getObjectData();
         $this->info(" vipemlak.az [old_building] count: ".$count." \n");
@@ -231,6 +253,8 @@ class GetDatas extends Command
             'contentDom'    => '#openhalf .infotd100',
             'amountDom'     => '.infotd2 span',
             'dateDom'       => '.clearfix .viewsbb',
+            'owner'         => ['#openhalf .infotd2', 4],
+            'mobnom'        => ['#openhalf .infotd2', 5],
             'type'          => 'house'
         ]))->getObjectData();
         $this->info(" vipemlak.az [house] count: ".$count." \n");
@@ -247,6 +271,8 @@ class GetDatas extends Command
             'contentDom'    => '#openhalf .infotd100',
             'amountDom'     => '.infotd2 span',
             'dateDom'       => '.clearfix .viewsbb',
+            'owner'         => ['#openhalf .infotd2', 4],
+            'mobnom'        => ['#openhalf .infotd2', 5],
             'type'          => 'object'
         ]))->getObjectData();
         $this->info(" vipemlak.az [object] count: ".$count." \n");
@@ -263,6 +289,8 @@ class GetDatas extends Command
             'contentDom'    => '#openhalf .infotd100',
             'amountDom'     => '.infotd2 span',
             'dateDom'       => '.clearfix .viewsbb',
+            'owner'         => ['#openhalf .infotd2', 4],
+            'mobnom'        => ['#openhalf .infotd2', 5],
             'type'          => 'land'
         ]))->getObjectData();
         $this->info(" vipemlak.az [land] count: ".$count." \n");
@@ -280,6 +308,8 @@ class GetDatas extends Command
             'contentDom'    => '.side article',
             'amountDom'     => '.price .price-val',
             'dateDom'       => '.info .item_info',
+            'owner'         => ['.contacts .name', 0],
+            'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'new_bulding'
         ]))->getObjectData();
         $this->info(" vipemlak.az [new_bulding] count: ".$count." \n");
@@ -296,6 +326,8 @@ class GetDatas extends Command
             'contentDom'    => '.side article',
             'amountDom'     => '.price .price-val',
             'dateDom'       => '.info .item_info',
+            'owner'         => ['.contacts .name', 0],
+            'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'old_building'
         ]))->getObjectData();
         $this->info(" vipemlak.az [old_building] count: ".$count." \n");
@@ -312,6 +344,8 @@ class GetDatas extends Command
             'contentDom'    => '.side article',
             'amountDom'     => '.price .price-val',
             'dateDom'       => '.info .item_info',
+            'owner'         => ['.contacts .name', 0],
+            'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'house'
         ]))->getObjectData();
         $this->info(" vipemlak.az [house] count: ".$count." \n");
@@ -328,6 +362,8 @@ class GetDatas extends Command
             'contentDom'    => '.side article',
             'amountDom'     => '.price .price-val',
             'dateDom'       => '.info .item_info',
+            'owner'         => ['.contacts .name', 0],
+            'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'office'
         ]))->getObjectData();
         $this->info(" vipemlak.az [office] count: ".$count." \n");
@@ -344,6 +380,8 @@ class GetDatas extends Command
             'contentDom'    => '.side article',
             'amountDom'     => '.price .price-val',
             'dateDom'       => '.info .item_info',
+            'owner'         => ['.contacts .name', 0],
+            'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'garden_house'
         ]))->getObjectData();
         $this->info(" vipemlak.az [garden_house] count: ".$count." \n");
@@ -360,6 +398,8 @@ class GetDatas extends Command
             'contentDom'    => '.side article',
             'amountDom'     => '.price .price-val',
             'dateDom'       => '.info .item_info',
+            'owner'         => ['.contacts .name', 0],
+            'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'garage'
         ]))->getObjectData();
         $this->info(" vipemlak.az [garage] count: ".$count." \n");
@@ -376,6 +416,8 @@ class GetDatas extends Command
             'contentDom'    => '.side article',
             'amountDom'     => '.price .price-val',
             'dateDom'       => '.info .item_info',
+            'owner'         => ['.contacts .name', 0],
+            'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'land'
         ]))->getObjectData();
         $this->info(" vipemlak.az [land] count: ".$count." \n");
@@ -392,6 +434,8 @@ class GetDatas extends Command
             'contentDom'    => '.side article',
             'amountDom'     => '.price .price-val',
             'dateDom'       => '.info .item_info',
+            'owner'         => ['.contacts .name', 0],
+            'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'object'
         ]))->getObjectData();
         $this->info(" vipemlak.az [object] count: ".$count." \n");
@@ -401,7 +445,7 @@ class GetDatas extends Command
         #region tap.az
         //new_bulding
         $count = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/apartments?utf8=✓&keywords=&p[747]=3849',
+            'link'          => 'http://tap.az/all/real-estate/apartments?utf8=%E2%9C%93&keywords=&p[747]=3849',
             'objectsDom'    => '.categories-products .products .products-i',
             'linkDom'       => '$this',
             'location'      => 'http://tap.az',
@@ -409,6 +453,8 @@ class GetDatas extends Command
             'contentDom'    => '.lot-body .lot-text',
             'amountDom'     => '.lot-header .price .price-val',
             'dateDom'       => '.aside-page .lot-info',
+            'owner'         => ['.author .name', 0],
+            'mobnom'        => ['.author .phone', 0],
             'type'          => 'new_bulding'
         ]))->getObjectData();
         $this->info(" tap.az [new_bulding] count: ".$count." \n");
@@ -417,7 +463,7 @@ class GetDatas extends Command
 
         //old_building
         $count = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/apartments?utf8=✓&keywords=&p[747]=3850',
+            'link'          => 'http://tap.az/all/real-estate/apartments?utf8=%E2%9C%93&keywords=&p[747]=3850',
             'objectsDom'    => '.categories-products .products .products-i',
             'linkDom'       => '$this',
             'location'      => 'http://tap.az',
@@ -425,6 +471,8 @@ class GetDatas extends Command
             'contentDom'    => '.lot-body .lot-text',
             'amountDom'     => '.lot-header .price .price-val',
             'dateDom'       => '.aside-page .lot-info',
+            'owner'         => ['.author .name', 0],
+            'mobnom'        => ['.author .phone', 0],
             'type'          => 'old_building'
         ]))->getObjectData();
         $this->info(" tap.az [old_building] count: ".$count." \n");
@@ -433,7 +481,7 @@ class GetDatas extends Command
 
         //garden_house
         $count = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/houses-villas-cottages?utf8=✓&keywords=&q[region_id]=&p[835]=7432',
+            'link'          => 'http://tap.az/all/real-estate/houses-villas-cottages?utf8=%E2%9C%93&keywords=&q[region_id]=&p[835]=7432',
             'objectsDom'    => '.categories-products .products .products-i',
             'linkDom'       => '$this',
             'location'      => 'http://tap.az',
@@ -441,6 +489,8 @@ class GetDatas extends Command
             'contentDom'    => '.lot-body .lot-text',
             'amountDom'     => '.lot-header .price .price-val',
             'dateDom'       => '.aside-page .lot-info',
+            'owner'         => ['.author .name', 0],
+            'mobnom'        => ['.author .phone', 0],
             'type'          => 'garden_house'
         ]))->getObjectData();
         $this->info(" tap.az [garden_house] count: ".$count." \n");
@@ -449,7 +499,7 @@ class GetDatas extends Command
 
         //house
         $count = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/houses-villas-cottages?utf8=✓&keywords=&q[region_id]=&p[835]=7431',
+            'link'          => 'http://tap.az/all/real-estate/houses-villas-cottages?utf8=%E2%9C%93&keywords=&q[region_id]=&p[835]=7431',
             'objectsDom'    => '.categories-products .products .products-i',
             'linkDom'       => '$this',
             'location'      => 'http://tap.az',
@@ -457,6 +507,8 @@ class GetDatas extends Command
             'contentDom'    => '.lot-body .lot-text',
             'amountDom'     => '.lot-header .price .price-val',
             'dateDom'       => '.aside-page .lot-info',
+            'owner'         => ['.author .name', 0],
+            'mobnom'        => ['.author .phone', 0],
             'type'          => 'house'
         ]))->getObjectData();
         $this->info(" tap.az [house] count: ".$count." \n");
@@ -465,7 +517,7 @@ class GetDatas extends Command
 
         //villa
         $count = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/houses-villas-cottages?utf8=✓&keywords=&q[region_id]=&p[835]=7433',
+            'link'          => 'http://tap.az/all/real-estate/houses-villas-cottages?utf8=%E2%9C%93&keywords=&q[region_id]=&p[835]=7433',
             'objectsDom'    => '.categories-products .products .products-i',
             'linkDom'       => '$this',
             'location'      => 'http://tap.az',
@@ -473,6 +525,8 @@ class GetDatas extends Command
             'contentDom'    => '.lot-body .lot-text',
             'amountDom'     => '.lot-header .price .price-val',
             'dateDom'       => '.aside-page .lot-info',
+            'owner'         => ['.author .name', 0],
+            'mobnom'        => ['.author .phone', 0],
             'type'          => 'villa'
         ]))->getObjectData();
         $this->info(" tap.az [villa] count: ".$count." \n");
@@ -481,7 +535,7 @@ class GetDatas extends Command
 
         //office
         $count = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/commercial-real-estate?utf8=✓&keywords=&p[820]=4165',
+            'link'          => 'http://tap.az/all/real-estate/commercial-real-estate?utf8=%E2%9C%93&keywords=&p[820]=4165',
             'objectsDom'    => '.categories-products .products .products-i',
             'linkDom'       => '$this',
             'location'      => 'http://tap.az',
@@ -489,6 +543,8 @@ class GetDatas extends Command
             'contentDom'    => '.lot-body .lot-text',
             'amountDom'     => '.lot-header .price .price-val',
             'dateDom'       => '.aside-page .lot-info',
+            'owner'         => ['.author .name', 0],
+            'mobnom'        => ['.author .phone', 0],
             'type'          => 'office'
         ]))->getObjectData();
         $this->info(" tap.az [office] count: ".$count." \n");
@@ -497,7 +553,7 @@ class GetDatas extends Command
 
         //object
         $count = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/commercial-real-estate?utf8=✓&keywords=&p[820]=4166',
+            'link'          => 'http://tap.az/all/real-estate/commercial-real-estate?utf8=%E2%9C%93&keywords=&p[820]=4166',
             'objectsDom'    => '.categories-products .products .products-i',
             'linkDom'       => '$this',
             'location'      => 'http://tap.az',
@@ -505,6 +561,8 @@ class GetDatas extends Command
             'contentDom'    => '.lot-body .lot-text',
             'amountDom'     => '.lot-header .price .price-val',
             'dateDom'       => '.aside-page .lot-info',
+            'owner'         => ['.author .name', 0],
+            'mobnom'        => ['.author .phone', 0],
             'type'          => 'object'
         ]))->getObjectData();
         $this->info(" tap.az [object] count: ".$count." \n");
@@ -521,6 +579,8 @@ class GetDatas extends Command
             'contentDom'    => '.lot-body .lot-text',
             'amountDom'     => '.lot-header .price .price-val',
             'dateDom'       => '.aside-page .lot-info',
+            'owner'         => ['.author .name', 0],
+            'mobnom'        => ['.author .phone', 0],
             'type'          => 'land'
         ]))->getObjectData();
         $this->info(" tap.az [land] count: ".$count." \n");
@@ -537,6 +597,8 @@ class GetDatas extends Command
             'contentDom'    => '.lot-body .lot-text',
             'amountDom'     => '.lot-header .price .price-val',
             'dateDom'       => '.aside-page .lot-info',
+            'owner'         => ['.author .name', 0],
+            'mobnom'        => ['.author .phone', 0],
             'type'          => 'garage'
         ]))->getObjectData();
         $this->info(" tap.az [garage] count: ".$count." \n");

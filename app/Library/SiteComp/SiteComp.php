@@ -48,6 +48,8 @@ class SiteComp
             $link = @$this->findEr($object, $this->dataArr['linkDom'])->href; //for link
             if($link === null){ $this->errorLog->error("[" . $this->location . "] Link tapilmadi -> [" . $link . "]"); continue; }
 
+            if( Announcement::isLinkExist($this->location.$link) ) break;
+
             $htmlAlt = $this->dom->file_get_html($this->location.$link);
             if($htmlAlt === null || $htmlAlt === false){ $this->errorLog->error("[" . $this->location . "] Obyek acilmir -> [" . $this->location.$link . "]"); continue; }
 
@@ -60,11 +62,17 @@ class SiteComp
             $amount     = @$htmlAlt->find( $this->dataArr['amountDom'] )[0]->plaintext;
             if($amount === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [amountDom]"); continue; }
 
+            $owner     = @$this->findEr($htmlAlt, $this->dataArr['owner'])->plaintext;
+            if($owner === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [owner]"); continue; }
+
+            $mobnom     = @$this->findEr($htmlAlt, $this->dataArr['mobnom'])->plaintext;
+            if($mobnom === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [mobnom]"); continue; }
+
             $date       = @$htmlAlt->find( $this->dataArr['dateDom'] )[0]->plaintext;
             $realDate	= $this->createDate($date);
             if($date === null || $realDate === false ){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [dateDom]"); continue; }
 
-            if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $toDay ))
+            if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay ))
             {
             	break;
             }
@@ -91,28 +99,32 @@ class SiteComp
     	return false;
     }
 
-    private function InsetCheck( $link, $header, $content, $amount, $realDate, $toDay )
+    private function createMob( $mobnom )
+    {
+        preg_match_all("/[\(0]+(70|55|50|77|51)[\)\- ]{0,}\d{3}[\- ]{0,}\d{2}[\- ]{0,}\d{2}/", $mobnom, $match);
+
+        return $match[0];
+    }
+
+    private function InsetCheck( $link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay )
     {
         if( $toDay === true && date("Y-m-d") != $realDate ) return false;
 
-    	if( !Announcement::isLinkExist($link) )
-    	{
-    		$announcement = new Announcement();
-    		$announcement->link = $link;
-    		$announcement->header = $header;
-    		$announcement->amount = (float)str_replace([' '], '', $amount);
-    		$announcement->content = $content;
-    		$announcement->date = $realDate;
-    		$announcement->type = $this->dataArr['type'];
-            $announcement->site = $this->dataArr['location'];
-    		$announcement->save();
+    	$announcement = new Announcement();
+    	$announcement->link = $link;
+    	$announcement->header = $header;
+    	$announcement->amount = (float)str_replace([' '], '', $amount);
+    	$announcement->content = $content;
+    	$announcement->date = $realDate;
+    	$announcement->type = $this->dataArr['type'];
+        $announcement->site = $this->dataArr['location'];
+        $announcement->owner = mb_strimwidth(trim($owner), 0, 40);
+        $announcement->mobnom = json_encode($this->createMob($mobnom));
+    	$announcement->save();
 
-    		usleep(1000 * 100);
+    	usleep(1000 * 100);
 
-    		return true;
-    	}
-
-    	return false;
+    	return true;
     }
 
     private function findEr($where, $find, $index = false)

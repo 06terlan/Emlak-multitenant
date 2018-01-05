@@ -100,10 +100,19 @@ class Dom
      */
     function get_web_page( $url )
     {
-        $user_agent='Mozilla/5.0 (Windows NT 6.1; rv:8.0) Gecko/20100101 Firefox/8.0';
+        $user_agent = 'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36';
+
+        $header[]= "Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8";
+        $header[]= "Accept-Encoding:gzip, deflate";
+        $header[]= "Cache-Control:max-age=0";
+        $header[]= "Accept-Language:ru-RU,ru;q=0.9,en;q=0.8,en-US;q=0.7,en-GB;q=0.6";
+        $header[]= "Content-Type:application/x-www-form-urlencoded; charset=UTF-8";
+        $header[]= "Cookie:__qca=P0-116849880-1387336057175; __utma=140029553.335591273.1387336057.1389609300.1389617402.102; __utmz=140029553.1389617402.102.89.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); _ga=GA1.2.335591273.1387336057; sgt=id=3380ce36-a139-4845-bd20-5bb3fd4174ec; usr=t=qrthm51g2UyV&s=QtuIYj84zEOR";
+        $header[]= "X-Requested-With:XMLHttpRequest";
+        $header[]= "Expect:";
 
         $options = array(
-
+            CURLOPT_HTTPHEADER     =>$header,
             CURLOPT_CUSTOMREQUEST  =>"GET",        //set request type post or get
             CURLOPT_POST           =>false,        //set to GET
             CURLOPT_USERAGENT      => $user_agent, //set user agent
@@ -111,12 +120,15 @@ class Dom
             CURLOPT_COOKIEJAR      =>"cookie.txt", //set cookie jar
             CURLOPT_RETURNTRANSFER => true,     // return web page
             CURLOPT_HEADER         => false,    // don't return headers
+            CURLINFO_HEADER_OUT    => true,
             CURLOPT_FOLLOWLOCATION => true,     // follow redirects
             CURLOPT_ENCODING       => "",       // handle all encodings
             CURLOPT_AUTOREFERER    => true,     // set referer on redirect
             CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
             CURLOPT_TIMEOUT        => 120,      // timeout on response
             CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
+            CURLOPT_SSL_VERIFYPEER => false,    // ssl
+            CURLOPT_SSL_VERIFYHOST => false,    // ssl
         );
 
         $ch      = curl_init( $url );
