@@ -50,7 +50,7 @@
 
                         <div class="item form-group">
 
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipi
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Kategoria
 
                             </label>
 
@@ -61,6 +61,30 @@
                                     @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
 
                                         <option value="{{ $typeK }}" {{ $typeK == $announcement['type']? 'selected':'' }}> {{ $type }} </option>
+
+                                    @endforeach
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="item form-group">
+
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Elanın Tipi
+
+                            </label>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                <select class="form-control" name="buldingType" required="">
+
+                                    @foreach (\App\Library\MyClass::$buldingType as $typeK => $type)
+
+                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['buldingType']? 'selected':'' }}> {{ $type }} </option>
 
                                     @endforeach
 
@@ -92,7 +116,7 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                <input required="" type="number" data-validate-minmax="1," name="area" type="text" class="form-control" placeholder="Sahə" value="{{ $announcement['area'] }}">
+                                <input type="number" data-validate-minmax="1," name="area" type="text" class="form-control" placeholder="Sahə" value="{{ $announcement['area'] }}">
 
                             </div>
 
@@ -144,7 +168,7 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                <input required="" type="number" data-validate-minmax="1,255" name="roomCount" type="text" class="form-control" placeholder="Otaqların sayı" value="{{ $announcement['roomCount'] }}">
+                                <input type="number" data-validate-minmax="1,255" name="roomCount" type="text" class="form-control" placeholder="Otaqların sayı" value="{{ $announcement['roomCount'] }}">
 
                             </div>
 
@@ -158,7 +182,7 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                <input required="" type="number" data-validate-minmax="1,30000" name="locatedFloor" type="text" class="form-control" placeholder="Yerləşdiyi mərtəbə" value="{{ $announcement['locatedFloor'] }}">
+                                <input type="number" data-validate-minmax="1,30000" name="locatedFloor" type="text" class="form-control" placeholder="Yerləşdiyi mərtəbə" value="{{ $announcement['locatedFloor'] }}">
 
                             </div>
 
@@ -172,7 +196,7 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                <input required="" type="number" data-validate-minmax="1,30000" name="floorCount" type="text" class="form-control" placeholder="Mərtəbə sayı" value="{{ $announcement['floorCount'] }}">
+                                <input type="number" data-validate-minmax="1,30000" name="floorCount" type="text" class="form-control" placeholder="Mərtəbə sayı" value="{{ $announcement['floorCount'] }}">
 
                             </div>
 

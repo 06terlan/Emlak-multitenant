@@ -35,6 +35,7 @@ class ProController extends Controller
     //
 
     public function index(Request $request)
+
     {
 
         $announcements = ProAnnouncement::realAnnouncements();
@@ -93,10 +94,9 @@ class ProController extends Controller
 
 
 
-    public function inserEditK(ProRequest $request, $announcement)
+    public function inserEditK( $announcement)
 
     {
-
         if($announcement == 0)
 
         {
@@ -110,6 +110,9 @@ class ProController extends Controller
             $newAnnouncement->content = Input::get("content");
 
             $newAnnouncement->type = Input::get("type");
+
+            $newAnnouncement->buldingType = Input::get("buldingType");
+
 
             $newAnnouncement->amount = Input::get("amount");
 
@@ -155,6 +158,8 @@ class ProController extends Controller
             $editAnnouncement->content = Input::get("content");
 
             $editAnnouncement->type = Input::get("type");
+
+            $editAnnouncement->buldingType = Input::get("buldingType");
 
             $editAnnouncement->amount = Input::get("amount");
 

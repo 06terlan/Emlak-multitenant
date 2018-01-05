@@ -46,7 +46,7 @@
 
                         <div class="item form-group">
 
-                            <label class="control-label col-md-3 col-sm-3 col-xs-3">Tipi:</label>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-3">Kategoria:</label>
 
                             <div class="col-md-6 col-sm-6 col-xs-3" style="line-height: 36px;">
 
@@ -55,6 +55,19 @@
                             </div>
 
                         </div>
+
+                        <div class="item form-group">
+
+                            <label class="control-label col-md-3 col-sm-3 col-xs-3">Elanın Tipi:</label>
+
+                            <div class="col-md-6 col-sm-6 col-xs-3" style="line-height: 36px;">
+
+                                {{ $announcement->getBuldingType() }}
+
+                            </div>
+
+                        </div>
+
 
                         <div class="item form-group">
 
@@ -146,7 +159,7 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-3" style="line-height: 36px;">
 
-                                {{ $announcement->roomCount }}
+                                {{ $announcement->floorCount }}
 
                             </div>
 
@@ -158,7 +171,7 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-3" style="line-height: 36px;">
 
-                                {!! $announcement->floorCount !!}
+                                {!! $announcement->content !!}
 
                             </div>
 
