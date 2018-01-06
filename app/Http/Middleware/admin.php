@@ -22,6 +22,6 @@ class admin
         {
             return $next($request);
         }
-        else return redirect('admin/home');
+        else return response()->view("errors.403",[],403);
     }
 }

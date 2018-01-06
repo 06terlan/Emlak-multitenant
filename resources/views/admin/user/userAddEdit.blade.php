@@ -7,7 +7,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Profile</small></h2>
+                    <h2>Profile</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                     </ul>
@@ -62,6 +62,14 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Görəcəyi kategorialar</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
+                                    <input type="checkbox" name="availableTypes[]" value="{{ $typeK }}" {{ $id > 0 && in_array($typeK,$User->getAvailableTypes()) ? 'checked' : '' }} class="flat" /> {{ $type }} <br/>
+                                @endforeach
+                            </div>
+                        </div>
                         <div class="ln_solid"></div>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group">
@@ -77,8 +85,13 @@
     </div>
 @endsection
 
+@section('css')
+    {!! Html::style('admin/assets/vendors/iCheck/skins/flat/green.css') !!}
+@endsection
+
 @section('scripts')
     {!! Html::script('admin/assets/vendors/validator/validator.js') !!}
+    {!! Html::script('admin/assets/vendors/iCheck/icheck.min.js') !!}
 
     <script type="text/javascript">
         $("select[name=role]").val({{ $User['role'] }});

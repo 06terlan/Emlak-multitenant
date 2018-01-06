@@ -34,7 +34,14 @@
                                     <th></th>
                                     <th><input class="form-control formFind" name="header" value="{{ $request->get("header") }}" placeholder="Başlıq"></th>
                                     <th><input class="form-control formFind" name="content" value="{{ $request->get("content") }}" placeholder="Content"></th>
-                                    <th><input class="form-control formFind" name="type" value="{{ $request->get("type") }}" placeholder="Tipi"></th>
+                                    <th>
+                                        <select class="form-control formFind" name="type">
+                                            <option></option>
+                                            @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
+                                                <option value="{{ $typeK }}" {{ $typeK == $request->get("type") ? 'selected':'' }}> {{ $type }} </option>
+                                            @endforeach
+                                        </select>
+                                    </th>
                                     <th><input class="form-control formFind" name="amount" value="{{ $request->get("amount") }}" placeholder="Qiymət"></th>
                                     <th><input class="form-control formFind" name="date" value="{{ $request->get("date") }}" placeholder="Tarix"></th>
                                     <th></th>
@@ -53,7 +60,10 @@
                                         <td><a target="_blank" href="{{ $announcement->link }}"> Link </a> </td>
                                         <th>
                                             <a href="{{ route('announcement_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
-                                            <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
+
+                                            @if(Auth::user()->role == App\Library\MyClass::ADMIN_ROLE)
+                                                <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
+                                            @endif
                                         </th>
                                     </tr>
                                 @endforeach

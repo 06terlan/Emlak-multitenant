@@ -76,7 +76,14 @@
 
                                     <th><input class="form-control formFind" name="content" value="{{ $request->get("content") }}" placeholder="Content"></th>
 
-                                    <th><input class="form-control formFind" name="type" value="{{ $request->get("type") }}" placeholder="Tipi"></th>
+                                    <th>
+                                        <select class="form-control formFind" name="type">
+                                            <option></option>
+                                            @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
+                                                <option value="{{ $typeK }}" {{ $typeK == $request->get("type") ? 'selected':'' }}> {{ $type }} </option>
+                                            @endforeach
+                                        </select>
+                                    </th>
 
                                     <th><input class="form-control formFind" name="amount" value="{{ $request->get("amount") }}" placeholder="Qiymət"></th>
 
@@ -124,14 +131,15 @@
                                         <td>{!! $announcement->getStatus() !!}</td>
 
                                         <th>
-
-                                            <a style="width: 24px;" href="{{ route('announcement_insert',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
-
                                             <a style="width: 24px;" href="{{ route('announcement_pro_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
 
-                                            <a style="width: 24px;" href="{{ route('announcement_pro_delete',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
+                                            @if(Auth::user()->role == App\Library\MyClass::ADMIN_ROLE)
+                                                <a style="width: 24px;" href="{{ route('announcement_insert',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
 
-                                            <a style="width: 24px;" href="{{ route('announcement_pro_status',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="{{ isset(\App\Library\MyClass::$buttonStatus[$announcement->status]) ? \App\Library\MyClass::$buttonStatus[$announcement->status] : '-' }}" class="btn btn-success btn-xs"><i class="fa fa-thumb-tack"></i></a>
+                                                <a style="width: 24px;" href="{{ route('announcement_pro_delete',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
+
+                                                <a style="width: 24px;" href="{{ route('announcement_pro_status',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="{{ isset(\App\Library\MyClass::$buttonStatus[$announcement->status]) ? \App\Library\MyClass::$buttonStatus[$announcement->status] : '-' }}" class="btn btn-success btn-xs"><i class="fa fa-thumb-tack"></i></a>
+                                            @endif
                                         </th>
 
                                     </tr>

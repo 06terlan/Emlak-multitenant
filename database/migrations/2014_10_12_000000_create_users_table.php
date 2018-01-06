@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('thumb',50)->nullable();
             $table->tinyInteger('role');
+            $table->json('availableTypes');
             $table->boolean('deleted')->default(0);
             $table->rememberToken();
             $table->timestamps();

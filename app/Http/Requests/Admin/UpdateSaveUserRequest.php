@@ -34,6 +34,7 @@ class UpdateSaveUserRequest extends FormRequest
             'email' => 'required|email|string',
             //'password' => 'required|string',
             'role' => 'required|string|in:1,2',
+            'availableTypes' => 'array',
         ];
     }
 }

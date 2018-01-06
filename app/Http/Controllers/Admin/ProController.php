@@ -40,13 +40,13 @@ class ProController extends Controller
 
         $announcements = ProAnnouncement::realAnnouncements();
 
-
+        $announcements->whereIn('type', Auth::user()->getAvailableTypes());
 
         if($request->has('header')) $announcements->where('header', 'like', '%'.$request->get('header').'%');
 
         if($request->has('content')) $announcements->where('content', 'like', '%'.$request->get('content').'%');
 
-        if($request->has('type')) $announcements->where(DB::raw(MyHelper::createCase(MyClass::$announcementTypes, 'type')), 'like', '%'.$request->get('type').'%');
+        if($request->has('type')) $announcements->where('type', $request->get('type'));
 
         if($request->has('amount')) $announcements->where('amount', 'like', '%'.$request->get('amount').'%');
 

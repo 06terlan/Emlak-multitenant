@@ -60,6 +60,11 @@ class User extends Authenticatable
             unlink( public_path() . MyClass::USER_PROFIL_PIC_DIR . $this->thumb );
     }
 
+    public function getAvailableTypes()
+    {
+        return ($this->availableTypes == null ? [] : json_decode($this->availableTypes));
+    }
+
     /*public function delete()
     {
         $this->deletePic();
