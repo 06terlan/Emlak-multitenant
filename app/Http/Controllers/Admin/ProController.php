@@ -41,6 +41,7 @@ class ProController extends Controller
         $announcements = ProAnnouncement::realAnnouncements();
 
         $announcements->whereIn('type', Auth::user()->getAvailableTypes());
+        $announcements->whereIn('buldingType', Auth::user()->getAvailableBuildingTypes());
 
         if($request->has('header')) $announcements->where('header', 'like', '%'.$request->get('header').'%');
 

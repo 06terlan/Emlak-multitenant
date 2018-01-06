@@ -62,7 +62,12 @@ class User extends Authenticatable
 
     public function getAvailableTypes()
     {
-        return ($this->availableTypes == null ? [] : json_decode($this->availableTypes));
+        return ($this->availableTypes == "" ? [] : json_decode($this->availableTypes));
+    }
+
+    public function getAvailableBuildingTypes()
+    {
+        return ($this->availableBuildingTypes == "" ? [] : json_decode($this->availableBuildingTypes));
     }
 
     /*public function delete()

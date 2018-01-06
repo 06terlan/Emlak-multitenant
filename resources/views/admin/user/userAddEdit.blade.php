@@ -70,6 +70,14 @@
                                 @endforeach
                             </div>
                         </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Görəcəyi elanın tipləri</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @foreach (\App\Library\MyClass::$buldingType as $typeK => $type)
+                                    <input type="checkbox" name="availableBuildingTypes[]" value="{{ $typeK }}" {{ $id > 0 && in_array($typeK,$User->getAvailableBuildingTypes()) ? 'checked' : '' }} class="flat" /> {{ $type }} <br/>
+                                @endforeach
+                            </div>
+                        </div>
                         <div class="ln_solid"></div>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group">

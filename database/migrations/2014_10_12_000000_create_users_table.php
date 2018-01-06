@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('thumb',50)->nullable();
             $table->tinyInteger('role');
             $table->json('availableTypes');
+            $table->json('availableBuildingTypes');
             $table->boolean('deleted')->default(0);
             $table->rememberToken();
             $table->timestamps();
@@ -37,6 +38,8 @@ class CreateUsersTable extends Migration
         $user->email = "example@example.com";
         $user->login = "admin";
         $user->password = Hash::make("123456");
+        $user->availableTypes = '[]';
+        $user->availableBuildingTypes = '[]';
         $user->role = MyClass::ADMIN_ROLE;
         $user->save();
     }

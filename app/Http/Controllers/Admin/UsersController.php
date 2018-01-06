@@ -62,6 +62,7 @@ class UsersController extends Controller
             $user->login = Input::get("login");
             $user->password = Hash::make(Input::get("password"));
             $user->availableTypes = json_encode(Input::get("availableTypes",[]));
+            $user->availableBuildingTypes = json_encode(Input::get("availableBuildingTypes",[]));
             $user->role = Input::get("role");
 
             $user->save();
@@ -74,6 +75,7 @@ class UsersController extends Controller
             $user->email = Input::get("email");
             $user->login = Input::get("login");
             $user->availableTypes = json_encode(Input::get("availableTypes",[]));
+            $user->availableBuildingTypes = json_encode(Input::get("availableBuildingTypes",[]));
             $user->role = Input::get("role");
 
             if( !empty(Input::get("password","")) )
