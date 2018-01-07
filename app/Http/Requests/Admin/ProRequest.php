@@ -60,13 +60,13 @@ class ProRequest extends FormRequest
 
             'amount'        => 'required|numeric|min:1',
 
-            'area'          => 'min:1|integer',
+            'area'          => '',
 
-            'roomCount'     => 'min:1|max:255|integer',
+            'roomCount'     => 'max:255',
 
-            'locatedFloor'  => 'min:1|max:30000|integer',
+            'locatedFloor'  => 'max:30000',
 
-            'floorCount'    => 'min:1|max:30000|integer',
+            'floorCount'    => 'max:30000',
 
             'documentType'  => ['required', Rule::in(array_keys(MyClass::$documentTypes))],
 
@@ -82,8 +82,9 @@ class ProRequest extends FormRequest
 
             'mobnom'        => 'required|array',
 
-            'user'          => ['required'],
+            'user'          => 'required',
 
+            'from'          => 'min:0,integer'
         ];
 
     }

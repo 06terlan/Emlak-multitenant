@@ -12,6 +12,7 @@ use App\Library\MyClass;
 
 use App\Library\MyHelper;
 
+use App\Models\Announcement;
 use App\Models\ProAnnouncement;
 
 use App\Http\Controllers\Controller;
@@ -97,11 +98,16 @@ class ProController extends Controller
 
 
 
-    public function inserEditK( $announcement)
-
+    public function inserEditK(ProRequest $request, $announcement)
     {
-        if($announcement == 0)
+        if( $request->get('from') > 0 )
+        {
+            $ann = Announcement::find($request->get('from'));
+            $ann->deleted = 1;
+            $ann->save();
+        }
 
+        if($announcement == 0)
         {
 
             $newAnnouncement = new ProAnnouncement();
@@ -247,6 +253,18 @@ class ProController extends Controller
 
         return view('admin.pro.info',$dataToBlade);
 
+    }
+
+    public function addFromAction(Announcement $announcement)
+    {
+        $dataToBlade = [
+            'announcement' 	=> $announcement,
+            'from' => $announcement->id,
+            'id' => 0,
+        ];
+
+
+        return view('admin.pro.announcement_add',$dataToBlade);
     }
 
 }

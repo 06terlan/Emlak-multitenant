@@ -34,6 +34,8 @@
 
                     <form autocomplete="off" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ route('announcement_insert_act',['announcement' => $id]) }}">
 
+                        <input type="hidden" value="{{ isset($from) ? $from : 0 }}" name="from" />
+
                         <div class="item form-group">
 
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Header
@@ -277,13 +279,13 @@
                                 @if($announcement['mobnom'] != "")
                                     @foreach (json_decode($announcement['mobnom']) as $typeK => $num)
                                         <div class="numb">
-                                            <input style="width: 80%;display: inline-block;" required="" type="tel" data-validate-minmax="1," name="mobnom[]" type="text" class="form-control" value="{{ $num }}" placeholder="Nömrə">
+                                            <input style="width: 80%;display: inline-block;" required="" type="text" name="mobnom[]" type="text" class="form-control" value="{{ $num }}" placeholder="Nömrə">
                                             <button type="button" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
                                         </div>
                                     @endforeach
                                 @else
                                         <div class="numb">
-                                            <input style="width: 80%;display: inline-block;" required="" type="tel" data-validate-minmax="1," name="mobnom[]" type="text" class="form-control" value="" placeholder="Nömrə">
+                                            <input style="width: 80%;display: inline-block;" required="" type="text" name="mobnom[]" type="text" class="form-control" value="" placeholder="Nömrə">
                                             <button type="button" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
                                         </div>
                                 @endif
@@ -306,7 +308,7 @@
 
                             <div class="col-md-9 col-sm-6 col-xs-12">
 
-                                <textarea id="descr" style="width:100%;height:251px;" name="content">{{ $announcement['content'] }}</textarea>
+                                <textarea id="descr" style="width:100%;height:251px;" name="content">{{ strip_tags($announcement['content']) }}</textarea>
 
                             </div>
 
@@ -381,7 +383,7 @@
     {!! Html::script('admin/assets/vendors/validator/validator.js') !!}
     <script type="text/javascript">
         $(".addNumber").click(function(){
-            $(this).before('<div class="numb"> <input style="width: 80%;display: inline-block;" required="" type="tel" data-validate-minmax="1," name="mobnom[]" type="text" class="form-control" placeholder="Nömrə"> <button type="submit" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents(\'.numb:eq(0)\').remove()"><i class="fa fa-trash"></i></button> </div>');
+            $(this).before('<div class="numb"> <input style="width: 80%;display: inline-block;" required="" type="text" name="mobnom[]" type="text" class="form-control" placeholder="Nömrə"> <button type="submit" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents(\'.numb:eq(0)\').remove()"><i class="fa fa-trash"></i></button> </div>');
         });
     </script>
 @endsection
