@@ -118,6 +118,7 @@ class SiteComp
     	$announcement->date = $realDate;
     	$announcement->type = $this->dataArr['type'];
         $announcement->site = $this->dataArr['location'];
+        $announcement->buldingType = $this->dataArr['buldingType'];
         $announcement->owner = mb_strimwidth(trim($owner), 0, 40);
         $announcement->mobnom = json_encode($this->createMob($mobnom));
     	$announcement->save();

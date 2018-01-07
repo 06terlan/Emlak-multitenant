@@ -14,6 +14,8 @@ use App\Library\SiteComp\SiteComp;
 
 class HomeController extends Controller
 {
+    const TYPE_ICARE = 1;
+    const TYPE_SATISH = 2;
     /**
      * Create a new controller instance.
      *
@@ -36,10 +38,9 @@ class HomeController extends Controller
 
     public function test()
     {
-        //
         //house
-        /*$siteComp = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/apartments?utf8=%E2%9C%93&keywords=&p[747]=3849',
+        $siteComp = (new SiteComp([
+            'link'          => 'http://tap.az/all/real-estate/apartments?p[740]=3722&p[747]=3849',
             'objectsDom'    => '.categories-products .products .products-i',
             'linkDom'       => '$this',
             'location'      => 'http://tap.az',
@@ -49,10 +50,10 @@ class HomeController extends Controller
             'dateDom'       => '.aside-page .lot-info',
             'owner'         => ['.author .name', 0],
             'mobnom'        => ['.author .phone', 0],
-            'type'          => 'new_bulding'
-        ], true))->getObjectData(false);*/
-        $siteComp = 0;
-//dd(file_get_contents("http://tap.az/all/real-estate/apartments?utf8=%E2%9C%93&keywords=&p[747]=3849"));
+            'type'          => 'new_bulding',
+            'buldingType'   => self::TYPE_SATISH
+        ]))->getObjectData(false);
+
         return "Count: ".$siteComp;
     }
 
