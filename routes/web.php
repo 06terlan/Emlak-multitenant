@@ -49,6 +49,9 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
         Route::get('announcement_pro/add/from/{announcement}', 'Admin\ProController@addFromAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_add_from');
     });
 
+    //search
+    Route::get('search', 'Admin\SearchController@indexAction')->name('search');
+
     //ajax
     Route::post('announcement/getLast', 'Admin\AjaxController@getLastAnnouncement')->name('getLastAnnouncementAjax');
 
