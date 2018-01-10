@@ -236,8 +236,15 @@
 
                             <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-3">
 
-                                <a class="btn btn-default" href="{{ route('announcement_pro') }}" type="reset">Back</a>
+                                <a class="btn btn-default" href="{{ url()->previous() }}" type="reset"><i class="fa fa-arrow-circle-left"></i> Back</a>
 
+                                @if(Auth::user()->role == App\Library\MyClass::ADMIN_ROLE)
+                                    <a href="{{ route('announcement_insert',['announcement'=>$announcement->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+
+                                    <a href="{{ route('announcement_pro_delete',['announcement'=>$announcement->id]) }}" class="btn btn-danger deleteAction"><i class="fa fa-trash"></i> Delete</a>
+
+                                    <a href="{{ route('announcement_pro_status',['announcement'=>$announcement->id]) }}" class="btn btn-success"><i class="fa fa-thumb-tack"></i> {{ isset(\App\Library\MyClass::$buttonStatus[$announcement->status]) ? \App\Library\MyClass::$buttonStatus[$announcement->status] : '-' }}</a>
+                                @endif
                             </div>
 
                         </div>

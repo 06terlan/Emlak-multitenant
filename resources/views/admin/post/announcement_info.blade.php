@@ -164,8 +164,12 @@
 
                     <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-3">
 
-                        <a class="btn btn-default" href="{{ route('announcement') }}" type="reset">Back</a>
+                        <a class="btn btn-default" href="{{ url()->previous() }}" type="reset"><i class="fa fa-arrow-circle-left"></i> Back</a>
 
+                        @if(Auth::user()->role == App\Library\MyClass::ADMIN_ROLE)
+                            <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" class="btn btn-danger deleteAction"><i class="fa fa-trash"></i> Delete</a>
+                            <a href="{{ route('announcement_pro_add_from',['id'=>$announcement->id]) }}" class="btn btn-success"><i class="fa fa-check"></i> Fərdiyə əlavə et</a>
+                        @endif
                     </div>
 
                 </div>

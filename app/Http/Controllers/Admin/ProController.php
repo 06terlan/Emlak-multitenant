@@ -233,8 +233,7 @@ class ProController extends Controller
 
 
 
-        return redirect()->route("announcement_pro");
-
+        return redirect()->back();
     }
 
 

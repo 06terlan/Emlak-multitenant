@@ -350,7 +350,7 @@
 
                                 <button type="submit" class="btn btn-success">Save</button>
 
-                                <a class="btn btn-default" href="{{ route('announcement_pro') }}" type="reset">Cancel</a>
+                                <a class="btn btn-default" href="{{ url()->previous() }}" type="reset"><i class="fa fa-arrow-circle-left"></i> Cancel</a>
 
                             </div>
 
