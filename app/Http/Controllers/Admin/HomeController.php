@@ -41,9 +41,9 @@ class HomeController extends Controller
             [
                 'announcementsGroup' => $this->getPostsChartData(),
                 'agents' => User::realUsers()->count(),
-                'announcements' => Announcement::realAnnouncements(true)->count(),
+                'announcements' => Announcement::realAnnouncements(false)->count(),
                 'proAnnouncements' => ProAnnouncement::realAnnouncements(false)->count(),
-                'announcementsToday' => Announcement::todayAnnouncements(true)->count(),
+                'announcementsToday' => Announcement::todayAnnouncements(false)->count(),
                 'proAnnouncementsToday' => ProAnnouncement::todayAnnouncements(false)->count(),
             ];
 
@@ -61,7 +61,7 @@ class HomeController extends Controller
 
     private function getPostsChartData()
     {
-        $posts = Announcement::where('deleted' , 0)//->whereYear('date', '=', Date::d("Y-m-d"))
+        $posts = Announcement::todayAnnouncements(false)
             ->groupBy('type')
             ->select(['type',DB::raw('count(1) as count')])
             ->get()->toArray();

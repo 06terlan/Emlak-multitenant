@@ -142,8 +142,6 @@ class ProController extends Controller
 
         $newAnnouncement->mobnom = json_encode(Input::get("mobnom"));
 
-        $newAnnouncement->link = null;
-
         if( $request->get('from') > 0 )
         {
             $ann = Announcement::find($request->get('from'));
