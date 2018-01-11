@@ -100,109 +100,61 @@ class ProController extends Controller
 
     public function inserEditK(ProRequest $request, $announcement)
     {
+        if($announcement == 0)
+        {
+            $newAnnouncement = new ProAnnouncement();
+        }
+        else
+        {
+            $newAnnouncement = ProAnnouncement::find($announcement);
+        }
+
+        $newAnnouncement->userId = Input::get("user");
+
+        $newAnnouncement->header = Input::get("header");
+
+        $newAnnouncement->content = Input::get("content");
+
+        $newAnnouncement->type = Input::get("type");
+
+        $newAnnouncement->buldingType = Input::get("buldingType");
+
+        $newAnnouncement->status = Input::get("buldingType");
+
+        $newAnnouncement->amount = Input::get("amount");
+
+        $newAnnouncement->area = Input::get("area");
+
+        $newAnnouncement->roomCount = Input::get("roomCount");
+
+        $newAnnouncement->locatedFloor = Input::get("locatedFloor");
+
+        $newAnnouncement->floorCount = Input::get("floorCount");
+
+        $newAnnouncement->documentType = Input::get("documentType");
+
+        $newAnnouncement->repairing = Input::get("repairing");
+
+        //new
+        $newAnnouncement->metro = Input::get("metro");
+
+        $newAnnouncement->city = Input::get("city");
+
+        $newAnnouncement->owner = Input::get("owner");
+
+        $newAnnouncement->mobnom = json_encode(Input::get("mobnom"));
+
+        $newAnnouncement->link = null;
+
         if( $request->get('from') > 0 )
         {
             $ann = Announcement::find($request->get('from'));
+            $newAnnouncement->link = $ann->link;
             $ann->deleted = 1;
             $ann->save();
         }
 
-        if($announcement == 0)
-        {
-
-            $newAnnouncement = new ProAnnouncement();
-
-            $newAnnouncement->userId = Input::get("user");
-
-            $newAnnouncement->header = Input::get("header");
-
-            $newAnnouncement->content = Input::get("content");
-
-            $newAnnouncement->type = Input::get("type");
-
-            $newAnnouncement->buldingType = Input::get("buldingType");
-            $newAnnouncement->status = Input::get("buldingType");
-
-            $newAnnouncement->amount = Input::get("amount");
-
-            $newAnnouncement->area = Input::get("area");
-
-
-
-            $newAnnouncement->roomCount = Input::get("roomCount");
-
-            $newAnnouncement->locatedFloor = Input::get("locatedFloor");
-
-            $newAnnouncement->floorCount = Input::get("floorCount");
-
-            $newAnnouncement->documentType = Input::get("documentType");
-
-            $newAnnouncement->repairing = Input::get("repairing");
-
-            //new
-            $newAnnouncement->metro = Input::get("metro");
-
-            $newAnnouncement->city = Input::get("city");
-
-            $newAnnouncement->owner = Input::get("owner");
-
-            $newAnnouncement->mobnom = json_encode(Input::get("mobnom"));
-
-
-
-            $newAnnouncement->save();
-
-        }
-
-        else
-
-        {
-
-            $editAnnouncement = ProAnnouncement::find($announcement);
-
-            $editAnnouncement->userId = Input::get("user");
-
-            $editAnnouncement->header = Input::get("header");
-
-            $editAnnouncement->content = Input::get("content");
-
-            $editAnnouncement->type = Input::get("type");
-
-            $editAnnouncement->buldingType = Input::get("buldingType");
-            $editAnnouncement->status = Input::get("buldingType");
-
-            $editAnnouncement->amount = Input::get("amount");
-
-            $editAnnouncement->area = Input::get("area");
-
-
-
-            $editAnnouncement->roomCount = Input::get("roomCount");
-
-            $editAnnouncement->locatedFloor = Input::get("locatedFloor");
-
-            $editAnnouncement->floorCount = Input::get("floorCount");
-
-            $editAnnouncement->documentType = Input::get("documentType");
-
-            $editAnnouncement->repairing = Input::get("repairing");
-
-            //new
-            $editAnnouncement->metro = Input::get("metro");
-
-            $editAnnouncement->city = Input::get("city");
-
-            $editAnnouncement->owner = Input::get("owner");
-
-            $editAnnouncement->mobnom = json_encode(Input::get("mobnom"));
-
-
-
-            $editAnnouncement->save();
-
-        }
-
-
+        $newAnnouncement->save();
 
         return redirect()->route('announcement_pro');
 
