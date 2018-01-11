@@ -56,17 +56,15 @@ class ProController extends Controller
 
         if($request->has('status')) $announcements->where('status', $request->get('status'));
 
-        /*if($request->has('user'))
-
+        if($request->has('user'))
         {
+            $announcements->whereHas('author', function ($query) use ($request){
 
-            $request->with('author');
-
-            //$announcements->where('amount', 'like', '%'.$request->get('amount').'%');
-
-        }*/
-
-
+               $query->where(DB::raw("concat(COALESCE(firstname,''),' ',COALESCE(surname,''))"), 'like', "%".$request->get("user")."%");
+            });
+        }
+        //dd($announcements->get(['author.firstname']));
+        //dd($announcements->get()->toArray());
 
         $announcements = $announcements->paginate( MyClass::ADMIN_ROW_COUNT );
 

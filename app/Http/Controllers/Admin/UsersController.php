@@ -24,7 +24,7 @@ class UsersController extends Controller
     {
         $user = User::realUsers();
 
-        if($request->has('fullname')) $user->where(DB::raw('concat(firstname," ",surname)'),'like','%'.$request->get('fullname').'%');
+        if($request->has('fullname')) $user->where(DB::raw('concat(COALESCE(firstname,"")," ",COALESCE(surname,""))'),'like','%'.$request->get('fullname').'%');
         if($request->has('email')) $user->where('email', 'like', '%'.$request->get('email').'%');
         if($request->has('login')) $user->where('login', 'like', '%'.$request->get('login').'%');
         if($request->has('role')) $user->where(DB::raw(MyHelper::createCase(MyClass::$roles, 'role')), 'like', '%'.$request->get('role').'%');

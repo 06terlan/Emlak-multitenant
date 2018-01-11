@@ -53,11 +53,8 @@ class ProAnnouncement extends Model
     //author name
 
     public function author()
-
     {
-
         return $this->hasOne('App\User', 'id', 'userId');
-
     }
 
 
