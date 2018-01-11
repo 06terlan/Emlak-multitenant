@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Library\MyClass;
+use App\Models\Announcement;
+use App\Models\ProAnnouncement;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Contact;
@@ -11,6 +14,7 @@ use App\Library\Date;
 use App\Library\Dom\Dom;
 use App\Library\ErrorLog;
 use App\Library\SiteComp\SiteComp;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -33,28 +37,56 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view( 'admin.home' );
+        $data =
+            [
+                'announcementsGroup' => $this->getPostsChartData(),
+                'agents' => User::realUsers()->count(),
+                'announcements' => Announcement::realAnnouncements(true)->count(),
+                'proAnnouncements' => ProAnnouncement::realAnnouncements(false)->count(),
+                'announcementsToday' => Announcement::todayAnnouncements(true)->count(),
+                'proAnnouncementsToday' => ProAnnouncement::todayAnnouncements(false)->count(),
+            ];
+
+        return view( 'admin.home', $data);
     }
 
     public function test()
     {
         //house
-        $siteComp = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/apartments?p[740]=3722&p[747]=3849',
-            'objectsDom'    => '.categories-products .products .products-i',
-            'linkDom'       => '$this',
-            'location'      => 'http://tap.az',
-            'headerDom'     => '.lot-header .title-container h1',
-            'contentDom'    => '.lot-body .lot-text',
-            'amountDom'     => '.lot-header .price .price-val',
-            'dateDom'       => '.aside-page .lot-info',
-            'owner'         => ['.author .name', 0],
-            'mobnom'        => ['.author .phone', 0],
-            'type'          => 'new_bulding',
-            'buldingType'   => self::TYPE_SATISH
-        ]))->getObjectData(false);
 
-        return "Count: ".$siteComp;
+
+        return "Count: ";
     }
 
+
+    private function getPostsChartData()
+    {
+        $posts = Announcement::where('deleted' , 0)//->whereYear('date', '=', Date::d("Y-m-d"))
+            ->groupBy('type')
+            ->select(['type',DB::raw('count(1) as count')])
+            ->get()->toArray();
+
+        $data = [
+            'labels' => array_map( function($el){ return @MyClass::$announcementTypes[$el['type']]; } , $posts),
+            'datasets' => [[
+                'label' => 'Posts',
+                'data' => array_map(function($el){ return $el['count']; }, $posts),
+                'backgroundColor' => [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                ]
+            ]]
+        ];
+        return $data;
+    }
 }

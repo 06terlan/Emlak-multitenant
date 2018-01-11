@@ -6,6 +6,7 @@ namespace App\Models;
 
 
 
+use App\Library\Date;
 use App\Library\MyClass;
 
 use Illuminate\Database\Eloquent\Model;
@@ -17,13 +18,19 @@ class ProAnnouncement extends Model
 {
 
     //not deleted datas
-
-    public static function realAnnouncements()
-
+    public static function realAnnouncements($order = true)
     {
+        if(!$order) return self::where('deleted' , 0);
 
         return self::where('deleted' , 0)->orderBy('id', 'desc');
+    }
 
+    //today
+    public static function todayAnnouncements($order = true)
+    {
+        if(!$order) return self::where('created_at' , Date::d(null, "Y-m-d"));
+
+        return self::where('created_at' , Date::d(null, "Y-m-d"))->orderBy('id', 'desc');
     }
 
     public function getStatus()

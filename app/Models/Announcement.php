@@ -9,14 +9,18 @@ use App\Library\MyClass;
 class Announcement extends Model
 {
     //not deleted datas
-    public static function realAnnouncements()
+    public static function realAnnouncements($order = true)
     {
+        if(!$order) return self::where('deleted' , 0);
+
     	return self::where('deleted' , 0)->orderBy('created_at', 'desc');
     }
 
     //today
-    public static function todayAnnouncements()
+    public static function todayAnnouncements($order = true)
     {
+        if(!$order) return self::where('date' , Date::d(null, "Y-m-d"));
+
         return self::where('date' , Date::d(null, "Y-m-d"))->orderBy('id', 'desc');
     }
 
