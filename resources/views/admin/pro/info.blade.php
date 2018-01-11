@@ -68,6 +68,18 @@
 
                         </div>
 
+                        <div class="item form-group">
+
+                            <label class="control-label col-md-3 col-sm-3 col-xs-3">Link:</label>
+
+                            <div class="col-md-6 col-sm-6 col-xs-3" style="line-height: 36px;">
+
+                                <a href="{{ $announcement->link }}" target="_blank">{{ $announcement->link == "" ? "-":"Link" }}</a>
+
+                            </div>
+
+                        </div>
+
 
                         <div class="item form-group">
 
