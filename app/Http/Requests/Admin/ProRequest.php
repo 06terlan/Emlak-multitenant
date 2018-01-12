@@ -10,6 +10,7 @@ use App\Library\MyClass;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 
@@ -29,11 +30,12 @@ class ProRequest extends FormRequest
      */
 
     public function authorize()
-
     {
-
-        return true;
-
+        if (Auth::check())
+        {
+            return true;
+        }
+        return false;
     }
 
 

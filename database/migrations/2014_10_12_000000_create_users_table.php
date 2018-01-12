@@ -3,9 +3,6 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\User;
-use Illuminate\Support\Facades\Hash;
-use App\Library\MyClass;
 
 class CreateUsersTable extends Migration
 {
@@ -31,17 +28,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-
-        //auto insert an admin
-        $user = new User();
-        $user->firstname = "Admin";
-        $user->email = "example@example.com";
-        $user->login = "admin";
-        $user->password = Hash::make("123456");
-        $user->availableTypes = '[]';
-        $user->availableBuildingTypes = '[]';
-        $user->role = MyClass::ADMIN_ROLE;
-        $user->save();
     }
 
     /**

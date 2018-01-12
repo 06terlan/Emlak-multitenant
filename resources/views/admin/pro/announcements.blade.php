@@ -94,7 +94,7 @@
                                     <th>
                                         <select class="form-control formFind" name="status">
                                             <option></option>
-                                            @foreach (\App\Library\MyClass::$buttonStatus as $typeK => $type)
+                                            @foreach (\App\Library\MyClass::$buttonStatus2 as $typeK => $type)
                                                 <option value="{{ $typeK }}" {{ $typeK == \Illuminate\Support\Facades\Input::get('status')? 'selected':'' }}> {{ $type }} </option>
                                             @endforeach
                                         </select>

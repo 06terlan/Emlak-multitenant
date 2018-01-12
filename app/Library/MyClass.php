@@ -17,6 +17,14 @@ class MyClass
         4 => 'Satılmayıb',
     ];
 
+    public static $buttonStatus2 =
+        [
+            3 => 'İcarədə',
+            4 => 'Satıldı',
+            1 => 'İcarədə deyil',
+            2 => 'Satılmayıb',
+        ];
+
     /**
 
      * Available bulding types

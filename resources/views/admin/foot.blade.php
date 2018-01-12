@@ -11,8 +11,8 @@
 {!! Html::script('admin/assets/vendors/pnotify/dist/pnotify.buttons.js') !!}
 {!! Html::script('admin/assets/vendors/pnotify/dist/pnotify.nonblock.js') !!}
 <!-- Custom Theme Scripts -->
-@yield('scripts')
 {!! Html::script('admin/assets/build/js/custom.min.js') !!}
+@yield('scripts')
 
 <script>
     var lastId = {{ App\Models\Announcement::todayAnnouncements()->first() != null ? App\Models\Announcement::todayAnnouncements()->first()->id : 0 }};

@@ -10,7 +10,7 @@ use App\Library\Date;
 use App\Library\MyClass;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\DB;
 
 
 class ProAnnouncement extends Model
@@ -28,9 +28,9 @@ class ProAnnouncement extends Model
     //today
     public static function todayAnnouncements($order = true)
     {
-        if(!$order) return self::where('created_at' , Date::d(null, "Y-m-d"));
+        if(!$order) return self::realAnnouncements(false)->where(DB::raw('CAST(created_at as DATE)') , Date::d(null, "Y-m-d"));
 
-        return self::where('created_at' , Date::d(null, "Y-m-d"))->orderBy('id', 'desc');
+        return self::realAnnouncements(false)->where(DB::raw('CAST(created_at as DATE)') , Date::d(null, "Y-m-d"))->orderBy('id', 'desc');
     }
 
     public function getStatus()
