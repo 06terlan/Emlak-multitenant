@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class MyHelper
 {
+    private static $maklers = [];
+
     /*
     * create case when query
     */
@@ -33,9 +35,29 @@ class MyHelper
     */
     public static function getMakler($number)
     {
-        $makler = MskMakler::where('pure_mobnom', self::pureNumber($number))->first();
+        $numb = self::pureNumber($number);
 
-        if($makler) return "<b style='border-bottom: 1px dotted #ff0000b3;color: #ff0000b3;' data-toggle='tooltip' data-original-title='Makler'> <i class='fa fa-child'></i> " . $makler->fullname . "</b>";
-        return "";
+        if( !isset(self::$maklers[$numb]) )
+        {
+            $makler = MskMakler::where('pure_mobnom', $numb)->first();
+
+            if($makler) self::$maklers[$numb] = "<b style='border-bottom: 1px dotted #ff0000b3;color: #ff0000b3;' data-toggle='tooltip' data-original-title='Makler'> <i class='fa fa-child'></i> " . $makler->fullname . "</b>";
+            else self::$maklers[$numb] = "";
+        }
+
+        return self::$maklers[$numb];
+    }
+
+    /*
+    * check eny makler
+    */
+    public static function isMakler($numberArr)
+    {
+        foreach ($numberArr as $number)
+        {
+            if( self::getMakler($number) !== "" ) return true;
+        }
+
+        return false;
     }
 }
