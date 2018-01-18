@@ -234,6 +234,7 @@
                                 @foreach (json_decode($announcement['mobnom']) as $typeK => $num)
                                     <div class="numb">
                                         {{ $num }}
+                                        {!! \App\Library\MyHelper::getMakler($num) !!}
                                     </div>
                                 @endforeach
 

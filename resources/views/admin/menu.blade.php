@@ -32,6 +32,11 @@
                     <li><a href="{{ route('announcement') }}"><i class="fa fa-share-alt"></i> Elanlar </a></li>
                     <li><a href="{{ route('announcement_pro') }}"><i class="fa fa-share-alt-square"></i> Elanlar fərdi əlavə </a></li>
                     <li><a href="{{ route('search') }}"><i class="fa fa-search"></i> Axtarış </a></li>
+                    <li><a><i class="fa fa-wrench"></i> MSK <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu" style="display: none;">
+                            <li><a href="{{ route('msk_makler') }}">Maklerlər</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

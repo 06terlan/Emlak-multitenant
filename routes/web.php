@@ -52,6 +52,13 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
     //search
     Route::get('search', 'Admin\SearchController@indexAction')->name('search');
 
+    //msk
+    Route::get('msk/makler', 'Admin\MSKController@makler')->name('msk_makler');
+    Route::group(['middleware' => 'admin'],function() {
+        Route::any('msk/makler/addEdit/{makler}', 'Admin\MSKController@maklerAddEdit')->where('makler', '[0-9]{1,}')->name('msk_makler_add_edit');
+        Route::get('msk/makler/delete/{makler}', 'Admin\MSKController@maklerDelete')->where('makler', '[0-9]{1,}')->name('msk_makler_delete');
+    });
+
     //ajax
     Route::post('announcement/getLast', 'Admin\AjaxController@getLastAnnouncement')->name('getLastAnnouncementAjax');
 

@@ -116,6 +116,7 @@
 
                                     <div class="numb">
                                         {{ $num }}
+                                        {!! \App\Library\MyHelper::getMakler($num) !!}
                                     </div>
                                 @endforeach
 
