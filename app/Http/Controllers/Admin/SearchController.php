@@ -95,12 +95,12 @@ class SearchController extends Controller
             case 4:
                 $announcements->orderBy('amount', 'asc');
                 break;
-            case 5:
-                $announcements->orderBy('area', 'desc');
-                break;
-            case 6:
-                $announcements->orderBy('area', 'asc');
-                break;
+            //case 5:
+            //    $announcements->orderBy('area', 'desc');
+            //    break;
+            //case 6:
+            //    $announcements->orderBy('area', 'asc');
+            //    break;
         }
     }
 }

@@ -200,12 +200,12 @@
                                 <label class="control-label col-md-2">Çeşidləmə</label>
                                 <div class="col-md-4">
                                     <select class="form-control" name="sort" required="">
-                                        <option value="1">Tarixə görə - yuxarıdan</option>
-                                        <option value="2">Tarixə görə - aşagıdan</option>
-                                        <option value="3">Dəyərə görə - yuxarıdan</option>
-                                        <option value="4">Dəyərə görə - aşagıdan</option>
-                                        <option value="5">Sahəyə görə - yuxarıdan</option>
-                                        <option value="6">Sahəyə görə - aşagıdan</option>
+                                        <option value="1" {{ $request->get('announcement', 1) == 1 ? 'selected' : '' }}>Tarixə görə - yuxarıdan</option>
+                                        <option value="2" {{ $request->get('announcement', 1) == 2 ? 'selected' : '' }}>Tarixə görə - aşagıdan</option>
+                                        <option value="3" {{ $request->get('announcement', 1) == 3 ? 'selected' : '' }}>Dəyərə görə - yuxarıdan</option>
+                                        <option value="4" {{ $request->get('announcement', 1) == 4 ? 'selected' : '' }}>Dəyərə görə - aşagıdan</option>
+                                        <!--<option value="5">Sahəyə görə - yuxarıdan</option>-->
+                                        <!--<option value="6">Sahəyə görə - aşagıdan</option>-->
                                     </select>
                                 </div>
 
