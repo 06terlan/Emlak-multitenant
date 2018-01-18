@@ -18,6 +18,7 @@ class PostController extends Controller
         $announcements = Announcement::realAnnouncements();
 
         $announcements->whereIn('type', Auth::user()->getAvailableTypes());
+        $announcements->whereIn('buldingType', Auth::user()->getAvailableBuildingTypes());
 
         if($request->has('header')) $announcements->where('header', 'like', '%'.$request->get('header').'%');
         if($request->has('content')) $announcements->where('content', 'like', '%'.$request->get('content').'%');

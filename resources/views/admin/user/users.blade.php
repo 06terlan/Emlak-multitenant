@@ -41,7 +41,7 @@
                             <tbody>
                                 @foreach ($Users as $user)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $Users->perPage() * ($Users->currentPage() - 1) + $loop->iteration }}</td>
                                         <td>{{ $user->fullname() }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->login }}</td>

@@ -29,6 +29,25 @@
                         <form class="form-horizontal form-label-left formFinder" novalidate="" method="get">
 
                             <input type="hidden" name="page" value="{{ $request->get("page",1) }}">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Elanlar</label>
+                                <div class="col-md-4">
+                                    <select class="form-control" name="announcement">
+                                        <option value="1" {{ $request->get('announcement', 1) == 1 ? 'selected' : '' }}>Fərdi əlavə</option>
+                                        <option value="2" {{ $request->get('announcement', 1) == 2 ? 'selected' : '' }}>Saytlardan elanlar</option>
+                                    </select>
+                                </div>
+
+                                <label class="control-label col-md-2">Tarix</label>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input style="display: inline-block;width: 90%;" type="text" name="date" value="{{ $request->get('date', '') }}" class="form-control daterange"/>
+                                        <div style="display: inline-block;padding-top: 5px;" data-toggle="tooltip" data-original-title="Tarixi nəzərə al">
+                                            <input type="checkbox" name="dateChk" {{ $request->get('dateChk') ? 'checked' : '' }} class="flat" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-2">Kategoria</label>
@@ -224,15 +243,15 @@
 
                                         <th>Content</th>
 
-                                        <th>Tipi</th>
+                                        <th>Kategoria</th>
+
+                                        <th>Elanın Tipi</th>
 
                                         <th>Qiymət</th>
 
                                         <th>Tarix</th>
 
-                                        <th>Əlavə edən</th>
-
-                                        <th>Status</th>
+                                        <th>Sahibkar</th>
 
                                         <th>Əməliyyatlar</th>
 
@@ -256,16 +275,16 @@
 
                                             <td>{{ $announcement->getAnnouncementType() }}</td>
 
+                                            <td>{{ $announcement->getBuldingType() }}</td>
+
                                             <td>{{ $announcement->amount }}</td>
 
                                             <td>{{ App\Library\Date::d($announcement->created_date,'d-m-Y') }}</td>
 
-                                            <td>{{ $announcement->author->fullname() }}</td>
-
-                                            <td>{!! $announcement->getStatus() !!}</td>
+                                            <td>{{ $announcement->owner }}</td>
 
                                             <th>
-                                                <a style="width: 24px;" href="{{ route('announcement_pro_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
+                                                <a style="width: 24px;" href="{{ $request->get('announcement', 1) == 1 ? route('announcement_pro_info',['announcement'=>$announcement->id]) : route('announcement_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
                                             </th>
 
                                         </tr>
@@ -304,8 +323,10 @@
 
 @section('css')
 
-    {{--  bootstrap-wysiwyg --}}
-
+    <!-- bootstrap-daterangepicker -->
+    {!! Html::style('admin/assets/vendors/bootstrap-daterangepicker/daterangepicker.css') !!}
+    <!-- iCheck -->
+    {!! Html::style('admin/assets/vendors/iCheck/skins/flat/green.css') !!}
 @endsection
 
 
@@ -313,9 +334,21 @@
 @section('scripts')
 
     {!! Html::script('admin/assets/vendors/validator/validator.js') !!}
+    <!-- bootstrap-daterangepicker -->
+    {!! Html::script('admin/assets/vendors/moment/moment.min.js') !!}
+    {!! Html::script('admin/assets/vendors/bootstrap-daterangepicker/daterangepicker.js') !!}
+    <!-- iCheck -->
+    {!! Html::script('admin/assets/vendors/iCheck/icheck.min.js') !!}
 
     <script>
         $(function () {
+            $('input.daterange').daterangepicker({
+                singleDatePicker: true,
+                locale: {
+                    format: 'DD-MM-YYYY'
+                },
+            });
+
             if( "{{ $request->get('page','') }}" != "" )
             {
                 $(".collapse-link").click();
