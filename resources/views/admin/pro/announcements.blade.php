@@ -124,7 +124,7 @@
 
                                         <td>{{ $announcement->amount }}</td>
 
-                                        <td>{{ App\Library\Date::d($announcement->created_date,'d-m-Y') }}</td>
+                                        <td>{{ App\Library\Date::d($announcement->date,'d-m-Y') }}</td>
 
                                         <td>{{ $announcement->author->fullname() }}</td>
 
