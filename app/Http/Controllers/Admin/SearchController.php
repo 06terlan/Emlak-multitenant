@@ -49,7 +49,7 @@ class SearchController extends Controller
         if($request->has('amount2')) $announcements->where("amount", '<=', $request->get('amount2'));
         if($request->has('owner')) $announcements->where("owner", 'like', '%'.$request->get('owner').'%');
         if($request->has('mobnom')) $announcements->where("mobnom", 'like', '%'.$request->get('mobnom').'%');
-        if($request->has('dateChk') && $request->has('date')) $announcements->where(DB::raw("DATE_FORMAT(created_at, '%d-%m-%Y')"), $request->get('date') );
+        if($request->has('dateChk') && $request->has('date')) $announcements->where("date", Date::d($request->get('date'), 'Y-m-d'));
 
         if( $this->announcemetM === 1 )
         {
