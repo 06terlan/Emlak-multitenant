@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\SearchRequest;
 use App\Library\Date;
+use App\Library\MyHelper;
 use App\Models\Announcement;
 use App\Models\ProAnnouncement;
 use Illuminate\Http\Request;
@@ -48,7 +49,7 @@ class SearchController extends Controller
         if($request->has('amount1')) $announcements->where("amount", '>=', $request->get('amount1'));
         if($request->has('amount2')) $announcements->where("amount", '<=', $request->get('amount2'));
         if($request->has('owner')) $announcements->where("owner", 'like', '%'.$request->get('owner').'%');
-        if($request->has('mobnom')) $announcements->where("mobnom", 'like', '%'.$request->get('mobnom').'%');
+        if($request->has('mobnom'))  $announcements->whereHas('numbers', function ($query) use ($request){ $query->where('pure_number', 'like', '%'.MyHelper::pureNumber($request->get('mobnom')).'%'); });
         if($request->has('dateChk') && $request->has('date')) $announcements->where("date", Date::d($request->get('date'), 'Y-m-d'));
 
         if( $this->announcemetM === 1 )
@@ -95,7 +96,7 @@ class SearchController extends Controller
             case 4:
                 $announcements->orderBy('amount', 'asc');
                 break;
-            ///case 5:
+            //case 5:
             //    $announcements->orderBy('area', 'desc');
             //    break;
             //case 6:

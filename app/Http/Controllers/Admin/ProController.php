@@ -17,6 +17,7 @@ use App\Models\ProAnnouncement;
 
 use App\Http\Controllers\Controller;
 
+use App\Models\ProNumber;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\DB;
@@ -39,7 +40,8 @@ class ProController extends Controller
 
     {
 
-        $announcements = ProAnnouncement::realAnnouncements();
+        $announcements = ProAnnouncement::realAnnouncements()
+                        ->select('*', DB::raw('(SELECT 1 FROM `pro_numbers` INNER JOIN msk_maklers ON msk_maklers.pure_number = pro_numbers.pure_number WHERE pro_numbers.pro_announcement_id = pro_announcements.id limit 1) as is_makler'));
 
         $announcements->whereIn('type', Auth::user()->getAvailableTypes());
         $announcements->whereIn('buldingType', Auth::user()->getAvailableBuildingTypes());
@@ -140,8 +142,6 @@ class ProController extends Controller
 
         $newAnnouncement->owner = Input::get("owner");
 
-        $newAnnouncement->mobnom = json_encode(Input::get("mobnom"));
-
         if( $request->get('from') > 0 )
         {
             $ann = Announcement::find($request->get('from'));
@@ -151,6 +151,16 @@ class ProController extends Controller
         }
 
         $newAnnouncement->save();
+
+        ProNumber::where('pro_announcement_id', $announcement)->delete();
+        foreach (Input::get("mobnom") as $number)
+        {
+            $numebrC = new ProNumber();
+            $numebrC->number = $number;
+            $numebrC->pure_number = MyHelper::pureNumber($number);
+
+            $newAnnouncement->numbers()->save($numebrC);
+        }
 
         return redirect()->route('announcement_pro');
 

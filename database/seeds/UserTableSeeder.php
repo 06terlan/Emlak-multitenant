@@ -20,8 +20,8 @@ class UserTableSeeder extends Seeder
         $user->email = "example@example.com";
         $user->login = "admin";
         $user->password = Hash::make("123456");
-        $user->availableTypes = '[]';
-        $user->availableBuildingTypes = '[]';
+        $user->availableTypes = json_encode(array_keys(MyClass::$announcementTypes), false);
+        $user->availableBuildingTypes = json_encode(array_keys(MyClass::$buldingType), false);
         $user->role = MyClass::ADMIN_ROLE;
         $user->save();
     }

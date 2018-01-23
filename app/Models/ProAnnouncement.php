@@ -113,5 +113,9 @@ class ProAnnouncement extends Model
 
     }
 
+    public function numbers()
+    {
+        return $this->hasMany(ProNumber::class);
+    }
 }
 

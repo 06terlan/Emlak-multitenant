@@ -276,10 +276,10 @@
                             </label>
 
                             <div class="col-md-6 col-sm-6 col-xs-12" id="allNubers">
-                                @if($announcement['mobnom'] != "")
-                                    @foreach (json_decode($announcement['mobnom']) as $typeK => $num)
+                                @if($announcement['numbers'] != null)
+                                    @foreach ($announcement['numbers'] as $typeK => $num)
                                         <div class="numb">
-                                            <input style="width: 80%;display: inline-block;" required="" type="text" name="mobnom[]" type="text" class="form-control" value="{{ $num }}" placeholder="Nömrə">
+                                            <input style="width: 80%;display: inline-block;" required="" type="text" name="mobnom[]" type="text" class="form-control" value="{{ $num['number'] }}" placeholder="Nömrə">
                                             <button type="button" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
                                         </div>
                                     @endforeach

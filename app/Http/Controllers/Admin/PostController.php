@@ -15,7 +15,8 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $announcements = Announcement::realAnnouncements();
+        $announcements = Announcement::realAnnouncements()
+            ->select('*', DB::raw('(SELECT 1 FROM `numbers` INNER JOIN msk_maklers ON msk_maklers.pure_number = numbers.pure_number WHERE numbers.announcement_id = announcements.id limit 1) as is_makler'));
 
         $announcements->whereIn('type', Auth::user()->getAvailableTypes());
         $announcements->whereIn('buldingType', Auth::user()->getAvailableBuildingTypes());
@@ -25,6 +26,7 @@ class PostController extends Controller
         if($request->has('type')) $announcements->where('type', $request->get('type'));
         if($request->has('amount')) $announcements->where('amount', 'like', '%'.$request->get('amount').'%');
         if($request->has('date')) $announcements->where(DB::raw("DATE_FORMAT(date, '%d-%m-%Y')"), 'like', '%'.$request->get('date').'%');
+        if($request->has('no_makler')) $announcements->where(DB::raw("(SELECT 1 FROM `numbers` INNER JOIN msk_maklers ON msk_maklers.pure_number = numbers.pure_number WHERE numbers.announcement_id = announcements.id limit 1)"),  null);
 
         $announcements = $announcements->paginate( MyClass::ADMIN_ROW_COUNT );
 

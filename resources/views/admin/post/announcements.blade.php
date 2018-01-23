@@ -31,7 +31,9 @@
                             </thead>
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <th data-toggle="tooltip" data-original-title="Maklersiz elanlar">
+                                        <input type="checkbox" name="no_makler" {{ $request->get("no_makler") ? 'checked' : '' }} class="flat formFind" />
+                                    </th>
                                     <th><input class="form-control formFind" name="header" value="{{ $request->get("header") }}" placeholder="Başlıq"></th>
                                     <th><input class="form-control formFind" name="content" value="{{ $request->get("content") }}" placeholder="Content"></th>
                                     <th>
@@ -51,7 +53,7 @@
                             <tbody>
                                 @foreach ($announcements as $announcement )
                                     <tr>
-                                        <td>{{ $announcements->perPage() * ($announcements->currentPage() - 1) + $loop->iteration }} {!! \App\Library\MyHelper::isMakler(json_decode($announcement['mobnom']))?"<i style='color:red;font-size:20px' class='fa fa-child' data-toggle='tooltip' data-original-title='Makler'></i>":'' !!}</td>
+                                        <td>{{ $announcements->perPage() * ($announcements->currentPage() - 1) + $loop->iteration }} {!! $announcement['is_makler']==1?"<i style='color:red;font-size:20px' class='fa fa-child' data-toggle='tooltip' data-original-title='Makler'></i>":'' !!}</td>
                                         <td>{{ $announcement->header }}</td>
                                         <td>{{ $announcement->getShortContent() }}</td>
                                         <td>{{ $announcement->getAnnouncementType() }}</td>
@@ -85,8 +87,20 @@
 @section('css')
     {{--  bootstrap-wysiwyg --}}
     {!! Html::style('admin/assets/vendors/jquery-confirm-master/css/jquery-confirm.css') !!}
+    {{--  iCheck --}}
+    {!! Html::style('admin/assets/vendors/iCheck/skins/flat/green.css') !!}
 @endsection
 
 @section('scripts')
     {!! Html::script('admin/assets/vendors/jquery-confirm-master/js/jquery-confirm.js') !!}
+    {{--  iCheck --}}
+    {!! Html::script('admin/assets/vendors/iCheck/icheck.min.js') !!}
+
+    <script>
+        $(function () {
+            $("input.flat.formFind").on('ifChanged', function (e) {
+                $(this).parents("form:eq(0)").submit();
+            });
+        });
+    </script>
 @endsection

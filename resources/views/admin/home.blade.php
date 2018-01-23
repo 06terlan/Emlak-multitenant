@@ -50,10 +50,10 @@
                 </div>
             </div>
         </div>
-        <!--<div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Posts<small> shared users</small></h2>
+                    <h2> Fərdi əlavə<small> bu gün</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -61,10 +61,10 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <canvas id="user_sharings" width="484" height="242" style="width: 484px; height: 242px;"></canvas>
+                    <canvas id="pros" width="484" height="242" style="width: 484px; height: 242px;"></canvas>
                 </div>
             </div>
-        </div>-->
+        </div>
     </div>
 @endsection
 
@@ -81,6 +81,21 @@
         var myChart = new Chart(posts, {
             type: 'bar',
             data: {!! json_encode($announcementsGroup) !!},
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+
+        var pros = document.getElementById("pros").getContext('2d');
+        var myChart1 = new Chart(pros, {
+            type: 'bar',
+            data: {!! json_encode($proAnnouncementsGroup) !!},
             options: {
                 scales: {
                     yAxes: [{

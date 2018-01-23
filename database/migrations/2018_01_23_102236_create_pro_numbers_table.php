@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MskMaklers extends Migration
+class CreateProNumbersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class MskMaklers extends Migration
      */
     public function up()
     {
-        Schema::create('msk_maklers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string("fullname",30);
+        Schema::create('pro_numbers', function (Blueprint $table) {
+            $table->integer('pro_announcement_id')->unsigned();
             $table->string("number",14);
+            $table->string("pure_number",11);
 
-            $table->string("pure_number",11)->unique();
+            $table->foreign('pro_announcement_id')->references('id')->on('pro_announcements')->onDelete('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ class MskMaklers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('msk_maklers');
+        Schema::dropIfExists('pro_numbers');
     }
 }

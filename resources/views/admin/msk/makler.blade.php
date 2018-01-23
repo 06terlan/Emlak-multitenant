@@ -31,9 +31,9 @@
                             <tbody>
                                 @foreach ($makles as $makle)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $makles->perPage() * ($makles->currentPage() - 1) + $loop->iteration }}</td>
                                         <td>{{ $makle->fullname }}</td>
-                                        <td>{{ $makle->mobnom }}</td>
+                                        <td>{{ $makle->number }}</td>
                                         <th>
                                             @if(Auth::user()->role == App\Library\MyClass::ADMIN_ROLE && Auth::user()->id == 2)
                                                 <a href="{{ route('msk_makler_add_edit',['makle' => $makle->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
@@ -45,6 +45,11 @@
                             </tbody>
                         </table>
                     </form>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            {{ $makles->links('admin.pagination', ['paginator' => $makles]) }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

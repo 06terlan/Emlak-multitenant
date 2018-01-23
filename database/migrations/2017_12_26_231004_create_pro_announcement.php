@@ -31,7 +31,7 @@ class CreateProAnnouncement extends Migration
             $table->string("metro",20)->nullable();
             $table->string("city", 20)->nullable();
             $table->string("owner", 40)->nullable();
-            $table->json("mobnom")->nullable();
+            //$table->json("mobnom")->nullable();
             $table->string('link', 200)->nullable();
             $table->date('date');
 

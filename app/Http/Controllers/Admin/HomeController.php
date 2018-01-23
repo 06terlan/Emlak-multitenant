@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Library\MyClass;
 use App\Models\Announcement;
+use App\Models\Number;
 use App\Models\ProAnnouncement;
 use Illuminate\Http\Request;
 use App\User;
@@ -40,6 +41,7 @@ class HomeController extends Controller
         $data =
             [
                 'announcementsGroup' => $this->getPostsChartData(),
+                'proAnnouncementsGroup' => $this->getProsChartData(),
                 'agents' => User::realUsers()->count(),
                 'announcements' => Announcement::realAnnouncements(false)->count(),
                 'proAnnouncements' => ProAnnouncement::realAnnouncements(false)->count(),
@@ -49,15 +51,6 @@ class HomeController extends Controller
 
         return view( 'admin.home', $data);
     }
-
-    public function test()
-    {
-        //house
-
-
-        return "Count: ";
-    }
-
 
     private function getPostsChartData()
     {
@@ -69,7 +62,7 @@ class HomeController extends Controller
         $data = [
             'labels' => array_map( function($el){ return @MyClass::$announcementTypes[$el['type']]; } , $posts),
             'datasets' => [[
-                'label' => 'Posts',
+                'label' => 'Elanlar',
                 'data' => array_map(function($el){ return $el['count']; }, $posts),
                 'backgroundColor' => [
                     'rgba(255, 99, 132, 0.2)',
@@ -88,5 +81,53 @@ class HomeController extends Controller
             ]]
         ];
         return $data;
+    }
+
+    private function getProsChartData()
+    {
+        $posts = ProAnnouncement::todayAnnouncements(false)
+            ->groupBy('type')
+            ->select(['type',DB::raw('count(1) as count')])
+            ->get()->toArray();
+
+        $data = [
+            'labels' => array_map( function($el){ return @MyClass::$announcementTypes[$el['type']]; } , $posts),
+            'datasets' => [[
+                'label' => 'Elanlar',
+                'data' => array_map(function($el){ return $el['count']; }, $posts),
+                'backgroundColor' => [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                ]
+            ]]
+        ];
+        return $data;
+    }
+
+    public function test()
+    {
+        $announcement = Announcement::with('numbers')
+            ->select('*',
+                    DB::raw('(SELECT 1 FROM `numbers` INNER JOIN msk_maklers ON msk_maklers.pure_number = numbers.pure_number WHERE numbers.announcement_id = announcements.id limit 1) as is_makler')
+                    )
+            ->select('*')
+            //->where( 'is_makler', 1 )
+            ->first();
+        //$announcement = DB::table('announcements')
+            //->find(1);
+        //$announcement->numbers
+
+//dump( array_map() $announcement->numbers());
+        return $announcement;
     }
 }

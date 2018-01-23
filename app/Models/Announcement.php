@@ -43,4 +43,9 @@ class Announcement extends Model
     {
         return isset(MyClass::$buldingType[$this->buldingType]) ? MyClass::$buldingType[$this->buldingType] : "-";
     }
+
+    public function numbers()
+    {
+        return $this->hasMany(Number::class);
+    }
 }

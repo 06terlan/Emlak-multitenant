@@ -25,9 +25,9 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                    <li><a href="{{ URL::to('admin/home') }}"><i class="fa fa-home"></i> Home </a></li>
+                    <li><a href="{{ URL::to('admin/home') }}"><i class="fa fa-home"></i> Dashboard </a></li>
                     @if (Auth::user()->role == App\Library\MyClass::ADMIN_ROLE)
-                        <li><a href="{{ URL::to('admin/users') }}"><i class="fa fa-user"></i> Users </a></li>
+                        <li><a href="{{ URL::to('admin/users') }}"><i class="fa fa-user"></i> İstifadəçilər </a></li>
                     @endif
                     <li><a href="{{ route('announcement') }}"><i class="fa fa-share-alt"></i> Elanlar </a></li>
                     <li><a href="{{ route('announcement_pro') }}"><i class="fa fa-share-alt-square"></i> Elanlar fərdi əlavə </a></li>

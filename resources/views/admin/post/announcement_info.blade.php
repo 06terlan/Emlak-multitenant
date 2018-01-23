@@ -112,11 +112,11 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-3" style="line-height: 36px;">
 
-                                @foreach (json_decode($announcement['mobnom']) as $typeK => $num)
+                                @foreach ($announcement['numbers'] as $typeK => $num)
 
                                     <div class="numb">
-                                        {{ $num }}
-                                        {!! \App\Library\MyHelper::getMakler($num) !!}
+                                        {{ $num['number'] }}
+                                        {!! \App\Library\MyHelper::getMakler($num['pure_number']) !!}
                                     </div>
                                 @endforeach
 

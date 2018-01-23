@@ -73,10 +73,10 @@ $(function() {
             type: 'red',
             typeAnimated: true,
             buttons: {
-                confirm: function () {
+                "Sil": function () {
                     window.location.href = $elm.attr("href");
                 },
-                cancel: function () {
+                "İmtina": function () {
 
                 },
             }

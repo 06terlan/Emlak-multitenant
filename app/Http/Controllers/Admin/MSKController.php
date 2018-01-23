@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Library\MyClass;
 use App\Library\MyHelper;
 use App\Models\MskMakler;
 use Illuminate\Http\Request;
@@ -14,7 +15,9 @@ class MSKController extends Controller
 
     public function makler()
     {
-        $makles = MskMakler::all();
+        $makles = MskMakler::realData()->paginate( MyClass::ADMIN_ROW_COUNT );
+
+        //$announcements = $makles->paginate( MyClass::ADMIN_ROW_COUNT );
 
         return view( 'admin.msk.makler', [ 'makles' => $makles ]);
     }
@@ -25,8 +28,9 @@ class MSKController extends Controller
         {
             $validator = Validator::make($request->all(), [
                 'fullname' => 'required|string|min:5|max:30',
-                'mobnom' => 'required|string|min:14|max:14',
+                'number' => 'required|string|min:14|max:14|unique:msk_maklers',
             ]);
+
             if ($validator->fails())
             {
                 return redirect()->back()->withErrors($validator)->withInput();
@@ -43,8 +47,8 @@ class MSKController extends Controller
                 }
 
                 $maklerData->fullname = $request->get('fullname');
-                $maklerData->mobnom = $request->get('mobnom');
-                $maklerData->pure_mobnom = MyHelper::pureNumber($request->get('mobnom'));
+                $maklerData->number = $request->get('number');
+                $maklerData->pure_number = MyHelper::pureNumber($request->get('number'));
                 $maklerData->save();
 
                 return redirect()->route('msk_makler');

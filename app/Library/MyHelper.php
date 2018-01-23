@@ -39,7 +39,7 @@ class MyHelper
 
         if( !isset(self::$maklers[$numb]) )
         {
-            $makler = MskMakler::where('pure_mobnom', $numb)->first();
+            $makler = MskMakler::where('pure_number', $numb)->first();
 
             if($makler) self::$maklers[$numb] = "<b style='border-bottom: 1px dotted #ff0000b3;color: #ff0000b3;' data-toggle='tooltip' data-original-title='Makler'> <i class='fa fa-child'></i> " . $makler->fullname . "</b>";
             else self::$maklers[$numb] = "";

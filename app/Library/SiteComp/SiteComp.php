@@ -4,7 +4,9 @@ namespace App\Library\SiteComp;
 
 use App\Library\Dom\Dom;
 use App\Library\ErrorLog;
+use App\Library\MyHelper;
 use App\Models\Announcement;
+use App\Models\Number;
 
 class SiteComp
 {
@@ -120,8 +122,16 @@ class SiteComp
         $announcement->site = $this->dataArr['location'];
         $announcement->buldingType = $this->dataArr['buldingType'];
         $announcement->owner = mb_strimwidth(trim($owner), 0, 40);
-        $announcement->mobnom = json_encode($this->createMob($mobnom));
     	$announcement->save();
+
+        foreach ($this->createMob($mobnom) as $number)
+        {
+            $numberC = new Number();
+            $numberC->number = $number;
+            $numberC->pure_number = MyHelper::pureNumber($number);
+
+            $announcement->numbers()->save($numberC);
+        }
 
     	usleep(1000 * 100);
 

@@ -20,4 +20,4 @@
     var _token = "{{ csrf_token() }}";
     var link = "{{ route('getLastAnnouncementAjax') }}";
 </script>
-{!! Html::script('admin/js/apper.js') !!}
+{!! Html::script('admin/js/apper.js?1') !!}
