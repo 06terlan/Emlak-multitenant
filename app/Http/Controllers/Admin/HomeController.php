@@ -117,25 +117,36 @@ class HomeController extends Controller
 
     public function test()
     {
-        $announcements = Announcement::realAnnouncements(false)->with('numbers')->get();
+        $id = 0;
 
-        foreach ($announcements as $announcement)
+        while(true)
         {
-            $arrs = json_decode($announcement->mobnom);
+            $announcements = Announcement::realAnnouncements()->with('numbers')
+                        ->where('id', '>', $id)
+                        ->take(1000)
+                        ->get();
 
-            if( is_array($arrs) )
+            if($announcements->isEmpty()) break;
+
+            foreach ($announcements as $announcement)
             {
-                foreach ($arrs as $arr)
-                {
-                    $number = new Number();
-                    $number->number = $arr;
-                    $number->pure_number = MyHelper::pureNumber($arr);
+                $id = $announcement->id;
+                $arrs = @json_decode($announcement->mobnom);
 
-                    $announcement->numbers()->save($number);
+                if( is_array($arrs) )
+                {
+                    foreach ($arrs as $arr)
+                    {
+                        $number = new Number();
+                        $number->number = $arr;
+                        $number->pure_number = MyHelper::pureNumber($arr);
+
+                        $announcement->numbers()->save($number);
+                    }
                 }
             }
         }
 
-        return $announcement;
+        return "End";
     }
 }
