@@ -19,6 +19,7 @@ class CreateProNumbersTable extends Migration
             $table->string("pure_number",11);
 
             $table->foreign('pro_announcement_id')->references('id')->on('pro_announcements')->onDelete('cascade');
+            $table->index('pure_number');
         });
     }
 
