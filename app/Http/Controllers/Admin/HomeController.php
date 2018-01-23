@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Library\MyClass;
+use App\Library\MyHelper;
 use App\Models\Announcement;
 use App\Models\Number;
 use App\Models\ProAnnouncement;
@@ -116,18 +117,25 @@ class HomeController extends Controller
 
     public function test()
     {
-        $announcement = Announcement::with('numbers')
-            ->select('*',
-                    DB::raw('(SELECT 1 FROM `numbers` INNER JOIN msk_maklers ON msk_maklers.pure_number = numbers.pure_number WHERE numbers.announcement_id = announcements.id limit 1) as is_makler')
-                    )
-            ->select('*')
-            //->where( 'is_makler', 1 )
-            ->first();
-        //$announcement = DB::table('announcements')
-            //->find(1);
-        //$announcement->numbers
+        $announcements = Announcement::realAnnouncements(false)->with('numbers')->get();
 
-//dump( array_map() $announcement->numbers());
+        foreach ($announcements as $announcement)
+        {
+            $arrs = json_decode($announcement->mobnom);
+
+            if( is_array($arrs) )
+            {
+                foreach ($arrs as $arr)
+                {
+                    $number = new Number();
+                    $number->number = $arr;
+                    $number->pure_number = MyHelper::pureNumber($arr);
+
+                    $announcement->numbers()->save($number);
+                }
+            }
+        }
+
         return $announcement;
     }
 }
