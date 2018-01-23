@@ -15,7 +15,7 @@ class CreateProNumbersTable extends Migration
     {
         Schema::create('pro_numbers', function (Blueprint $table) {
             $table->integer('pro_announcement_id')->unsigned();
-            $table->string("number",14);
+            $table->string("number",20);
             $table->string("pure_number",11);
 
             $table->foreign('pro_announcement_id')->references('id')->on('pro_announcements')->onDelete('cascade');

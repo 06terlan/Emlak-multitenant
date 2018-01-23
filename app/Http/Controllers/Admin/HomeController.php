@@ -116,7 +116,7 @@ class HomeController extends Controller
     }
 
     public function test()
-    {
+    { ini_set('max_execution_time', 0);
         $id = 0;
 
         while(true)
