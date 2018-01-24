@@ -7,6 +7,7 @@ use App\Library\MyHelper;
 use App\Models\Announcement;
 use App\Models\Number;
 use App\Models\ProAnnouncement;
+use App\Models\ProNumber;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Contact;
@@ -116,38 +117,7 @@ class HomeController extends Controller
     }
 
     public function test()
-    { ini_set('max_execution_time', 0);
-        $id = 0;
-
-        while(true)
-        {
-            $announcements = Announcement::realAnnouncements()
-                        ->where('id', '>', $id)
-                        ->whereNotNull('mobnom')
-                        ->where(DB::raw('(SELECT 1 FROM `numbers` WHERE numbers.announcement_id = announcements.id limit 1)'), null)
-                        ->take(1000)
-                        ->get();
-
-            if($announcements->isEmpty()) break;
-
-            foreach ($announcements as $announcement)
-            {
-                $id = $announcement->id; print("-".$id);
-                $arrs = @json_decode($announcement->mobnom);
-
-                if( is_array($arrs) )
-                {
-                    foreach ($arrs as $arr)
-                    {
-                        $number = new Number();
-                        $number->number = $arr;
-                        $number->pure_number = MyHelper::pureNumber($arr);
-
-                        $announcement->numbers()->save($number);
-                    }
-                }
-            }
-        }
+    {
 
         return "End";
     }
