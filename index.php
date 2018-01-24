@@ -1,3 +1,3 @@
 <?php
 
-header('Location: /public');
+header('Location: http://ulviemlak.az/ht/pro/public/admin/login');
