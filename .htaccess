@@ -3,4 +3,4 @@ RewriteBase /
 DirectoryIndex index.php
 #RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ http://ulviemlak.az/ht/pro/public/admin/login [L,R=303]
+RewriteRule ^(.*)\/ $1/admin/login [L,R=303]
