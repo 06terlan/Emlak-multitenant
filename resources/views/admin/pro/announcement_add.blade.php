@@ -279,13 +279,13 @@
                                 @if($announcement['numbers'] != null)
                                     @foreach ($announcement['numbers'] as $typeK => $num)
                                         <div class="numb">
-                                            <input style="width: 80%;display: inline-block;" required="" type="text" name="mobnom[]" type="text" class="form-control" value="{{ $num['number'] }}" placeholder="Nömrə">
+                                            <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="'mask' : '(999) 999-9999'" name="mobnom[]" type="text" class="form-control" value="{{ $num['number'] }}" placeholder="Nömrə">
                                             <button type="button" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
                                         </div>
                                     @endforeach
                                 @else
                                         <div class="numb">
-                                            <input style="width: 80%;display: inline-block;" required="" type="text" name="mobnom[]" type="text" class="form-control" value="" placeholder="Nömrə">
+                                            <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="'mask' : '(999) 999-9999'" name="mobnom[]" type="text" class="form-control" value="" placeholder="Nömrə">
                                             <button type="button" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
                                         </div>
                                 @endif
@@ -373,17 +373,24 @@
 @section('css')
 
     {{--  bootstrap-wysiwyg --}}
-
+    <style>
+        .numb{
+            width: 190px;
+        }
+    </style>
 @endsection
 
 
 
 @section('scripts')
+    <!-- jquery.inputmask -->
+    {!! Html::script('admin/assets/vendors/jquery.inputmask/jquery.inputmask.bundle.min.js') !!}
 
     {!! Html::script('admin/assets/vendors/validator/validator.js') !!}
     <script type="text/javascript">
         $(".addNumber").click(function(){
-            $(this).before('<div class="numb"> <input style="width: 80%;display: inline-block;" required="" type="text" name="mobnom[]" type="text" class="form-control" placeholder="Nömrə"> <button type="submit" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents(\'.numb:eq(0)\').remove()"><i class="fa fa-trash"></i></button> </div>');
+            $(this).before('<div class="numb"> <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="\'mask\' : \'(999) 999-9999\'" name="mobnom[]" type="text" class="form-control" placeholder="Nömrə"> <button type="submit" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents(\'.numb:eq(0)\').remove()"><i class="fa fa-trash"></i></button> </div>');
+            $("#allNubers .numb:last input").inputmask("mask", {"mask": "(999) 999-9999"});
         });
     </script>
 @endsection

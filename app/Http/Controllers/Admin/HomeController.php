@@ -121,8 +121,10 @@ class HomeController extends Controller
 
         while(true)
         {
-            $announcements = Announcement::realAnnouncements()->with('numbers')
+            $announcements = Announcement::realAnnouncements()
                         ->where('id', '>', $id)
+                        ->whereNotNull('mobnom')
+                        ->where(DB::raw('(SELECT 1 FROM `numbers` WHERE numbers.announcement_id = announcements.id limit 1)'), null)
                         ->take(1000)
                         ->get();
 
@@ -130,7 +132,7 @@ class HomeController extends Controller
 
             foreach ($announcements as $announcement)
             {
-                $id = $announcement->id;
+                $id = $announcement->id; print("-".$id);
                 $arrs = @json_decode($announcement->mobnom);
 
                 if( is_array($arrs) )

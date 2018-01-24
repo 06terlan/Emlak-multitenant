@@ -65,8 +65,8 @@ class ProController extends Controller
                $query->where(DB::raw("concat(COALESCE(firstname,''),' ',COALESCE(surname,''))"), 'like', "%".$request->get("user")."%");
             });
         }
-        //dd($announcements->get(['author.firstname']));
-        //dd($announcements->get()->toArray());
+
+        if($request->has('no_makler')) $announcements->where(DB::raw("(SELECT 1 FROM `pro_numbers` INNER JOIN msk_maklers ON msk_maklers.pure_number = pro_numbers.pure_number WHERE pro_numbers.pro_announcement_id = announcements.id limit 1)"),  null);
 
         $announcements = $announcements->paginate( MyClass::ADMIN_ROW_COUNT );
 

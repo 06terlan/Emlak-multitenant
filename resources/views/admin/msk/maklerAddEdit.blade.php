@@ -27,7 +27,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Mobil
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input required="" data-inputmask="'mask' : '(999) 999-9999'" name="number" data-validate-length-range="14,14" type="text" class="form-control" placeholder="Mobil" value="{{ $makler['number'] }}">
+                                <input required="" data-inputmask="'mask' : '(999) 999-9999'" name="number" data-validate-length-range="14,15" type="text" class="form-control" placeholder="Mobil" value="{{ $makler['number'] }}">
                             </div>
                         </div>
                         <div class="ln_solid"></div>

@@ -70,7 +70,9 @@
 
                                 <tr>
 
-                                    <th></th>
+                                    <th data-toggle="tooltip" data-original-title="Maklersiz elanlar">
+                                        <input type="checkbox" name="no_makler" {{ $request->get("no_makler") ? 'checked' : '' }} class="flat formFind" />
+                                    </th>
 
                                     <th><input class="form-control formFind" name="header" value="{{ $request->get("header") }}" placeholder="Başlıq"></th>
 
@@ -176,16 +178,28 @@
 
 @section('css')
 
-    {{--  bootstrap-wysiwyg --}}
-
+    {{--  jquery-confirm --}}
     {!! Html::style('admin/assets/vendors/jquery-confirm-master/css/jquery-confirm.css') !!}
+
+    {{--  iCheck --}}
+    {!! Html::style('admin/assets/vendors/iCheck/skins/flat/green.css') !!}
 
 @endsection
 
 
 
 @section('scripts')
+    {{--  jquery-confirm --}}
+    {!! Html::script('admin/assets/vendors/jquery-confirm-master/js/jquery-confirm.js') !!}\
 
-    {!! Html::script('admin/assets/vendors/jquery-confirm-master/js/jquery-confirm.js') !!}
+    {{--  iCheck --}}
+    {!! Html::script('admin/assets/vendors/iCheck/icheck.min.js') !!}
 
+    <script>
+        $(function () {
+            $("input.flat.formFind").on('ifChanged', function (e) {
+                $(this).parents("form:eq(0)").submit();
+            });
+        });
+    </script>
 @endsection
