@@ -14,6 +14,12 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        $tenant = new \App\Models\Tenant();
+        $tenant->company_name = "Owner";
+        $tenant->last_date = \App\Library\Date::d(null, "Y-m-d");
+        $tenant->type = 'big_company';
+        $tenant->save();
+
         //auto insert an super admin
         $user = new User();
         $user->firstname = "SuperAdmin";
@@ -23,7 +29,8 @@ class UserTableSeeder extends Seeder
         $user->availableTypes = json_encode(array_keys(MyClass::$announcementTypes), false);
         $user->availableBuildingTypes = json_encode(array_keys(MyClass::$buldingType), false);
         $user->role = MyClass::SUPER_ADMIN_ROLE;
-        $user->save();
+        $tenant->users()->save($user);
+        //$user->save();
 
         //auto insert an admin
         $user = new User();
@@ -34,6 +41,7 @@ class UserTableSeeder extends Seeder
         $user->availableTypes = json_encode(array_keys(MyClass::$announcementTypes), false);
         $user->availableBuildingTypes = json_encode(array_keys(MyClass::$buldingType), false);
         $user->role = MyClass::ADMIN_ROLE;
-        $user->save();
+        $tenant->users()->save($user);
+        //$user->save();
     }
 }

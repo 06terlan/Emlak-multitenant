@@ -28,6 +28,7 @@ class UsersController extends Controller
         if($request->has('email')) $user->where('email', 'like', '%'.$request->get('email').'%');
         if($request->has('login')) $user->where('login', 'like', '%'.$request->get('login').'%');
         if($request->has('role')) $user->where(DB::raw(MyHelper::createCase(MyClass::$roles, 'role')), 'like', '%'.$request->get('role').'%');
+        if($request->has('tenant')) $user->where('tenant_id', $request->get('tenant'));
 
         $user = $user->paginate( MyClass::ADMIN_ROW_COUNT );
 
@@ -40,22 +41,36 @@ class UsersController extends Controller
 
     public function addEdit($id)
     {
+        $user = User::realUsers()->where('id',$id)->first();
+
         $dataToBlade = [
             'id' => $id,
-            'User' => User::realUsers()->where('id',$id)->first()
+            'User' => $user
         ];
 
-        return view('admin.user.userAddEdit',$dataToBlade);
+        if( $user['role'] == MyClass::SUPER_ADMIN_ROLE ) return response()->view("errors.403",[],403);
+        else return view('admin.user.userAddEdit',$dataToBlade);
     }
 
     public function addEditUser(UpdateSaveUserRequest $request,$id)
     {
+        $tenant_id = Auth::user()->tenant_id;
+
+        if( MyHelper::has_role(MyClass::SUPER_ADMIN_ROLE) )
+        {
+            $validate = Validator::make($request->all(), ['tenant' => 'integer|exists:tenants,id']);
+            if($validate->fails()) return redirect()->back()->withErrors($validate);
+
+            $tenant_id = $request->get('tenant');
+        }
+
         if($id == 0)
         {
             $validate = Validator::make($request->all(), ['password' => 'required|string|min:6']);
             if($validate->fails()) return redirect()->back()->withErrors($validate);
 
             $user = new User();
+            $user->tenant_id = $tenant_id;
             $user->firstname = Input::get("name");
             $user->surname = Input::get("surname","");
             $user->email = Input::get("email");
@@ -69,7 +84,11 @@ class UsersController extends Controller
         }
         else
         {
-            $user = User::find($id);;
+            $user = User::find($id);
+
+            if( $user->role == MyClass::SUPER_ADMIN_ROLE ) return response()->view("errors.403",[],403);
+
+            $user->tenant_id = $tenant_id;
             $user->firstname = Input::get("name");
             $user->surname = Input::get("surname","");
             $user->email = Input::get("email");
@@ -92,14 +111,14 @@ class UsersController extends Controller
         return redirect("admin/users");
     }
 
-    public function delete(Request $request,$id)
+    public function delete(User $user)
     {
-        if( Auth::user()->id != $id )
+        if( Auth::user()->id != $user->id && $user->role != MyClass::SUPER_ADMIN_ROLE)
         {
-            $user = User::realUsers()->where('id',$id)->first();
             $user->deleted = 1;
             $user->save();
         }
+        else return response()->view("errors.403",[],403);
 
         return redirect("admin/users");
     }

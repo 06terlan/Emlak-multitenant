@@ -7,7 +7,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Profile</h2>
+                    <h2>İstifadəçi</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                     </ul>
@@ -58,6 +58,16 @@
                                 <select class="form-control" name="role" required="">
                                     @foreach (\App\Library\MyClass::$roles as $typeK => $type)
                                         <option value="{{ $typeK }}" {{ $typeK == $User['role']? 'selected':'' }}> {{ $type }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tenant</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select class="form-control" name="tenant" required="">
+                                    @foreach (\App\Models\Tenant::realTenants()->get() as $type)
+                                        <option value="{{ $type['id'] }}" {{ $type['id'] == $User['tenant_id']? 'selected':'' }}> {{ $type['company_name'] }} </option>
                                     @endforeach
                                 </select>
                             </div>

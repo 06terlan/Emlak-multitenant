@@ -13,8 +13,8 @@ class TenantTableSeeder extends Seeder
     {
         factory(\App\Models\Tenant::class, 15)->create()
             ->each(function ($tenant){
-                //$number = factory(\App\Models\ProNumber::class)->make();
-                //$announcement->numbers()->save($number);
+                $user = factory(\App\User::class)->make();
+                $tenant->users()->save($user);
             });
     }
 }

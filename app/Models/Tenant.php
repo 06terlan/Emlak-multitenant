@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Library\MyClass;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Tenant extends Model
@@ -16,5 +17,10 @@ class Tenant extends Model
     public function getType()
     {
         return isset(MyClass::$companyTypes[$this->type]) ? MyClass::$companyTypes[$this->type] : "-";
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
     }
 }

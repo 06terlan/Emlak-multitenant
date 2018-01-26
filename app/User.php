@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Library\MyHelper;
+use App\Models\Tenant;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Library\MyClass;
@@ -31,7 +33,7 @@ class User extends Authenticatable
     //not deleted users
     public static function realUsers()
     {
-        return self::where('deleted' , 0)->orderBy('created_at', 'desc');
+        return MyHelper::addTenantFilter( self::where('deleted' , 0)->orderBy('created_at', 'desc') );
     }
 
     public function fullname()
@@ -68,6 +70,11 @@ class User extends Authenticatable
     public function getAvailableBuildingTypes()
     {
         return ($this->availableBuildingTypes == "" ? [] : json_decode($this->availableBuildingTypes));
+    }
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
     }
 
     /*public function delete()

@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="home" class="site_title"><i class="fa fa-paw"></i> <span>Admin Panel</span></a>
+            <a href="home" class="site_title"><i class="fa fa-paw"></i> <span>Əmlak bazası</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -71,7 +71,7 @@
             <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
-
+            <span style="color: #73879c;font-weight:400;font-size: 27px;line-height: 56px;">{{ Auth::user()->tenant->company_name }}</span>
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

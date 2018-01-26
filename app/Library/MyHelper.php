@@ -69,16 +69,25 @@ class MyHelper
     {
         $roles = [];
 
-        switch ($role)
+        switch (Auth::user()->role)
         {
             case MyClass::ADMIN_ROLE:
-                $roles = [1];
+                $roles = [1, 2];
                 break;
             case MyClass::SUPER_ADMIN_ROLE:
-                $roles = [1, 2];
+                $roles = [1, 2, 3];
                 break;
         }
 
         return in_array($role, $roles) ? true : false;
+    }
+
+    /*
+    * add tenant filter
+    */
+    public static function addTenantFilter($query)
+    {
+        if( self::has_role(MyClass::SUPER_ADMIN_ROLE) ) return $query;
+        return $query->where('tenant_id', Auth::user()->tenant->id);
     }
 }

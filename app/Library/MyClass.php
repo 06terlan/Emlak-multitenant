@@ -69,7 +69,9 @@ class MyClass
 
             1 => 'Admin',
 
-            2 => 'Author'
+            2 => 'Author',
+
+            3 => 'Super Admin'
 
         ];
 
@@ -154,7 +156,7 @@ class MyClass
 
     const ADMIN_ROLE = 1;
 
-    const SUPER_ADMIN_ROLE = 2;
+    const SUPER_ADMIN_ROLE = 3;
 
 
 

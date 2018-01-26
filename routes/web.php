@@ -26,9 +26,9 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
 	//users
 	Route::group(['middleware' => 'admin'],function(){
 		Route::get('users', 'Admin\UsersController@index')->name('users');
-		Route::get('users/addEdit/{id}', 'Admin\UsersController@addEdit')->where('which','[0-9]{1,}');
-		Route::post('users/addEdit/{id}', 'Admin\UsersController@addEditUser')->where('which','[0-9]{1,}');
-		Route::get('users/delete/{id}', 'Admin\UsersController@delete')->where('which','[0-9]{1,}');
+		Route::get('users/addEdit/{user}', 'Admin\UsersController@addEdit')->where('user','[0-9]{1,}')->name('user_add_edit');
+		Route::post('users/addEdit/{user}', 'Admin\UsersController@addEditUser')->where('user','[0-9]{1,}');
+		Route::get('users/delete/{user}', 'Admin\UsersController@delete')->where('user','[0-9]{1,}')->name('user_delete');
 	});
 
 	//announcement

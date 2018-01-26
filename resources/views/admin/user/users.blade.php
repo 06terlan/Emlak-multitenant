@@ -2,13 +2,13 @@
 
 @section('content')
     @include('admin.error')
-    <a href="{{ url('admin/users/addEdit/0') }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Add</a>
+    <a href="{{ route('user_add_edit',['user' => 0]) }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Add</a>
 
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Users</h2>
+                    <h2>İstifadəçilər</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                     </ul>
@@ -25,6 +25,9 @@
                                     <th>Email</th>
                                     <th>Login</th>
                                     <th>Role</th>
+                                    @if( \App\Library\MyHelper::has_role(\App\Library\MyClass::SUPER_ADMIN_ROLE) )
+                                        <th>Tenant</th>
+                                    @endif
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -35,6 +38,16 @@
                                     <th><input class="form-control formFind" name="email" value="{{ $request->get("email") }}" placeholder="Email"></th>
                                     <th><input class="form-control formFind" name="login" value="{{ $request->get("login") }}" placeholder="Login"></th>
                                     <th><input class="form-control formFind" name="role" value="{{ $request->get("role") }}" placeholder="Role"></th>
+                                    @if( \App\Library\MyHelper::has_role(\App\Library\MyClass::SUPER_ADMIN_ROLE) )
+                                        <th>
+                                            <select class="form-control formFind" name="tenant">
+                                                <option></option>
+                                                @foreach (\App\Models\Tenant::realTenants()->get() as $type)
+                                                    <option value="{{ $type['id'] }}" {{ $type['id'] == $request->get("tenant") ? 'selected':'' }}> {{ $type['company_name'] }} </option>
+                                                @endforeach
+                                            </select>
+                                        </th>
+                                    @endif
                                     <th></th>
                                 </tr>
                             </thead>
@@ -46,10 +59,15 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->login }}</td>
                                         <td>{{ $user->getRole() }}</td>
+                                        @if( \App\Library\MyHelper::has_role(\App\Library\MyClass::SUPER_ADMIN_ROLE) )
+                                            <td>{{ $user->tenant->company_name }}</td>
+                                        @endif
                                         <th>
-                                            <a href="{{ url('admin/users/addEdit/' . $user->id ) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
-                                            @if( Auth::user()->id != $user->id )
-                                            <a href="{{ url('admin/users/delete/' . $user->id ) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
+                                            @if( $user->role != \App\Library\MyClass::SUPER_ADMIN_ROLE)
+                                                <a style="width:25px;" href="{{ route('user_add_edit',['user' => $user->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                                            @endif
+                                            @if( Auth::user()->id != $user->id && $user->role != \App\Library\MyClass::SUPER_ADMIN_ROLE)
+                                                <a style="width:25px;" href="{{ route('user_delete',['user' => $user->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
                                             @endif
                                         </th>
                                     </tr>

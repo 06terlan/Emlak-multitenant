@@ -25,8 +25,13 @@ class CreateUsersTable extends Migration
             $table->json('availableTypes');
             $table->json('availableBuildingTypes');
             $table->boolean('deleted')->default(0);
+            $table->unsignedInteger('tenant_id');
+
             $table->rememberToken();
             $table->timestamps();
+
+            //
+            $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
         });
     }
 
