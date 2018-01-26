@@ -3,6 +3,7 @@ namespace App\Library;
 
 
 use App\Models\MskMakler;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MyHelper
@@ -59,5 +60,25 @@ class MyHelper
         }
 
         return false;
+    }
+
+    /*
+    * check role
+    */
+    public static function has_role($role)
+    {
+        $roles = [];
+
+        switch ($role)
+        {
+            case MyClass::ADMIN_ROLE:
+                $roles = [1];
+                break;
+            case MyClass::SUPER_ADMIN_ROLE:
+                $roles = [1, 2];
+                break;
+        }
+
+        return in_array($role, $roles) ? true : false;
     }
 }

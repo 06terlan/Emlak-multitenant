@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Library\MyClass;
 use App\Library\MyHelper;
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use App\Library\MyClass;
 
-class admin
+class SuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -18,8 +18,7 @@ class admin
      */
     public function handle($request, Closure $next)
     {
-        
-        if( Auth::check() && MyHelper::has_role(MyClass::ADMIN_ROLE) )
+        if( Auth::check() && MyHelper::has_role(MyClass::SUPER_ADMIN_ROLE) )
         {
             return $next($request);
         }

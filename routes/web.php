@@ -25,7 +25,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
 	
 	//users
 	Route::group(['middleware' => 'admin'],function(){
-		Route::get('users', 'Admin\UsersController@index');
+		Route::get('users', 'Admin\UsersController@index')->name('users');
 		Route::get('users/addEdit/{id}', 'Admin\UsersController@addEdit')->where('which','[0-9]{1,}');
 		Route::post('users/addEdit/{id}', 'Admin\UsersController@addEditUser')->where('which','[0-9]{1,}');
 		Route::get('users/delete/{id}', 'Admin\UsersController@delete')->where('which','[0-9]{1,}');
@@ -47,6 +47,14 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
         Route::get('announcement_pro/delete/{announcement}', 'Admin\ProController@delete')->where('id', '[0-9]{1,}')->name('announcement_pro_delete');
         Route::get('announcement_pro/status/{announcement}', 'Admin\ProController@statusAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_status');
         Route::get('announcement_pro/add/from/{announcement}', 'Admin\ProController@addFromAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_add_from');
+    });
+
+    //tenants
+    Route::group(['middleware' => 'super_admin'],function(){
+        Route::get('tenants', 'Admin\TenantController@index')->name('tenant');
+        Route::get('tenant/addEdit/{tenant}', 'Admin\TenantController@addEdit')->where('tenant','[0-9]{1,}')->name('tenant_add_edit');
+        Route::post('tenant/addEdit/{tenant}', 'Admin\TenantController@addEditTenant')->where('tenant','[0-9]{1,}')->name('tenant_add_edit_act');
+        Route::get('tenant/delete/{tenant}', 'Admin\TenantController@delete')->where('tenant','[0-9]{1,}')->name('tenant_delete');
     });
 
     //search

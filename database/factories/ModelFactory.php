@@ -91,3 +91,14 @@ $factory->define(App\Models\ProNumber::class, function (Faker\Generator $faker) 
         'pure_number' => str_limit(\App\Library\MyHelper::pureNumber($number), 11, '')
     ];
 });
+
+$factory->define(App\Models\Tenant::class, function (Faker\Generator $faker) {
+
+    $status = array_rand(\App\Library\MyClass::$buldingType, 1);
+
+    return [
+        'company_name' => $faker->company,
+        'type' => array_rand(\App\Library\MyClass::$companyTypes, 1),
+        'last_date' => \App\Library\Date::d(null, "Y-m-t")
+    ];
+});

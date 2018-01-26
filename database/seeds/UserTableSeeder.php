@@ -14,11 +14,22 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        //auto insert an super admin
+        $user = new User();
+        $user->firstname = "SuperAdmin";
+        $user->email = "example@example.com";
+        $user->login = "admin";
+        $user->password = Hash::make("123456");
+        $user->availableTypes = json_encode(array_keys(MyClass::$announcementTypes), false);
+        $user->availableBuildingTypes = json_encode(array_keys(MyClass::$buldingType), false);
+        $user->role = MyClass::SUPER_ADMIN_ROLE;
+        $user->save();
+
         //auto insert an admin
         $user = new User();
         $user->firstname = "Admin";
-        $user->email = "example@example.com";
-        $user->login = "admin";
+        $user->email = "example1@example.com";
+        $user->login = "admin1";
         $user->password = Hash::make("123456");
         $user->availableTypes = json_encode(array_keys(MyClass::$announcementTypes), false);
         $user->availableBuildingTypes = json_encode(array_keys(MyClass::$buldingType), false);

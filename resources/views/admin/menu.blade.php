@@ -26,8 +26,11 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                     <li><a href="{{ URL::to('admin/home') }}"><i class="fa fa-home"></i> Dashboard </a></li>
-                    @if (Auth::user()->role == App\Library\MyClass::ADMIN_ROLE)
-                        <li><a href="{{ URL::to('admin/users') }}"><i class="fa fa-user"></i> İstifadəçilər </a></li>
+                    @if (\App\Library\MyHelper::has_role(\App\Library\MyClass::SUPER_ADMIN_ROLE))
+                        <li><a href="{{ route('tenant') }}"><i class="fa fa-briefcase"></i> Tenantlar </a></li>
+                    @endif
+                    @if ( \App\Library\MyHelper::has_role(\App\Library\MyClass::ADMIN_ROLE) )
+                        <li><a href="{{ route('users') }}"><i class="fa fa-user"></i> İstifadəçilər </a></li>
                     @endif
                     <li><a href="{{ route('announcement') }}"><i class="fa fa-share-alt"></i> Elanlar </a></li>
                     <li><a href="{{ route('announcement_pro') }}"><i class="fa fa-share-alt-square"></i> Elanlar fərdi əlavə </a></li>

@@ -15,7 +15,7 @@ class CreateProAnnouncement extends Migration
     {
         Schema::create('pro_announcements', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer("userId")->references('id')->on('users')->onDelete('cascade');
+            $table->integer("userId")->unsigned();
             $table->string('header',200)->nullable();
             $table->longText('content')->nullable();
             $table->string('type',50)->nullable();
@@ -31,7 +31,6 @@ class CreateProAnnouncement extends Migration
             $table->string("metro",20)->nullable();
             $table->string("city", 20)->nullable();
             $table->string("owner", 40)->nullable();
-            //$table->json("mobnom")->nullable();
             $table->string('link', 200)->nullable();
             $table->date('date');
 
@@ -39,6 +38,9 @@ class CreateProAnnouncement extends Migration
 
             $table->boolean('deleted')->default(0);
             $table->timestamps();
+
+            //
+            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

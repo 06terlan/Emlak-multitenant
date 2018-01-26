@@ -148,11 +148,13 @@ class MyClass
 
     /*
 
-	* Admin role
+	* Roles
 
     */
 
     const ADMIN_ROLE = 1;
+
+    const SUPER_ADMIN_ROLE = 2;
 
 
 
@@ -193,6 +195,26 @@ class MyClass
     */
 
     const INFO_COUNT = 200;
+
+    /**
+
+     * company types
+
+     */
+
+    public static $companyTypes =
+
+    [
+
+        'agent' => 'Makler',
+
+        'little_company' => 'Kiçik şirkət',
+
+        'company' => 'Şirkət',
+
+        'big_company' => 'Böyük şirkət',
+
+    ];
 
 }
 
