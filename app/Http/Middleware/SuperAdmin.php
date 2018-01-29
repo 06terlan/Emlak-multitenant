@@ -18,7 +18,7 @@ class SuperAdmin
      */
     public function handle($request, Closure $next)
     {
-        if( Auth::check() && MyHelper::has_role(MyClass::SUPER_ADMIN_ROLE) )
+        if( Auth::check() /*&& MyHelper::has_role(MyClass::SUPER_ADMIN_ROLE)*/ )
         {
             return $next($request);
         }

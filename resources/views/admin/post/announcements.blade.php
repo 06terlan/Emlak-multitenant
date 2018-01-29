@@ -63,7 +63,7 @@
                                         <th>
                                             <a href="{{ route('announcement_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
 
-                                            @if(Auth::user()->role == App\Library\MyClass::ADMIN_ROLE)
+                                            @if( \App\Library\MyHelper::has_priv("announcement", \App\Library\MyClass::PRIV_CAN_ADD) )
                                                 <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
                                                 <a href="{{ route('announcement_pro_add_from',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Fərdiyə əlavə et" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                                             @endif

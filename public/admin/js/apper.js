@@ -107,3 +107,5 @@ $(function() {
         else return true;
     });
 });
+
+$(".menu_section .child_menu:not(:has(li))").parents("li:eq(0)").remove();

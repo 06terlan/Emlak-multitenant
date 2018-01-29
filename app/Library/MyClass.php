@@ -150,13 +150,17 @@ class MyClass
 
     /*
 
-	* Roles
+	* privs
 
     */
 
-    const ADMIN_ROLE = 1;
+    const PRIV_CAN_SEE = 2;
 
-    const SUPER_ADMIN_ROLE = 3;
+    const PRIV_CAN_ADD = 3;
+
+    const PRIV_SUPER_ADMIN_CAN_SEE = 4;
+
+    const PRIV_SUPER_ADMIN_CAN_EDIT = 5;
 
 
 
@@ -218,5 +222,24 @@ class MyClass
 
     ];
 
+    /**
+
+     * company types
+
+     */
+
+    public static $modules =
+    [
+        'dashboard' => ['name'=> 'Dashboard', 'route'=> 'dashboard', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'tenant' => ['name'=> 'Tenantlar', 'route'=> 'tenant', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
+        'users' => ['name'=> 'İstifadəçilər', 'route'=> 'users', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'announcement' => ['name'=> 'Elanlar', 'route'=> 'announcement', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'announcement_pro' => ['name'=> 'Elanlar fərdi əlavə', 'route'=> 'announcement_pro', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'search' => ['name'=> 'Axtarış', 'route'=> 'search', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'Msk' => [
+            'msk_group' => ['name'=> 'Qruplar', 'route'=> 'msk_group', 'priv'=> MyClass::PRIV_CAN_SEE],
+            'msk_makler' => ['name'=> 'Maklerlər', 'route'=> 'msk_makler', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
+        ]
+    ];
 }
 

@@ -32,7 +32,7 @@
 
                     <br>
 
-                    <form autocomplete="off" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ route('announcement_insert_act',['announcement' => $id]) }}">
+                    <form autocomplete="off" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ isset($from) && $from > 0 ? route('announcement_insert_act_from',['announcement' => $from]) : route('announcement_insert_act',['announcement' => $id]) }}">
 
                         <input type="hidden" value="{{ isset($from) ? $from : 0 }}" name="from" />
 

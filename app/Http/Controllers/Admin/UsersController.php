@@ -48,7 +48,7 @@ class UsersController extends Controller
             'User' => $user
         ];
 
-        if( $user['role'] == MyClass::SUPER_ADMIN_ROLE ) return response()->view("errors.403",[],403);
+        if( $id > 0 && $user->group->super_admin == 1 ) return response()->view("errors.403",[],403);
         else return view('admin.user.userAddEdit',$dataToBlade);
     }
 
@@ -56,7 +56,7 @@ class UsersController extends Controller
     {
         $tenant_id = Auth::user()->tenant_id;
 
-        if( MyHelper::has_role(MyClass::SUPER_ADMIN_ROLE) )
+        if( Auth::user()->group->super_admin == 1 )
         {
             $validate = Validator::make($request->all(), ['tenant' => 'integer|exists:tenants,id']);
             if($validate->fails()) return redirect()->back()->withErrors($validate);
@@ -77,7 +77,6 @@ class UsersController extends Controller
             $user->login = Input::get("login");
             $user->password = Hash::make(Input::get("password"));
             $user->group_id = Input::get("group_id");
-            $user->role = 1;
 
             $user->save();
         }
@@ -85,7 +84,7 @@ class UsersController extends Controller
         {
             $user = User::find($id);
 
-            if( $user->role == MyClass::SUPER_ADMIN_ROLE ) return response()->view("errors.403",[],403);
+            if( $user->group->super_admin == 1 ) return response()->view("errors.403",[],403);
 
             $user->tenant_id = $tenant_id;
             $user->firstname = Input::get("name");
@@ -110,7 +109,7 @@ class UsersController extends Controller
 
     public function delete(User $user)
     {
-        if( Auth::user()->id != $user->id && $user->role != MyClass::SUPER_ADMIN_ROLE)
+        if( Auth::user()->id != $user->id && $user->group->super_admin != 1)
         {
             $user->deleted = 1;
             $user->save();

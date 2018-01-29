@@ -25,22 +25,24 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                    <li><a href="{{ URL::to('admin/home') }}"><i class="fa fa-home"></i> Dashboard </a></li>
-                    @if (\App\Library\MyHelper::has_role(\App\Library\MyClass::SUPER_ADMIN_ROLE))
-                        <li><a href="{{ route('tenant') }}"><i class="fa fa-briefcase"></i> Tenantlar </a></li>
-                    @endif
-                    @if ( \App\Library\MyHelper::has_role(\App\Library\MyClass::ADMIN_ROLE) )
-                        <li><a href="{{ route('users') }}"><i class="fa fa-user"></i> İstifadəçilər </a></li>
-                    @endif
-                    <li><a href="{{ route('announcement') }}"><i class="fa fa-share-alt"></i> Elanlar </a></li>
-                    <li><a href="{{ route('announcement_pro') }}"><i class="fa fa-share-alt-square"></i> Elanlar fərdi əlavə </a></li>
-                    <li><a href="{{ route('search') }}"><i class="fa fa-search"></i> Axtarış </a></li>
-                    <li><a><i class="fa fa-wrench"></i> MSK <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu" style="display: none;">
-                            <li><a href="{{ route('msk_makler') }}">Maklerlər</a></li>
-                            <li><a href="{{ route('msk_group') }}">Gruplar</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
+                    @foreach(\App\Library\MyClass::$modules as $key => $val)
+                        @if( !isset($val['route']) )
+                            <li><a><i class="fa fa-wrench"></i> {{ $key }} <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none;">
+                                    @foreach($val as $k => $v)
+                                        @if( \App\Library\MyHelper::has_priv($v['route'], $v['priv']) )
+                                            <li><a href="{{ route($v['route']) }}">{{ $v['name'] }}</a></li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @else
+                            @if( \App\Library\MyHelper::has_priv($val['route'], $val['priv']) )
+                                <li><a href="{{ route($val['route']) }}"><i class="fa fa-home"></i> {{ $val['name'] }}</a></li>
+                            @endif
+                        @endif
+                    @endforeach
                 </ul>
             </div>
         </div>

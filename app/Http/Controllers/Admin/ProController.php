@@ -142,13 +142,13 @@ class ProController extends Controller
 
         $newAnnouncement->owner = Input::get("owner");
 
-        if( $request->get('from') > 0 )
+        /*if( $request->get('from') > 0 )
         {
             $ann = Announcement::find($request->get('from'));
             $newAnnouncement->link = $ann->link;
             $ann->deleted = 1;
             $ann->save();
-        }
+        }*/
 
         $newAnnouncement->save();
 
@@ -166,7 +166,62 @@ class ProController extends Controller
 
     }
 
+    public function inserEditK2(Announcement $announcement)
+    {
+        $newAnnouncement = new ProAnnouncement();
 
+        $newAnnouncement->userId = Input::get("user");
+
+        $newAnnouncement->header = Input::get("header");
+
+        $newAnnouncement->content = Input::get("content");
+
+        $newAnnouncement->type = Input::get("type");
+
+        $newAnnouncement->buldingType = Input::get("buldingType");
+
+        $newAnnouncement->status = Input::get("buldingType");
+
+        $newAnnouncement->amount = Input::get("amount");
+
+        $newAnnouncement->area = Input::get("area");
+
+        $newAnnouncement->roomCount = Input::get("roomCount");
+
+        $newAnnouncement->locatedFloor = Input::get("locatedFloor");
+
+        $newAnnouncement->floorCount = Input::get("floorCount");
+
+        $newAnnouncement->documentType = Input::get("documentType");
+
+        $newAnnouncement->repairing = Input::get("repairing");
+
+        //new
+        $newAnnouncement->metro = Input::get("metro");
+
+        $newAnnouncement->city = Input::get("city");
+
+        $newAnnouncement->owner = Input::get("owner");
+
+        $newAnnouncement->link = $announcement->link;
+
+        $newAnnouncement->save();
+
+        $announcement->deleted = 1;
+        $announcement->save();
+
+        foreach (Input::get("mobnom") as $number)
+        {
+            $numebrC = new ProNumber();
+            $numebrC->number = $number;
+            $numebrC->pure_number = MyHelper::pureNumber($number);
+
+            $newAnnouncement->numbers()->save($numebrC);
+        }
+
+        return redirect()->route('announcement_pro');
+
+    }
 
     public function delete(ProAnnouncement $announcement)
     {

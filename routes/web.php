@@ -16,38 +16,37 @@
 Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function(){
 
+
+	Route::get('{home?}', 'Admin\HomeController@home')->where('home','home')->name('home');
+
 	//dashboard
-	Route::get('{home?}', 'Admin\HomeController@index')->where('home','home');
+    Route::get('dashboard', 'Admin\HomeController@index')->where('dashboard','dashboard')->name('dashboard')->middleware('priv:dashboard,'.\App\Library\MyClass::PRIV_CAN_SEE);
 	
 	//profile
 	Route::get('profile', 'Admin\ProfileController@index');
 	Route::post('profile/{which}', 'Admin\ProfileController@update')->where('which','[12]');
 	
 	//users
-	Route::group(['middleware' => 'admin'],function(){
-		Route::get('users', 'Admin\UsersController@index')->name('users');
-		Route::get('users/addEdit/{user}', 'Admin\UsersController@addEdit')->where('user','[0-9]{1,}')->name('user_add_edit');
-		Route::post('users/addEdit/{user}', 'Admin\UsersController@addEditUser')->where('user','[0-9]{1,}');
-		Route::get('users/delete/{user}', 'Admin\UsersController@delete')->where('user','[0-9]{1,}')->name('user_delete');
-	});
+	Route::get('users', 'Admin\UsersController@index')->name('users')->middleware('priv:users,'.\App\Library\MyClass::PRIV_CAN_SEE);
+	Route::get('users/addEdit/{user}', 'Admin\UsersController@addEdit')->where('user','[0-9]{1,}')->name('user_add_edit')->middleware('priv:users,'.\App\Library\MyClass::PRIV_CAN_ADD);
+	Route::post('users/addEdit/{user}', 'Admin\UsersController@addEditUser')->where('user','[0-9]{1,}')->middleware('priv:users,'.\App\Library\MyClass::PRIV_CAN_ADD);
+	Route::get('users/delete/{user}', 'Admin\UsersController@delete')->where('user','[0-9]{1,}')->name('user_delete')->middleware('priv:users,'.\App\Library\MyClass::PRIV_CAN_ADD);
 
 	//announcement
-	Route::get('announcement', 'Admin\PostController@index')->name('announcement');
-	Route::get('announcement/info/{announcement}', 'Admin\PostController@InfoAction')->where('announcement','[0-9]{1,}')->name('announcement_info');
-    Route::group(['middleware' => 'admin'],function() {
-        Route::get('announcement/delete/{id}', 'Admin\PostController@delete')->where('id','[0-9]{1,}')->name('announcement_delete');
-    });
+	Route::get('announcement', 'Admin\PostController@index')->name('announcement')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_SEE);
+	Route::get('announcement/info/{announcement}', 'Admin\PostController@InfoAction')->where('announcement','[0-9]{1,}')->name('announcement_info')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_SEE);
+	Route::get('announcement/delete/{id}', 'Admin\PostController@delete')->where('id','[0-9]{1,}')->name('announcement_delete')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_ADD);
+    Route::get('announcement_pro/add/from/{announcement}', 'Admin\ProController@addFromAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_add_from')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_ADD);
+    Route::post('announcement_pro/insert_act/from/{announcement}', 'Admin\ProController@inserEditK2')->where('announcement', '[0-9]{1,}')->name('announcement_insert_act_from')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_ADD);
 
     //announcement
-    Route::get('announcement_pro', 'Admin\ProController@index')->name('announcement_pro');
-    Route::get('announcement_pro/info/{announcement}', 'Admin\ProController@InfoAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_info');
-    Route::group(['middleware' => 'admin'],function() {
-        Route::get('announcement_pro/insert/{announcement}', 'Admin\ProController@inserEditAction')->where('announcement', '[0-9]{1,}')->name('announcement_insert');
-        Route::post('announcement_pro/insert_act/{announcement}', 'Admin\ProController@inserEditK')->where('announcement', '[0-9]{1,}')->name('announcement_insert_act');
-        Route::get('announcement_pro/delete/{announcement}', 'Admin\ProController@delete')->where('id', '[0-9]{1,}')->name('announcement_pro_delete');
-        Route::get('announcement_pro/status/{announcement}', 'Admin\ProController@statusAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_status');
-        Route::get('announcement_pro/add/from/{announcement}', 'Admin\ProController@addFromAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_add_from');
-    });
+    Route::get('announcement_pro', 'Admin\ProController@index')->name('announcement_pro')->middleware('priv:announcement_pro,'.\App\Library\MyClass::PRIV_CAN_SEE);
+    Route::get('announcement_pro/info/{announcement}', 'Admin\ProController@InfoAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_info')->middleware('priv:announcement_pro,'.\App\Library\MyClass::PRIV_CAN_SEE);
+    Route::get('announcement_pro/insert/{announcement}', 'Admin\ProController@inserEditAction')->where('announcement', '[0-9]{1,}')->name('announcement_insert')->middleware('priv:announcement_pro,'.\App\Library\MyClass::PRIV_CAN_ADD);
+    Route::post('announcement_pro/insert_act/{announcement}', 'Admin\ProController@inserEditK')->where('announcement', '[0-9]{1,}')->name('announcement_insert_act')->middleware('priv:announcement_pro,'.\App\Library\MyClass::PRIV_CAN_ADD);
+    Route::get('announcement_pro/delete/{announcement}', 'Admin\ProController@delete')->where('id', '[0-9]{1,}')->name('announcement_pro_delete')->middleware('priv:announcement_pro,'.\App\Library\MyClass::PRIV_CAN_ADD);
+    Route::get('announcement_pro/status/{announcement}', 'Admin\ProController@statusAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_status')->middleware('priv:announcement_pro,'.\App\Library\MyClass::PRIV_CAN_ADD);
+
 
     //tenants
     Route::group(['middleware' => 'super_admin'],function(){
@@ -58,7 +57,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function(){
     });
 
     //search
-    Route::get('search', 'Admin\SearchController@indexAction')->name('search');
+    Route::get('search', 'Admin\SearchController@indexAction')->name('search')->middleware('priv:search,'.\App\Library\MyClass::PRIV_CAN_SEE);
 
     //msk
     Route::get('msk/makler', 'Admin\MSKController@makler')->name('msk_makler');
@@ -67,9 +66,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function(){
         Route::get('msk/makler/delete/{makler}', 'Admin\MSKController@maklerDelete')->where('makler', '[0-9]{1,}')->name('msk_makler_delete');
     });
 
-    Route::get('msk/group', 'Admin\MSKController@group')->name('msk_group');
-    Route::any('msk/group/addEdit/{group}', 'Admin\MSKController@groupAddEdit')->where('group', '[0-9]{1,}')->name('msk_group_add_edit');
-    Route::get('msk/group/delete/{group}', 'Admin\MSKController@groupDelete')->where('group', '[0-9]{1,}')->name('msk_group_delete');
+    Route::get('msk/group', 'Admin\MSKController@group')->name('msk_group')->middleware('priv:msk_group,'.\App\Library\MyClass::PRIV_CAN_SEE);
+    Route::any('msk/group/addEdit/{group}', 'Admin\MSKController@groupAddEdit')->where('group', '[0-9]{1,}')->name('msk_group_add_edit')->middleware('priv:msk_group,'.\App\Library\MyClass::PRIV_CAN_ADD);
+    Route::get('msk/group/delete/{group}', 'Admin\MSKController@groupDelete')->where('group', '[0-9]{1,}')->name('msk_group_delete')->middleware('priv:msk_group,'.\App\Library\MyClass::PRIV_CAN_ADD);
 
     //ajax
     Route::post('announcement/getLast', 'Admin\AjaxController@getLastAnnouncement')->name('getLastAnnouncementAjax');

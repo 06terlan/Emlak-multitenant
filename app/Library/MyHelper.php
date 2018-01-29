@@ -65,7 +65,7 @@ class MyHelper
     /*
     * check role
     */
-    public static function has_role($role)
+    /*public static function has_role($role)
     {
         $roles = [];
 
@@ -80,6 +80,22 @@ class MyHelper
         }
 
         return in_array($role, $roles) ? true : false;
+    }*/
+
+    /*
+    * check role
+    */
+    public static function has_priv($module, $priv)
+    {
+        if( $priv == MyClass::PRIV_SUPER_ADMIN_CAN_SEE || $priv == MyClass::PRIV_SUPER_ADMIN_CAN_EDIT )
+        {
+            if( Auth::user()->group->super_admin != 1 ) return false;
+
+            if($priv == MyClass::PRIV_SUPER_ADMIN_CAN_SEE) $priv = 2;
+            else $priv = 3;
+        }
+
+        return Auth::user()->group->getModulePriv($module) >= $priv ? true : false;
     }
 
     /*

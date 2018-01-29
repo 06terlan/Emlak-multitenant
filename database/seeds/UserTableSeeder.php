@@ -39,7 +39,6 @@ class UserTableSeeder extends Seeder
         $user->email = "example@example.com";
         $user->login = "admin";
         $user->password = Hash::make("123456");
-        $user->role = MyClass::SUPER_ADMIN_ROLE;
         $tenant->users()->save($user);
 
         //auto insert an admin
@@ -49,7 +48,6 @@ class UserTableSeeder extends Seeder
         $user->email = "example1@example.com";
         $user->login = "admin1";
         $user->password = Hash::make("123456");
-        $user->role = MyClass::ADMIN_ROLE;
         $tenant->users()->save($user);
     }
 }

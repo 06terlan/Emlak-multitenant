@@ -33,6 +33,11 @@ class HomeController extends Controller
         //$this->middleware('auth');
     }
 
+    public function home()
+    {
+        return view( 'admin.home');
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -51,7 +56,7 @@ class HomeController extends Controller
                 'proAnnouncementsToday' => ProAnnouncement::todayAnnouncements(false)->count(),
             ];
 
-        return view( 'admin.home', $data);
+        return view( 'admin.dashboard', $data);
     }
 
     private function getPostsChartData()

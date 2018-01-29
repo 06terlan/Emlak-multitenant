@@ -39,6 +39,39 @@
                                 @endforeach
                             </div>
                         </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Modullar</label>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                @foreach (\App\Library\MyClass::$modules as $typeK => $type)
+                                    @if( !isset($type['route']) )
+                                        <div class="col-md-12">
+                                            <label class="col-md-7">{{ $typeK }}:</label>
+                                            @foreach ($type as $K => $t)
+                                                @if( $t['priv'] > 3 && ($id == 0 || $group->super_admin != 1) ) @continue; @endif
+                                                <div class="col-md-12" style="padding-left: 50px">
+                                                    <label class="col-md-5">{{ $t['name'] }}:</label>
+                                                    <div class="col-md-7">
+                                                        Görmür <input type="radio" class="flat" name="available_modules[{{ $t['route'] }}]" id="{{ $t['route'] }}" value="1" {{ $id >0 && $group->getModulePriv($t['route']) == 1 ? 'checked' : '' }} />
+                                                        Görür <input type="radio" class="flat" name="available_modules[{{ $t['route'] }}]" id="{{ $t['route'] }}" value="2" {{ $id >0 && $group->getModulePriv($t['route']) == 2 ? 'checked' : '' }} />
+                                                        Əlavə edir <input type="radio" class="flat" name="available_modules[{{ $t['route'] }}]" id="{{ $t['route'] }}" value="3" {{ $id >0 && $group->getModulePriv($t['route']) == 3 ? 'checked' : '' }} />
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        @if( $type['priv'] > 3 && ($id == 0 || $group->super_admin != 1) ) @continue; @endif
+                                        <div class="col-md-12">
+                                            <label class="col-md-5">{{ $type['name'] }}:</label>
+                                            <div class="col-md-7">
+                                                Görmür <input type="radio" class="flat" name="available_modules[{{ $type['route'] }}]" id="{{ $type['route'] }}" value="1" {{ $id >0 && $group->getModulePriv($type['route']) == 1 ? 'checked' : '' }} />
+                                                Görür <input type="radio" class="flat" name="available_modules[{{ $type['route'] }}]" id="{{ $type['route'] }}" value="2" {{ $id >0 && $group->getModulePriv($type['route']) == 2 ? 'checked' : '' }} />
+                                                Əlavə edir <input type="radio" class="flat" name="available_modules[{{ $type['route'] }}]" id="{{ $type['route'] }}" value="3" {{ $id >0 && $group->getModulePriv($type['route']) == 3 ? 'checked' : '' }} />
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
 
                         <div class="ln_solid"></div>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">

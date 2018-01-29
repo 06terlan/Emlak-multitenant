@@ -90,6 +90,7 @@ class MSKController extends Controller
                 'group_name' => 'string|min:1|max:20',
                 'available_types' => 'array',
                 'available_building_types' => 'array',
+                'available_modules' => 'array',
             ]);
 
             if ($validator->fails())

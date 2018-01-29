@@ -251,7 +251,7 @@
 
                                 <a class="btn btn-default" href="{{ url()->previous() }}" type="reset"><i class="fa fa-arrow-circle-left"></i> Back</a>
 
-                                @if(Auth::user()->role == App\Library\MyClass::ADMIN_ROLE)
+                                @if( \App\Library\MyHelper::has_priv("announcement_pro", \App\Library\MyClass::PRIV_CAN_ADD) )
                                     <a href="{{ route('announcement_insert',['announcement'=>$announcement->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
 
                                     <a href="{{ route('announcement_pro_delete',['announcement'=>$announcement->id]) }}" class="btn btn-danger deleteAction"><i class="fa fa-trash"></i> Delete</a>

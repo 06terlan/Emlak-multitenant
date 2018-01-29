@@ -62,16 +62,18 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="item form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tenant</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select class="form-control" name="tenant" required="">
-                                    @foreach (\App\Models\Tenant::realTenants()->get() as $type)
-                                        <option value="{{ $type['id'] }}" {{ $type['id'] == $User['tenant_id']? 'selected':'' }}> {{ $type['company_name'] }} </option>
-                                    @endforeach
-                                </select>
+                        @if( Auth::user()->group->super_admin == 1 )
+                            <div class="item form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tenant</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select class="form-control" name="tenant" required="">
+                                        @foreach (\App\Models\Tenant::realTenants()->get() as $type)
+                                            <option value="{{ $type['id'] }}" {{ $type['id'] == $User['tenant_id']? 'selected':'' }}> {{ $type['company_name'] }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
+                        @endif
 
                         <div class="ln_solid"></div>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">

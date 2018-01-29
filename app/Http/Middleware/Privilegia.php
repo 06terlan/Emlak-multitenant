@@ -5,9 +5,9 @@ namespace App\Http\Middleware;
 use App\Library\MyHelper;
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use App\Library\MyClass;
+use Illuminate\Support\Facades\Route;
 
-class admin
+class Privilegia
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,9 @@ class admin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $module, $priv)
     {
-        
-        if( Auth::check() && MyHelper::has_role(MyClass::ADMIN_ROLE) )
+        if( MyHelper::has_priv($module, $priv) )
         {
             return $next($request);
         }

@@ -7,9 +7,9 @@
     @include('admin.error')
 
 
-
-    <a href="{{ route('announcement_insert',['announcement' => 0]) }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Add</a>
-
+    @if( \App\Library\MyHelper::has_priv("announcement_pro", \App\Library\MyClass::PRIV_CAN_ADD) )
+        <a href="{{ route('announcement_insert',['announcement' => 0]) }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Add</a>
+    @endif
 
 
     <div class="row">
@@ -135,7 +135,7 @@
                                         <th>
                                             <a style="width: 24px;" href="{{ route('announcement_pro_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
 
-                                            @if(Auth::user()->role == App\Library\MyClass::ADMIN_ROLE)
+                                            @if( \App\Library\MyHelper::has_priv("announcement_pro", \App\Library\MyClass::PRIV_CAN_ADD) )
                                                 <a style="width: 24px;" href="{{ route('announcement_insert',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
 
                                                 <a style="width: 24px;" href="{{ route('announcement_pro_delete',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
