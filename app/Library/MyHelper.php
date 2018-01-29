@@ -87,7 +87,7 @@ class MyHelper
     */
     public static function has_priv($module, $priv)
     {
-        if( $priv == MyClass::PRIV_SUPER_ADMIN_CAN_SEE || $priv == MyClass::PRIV_SUPER_ADMIN_CAN_EDIT )
+        if( $priv == MyClass::PRIV_SUPER_ADMIN_CAN_SEE || $priv == MyClass::PRIV_SUPER_ADMIN_CAN_ADD )
         {
             if( Auth::user()->group->super_admin != 1 ) return false;
 

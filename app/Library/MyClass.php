@@ -160,7 +160,7 @@ class MyClass
 
     const PRIV_SUPER_ADMIN_CAN_SEE = 4;
 
-    const PRIV_SUPER_ADMIN_CAN_EDIT = 5;
+    const PRIV_SUPER_ADMIN_CAN_ADD = 5;
 
 
 

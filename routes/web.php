@@ -49,22 +49,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function(){
 
 
     //tenants
-    Route::group(['middleware' => 'super_admin'],function(){
-        Route::get('tenants', 'Admin\TenantController@index')->name('tenant');
-        Route::get('tenant/addEdit/{tenant}', 'Admin\TenantController@addEdit')->where('tenant','[0-9]{1,}')->name('tenant_add_edit');
-        Route::post('tenant/addEdit/{tenant}', 'Admin\TenantController@addEditTenant')->where('tenant','[0-9]{1,}')->name('tenant_add_edit_act');
-        Route::get('tenant/delete/{tenant}', 'Admin\TenantController@delete')->where('tenant','[0-9]{1,}')->name('tenant_delete');
-    });
+    Route::get('tenants', 'Admin\TenantController@index')->name('tenant')->middleware('priv:tenant,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_SEE);
+    Route::get('tenant/addEdit/{tenant}', 'Admin\TenantController@addEdit')->where('tenant','[0-9]{1,}')->name('tenant_add_edit')->middleware('priv:tenant,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);
+    Route::post('tenant/addEdit/{tenant}', 'Admin\TenantController@addEditTenant')->where('tenant','[0-9]{1,}')->name('tenant_add_edit_act')->middleware('priv:tenant,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);
+    Route::get('tenant/delete/{tenant}', 'Admin\TenantController@delete')->where('tenant','[0-9]{1,}')->name('tenant_delete')->middleware('priv:tenant,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);
 
     //search
     Route::get('search', 'Admin\SearchController@indexAction')->name('search')->middleware('priv:search,'.\App\Library\MyClass::PRIV_CAN_SEE);
 
     //msk
-    Route::get('msk/makler', 'Admin\MSKController@makler')->name('msk_makler');
-    Route::group(['middleware' => 'admin'],function() {
-        Route::any('msk/makler/addEdit/{makler}', 'Admin\MSKController@maklerAddEdit')->where('makler', '[0-9]{1,}')->name('msk_makler_add_edit');
-        Route::get('msk/makler/delete/{makler}', 'Admin\MSKController@maklerDelete')->where('makler', '[0-9]{1,}')->name('msk_makler_delete');
-    });
+    Route::get('msk/makler', 'Admin\MSKController@makler')->name('msk_makler')->middleware('priv:msk_makler,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_SEE);
+    Route::any('msk/makler/addEdit/{makler}', 'Admin\MSKController@maklerAddEdit')->where('makler', '[0-9]{1,}')->name('msk_makler_add_edit')->middleware('priv:msk_makler,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);
+    Route::get('msk/makler/delete/{makler}', 'Admin\MSKController@maklerDelete')->where('makler', '[0-9]{1,}')->name('msk_makler_delete')->middleware('priv:msk_makler,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);
 
     Route::get('msk/group', 'Admin\MSKController@group')->name('msk_group')->middleware('priv:msk_group,'.\App\Library\MyClass::PRIV_CAN_SEE);
     Route::any('msk/group/addEdit/{group}', 'Admin\MSKController@groupAddEdit')->where('group', '[0-9]{1,}')->name('msk_group_add_edit')->middleware('priv:msk_group,'.\App\Library\MyClass::PRIV_CAN_ADD);

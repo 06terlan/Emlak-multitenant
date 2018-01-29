@@ -3,7 +3,7 @@
 @section('content')
     @include('admin.error')
 
-    @if(Auth::user()->role == App\Library\MyClass::ADMIN_ROLE && Auth::user()->id == 2)
+    @if( \App\Library\MyHelper::has_priv('msk_makler', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
         <a href="{{ route('msk_makler_add_edit',['makler' => 0]) }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Add</a>
     @endif
 
@@ -35,7 +35,7 @@
                                         <td>{{ $makle->fullname }}</td>
                                         <td>{{ $makle->number }}</td>
                                         <th>
-                                            @if(Auth::user()->role == App\Library\MyClass::ADMIN_ROLE && Auth::user()->id == 2)
+                                            @if( \App\Library\MyHelper::has_priv('msk_makler', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
                                                 <a href="{{ route('msk_makler_add_edit',['makle' => $makle->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
                                                 <a href="{{ route('msk_makler_delete',['makle' => $makle->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
                                             @endif

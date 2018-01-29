@@ -2,7 +2,10 @@
 
 @section('content')
     @include('admin.error')
-    <a href="{{ route('tenant_add_edit',['tenant' => 0]) }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Add</a>
+
+    @if( \App\Library\MyHelper::has_priv('tenant', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
+        <a href="{{ route('tenant_add_edit',['tenant' => 0]) }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Add</a>
+    @endif
 
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -53,8 +56,10 @@
                                         <td>{{ \App\Library\Date::d($tenan->last_date) }}</td>
                                         <td>{{ \App\Library\Date::d($tenan->created_at, "d-m-Y H:i") }}</td>
                                         <th>
-                                            <a href="{{ route('tenant_add_edit', ['tenant' => $tenan->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
-                                            <a href="{{ route('tenant_delete', ['tenant' => $tenan->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
+                                            @if( \App\Library\MyHelper::has_priv('tenant', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
+                                                <a href="{{ route('tenant_add_edit', ['tenant' => $tenan->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('tenant_delete', ['tenant' => $tenan->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
+                                            @endif
                                         </th>
                                     </tr>
                                 @endforeach
