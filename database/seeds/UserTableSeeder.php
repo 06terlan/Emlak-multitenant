@@ -20,28 +20,36 @@ class UserTableSeeder extends Seeder
         $tenant->type = 'big_company';
         $tenant->save();
 
+
+        //super admin group
+        $groupSuper = factory(\App\Models\Group::class)->make();
+        $groupSuper->group_name = "Super Admin";
+        $groupSuper->super_admin = 1;
+        $tenant->groups()->save($groupSuper);
+
+        //admin group
+        $group = factory(\App\Models\Group::class)->make();
+        $tenant->groups()->save($group);
+
+
         //auto insert an super admin
         $user = new User();
+        $user->group_id = $groupSuper->id;
         $user->firstname = "SuperAdmin";
         $user->email = "example@example.com";
         $user->login = "admin";
         $user->password = Hash::make("123456");
-        $user->availableTypes = json_encode(array_keys(MyClass::$announcementTypes), false);
-        $user->availableBuildingTypes = json_encode(array_keys(MyClass::$buldingType), false);
         $user->role = MyClass::SUPER_ADMIN_ROLE;
         $tenant->users()->save($user);
-        //$user->save();
 
         //auto insert an admin
         $user = new User();
+        $user->group_id = $group->id;
         $user->firstname = "Admin";
         $user->email = "example1@example.com";
         $user->login = "admin1";
         $user->password = Hash::make("123456");
-        $user->availableTypes = json_encode(array_keys(MyClass::$announcementTypes), false);
-        $user->availableBuildingTypes = json_encode(array_keys(MyClass::$buldingType), false);
         $user->role = MyClass::ADMIN_ROLE;
         $tenant->users()->save($user);
-        //$user->save();
     }
 }

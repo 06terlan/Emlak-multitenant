@@ -19,8 +19,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'firstname' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'login' => $faker->unique()->text(6),
-        'availableTypes' => '[]',
-        'availableBuildingTypes' => '[]',
         'role' => \App\Library\MyClass::ADMIN_ROLE,
         'password' => $password ?: $password = bcrypt('12345'),
         'remember_token' => str_random(10),
@@ -104,5 +102,15 @@ $factory->define(App\Models\Tenant::class, function (Faker\Generator $faker) {
         'company_name' => $faker->company,
         'type' => array_rand(\App\Library\MyClass::$companyTypes, 1),
         'last_date' => \App\Library\Date::d(null, "Y-m-t")
+    ];
+});
+
+$factory->define(App\Models\Group::class, function (Faker\Generator $faker) {
+    return [
+        'group_name' => "Admin",
+        'available_types' => json_encode(array_keys(\App\Library\MyClass::$announcementTypes), false),
+        'available_building_types' => json_encode(array_keys(\App\Library\MyClass::$buldingType), false),
+        'available_modules' => '[]',
+        'tenant_id' => 0,
     ];
 });

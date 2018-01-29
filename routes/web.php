@@ -14,7 +14,7 @@
 
 /* Admin panel */
 Auth::routes();
-Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function(){
 
 	//dashboard
 	Route::get('{home?}', 'Admin\HomeController@index')->where('home','home');
@@ -66,6 +66,10 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'auth' ], function(){
         Route::any('msk/makler/addEdit/{makler}', 'Admin\MSKController@maklerAddEdit')->where('makler', '[0-9]{1,}')->name('msk_makler_add_edit');
         Route::get('msk/makler/delete/{makler}', 'Admin\MSKController@maklerDelete')->where('makler', '[0-9]{1,}')->name('msk_makler_delete');
     });
+
+    Route::get('msk/group', 'Admin\MSKController@group')->name('msk_group');
+    Route::any('msk/group/addEdit/{group}', 'Admin\MSKController@groupAddEdit')->where('group', '[0-9]{1,}')->name('msk_group_add_edit');
+    Route::get('msk/group/delete/{group}', 'Admin\MSKController@groupDelete')->where('group', '[0-9]{1,}')->name('msk_group_delete');
 
     //ajax
     Route::post('announcement/getLast', 'Admin\AjaxController@getLastAnnouncement')->name('getLastAnnouncementAjax');

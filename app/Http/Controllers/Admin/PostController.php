@@ -18,8 +18,8 @@ class PostController extends Controller
         $announcements = Announcement::realAnnouncements()
             ->select('*', DB::raw('(SELECT 1 FROM `numbers` INNER JOIN msk_maklers ON msk_maklers.pure_number = numbers.pure_number WHERE numbers.announcement_id = announcements.id limit 1) as is_makler'));
 
-        $announcements->whereIn('type', Auth::user()->getAvailableTypes());
-        $announcements->whereIn('buldingType', Auth::user()->getAvailableBuildingTypes());
+        $announcements->whereIn('type', json_decode(Auth::user()->group->available_types) );
+        $announcements->whereIn('buldingType', json_decode(Auth::user()->group->available_building_types) );
 
         if($request->has('header')) $announcements->where('header', 'like', '%'.$request->get('header').'%');
         if($request->has('content')) $announcements->where('content', 'like', '%'.$request->get('content').'%');

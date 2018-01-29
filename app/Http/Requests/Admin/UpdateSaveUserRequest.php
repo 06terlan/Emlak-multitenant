@@ -4,6 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class UpdateSaveUserRequest extends FormRequest
 {
@@ -32,10 +33,7 @@ class UpdateSaveUserRequest extends FormRequest
             'name' => 'required|min:1|string',
             'login' => 'required|min:5|string',
             'email' => 'required|email|string',
-            //'password' => 'required|string',
-            'role' => 'required|string|in:1,2',
-            'availableTypes' => 'array',
-            'availableBuildingTypes' => 'array',
+            'group_id' => 'required|exists:groups,id,tenant_id,'.Auth::user()->tenant_id
         ];
     }
 }

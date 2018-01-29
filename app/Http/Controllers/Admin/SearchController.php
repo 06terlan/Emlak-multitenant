@@ -20,8 +20,8 @@ class SearchController extends Controller
 
         $announcements = $this->announcemetM == 1 ? ProAnnouncement::realAnnouncements(false) : Announcement::realAnnouncements(false);
 
-        $announcements->whereIn('type', Auth::user()->getAvailableTypes());
-        $announcements->whereIn('buldingType', Auth::user()->getAvailableBuildingTypes());
+        $announcements->whereIn('type', json_decode(Auth::user()->group->available_types) );
+        $announcements->whereIn('buldingType', json_decode(Auth::user()->group->available_building_types) );
 
         $this->getFilters($announcements, $request);
         $this->getSorting($announcements, $request);

@@ -55,9 +55,9 @@
                         <div class="item form-group">
                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Role</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select class="form-control" name="role" required="">
-                                    @foreach (\App\Library\MyClass::$roles as $typeK => $type)
-                                        <option value="{{ $typeK }}" {{ $typeK == $User['role']? 'selected':'' }}> {{ $type }} </option>
+                                <select class="form-control" name="group_id" required="">
+                                    @foreach (\App\Models\Group::realData()->get() as $type)
+                                        <option value="{{ $type['id'] }}" {{ $type['id'] == $User['group_id']? 'selected':'' }}> {{ $type['group_name'] }} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -72,22 +72,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="item form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Görəcəyi kategorialar</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
-                                    <input type="checkbox" name="availableTypes[]" value="{{ $typeK }}" {{ $id > 0 && in_array($typeK,$User->getAvailableTypes()) ? 'checked' : '' }} class="flat" /> {{ $type }} <br/>
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Görəcəyi elanın tipləri</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                @foreach (\App\Library\MyClass::$buldingType as $typeK => $type)
-                                    <input type="checkbox" name="availableBuildingTypes[]" value="{{ $typeK }}" {{ $id > 0 && in_array($typeK,$User->getAvailableBuildingTypes()) ? 'checked' : '' }} class="flat" /> {{ $type }} <br/>
-                                @endforeach
-                            </div>
-                        </div>
+
                         <div class="ln_solid"></div>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group">

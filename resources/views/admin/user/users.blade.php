@@ -24,8 +24,8 @@
                                     <th>Full Name</th>
                                     <th>Email</th>
                                     <th>Login</th>
-                                    <th>Role</th>
-                                    @if( \App\Library\MyHelper::has_role(\App\Library\MyClass::SUPER_ADMIN_ROLE) )
+                                    <th>Group</th>
+                                    @if( Auth::user()->group->super_admin == 1 )
                                         <th>Tenant</th>
                                     @endif
                                     <th>Action</th>
@@ -37,8 +37,15 @@
                                     <th><input class="form-control formFind" name="fullname" value="{{ $request->get("fullname") }}" placeholder="Full Name"></th>
                                     <th><input class="form-control formFind" name="email" value="{{ $request->get("email") }}" placeholder="Email"></th>
                                     <th><input class="form-control formFind" name="login" value="{{ $request->get("login") }}" placeholder="Login"></th>
-                                    <th><input class="form-control formFind" name="role" value="{{ $request->get("role") }}" placeholder="Role"></th>
-                                    @if( \App\Library\MyHelper::has_role(\App\Library\MyClass::SUPER_ADMIN_ROLE) )
+                                    <th>
+                                        <select class="form-control formFind" name="group_id">
+                                            <option></option>
+                                            @foreach (\App\Models\Group::realData()->get() as $type)
+                                                <option value="{{ $type['id'] }}" {{ $type['id'] == $request->get("group_id") ? 'selected':'' }}> {{ $type['group_name'] }} </option>
+                                            @endforeach
+                                        </select>
+                                    </th>
+                                    @if( Auth::user()->group->super_admin == 1 )
                                         <th>
                                             <select class="form-control formFind" name="tenant">
                                                 <option></option>
@@ -58,8 +65,8 @@
                                         <td>{{ $user->fullname() }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->login }}</td>
-                                        <td>{{ $user->getRole() }}</td>
-                                        @if( \App\Library\MyHelper::has_role(\App\Library\MyClass::SUPER_ADMIN_ROLE) )
+                                        <td>{{ $user->group->group_name }}</td>
+                                        @if( Auth::user()->group->super_admin == 1 )
                                             <td>{{ $user->tenant->company_name }}</td>
                                         @endif
                                         <th>

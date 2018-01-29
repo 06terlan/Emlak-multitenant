@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Library\MyHelper;
+use App\Models\Group;
 use App\Models\Tenant;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -62,19 +63,14 @@ class User extends Authenticatable
             unlink( public_path() . MyClass::USER_PROFIL_PIC_DIR . $this->thumb );
     }
 
-    public function getAvailableTypes()
-    {
-        return ($this->availableTypes == "" ? [] : json_decode($this->availableTypes));
-    }
-
-    public function getAvailableBuildingTypes()
-    {
-        return ($this->availableBuildingTypes == "" ? [] : json_decode($this->availableBuildingTypes));
-    }
-
     public function tenant()
     {
         return $this->belongsTo(Tenant::class);
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
     }
 
     /*public function delete()

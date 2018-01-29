@@ -38,6 +38,7 @@
                     <li><a><i class="fa fa-wrench"></i> MSK <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none;">
                             <li><a href="{{ route('msk_makler') }}">Maklerlər</a></li>
+                            <li><a href="{{ route('msk_group') }}">Gruplar</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -27,7 +27,7 @@ class UsersController extends Controller
         if($request->has('fullname')) $user->where(DB::raw('concat(COALESCE(firstname,"")," ",COALESCE(surname,""))'),'like','%'.$request->get('fullname').'%');
         if($request->has('email')) $user->where('email', 'like', '%'.$request->get('email').'%');
         if($request->has('login')) $user->where('login', 'like', '%'.$request->get('login').'%');
-        if($request->has('role')) $user->where(DB::raw(MyHelper::createCase(MyClass::$roles, 'role')), 'like', '%'.$request->get('role').'%');
+        if($request->has('group_id')) $user->where('group_id', $request->get('group_id'));
         if($request->has('tenant')) $user->where('tenant_id', $request->get('tenant'));
 
         $user = $user->paginate( MyClass::ADMIN_ROW_COUNT );
@@ -76,9 +76,8 @@ class UsersController extends Controller
             $user->email = Input::get("email");
             $user->login = Input::get("login");
             $user->password = Hash::make(Input::get("password"));
-            $user->availableTypes = json_encode(Input::get("availableTypes",[]));
-            $user->availableBuildingTypes = json_encode(Input::get("availableBuildingTypes",[]));
-            $user->role = Input::get("role");
+            $user->group_id = Input::get("group_id");
+            $user->role = 1;
 
             $user->save();
         }
@@ -93,9 +92,7 @@ class UsersController extends Controller
             $user->surname = Input::get("surname","");
             $user->email = Input::get("email");
             $user->login = Input::get("login");
-            $user->availableTypes = json_encode(Input::get("availableTypes",[]));
-            $user->availableBuildingTypes = json_encode(Input::get("availableBuildingTypes",[]));
-            $user->role = Input::get("role");
+            $user->group_id = Input::get("group_id");
 
             if( !empty(Input::get("password","")) )
             {

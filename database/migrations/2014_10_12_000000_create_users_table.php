@@ -22,16 +22,16 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('thumb',50)->nullable();
             $table->tinyInteger('role');
-            $table->json('availableTypes');
-            $table->json('availableBuildingTypes');
             $table->boolean('deleted')->default(0);
             $table->unsignedInteger('tenant_id');
+            $table->unsignedInteger('group_id');
 
             $table->rememberToken();
             $table->timestamps();
 
             //
             $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('no action');
         });
     }
 

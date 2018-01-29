@@ -85,9 +85,9 @@ class MyHelper
     /*
     * add tenant filter
     */
-    public static function addTenantFilter($query)
+    public static function addTenantFilter($query, $strict = false)
     {
-        if( self::has_role(MyClass::SUPER_ADMIN_ROLE) ) return $query;
-        return $query->where('tenant_id', Auth::user()->tenant->id);
+        if( $strict === false && Auth::user()->group->super_admin == 1 ) return $query;
+        return $query->where('tenant_id', Auth::user()->tenant_id);
     }
 }
