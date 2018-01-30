@@ -77,6 +77,7 @@ $factory->define(App\Models\ProAnnouncement::class, function (Faker\Generator $f
         'floorCount' => $faker->numberBetween(1,20),
         'documentType' => array_rand(\App\Library\MyClass::$documentTypes, 1),
         'repairing' => array_rand(\App\Library\MyClass::$repairingTypes, 1),
+        'locations' => (random_int(4000000000000000,4099999999999999)/100000000000000) . "," . (random_int(4900000000000000,4999999999999999)/100000000000000),
         'owner' => $faker->name,
         'status' => $status,
         'date' => \App\Library\Date::d(null, "Y-m-d")
@@ -105,11 +106,28 @@ $factory->define(App\Models\Tenant::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Models\Group::class, function (Faker\Generator $faker) {
+
+    $privArr = [];
+    foreach (\App\Library\MyClass::$modules as $module)
+    {
+        if( !isset($module['route']) )
+        {
+            foreach ($module as $m)
+            {
+                $privArr[$m['route']] = 3;
+            }
+        }
+        else
+        {
+            $privArr[$module['route']] = 3;
+        }
+    }
+
     return [
         'group_name' => "Admin",
         'available_types' => json_encode(array_keys(\App\Library\MyClass::$announcementTypes), false),
         'available_building_types' => json_encode(array_keys(\App\Library\MyClass::$buldingType), false),
-        'available_modules' => '[]',
+        'available_modules' => json_encode($privArr),
         'tenant_id' => 0,
     ];
 });

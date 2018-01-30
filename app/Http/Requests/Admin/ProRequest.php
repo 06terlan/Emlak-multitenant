@@ -86,7 +86,11 @@ class ProRequest extends FormRequest
 
             'user'          => 'required',
 
-            'from'          => 'min:0,integer'
+            'from'          => 'min:0,integer',
+
+            'loc_lat'       => 'required|numeric',
+
+            'loc_lng'       => 'required|numeric'
         ];
 
     }

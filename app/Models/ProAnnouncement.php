@@ -117,5 +117,10 @@ class ProAnnouncement extends Model
     {
         return $this->hasMany(ProNumber::class);
     }
+
+    public function getLocations()
+    {
+        return explode(",", $this->locations) > 1 ? explode(",", $this->locations) : ['0', '0'];
+    }
 }
 

@@ -142,6 +142,8 @@ class ProController extends Controller
 
         $newAnnouncement->owner = Input::get("owner");
 
+        $newAnnouncement->locations = Input::get("loc_lat") . "," . Input::get("loc_lng");
+
         /*if( $request->get('from') > 0 )
         {
             $ann = Announcement::find($request->get('from'));
@@ -204,6 +206,8 @@ class ProController extends Controller
         $newAnnouncement->owner = Input::get("owner");
 
         $newAnnouncement->link = $announcement->link;
+
+        $newAnnouncement->locations = Input::get("loc_lat") . "," . Input::get("loc_lng");
 
         $newAnnouncement->save();
 
