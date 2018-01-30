@@ -110,9 +110,9 @@ $factory->define(App\Models\Group::class, function (Faker\Generator $faker) {
     $privArr = [];
     foreach (\App\Library\MyClass::$modules as $module)
     {
-        if( !isset($module['route']) )
+        if( isset($module['child']) )
         {
-            foreach ($module as $m)
+            foreach ($module['child'] as $m)
             {
                 $privArr[$m['route']] = 3;
             }

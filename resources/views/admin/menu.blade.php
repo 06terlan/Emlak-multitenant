@@ -26,11 +26,11 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                     <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
-                    @foreach(\App\Library\MyClass::$modules as $key => $val)
-                        @if( !isset($val['route']) )
-                            <li><a><i class="fa fa-wrench"></i> {{ $key }} <span class="fa fa-chevron-down"></span></a>
+                    @foreach(\App\Library\MyClass::$modules as $val)
+                        @if( isset($val['child']) )
+                            <li><a><i class="{{ $val['icon'] }}"></i> {{ $val['name'] }} <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none;">
-                                    @foreach($val as $k => $v)
+                                    @foreach($val['child'] as $k => $v)
                                         @if( \App\Library\MyHelper::has_priv($v['route'], $v['priv']) )
                                             <li><a href="{{ route($v['route']) }}">{{ $v['name'] }}</a></li>
                                         @endif
@@ -39,7 +39,7 @@
                             </li>
                         @else
                             @if( \App\Library\MyHelper::has_priv($val['route'], $val['priv']) )
-                                <li><a href="{{ route($val['route']) }}"><i class="fa fa-home"></i> {{ $val['name'] }}</a></li>
+                                <li><a href="{{ route($val['route']) }}"><i class="{{ $val['icon'] }}"></i> {{ $val['name'] }}</a></li>
                             @endif
                         @endif
                     @endforeach

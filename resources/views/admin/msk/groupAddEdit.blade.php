@@ -43,10 +43,10 @@
                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Modullar</label>
                             <div class="col-md-9 col-sm-12 col-xs-12">
                                 @foreach (\App\Library\MyClass::$modules as $typeK => $type)
-                                    @if( !isset($type['route']) )
+                                    @if( isset($type['child']) )
                                         <div class="col-md-12">
-                                            <label class="col-md-7">{{ $typeK }}:</label>
-                                            @foreach ($type as $K => $t)
+                                            <label class="col-md-7"><i class="{{ $type['icon'] }}"></i> {{ $typeK }}:</label>
+                                            @foreach ($type['child'] as $K => $t)
                                                 @if( $t['priv'] > 3 && ($id == 0 || $group->super_admin != 1) ) @continue; @endif
                                                 <div class="col-md-12" style="padding-left: 50px">
                                                     <label class="col-md-5">{{ $t['name'] }}:</label>
@@ -61,7 +61,7 @@
                                     @else
                                         @if( $type['priv'] > 3 && ($id == 0 || $group->super_admin != 1) ) @continue; @endif
                                         <div class="col-md-12">
-                                            <label class="col-md-5">{{ $type['name'] }}:</label>
+                                            <label class="col-md-5"><i class="{{ $type['icon'] }}"></i> {{ $type['name'] }}:</label>
                                             <div class="col-md-7">
                                                 Görmür <input type="radio" class="flat" name="available_modules[{{ $type['route'] }}]" id="{{ $type['route'] }}" value="1" {{ $id >0 && $group->getModulePriv($type['route']) == 1 ? 'checked' : '' }} />
                                                 &nbsp;&nbsp;&nbsp;&nbsp; Görür <input type="radio" class="flat" name="available_modules[{{ $type['route'] }}]" id="{{ $type['route'] }}" value="2" {{ $id >0 && $group->getModulePriv($type['route']) == 2 ? 'checked' : '' }} />
