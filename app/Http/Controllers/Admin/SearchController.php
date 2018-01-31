@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\MapRequest;
 use App\Http\Requests\Admin\SearchRequest;
 use App\Library\Date;
 use App\Library\MyHelper;
@@ -103,5 +104,64 @@ class SearchController extends Controller
             //    $announcements->orderBy('area', 'asc');
             //    break;
         }
+    }
+
+    public function mapAction(MapRequest $request)
+    {
+        $markers = ProAnnouncement::realAnnouncements();
+
+        $markers->whereIn('type', json_decode(Auth::user()->group->available_types) );
+        $markers->whereIn('buldingType', json_decode(Auth::user()->group->available_building_types) );
+
+        $this->mapGetFilters($markers, $request);
+
+        $data = [
+            'request' => $request,
+            'markers' => $markers->take(1000)->get()
+        ];
+
+        return view('admin.search.map', $data);
+    }
+
+    public function mapGetFilters($markers, $request)
+    {
+        //filters
+
+        if($request->has('content')) $markers->where('content', 'like', '%'.$request->get('content').'%');
+        if($request->has('type')) $markers->where('type', $request->get('type'));
+        if($request->has('buldingType')) $markers->where('buldingType', $request->get('buldingType'));
+        if($request->has('amount1')) $markers->where("amount", '>=', $request->get('amount1'));
+        if($request->has('amount2')) $markers->where("amount", '<=', $request->get('amount2'));
+        if($request->has('owner')) $markers->where("owner", 'like', '%'.$request->get('owner').'%');
+        if($request->has('mobnom'))  $markers->whereHas('numbers', function ($query) use ($request){ $query->where('pure_number', 'like', '%'.MyHelper::pureNumber($request->get('mobnom')).'%'); });
+
+        if($request->has('date1')) $markers->where("date", '>=' ,Date::d($request->get('date1'), 'Y-m-d'));
+        if($request->has('date2')) $markers->where("date", '<=' ,Date::d($request->get('date2'), 'Y-m-d'));
+
+
+        if($request->has('status')) $markers->where('status', $request->get('status'));
+
+        if($request->has('documentType')) $markers->where('documentType', $request->get('documentType'));
+
+        if($request->has('user')) $markers->where('userId', $request->get('user'));
+
+        if($request->has('repairing')) $markers->where('repairing', $request->get('repairing'));
+
+        if($request->has('city')) $markers->where("city", 'like', '%'.$request->get('city').'%');
+
+        if($request->has('area1')) $markers->where("area", '>=', $request->get('area1'));
+        if($request->has('area2')) $markers->where("area", '<=', $request->get('area2'));
+
+        if($request->has('roomCount1')) $markers->where("roomCount", '>=', $request->get('roomCount1'));
+        if($request->has('roomCount2')) $markers->where("roomCount", '<=', $request->get('roomCount2'));
+
+        if($request->has('floorCount1')) $markers->where("floorCount", '>=', $request->get('floorCount1'));
+        if($request->has('floorCount2')) $markers->where("floorCount", '<=', $request->get('floorCount2'));
+
+        if($request->has('metro')) $markers->where("metro", 'like', '%'.$request->get('metro').'%');
+
+        if($request->has('locatedFloor1')) $markers->where("locatedFloor", '>=', $request->get('locatedFloor1'));
+        if($request->has('locatedFloor2')) $markers->where("locatedFloor", '<=', $request->get('locatedFloor2'));
+
     }
 }
