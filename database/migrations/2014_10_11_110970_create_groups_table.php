@@ -17,9 +17,9 @@ class CreateGroupsTable extends Migration
             $table->increments('id');
             $table->string("group_name",20);
             $table->boolean("super_admin")->default(0);
-            $table->json("available_types");
-            $table->json("available_building_types");
-            $table->json("available_modules");
+            $table->text("available_types");
+            $table->text("available_building_types");
+            $table->text("available_modules");
             $table->unsignedInteger('tenant_id');
 
             $table->timestamps();

@@ -17,16 +17,13 @@ class Announcement extends Migration
             $table->increments('id');
             $table->string('link');
             $table->string('header',200)->nullable();
-            //$table->string('short_content',500)->nullable();
             $table->longText('content')->nullable();
             //features
-            //$table->string('type',50)->nullable();
             $table->string('site',100)->nullable();
             $table->string('type',50)->nullable();
             $table->tinyInteger("buldingType")->nullable();
             $table->decimal('amount',10,2)->nullable();
             $table->string("owner", 40)->nullable();
-            //$table->json("mobnom")->nullable();
 
             $table->date('date')->nullable();
             $table->boolean('deleted')->default(0);

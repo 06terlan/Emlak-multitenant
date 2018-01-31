@@ -208,14 +208,9 @@
 
                     <div class="row">
 
-                        <div class="col-md-12" style="height: 500px;">
+                        <div class="col-md-12 col-xs-12" style="height: 500px;">
                             <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                             <div id="map" style="width: 100%;height: 100%"></div>
-                            @foreach ($markers as $marker )
-
-
-
-                            @endforeach
                         </div>
                     </div>
 
