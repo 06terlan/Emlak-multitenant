@@ -106,7 +106,9 @@ class ProController extends Controller
         }
         else
         {
-            $newAnnouncement = ProAnnouncement::find($announcement);
+            $newAnnouncement = ProAnnouncement::realAnnouncements(false)->find($announcement);
+
+            if( !$newAnnouncement->exists() ) return response()->view("errors.403",[],403);
         }
 
         $newAnnouncement->userId = Input::get("user");
@@ -144,13 +146,7 @@ class ProController extends Controller
 
         $newAnnouncement->locations = Input::get("loc_lat") . "," . Input::get("loc_lng");
 
-        /*if( $request->get('from') > 0 )
-        {
-            $ann = Announcement::find($request->get('from'));
-            $newAnnouncement->link = $ann->link;
-            $ann->deleted = 1;
-            $ann->save();
-        }*/
+        $newAnnouncement->tenant_id = Auth::user()->tenant_id;
 
         $newAnnouncement->save();
 
@@ -208,6 +204,8 @@ class ProController extends Controller
         $newAnnouncement->link = $announcement->link;
 
         $newAnnouncement->locations = Input::get("loc_lat") . "," . Input::get("loc_lng");
+
+        $newAnnouncement->tenant_id = Auth::user()->tenant_id;
 
         $newAnnouncement->save();
 

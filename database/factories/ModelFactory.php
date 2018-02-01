@@ -63,9 +63,11 @@ $factory->define(App\Models\MskMakler::class, function (Faker\Generator $faker) 
 $factory->define(App\Models\ProAnnouncement::class, function (Faker\Generator $faker) {
 
     $status = array_rand(\App\Library\MyClass::$buldingType, 1);
+    $user = \App\User::all()->random();
 
     return [
-        'userId' => \App\User::all()->random()->id,
+        'userId' => $user->id,
+        'tenant_id' => $user->tenant_id,
         'header' => $faker->text(200),
         'content' => $faker->paragraph(10),
         'type' => array_rand(\App\Library\MyClass::$announcementTypes, 1),

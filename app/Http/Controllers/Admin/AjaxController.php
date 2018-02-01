@@ -18,9 +18,9 @@ class AjaxController extends Controller
             $lastId = $request->get('lastId');
             $view = "";
 
-            $announcements = Announcement::where('date' , Date::d(null, "Y-m-d"))
+            $announcements = Announcement::todayAnnouncements(true)
                 ->where('id', '>', $request->get('lastId'))
-                ->orderBy('id', 'asc')->take(10)->get()->toArray();
+                ->take(10)->get()->toArray();
 
             if(count($announcements) > 0)
             {

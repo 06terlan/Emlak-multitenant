@@ -13,15 +13,13 @@ class Announcement extends Model
     {
         if(!$order) return self::where('deleted' , 0);
 
-    	return self::where('deleted' , 0)->orderBy('created_at', 'desc');
+    	return self::where('deleted' , 0)->orderBy('id', 'desc');
     }
 
     //today
     public static function todayAnnouncements($order = true)
     {
-        if(!$order) return self::where('date' , Date::d(null, "Y-m-d"));
-
-        return self::where('date' , Date::d(null, "Y-m-d"))->orderBy('id', 'desc');
+        return self::realAnnouncements($order)->where('date' , Date::d(null, "Y-m-d"));
     }
 
     public static function isLinkExist($link)

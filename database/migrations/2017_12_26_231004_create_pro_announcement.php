@@ -38,10 +38,12 @@ class CreateProAnnouncement extends Migration
             $table->tinyInteger("status");
 
             $table->boolean('deleted')->default(0);
+            $table->unsignedInteger('tenant_id');
             $table->timestamps();
 
             //
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
         });
     }
 

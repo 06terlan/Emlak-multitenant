@@ -9,6 +9,7 @@ namespace App\Models;
 use App\Library\Date;
 use App\Library\MyClass;
 
+use App\Library\MyHelper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -25,17 +26,15 @@ class ProAnnouncement extends Model
     //not deleted datas
     public static function realAnnouncements($order = true)
     {
-        if(!$order) return self::where('deleted' , 0);
+        if(!$order) return MyHelper::addTenantFilter( self::where('deleted' , 0) );
 
-        return self::where('deleted' , 0)->orderBy('id', 'desc');
+        return MyHelper::addTenantFilter( self::where('deleted' , 0)->orderBy('id', 'desc') );
     }
 
     //today
     public static function todayAnnouncements($order = true)
     {
-        if(!$order) return self::realAnnouncements(false)->where(DB::raw('CAST(created_at as DATE)') , Date::d(null, "Y-m-d"));
-
-        return self::realAnnouncements(false)->where(DB::raw('CAST(created_at as DATE)') , Date::d(null, "Y-m-d"))->orderBy('id', 'desc');
+        return  self::realAnnouncements($order)->where(DB::raw('CAST(created_at as DATE)') , Date::d(null, "Y-m-d"));
     }
 
     public function getStatus()
