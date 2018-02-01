@@ -291,7 +291,8 @@
                 markers[ {{ $loop->iteration }} ] = new google.maps.Marker({
                     position: {lat: {{ $marker->getLocations()[0] }}, lng: {{ $marker->getLocations()[1] }} },
                     map: map,
-                    title: 'Burada',
+                    title: 'Əmlak',
+                    icon: "{{  url('/admin/images/map/' . $marker->type . '.png') }}"
                 });
                 infowindows[ {{ $loop->iteration }} ] = new google.maps.InfoWindow({
                     content: '<div id="content" style="width: 500px;">\
