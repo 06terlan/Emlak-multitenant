@@ -42,11 +42,14 @@ class PostController extends Controller
         return view('admin.post.announcement_info',$dataToBlade);
     }
 
-    public function delete($id)
+    public function delete($announcement)
     {
-        $post = Announcement::find($id);
-        $post->deleted = 1;
-        $post->save();
+        $announcement = Announcement::realAnnouncements(false)->find($announcement);
+
+        if( !$announcement->exists() )
+            return response()->view("errors.403",[],403);
+
+        $announcement->deleted_tenants()->attach(Auth::user()->tenant_id);
         
         return redirect()->route("announcement");
     }

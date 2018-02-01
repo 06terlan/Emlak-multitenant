@@ -14,8 +14,13 @@ class CreateDeletedAnnouncementsTable extends Migration
     public function up()
     {
         Schema::create('deleted_announcements', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->unsignedInteger('tenant_id');
+            $table->unsignedInteger('announcement_id');
+
+            $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
+            $table->foreign('announcement_id')->references('id')->on('announcements')->onDelete('cascade');
+
+            $table->primary(['tenant_id', 'announcement_id']);
         });
     }
 

@@ -26,7 +26,6 @@ class Announcement extends Migration
             $table->string("owner", 40)->nullable();
 
             $table->date('date')->nullable();
-            $table->boolean('deleted')->default(0);
             $table->timestamps();
         });
     }

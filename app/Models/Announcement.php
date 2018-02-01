@@ -5,15 +5,19 @@ namespace App\Models;
 use App\Library\Date;
 use Illuminate\Database\Eloquent\Model;
 use App\Library\MyClass;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Announcement extends Model
 {
     //not deleted datas
     public static function realAnnouncements($order = true)
     {
-        if(!$order) return self::where('deleted' , 0);
+        $tenant_id = Auth::user()->tenant_id;
+        $query = self::where(DB::raw("(SELECT 1 FROM deleted_announcements WHERE deleted_announcements.announcement_id=announcements.id AND deleted_announcements.tenant_id=$tenant_id limit 1)"), null);
 
-    	return self::where('deleted' , 0)->orderBy('id', 'desc');
+        if(!$order) return $query;
+    	return $query->orderBy('id', 'desc');
     }
 
     //today
@@ -45,5 +49,10 @@ class Announcement extends Model
     public function numbers()
     {
         return $this->hasMany(Number::class);
+    }
+
+    public function deleted_tenants()
+    {
+        return $this->belongsToMany(Tenant::class, 'deleted_announcements');
     }
 }

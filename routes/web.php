@@ -35,7 +35,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function(){
 	//announcement
 	Route::get('announcement', 'Admin\PostController@index')->name('announcement')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_SEE);
 	Route::get('announcement/info/{announcement}', 'Admin\PostController@InfoAction')->where('announcement','[0-9]{1,}')->name('announcement_info')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_SEE);
-	Route::get('announcement/delete/{id}', 'Admin\PostController@delete')->where('id','[0-9]{1,}')->name('announcement_delete')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_ADD);
+	Route::get('announcement/delete/{announcement}', 'Admin\PostController@delete')->where('announcement','[0-9]{1,}')->name('announcement_delete')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_ADD);
     Route::get('announcement_pro/add/from/{announcement}', 'Admin\ProController@addFromAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_add_from')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_ADD);
     Route::post('announcement_pro/insert_act/from/{announcement}', 'Admin\ProController@inserEditK2')->where('announcement', '[0-9]{1,}')->name('announcement_insert_act_from')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_ADD);
 
