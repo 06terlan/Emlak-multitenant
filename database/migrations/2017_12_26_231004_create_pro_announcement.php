@@ -28,7 +28,7 @@ class CreateProAnnouncement extends Migration
             $table->tinyInteger("documentType");
             $table->tinyInteger("repairing");
 
-            $table->string("metro",20)->nullable();
+            $table->integer("metro_id")->nullable();
             $table->string("city", 20)->nullable();
             $table->string("owner", 40)->nullable();
             $table->string('link', 200)->nullable();

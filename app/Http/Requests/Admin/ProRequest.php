@@ -76,7 +76,7 @@ class ProRequest extends FormRequest
 
             'content'       => 'required',
 
-            'metro'         => 'max:20',
+            'metro'         => 'integer|exists:msk_metros,id',
 
             'city'          => 'max:20',
 

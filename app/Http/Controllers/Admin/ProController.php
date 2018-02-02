@@ -140,7 +140,7 @@ class ProController extends Controller
         $newAnnouncement->repairing = Input::get("repairing");
 
         //new
-        $newAnnouncement->metro = Input::get("metro");
+        $newAnnouncement->metro_id = Input::get("metro");
 
         $newAnnouncement->city = Input::get("city");
 
@@ -166,7 +166,7 @@ class ProController extends Controller
 
     }
 
-    public function inserEditK2(Announcement $announcement)
+    public function inserEditK2(ProRequest $request, Announcement $announcement)
     {
         $announcement->deleted_tenants()->attach(Auth::user()->tenant_id);
 
@@ -200,7 +200,7 @@ class ProController extends Controller
         $newAnnouncement->repairing = Input::get("repairing");
 
         //new
-        $newAnnouncement->metro = Input::get("metro");
+        $newAnnouncement->metro_id = Input::get("metro");
 
         $newAnnouncement->city = Input::get("city");
 

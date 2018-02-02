@@ -135,7 +135,15 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                <input name="metro" data-validate-length-range="1,20" type="text" class="form-control" placeholder="Metro" value="{{ $announcement['metro'] }}">
+                                <select class="form-control" name="metro" required="">
+
+                                    @foreach ( \App\Models\MskMetro::all() as $metro)
+
+                                        <option value="{{ $metro['id'] }}" {{ $metro['id'] == $announcement['metro_id']? 'selected':'' }}> {{ $metro->name }} </option>
+
+                                    @endforeach
+
+                                </select>
 
                             </div>
 

@@ -126,5 +126,10 @@ class ProAnnouncement extends Model
     {
         return $this->belongsTo(Tenant::class);
     }
+
+    public function metro()
+    {
+        return $this->hasOne(MskMetro::class);
+    }
 }
 

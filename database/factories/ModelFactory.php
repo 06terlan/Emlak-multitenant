@@ -54,7 +54,7 @@ $factory->define(App\Models\MskMakler::class, function (Faker\Generator $faker) 
     $number = $faker->phoneNumber;
 
     return [
-        'fullname' => $faker->name,
+        'fullname' => str_limit($faker->name, 30, ''),
         'number' => str_limit($number, 14, ''),
         'pure_number' => str_limit(\App\Library\MyHelper::pureNumber($number), 11, '')
     ];
@@ -77,6 +77,7 @@ $factory->define(App\Models\ProAnnouncement::class, function (Faker\Generator $f
         'roomCount' => $faker->numberBetween(1,50),
         'locatedFloor' => $faker->numberBetween(1,20),
         'floorCount' => $faker->numberBetween(1,20),
+        'metro_id' => \App\Models\MskMetro::all()->random()->id,
         'documentType' => array_rand(\App\Library\MyClass::$documentTypes, 1),
         'repairing' => array_rand(\App\Library\MyClass::$repairingTypes, 1),
         'locations' => (random_int(4000000000000000,4099999999999999)/100000000000000) . "," . (random_int(4900000000000000,4999999999999999)/100000000000000),
