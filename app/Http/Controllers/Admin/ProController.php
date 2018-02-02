@@ -58,6 +58,8 @@ class ProController extends Controller
 
         if($request->has('status')) $announcements->where('status', $request->get('status'));
 
+        if($request->has('tenant')) $announcements->where('tenant_id', $request->get('tenant'));
+
         if($request->has('user'))
         {
             $announcements->whereHas('author', function ($query) use ($request){
@@ -166,6 +168,9 @@ class ProController extends Controller
 
     public function inserEditK2(Announcement $announcement)
     {
+        $announcement->deleted_tenants()->attach(Auth::user()->tenant_id);
+
+        //add
         $newAnnouncement = new ProAnnouncement();
 
         $newAnnouncement->userId = Input::get("user");
@@ -209,9 +214,6 @@ class ProController extends Controller
 
         $newAnnouncement->save();
 
-        $announcement->deleted = 1;
-        $announcement->save();
-
         foreach (Input::get("mobnom") as $number)
         {
             $numebrC = new ProNumber();
@@ -225,11 +227,14 @@ class ProController extends Controller
 
     }
 
-    public function delete(ProAnnouncement $announcement)
+    public function delete($announcement)
     {
+        $announcement = ProAnnouncement::realAnnouncements()->find($announcement);
+
+        if( !$announcement->exists() )
+            return response()->view("errors.403",[],403);
 
         $announcement->deleted = 1;
-
         $announcement->save();
 
 

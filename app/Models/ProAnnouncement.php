@@ -121,5 +121,10 @@ class ProAnnouncement extends Model
     {
         return explode(",", $this->locations) > 1 ? explode(",", $this->locations) : ['0', '0'];
     }
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
 }
 

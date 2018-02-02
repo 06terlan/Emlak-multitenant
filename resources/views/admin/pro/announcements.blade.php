@@ -60,6 +60,10 @@
 
                                     <th>Status</th>
 
+                                    @if( Auth::user()->group->super_admin == 1 )
+                                        <th>Tenant</th>
+                                    @endif
+
                                     <th>Əməliyyatlar</th>
 
                                 </tr>
@@ -102,6 +106,17 @@
                                         </select>
                                     </th>
 
+                                    @if( Auth::user()->group->super_admin == 1 )
+                                        <th>
+                                            <select class="form-control formFind" name="tenant">
+                                                <option></option>
+                                                @foreach (\App\Models\Tenant::realTenants()->get() as $type)
+                                                    <option value="{{ $type['id'] }}" {{ $type['id'] == $request->get("tenant") ? 'selected':'' }}> {{ $type['company_name'] }} </option>
+                                                @endforeach
+                                            </select>
+                                        </th>
+                                    @endif
+
                                     <th></th>
 
                                 </tr>
@@ -131,6 +146,10 @@
                                         <td>{{ $announcement->author->fullname() }}</td>
 
                                         <td>{!! $announcement->getStatus() !!}</td>
+
+                                        @if( Auth::user()->group->super_admin == 1 )
+                                            <td>{{ $announcement->tenant->company_name }}</td>
+                                        @endif
 
                                         <th>
                                             <a style="width: 24px;" href="{{ route('announcement_pro_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
