@@ -28,7 +28,7 @@
                             <div class="clearfix"></div>
                             <br />
                             <div>
-                              <h1><i class="fa fa-paw"></i> Admin hasiudhasn Panel</h1>
+                              <h1><i class="fa fa-paw"></i> Admin Panel</h1>
                               <p>©2017 All Rights Reserved. A.Terlan</p>
                             </div>
                         </div>
