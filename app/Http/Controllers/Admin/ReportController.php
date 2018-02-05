@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\ReportAnnouncemetGraphicRequest;
 use App\Library\Date;
 use App\Library\MyClass;
 use App\Models\ProAnnouncement;
@@ -14,7 +15,7 @@ class ReportController extends Controller
 {
     #region GraphicReportAction
 
-    public function announcementGraphicReportAction(Request $request)
+    public function announcementGraphicReportAction(ReportAnnouncemetGraphicRequest $request)
     {
         $announcements = ProAnnouncement::realAnnouncements(false);
 
@@ -101,7 +102,7 @@ class ReportController extends Controller
         if($request->has('floorCount1')) $announcements->where("floorCount", '>=', $request->get('floorCount1'));
         if($request->has('floorCount2')) $announcements->where("floorCount", '<=', $request->get('floorCount2'));
 
-        if($request->has('metro')) $announcements->where("metro", 'like', '%'.$request->get('metro').'%');
+        if($request->has('metro')) $announcements->where("metro_id", $request->get('metro'));
 
         if($request->has('locatedFloor1')) $announcements->where("locatedFloor", '>=', $request->get('locatedFloor1'));
         if($request->has('locatedFloor2')) $announcements->where("locatedFloor", '<=', $request->get('locatedFloor2'));

@@ -10,7 +10,7 @@
             <div class="x_panel">
                 <div class="x_title">
 
-                    <h2>Elanlar</h2>
+                    <h2>F.Elanlar kateqoria qrafiki hesabat</h2>
 
                     <ul class="nav navbar-right panel_toolbox">
 
@@ -141,7 +141,12 @@
 
                                 <label class="control-label col-md-2">Metro</label>
                                 <div class="col-md-4">
-                                    <input type="text" name="metro" data-validate-length-range="0,20" value="{{ $request->get('metro') }}" class="form-control"/>
+                                    <select class="form-control" name="metro">
+                                        <option value="">Hamısı</option>
+                                        @foreach (\App\Models\MskMetro::all() as $type)
+                                            <option value="{{ $type['id'] }}" {{ $type['id'] == $request->get('metro')? 'selected':'' }}> {{ $type['name'] }} </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
@@ -295,7 +300,7 @@
                 },
                 series : [
                     {
-                        name: '姓名',
+                        name: 'Kateqoria',
                         type: 'pie',
                         radius : '55%',
                         center: ['40%', '50%'],
@@ -334,7 +339,7 @@
                 },
                 series : [
                     {
-                        name: '姓名',
+                        name: 'Tipi',
                         type: 'pie',
                         radius : '55%',
                         center: ['40%', '50%'],

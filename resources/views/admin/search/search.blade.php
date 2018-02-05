@@ -170,7 +170,12 @@
 
                                 <label class="control-label col-md-2">Metro</label>
                                 <div class="col-md-4">
-                                    <input type="text" name="metro" data-validate-length-range="0,20" value="{{ $request->get('metro') }}" class="form-control"/>
+                                    <select class="form-control" name="metro">
+                                        <option value="">Hamısı</option>
+                                        @foreach (\App\Models\MskMetro::all() as $type)
+                                            <option value="{{ $type['id'] }}" {{ $type['id'] == $request->get('metro')? 'selected':'' }}> {{ $type['name'] }} </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 

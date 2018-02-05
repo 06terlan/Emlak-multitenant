@@ -1,19 +1,27 @@
 <?php
-
 namespace App\Http\Requests\Admin;
 
 use App\Library\MyClass;
+
 use Illuminate\Foundation\Http\FormRequest;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
-class MapRequest extends FormRequest
+class ReportAnnouncemetGraphicRequest extends FormRequest
+
 {
+
     /**
+
      * Determine if the user is authorized to make this request.
+
      *
+
      * @return bool
+
      */
+
     public function authorize()
     {
         if (Auth::check())
@@ -23,14 +31,25 @@ class MapRequest extends FormRequest
         return false;
     }
 
+
+
     /**
+
      * Get the validation rules that apply to the request.
+
      *
+
      * @return array
+
      */
+
     public function rules()
+
     {
+
         return [
+            'header'        => 'max:200',
+
             'type'          => [Rule::in(array_merge(array_keys(MyClass::$announcementTypes),['']))],
 
             'buldingType'  => [Rule::in(array_merge(array_keys(MyClass::$buldingType),['']))],
@@ -47,6 +66,7 @@ class MapRequest extends FormRequest
 
             'roomCount2'     => 'max:255',
 
+
             'locatedFloor1'  => 'max:30000',
 
             'locatedFloor2'  => 'max:30000',
@@ -61,15 +81,11 @@ class MapRequest extends FormRequest
 
             'content'       => '',
 
-            'metro'         => 'integer|exists:msk_metros,id',
+            'metro'         => 'integer|exists:msk_metros,id|nullable',
 
             'city'          => 'max:20',
 
             'owner'         => 'max:40',
-
-            'date1'         => 'date_format:d-m-Y',
-
-            'date2'         => 'date_format:d-m-Y',
 
             'mobnom'        => '',
 
@@ -77,5 +93,8 @@ class MapRequest extends FormRequest
 
             'status'          => ''
         ];
+
     }
+
 }
+
