@@ -99,7 +99,7 @@ body {
     cursor: pointer;
     background-color: #23bbd2;
     color: #fff;
-    font-weight: 700;
+    border-radius: 7px;
 }
 
 .loginForms .confirmBtn:hover {
