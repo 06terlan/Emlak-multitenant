@@ -15,12 +15,12 @@
                     
                     <div class="loginContainer">
                         <div class="loginForms">
-                            <label>Email</label>
-                            <input id="login" type="text" class="form-control" name="login" value="{{ old('login') }}" required autofocus placeholder="login" />
+                            <label>Login</label>
+                            <input id="login" type="text" class="form-control" name="login" value="{{ old('login') }}" required autofocus placeholder="" />
                         </div><!--loginForms-->
                     <div class="loginForms">
                             <label>Password</label>
-                            <input id="password" type="password" class="form-control" name="password" required placeholder="Password" />
+                            <input id="password" type="password" class="form-control inputText" name="password" required placeholder="" />
                     </div>
                         </div>
                     <div class="loginForms">     
