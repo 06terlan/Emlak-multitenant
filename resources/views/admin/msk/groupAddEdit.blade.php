@@ -45,7 +45,7 @@
                                 @foreach (\App\Library\MyClass::$modules as $typeK => $type)
                                     @if( isset($type['child']) )
                                         <div class="col-md-12">
-                                            <label class="col-md-7"><i class="{{ $type['icon'] }}"></i> {{ $typeK }}:</label>
+                                            <label class="col-md-7"><i class="{{ $type['icon'] }}"></i> {{ $type['name'] }}:</label>
                                             @foreach ($type['child'] as $K => $t)
                                                 @if( $t['priv'] > 3 && ($id == 0 || $group->super_admin != 1) ) @continue; @endif
                                                 <div class="col-md-12" style="padding-left: 50px">

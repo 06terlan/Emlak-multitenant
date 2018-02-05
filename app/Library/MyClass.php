@@ -18,12 +18,12 @@ class MyClass
     ];
 
     public static $buttonStatus2 =
-        [
-            3 => 'İcarədə',
-            4 => 'Satıldı',
-            1 => 'İcarədə deyil',
-            2 => 'Satılmayıb',
-        ];
+    [
+        3 => 'İcarədə',
+        4 => 'Satıldı',
+        1 => 'İcarədə deyil',
+        2 => 'Satılmayıb',
+    ];
 
     /**
 
@@ -237,6 +237,10 @@ class MyClass
         'announcement_pro' => ['name'=> 'Elanlar fərdi əlavə', 'icon'=> 'fa fa-share-alt-square', 'route'=> 'announcement_pro', 'priv'=> MyClass::PRIV_CAN_SEE],
         'search' => ['name'=> 'Axtarış', 'icon'=> 'fa fa-search',  'route'=> 'search', 'priv'=> MyClass::PRIV_CAN_SEE],
         'map' => ['name'=> 'Xəritə', 'icon'=> 'fa fa-map-marker',  'route'=> 'map', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'report' => ['name' => 'Hesabatlar', 'icon'=> 'fa fa-bar-chart', 'child'=> [
+            'report_announcement_graphic_report' => ['name'=> 'F.Elanlar kateqoria qrafiki hesabat', 'icon'=> '',  'route'=> 'report_announcement_graphic_report', 'priv'=> MyClass::PRIV_CAN_SEE],
+            ]
+        ],
         'msk' => ['name' => 'Msk', 'icon'=> 'fa fa-wrench', 'child'=> [
             'msk_group' => ['name'=> 'Qruplar', 'icon'=> '',  'route'=> 'msk_group', 'priv'=> MyClass::PRIV_CAN_SEE],
             'msk_makler' => ['name'=> 'Maklerlər', 'icon'=> '',  'route'=> 'msk_makler', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],

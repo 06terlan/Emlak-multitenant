@@ -83,7 +83,7 @@ $factory->define(App\Models\ProAnnouncement::class, function (Faker\Generator $f
         'locations' => (random_int(4000000000000000,4099999999999999)/100000000000000) . "," . (random_int(4900000000000000,4999999999999999)/100000000000000),
         'owner' => $faker->name,
         'status' => $status,
-        'date' => \App\Library\Date::d(null, "Y-m-d")
+        'date' => \App\Library\Date::addDay(time(), $faker->numberBetween(1,10), "Y-m-d")
     ];
 });
 
