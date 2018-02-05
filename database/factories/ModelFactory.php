@@ -80,7 +80,7 @@ $factory->define(App\Models\ProAnnouncement::class, function (Faker\Generator $f
         'metro_id' => \App\Models\MskMetro::all()->random()->id,
         'documentType' => array_rand(\App\Library\MyClass::$documentTypes, 1),
         'repairing' => array_rand(\App\Library\MyClass::$repairingTypes, 1),
-        'locations' => (random_int(4000000000000000,4099999999999999)/100000000000000) . "," . (random_int(4900000000000000,4999999999999999)/100000000000000),
+        'locations' => (random_int(400000000,409999999)/10000000) . "," . (random_int(490000000,499999999)/10000000),
         'owner' => $faker->name,
         'status' => $status,
         'date' => \App\Library\Date::addDay(time(), $faker->numberBetween(1,10), "Y-m-d")
