@@ -129,7 +129,7 @@ class ProAnnouncement extends Model
 
     public function metro()
     {
-        return $this->hasOne(MskMetro::class);
+        return $this->belongsTo(MskMetro::class);
     }
 }
 

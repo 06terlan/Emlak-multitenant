@@ -123,7 +123,7 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-3" style="line-height: 36px;">
 
-                                {{ $announcement->metro }}
+                                {{ $announcement->metro->name }}
 
                             </div>
 
