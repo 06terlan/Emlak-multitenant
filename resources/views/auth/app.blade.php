@@ -8,12 +8,21 @@
 
     <title>Admin panel</title>
 
+    <!-- Bootstrap CSS -->
+    {!! Html::style('admin/assets/vendors/bootstrap4/dist/css/bootstrap.min.css') !!}
+    {!! Html::style('admin/assets/build/css/loginpage.css') !!}
+
+    <!-- Bootstrap JS -->
+   <!-- {!! Html::style('admin/assets/vendors/bootstrap4/dist/css/bootstrap.min.css') !!}
+    {!! Html::style('admin/assets/vendors/bootstrap4/dist/css/bootstrap.min.css') !!}
+	{!! Html::style('admin/assets/vendors/bootstrap4/dist/css/bootstrap.min.css') !!} -->
+
     <!-- Bootstrap -->
-    {!! Html::style('admin/assets/vendors/bootstrap/dist/css/bootstrap.min.css') !!}
+    <!--{!! Html::style('admin/assets/vendors/bootstrap/dist/css/bootstrap.min.css') !!}
     <!-- Font Awesome -->
-    {!! Html::style('admin/assets/vendors/font-awesome/css/font-awesome.min.css') !!}
+    <!--{!! Html::style('admin/assets/vendors/font-awesome/css/font-awesome.min.css') !!}
     <!-- Custom Theme Style -->
-    {!! Html::style('admin/assets/build/css/custom.min.css') !!}
+   <!-- {!! Html::style('admin/assets/build/css/custom.min.css') !!}-->
   </head>
 
   <body class="login">
