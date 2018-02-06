@@ -16,13 +16,6 @@ use Illuminate\Support\Facades\DB;
 
 class ProAnnouncement extends Model
 {
-    public function __construct(array $attributes = array())
-    {
-        parent::__construct($attributes);
-
-        $this->date = Date::d(null, 'Y-m-d');
-    }
-
     //not deleted datas
     public static function realAnnouncements($order = true)
     {
@@ -129,7 +122,7 @@ class ProAnnouncement extends Model
 
     public function metro()
     {
-        return $this->hasOne(MskMetro::class);
+        return $this->belongsTo(MskMetro::class);
     }
 }
 

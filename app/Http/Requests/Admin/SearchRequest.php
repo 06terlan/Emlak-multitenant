@@ -64,7 +64,7 @@ class SearchRequest extends FormRequest
 
             'content'       => '',
 
-            'metro'         => 'max:20',
+            'metro'         => 'integer|exists:msk_metros,id',
 
             'city'          => 'max:20',
 

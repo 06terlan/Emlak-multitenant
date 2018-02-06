@@ -11,7 +11,7 @@ class ProAnnouncementTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\ProAnnouncement::class, 10)->create()
+        factory(\App\Models\ProAnnouncement::class, 100)->create()
             ->each(function ($announcement){
                 $number = factory(\App\Models\ProNumber::class)->make();
                 $announcement->numbers()->save($number);

@@ -8,6 +8,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\ProRequest;
 
+use App\Library\Date;
 use App\Library\MyClass;
 
 use App\Library\MyHelper;
@@ -105,6 +106,7 @@ class ProController extends Controller
         if($announcement == 0)
         {
             $newAnnouncement = new ProAnnouncement();
+            $newAnnouncement->date = Date::d(null, "Y-m-d");
         }
         else
         {
@@ -172,6 +174,8 @@ class ProController extends Controller
 
         //add
         $newAnnouncement = new ProAnnouncement();
+
+        $newAnnouncement->date = Date::d(null, "Y-m-d");
 
         $newAnnouncement->userId = Input::get("user");
 

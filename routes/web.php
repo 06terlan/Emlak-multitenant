@@ -60,6 +60,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function(){
     //map
     Route::get('map', 'Admin\SearchController@mapAction')->name('map')->middleware('priv:map,'.\App\Library\MyClass::PRIV_CAN_SEE);
 
+    //report
+    Route::get('report/announcement_graphic_report', 'Admin\ReportController@announcementGraphicReportAction')->name('report_announcement_graphic_report')->middleware('priv:report_announcement_graphic_report,'.\App\Library\MyClass::PRIV_CAN_SEE);
+
     //msk
     Route::get('msk/makler', 'Admin\MSKController@makler')->name('msk_makler')->middleware('priv:msk_makler,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_SEE);
     Route::any('msk/makler/addEdit/{makler}', 'Admin\MSKController@maklerAddEdit')->where('makler', '[0-9]{1,}')->name('msk_makler_add_edit')->middleware('priv:msk_makler,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);

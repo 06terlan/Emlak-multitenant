@@ -60,7 +60,7 @@ class ProRequest extends FormRequest
 
             'type'          => ['required', Rule::in(array_keys(MyClass::$announcementTypes))],
 
-            'amount'        => 'required|numeric|min:1',
+            'amount'        => 'required|numeric|min:1|max:99999999',
 
             'area'          => '',
 

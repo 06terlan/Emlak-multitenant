@@ -1,18 +1,16 @@
-@extends('admin.masterpage1')
+@extends('admin.masterpage')
 
 
 
 @section('content')
     @include('admin.error')
 
-   
-
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
 
-                    <h2>Elanlar</h2>
+                    <h2>F.Elanlar kateqoria qrafiki hesabat</h2>
 
                     <ul class="nav navbar-right panel_toolbox">
 
@@ -31,45 +29,16 @@
                         <form class="form-horizontal form-label-left formFinder" novalidate="" method="get">
 
                             <input type="hidden" name="page" value="{{ $request->get("page",1) }}">
-                            <div class="form-group">
-                                <label class="control-label col-md-2">Elanlar</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="announcement">
-                                        <option value="1" {{ $request->get('announcement', 1) == 1 ? 'selected' : '' }}>Fərdi əlavə</option>
-                                        <option value="2" {{ $request->get('announcement', 1) == 2 ? 'selected' : '' }}>Saytlardan elanlar</option>
-                                    </select>
-                                </div>
 
+                            <div class="form-group">
                                 <label class="control-label col-md-2">Tarix</label>
                                 <div class="col-md-4">
+
                                     <div class="input-group">
-                                        <input style="display: inline-block;width: 90%;" type="text" name="date" value="{{ $request->get('date', '') }}" class="form-control daterange"/>
-                                        <div style="display: inline-block;padding-top: 5px;" data-toggle="tooltip" data-original-title="Tarixi nəzərə al">
-                                            <input type="checkbox" name="dateChk" {{ $request->get('dateChk') ? 'checked' : '' }} class="flat" />
-                                        </div>
+                                        <input type="text" class="form-control daterange" name="date1" value="{{ $request->get('date1',date("01-m-Y")) }}" placeholder="Minimum">
+                                        <span class="input-group-addon">-</span>
+                                        <input type="text" class="form-control daterange" name="date2" value="{{ $request->get('date2',date("d-m-Y")) }}" placeholder="Maksimum">
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-md-2">Kategoria</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="type">
-                                        <option value="">Hamısı</option>
-                                        @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
-                                            <option value="{{ $typeK }}" {{ $typeK == $request->get('type')? 'selected':'' }}> {{ $type }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <label class="control-label col-md-2">Agent (user)</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="user">
-                                        <option value="">Hamısı</option>
-                                        @foreach (\App\User::realUsers()->get() as $type)
-                                            <option value="{{ $type['id'] }}" {{ $type['id'] == $request->get('user')? 'selected':'' }}> {{ $type->fullname() }} </option>
-                                        @endforeach
-                                    </select>
                                 </div>
                             </div>
 
@@ -190,37 +159,8 @@
                                         <input type="number" name="locatedFloor2" value="{{ $request->get('locatedFloor2') }}" class="form-control" placeholder="Maksimum">
                                     </div>
                                 </div>
-
-                                <label class="control-label col-md-2">Status</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="status">
-                                        <option value="">Hamısı</option>
-                                        @foreach (\App\Library\MyClass::$buttonStatus2 as $typeK => $type)
-                                            <option value="{{ $typeK }}" {{ $typeK == $request->get('status')? 'selected':'' }}> {{ $type }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
                             </div>
 
-
-                            <div class="form-group">
-                                <label class="control-label col-md-2">Çeşidləmə</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="sort" required="">
-                                        <option value="1" {{ $request->get('announcement', 1) == 1 ? 'selected' : '' }}>Tarixə görə - yuxarıdan</option>
-                                        <option value="2" {{ $request->get('announcement', 1) == 2 ? 'selected' : '' }}>Tarixə görə - aşagıdan</option>
-                                        <option value="3" {{ $request->get('announcement', 1) == 3 ? 'selected' : '' }}>Dəyərə görə - yuxarıdan</option>
-                                        <option value="4" {{ $request->get('announcement', 1) == 4 ? 'selected' : '' }}>Dəyərə görə - aşagıdan</option>
-                                        <!--<option value="5">Sahəyə görə - yuxarıdan</option>-->
-                                        <!--<option value="6">Sahəyə görə - aşagıdan</option>-->
-                                    </select>
-                                </div>
-
-                                <label class="control-label col-md-2">Content</label>
-                                <div class="col-md-4">
-                                    <textarea class="resizable_textarea form-control" placeholder="Content" name="content" style="border-radius: 5px; height: 200px;">{{ $request->get('content') }}</textarea>
-                                </div>
-                            </div>
 
                             <button type="submit" onclick="$('[name=page]').val(1);" class="btn btn btn-round btn-success" style="margin-top: 30px; width: 75%; height: 65px; font-size: 22px; font-weight: bold; margin-left: 15%;"><i class="fa fa-search"></i> Bazada Axtar</button>
 
@@ -237,83 +177,18 @@
 
                         <div class="col-md-12 text-center">
 
-                            <form class="">
-                                <table class="table table-striped">
-
-                                    <thead>
-
-                                    <tr>
-
-                                        <th>#</th>
-
-                                        <th>Başlıq</th>
-
-                                        <th>Content</th>
-
-                                        <th>Kategoria</th>
-
-                                        <th>Elanın Tipi</th>
-
-                                        <th>Qiymət</th>
-
-                                        <th>Tarix</th>
-
-                                        <th>Sahibkar</th>
-
-                                        <th>Əməliyyatlar</th>
-
-                                    </tr>
-
-                                    </thead>
-
-                                    <tbody>
-
-                                    @foreach ($announcements as $announcement )
-
-                                        <!-- <tr style="{{ $announcement->buldingType==2?'background-color:#9fd4ef':'background-color:red' }}"> -->
-
-                                        <tr>
-
-                                            <td>{{ $announcements->perPage() * ($announcements->currentPage() - 1) + $loop->iteration }}</td>
-
-                                            <td>{{ $announcement->header }}</td>
-
-                                            <td>{{ $announcement->getShortContent() }}</td>
-
-                                            <td>{{ $announcement->getAnnouncementType() }}</td>
-
-                                            <td>{{ $announcement->getBuldingType() }}</td>
-
-                                            <td>{{ $announcement->amount }}</td>
-
-                                            <td>{{ App\Library\Date::d($announcement->date,'d-m-Y') }}</td>
-
-                                            <td>{{ $announcement->owner }}</td>
-
-                                            <th>
-                                                <a style="width: 24px;" href="{{ $request->get('announcement', 1) == 1 ? route('announcement_pro_info',['announcement'=>$announcement->id]) : route('announcement_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
-                                            </th>
-
-                                        </tr>
-
-                                    @endforeach
-
-                                    </tbody>
-
-                                </table>
-
-                            </form>
+                            <div id="chart_line" style="height:400px"></div>
 
                         </div>
 
-                    </div>
-
-                    <div class="row">
-
                         <div class="col-md-12 text-center">
+                            <div class="col-md-6 text-center">
+                                <div id="chart_bar" style="height:400px"></div>
+                            </div>
 
-                            {{ $announcements->links('admin.pagination', ['paginator' => $announcements]) }}
-
+                            <div class="col-md-6 text-center">
+                                <div id="chart_bar2" style="height:400px"></div>
+                            </div>
                         </div>
 
                     </div>
@@ -332,8 +207,6 @@
 
     <!-- bootstrap-daterangepicker -->
     {!! Html::style('admin/assets/vendors/bootstrap-daterangepicker/daterangepicker.css') !!}
-    <!-- iCheck -->
-    {!! Html::style('admin/assets/vendors/iCheck/skins/flat/green.css') !!}
 @endsection
 
 
@@ -344,11 +217,145 @@
     <!-- bootstrap-daterangepicker -->
     {!! Html::script('admin/assets/vendors/moment/moment.min.js') !!}
     {!! Html::script('admin/assets/vendors/bootstrap-daterangepicker/daterangepicker.js') !!}
-    <!-- iCheck -->
-    {!! Html::script('admin/assets/vendors/iCheck/icheck.min.js') !!}
+    <!-- bootstrap-daterangepicker -->
+    {!! Html::script('admin/assets/vendors/echarts-2.2.7/build/echarts.js') !!}
 
     <script>
         $(function () {
+
+            // date category
+            var myChart = echarts.init(document.getElementById('chart_line'));
+            var option = {
+                title: {
+                    text: 'Elanlar'
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#6a7985'
+                        }
+                    }
+                },
+                legend: {
+                    data: {!! json_encode(array_values(\App\Library\MyClass::$announcementTypes)) !!}
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : {!! json_encode(\App\Library\Date::range($date1, $date2, 'd-m-Y')) !!}
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [@foreach(\App\Library\MyClass::$announcementTypes as $typeName)
+                    @if( isset($graphLine[$typeName]) )
+                {
+                    name: '{{ $typeName }}',
+                    type:'line',
+                    areaStyle: {normal: {}},
+                    data: {{ json_encode(array_values($graphLine[$typeName])) }}
+                },
+                    @endif
+                    @endforeach
+                ]
+            };
+            myChart.setOption(option);
+
+            var chart_bar = echarts.init(document.getElementById('chart_bar'));
+            var option = {
+                title : {
+                    text: 'Elanlar',
+                    subtext: 'Say',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    type: 'scroll',
+                    orient: 'vertical',
+                    right: 10,
+                    top: 20,
+                    bottom: 20,
+                    data: {!! json_encode(array_keys($dataChartBar)) !!},
+                    //selected: data.selected
+                },
+                series : [
+                    {
+                        name: 'Kateqoria',
+                        type: 'pie',
+                        radius : '55%',
+                        center: ['40%', '50%'],
+                        data: {!! json_encode(array_values($dataChartBar)) !!},
+                        itemStyle: {
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            };
+            chart_bar.setOption(option);
+
+            var chart_bar2 = echarts.init(document.getElementById('chart_bar2'));
+            var option = {
+                title : {
+                    text: 'Elanlar',
+                    subtext: 'Say',
+                    x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    type: 'scroll',
+                    orient: 'vertical',
+                    right: 10,
+                    top: 20,
+                    bottom: 20,
+                    data: {!! json_encode(array_keys($dataChartBar2)) !!},
+                    //selected: data.selected
+                },
+                series : [
+                    {
+                        name: 'Tipi',
+                        type: 'pie',
+                        radius : '55%',
+                        center: ['40%', '50%'],
+                        data: {!! json_encode(array_values($dataChartBar2)) !!},
+                        itemStyle: {
+                            emphasis: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            };
+            chart_bar2.setOption(option);
+
             $('input.daterange').daterangepicker({
                 singleDatePicker: true,
                 locale: {
