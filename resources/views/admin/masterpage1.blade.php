@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @include('admin.head1')
+    @include('admin.head')
 </head>
 
 <body class="nav-md">

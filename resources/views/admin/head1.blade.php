@@ -6,10 +6,7 @@
 <title>Emlak bazası</title>
 
 <!-- Bootstrap -->
-{!! Html::style('admin/assets/vendors/bootstrap4/dist/css/bootstrap.min.css') !!}
-
-
-
+{!! Html::style('admin/assets/vendors/bootstrap/dist/css/bootstrap.min.css') !!}
 <!-- Font Awesome -->
 {!! Html::style('admin/assets/vendors/font-awesome/css/font-awesome.min.css') !!}
 <!-- NProgress -->
@@ -18,7 +15,6 @@
 {!! Html::style('admin/assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') !!}
 <!-- Custom Theme Style -->
 {!! Html::style('admin/assets/build/css/custom.min.css') !!}
-{!! Html::style('admin/assets/build/css/searchpage.css') !!}
 <!-- PNotify -->
 {!! Html::style('admin/assets/vendors/pnotify/dist/pnotify.css') !!}
 {!! Html::style('admin/assets/vendors/pnotify/dist/pnotify.buttons.css') !!}
