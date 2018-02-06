@@ -104,7 +104,7 @@
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                <input required="" type="number" data-validate-minmax="1," name="amount" type="text" class="form-control" placeholder="Dəyəri" value="{{ $announcement['amount'] }}">
+                                <input required="" type="number" data-validate-minmax="1,99999999" name="amount" type="text" class="form-control" placeholder="Dəyəri" value="{{ $announcement['amount'] }}">
 
                             </div>
 
