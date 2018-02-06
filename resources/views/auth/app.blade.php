@@ -12,17 +12,11 @@
     {!! Html::style('admin/assets/vendors/bootstrap4/dist/css/bootstrap.min.css') !!}
     {!! Html::style('admin/assets/build/css/loginpage.css') !!}
 
-    <!-- Bootstrap JS -->
-   <!-- {!! Html::style('admin/assets/vendors/bootstrap4/dist/css/bootstrap.min.css') !!}
-    {!! Html::style('admin/assets/vendors/bootstrap4/dist/css/bootstrap.min.css') !!}
-	{!! Html::style('admin/assets/vendors/bootstrap4/dist/css/bootstrap.min.css') !!} -->
 
-    <!-- Bootstrap -->
-    <!--{!! Html::style('admin/assets/vendors/bootstrap/dist/css/bootstrap.min.css') !!}
-    <!-- Font Awesome -->
-    <!--{!! Html::style('admin/assets/vendors/font-awesome/css/font-awesome.min.css') !!}
-    <!-- Custom Theme Style -->
-   <!-- {!! Html::style('admin/assets/build/css/custom.min.css') !!}-->
+    {!! Html::script('admin/assets/build/js/jquery-1.11.1.min.js') !!}
+    {!! Html::script('admin/assets/build/js/particles-js.js') !!}
+
+
   </head>
 
   <body class="login">

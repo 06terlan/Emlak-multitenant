@@ -1,9 +1,11 @@
-@extends('admin.masterpage')
+@extends('admin.masterpage1')
 
 
 
 @section('content')
     @include('admin.error')
+
+   
 
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">

@@ -23,6 +23,7 @@
                             <input id="password" type="password" class="form-control inputText" name="password" required placeholder="" />
                     </div>
                         </div>
+
                     <div class="loginForms">     
                         {{ csrf_field() }}                   
                         <input type="submit" class="confirmBtn" style="cursor:pointer;" value="Daxİl Ol" />
@@ -44,5 +45,5 @@
     </div> <!--container-->
 
 
-
+<div id="particles-js"></div>
 @endsection

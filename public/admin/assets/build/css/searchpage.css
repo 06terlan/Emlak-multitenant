@@ -1,0 +1,41 @@
+html, 
+body,
+
+.container {
+    margin: 0, 0 !important;
+    max-width: 100% !important;
+}
+
+.menu_section ul {
+    display: inline !important;
+}
+
+
+
+.nav-md .container.body .right_col {
+    padding-top: 5% !important;
+}
+
+.content {
+    margin: 0 0;
+}
+
+.navbar-nav {
+    display: -webkit-box !important;
+    -webkit-box-orient: inherit !important;
+}
+.nav {
+    display: block !important;
+}
+
+.top_nav .navbar-right li {
+    position: static !important;
+}
+
+.right_col .row {
+    margin-top: 5% !important;
+}
+
+.form-horizontal {
+    margin: 0 auto !important;
+}
