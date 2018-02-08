@@ -10,16 +10,13 @@
 
     <!-- Bootstrap CSS -->
     {!! Html::style('admin/assets/vendors/bootstrap4/dist/css/bootstrap.min.css') !!}
-    {!! Html::style('admin/assets/build/css/loginpage.css') !!}
-
+    {!! Html::style('admin/assets/build/css/login_page.css?v=1') !!}
 
     {!! Html::script('admin/assets/build/js/jquery-1.11.1.min.js') !!}
-    {!! Html::script('admin/assets/build/js/particles-js.js') !!}
-
-
   </head>
 
   <body class="login">
     @yield('content')
   </body>
 </html>
+@yield('script')
