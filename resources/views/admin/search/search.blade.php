@@ -36,6 +36,27 @@
 
 <script>
     function showAppFilters(){
+        
+        switch($('#elansecim').val()) {
+            case '0':  // her ikisinde
+                $("#").removeClass("hidden");
+                $("").addClass("hidden");
+                break;
+
+            case '1':  // Ferdiler uzre 
+                $("").removeClass("hidden");
+                $("").addClass("hidden");
+                break;
+
+            case '2':  // Elanlar üzrə
+                $("#agent, #statusM").removeClass("hidden");
+                $("#agent, #statusM").addClass("hidden");
+                break;
+
+                
+            default:
+                break;
+        }
 
         switch($('#entityType').val()) {
             case '0':  // Bina ev mənzil
@@ -86,6 +107,7 @@
             default:
                 break;
         }
+        
     }
 </script>
                 
@@ -124,15 +146,18 @@
 <!-- axtarish uzre secim -->
 <div class="form-group col-sm-12">
 <label class="col-xs-4  control-label">Elanın n&#246;v&#252;</label>
-<div class="col-xs-8 ">
-<select class="bs-select form-control select2me" data-placeholder="Elanin növünü seçin..." id="huseynzadeM" name="huseynzadeM">  
-<option selected="selected" value="1" {{ $request->get('announcement', 1) == 1 ? 'selected' : '' }}>Fərdilər üzrə</option>
+<div class="col-xs-8 ">   
+<select class="selectpicker bs-select form-control select2me huseynzadeM" data-placeholder="Elanin növünü seçin..." id="elansecim" name="elansecim" >  
+<option selected="selected" value="">Hər ikisində</option>
+<option value="1" {{ $request->get('announcement', 1) == 1 ? 'selected' : '' }}>Fərdilər üzrə</option>
 <option value="2" {{ $request->get('announcement', 1) == 2 ? 'selected' : '' }}>Elanlar üzrə</option>
-</select>
+    </select>
                                         <!--<span class="help-block">A block of help text. </span>-->
                                     </div>
                                 </div>
 <!--burda bitir -->
+                                
+
                                 <div class="form-group col-sm-12">
                                     <label class="col-xs-4  control-label">Obyektin n&#246;v&#252;</label>
                                     <div class="col-xs-8 ">
@@ -274,34 +299,17 @@
                                 <div class="form-group col-sm-12">
                                     <label class="col-xs-4 control-label">Metro</label>
                                     <div class="col-xs-8">
-                                        <select class="bs-select form-control select2me" data-placeholder="Metroları seçin..." data-style="purple" id="subwayStation" multiple="multiple" name="subwayStation"><option value="1">Nəriman Nərimanov m.</option>
-<option value="2">Gənclik m.</option>
-<option value="3">Ulduz m.</option>
-<option value="33">Həzi Aslanov m.</option>
-<option value="34">Elmlər Akademiyası m.</option>
-<option value="35">Nizami m.</option>
-<option value="36">Şah İsmayıl Xətai m.</option>
-<option value="37">İ&#231;əri Şəhər m.</option>
-<option value="38">Sahil m.</option>
-<option value="4">Koroğlu m.</option>
-<option value="5">20 Yanvar m.</option>
-<option value="51">Əhmədli m.</option>
-<option value="52">Qara Qarayev m.</option>
-<option value="53">Neft&#231;ilər m.</option>
-<option value="54">Xalqlar Dostluğu m.</option>
-<option value="59">Memar Əcəmi m.</option>
-<option value="6">Azadlıq Prospekti m.</option>
-<option value="60">Nəsimi m.</option>
-<option value="61">Dərnəg&#252;l m.</option>
-<option value="62">Cəfər Cabbarlı m.</option>
-<option value="63">Bakmil m.</option>
-<option value="7">İnşaat&#231;ılar m.</option>
-<option value="8">28 May m.</option>
-<option value="24">Avtovağzal m.</option>
-</select>
+                                        <select class="bs-select form-control select2me" data-placeholder="Metroları seçin..." data-style="purple" id="subwayStation" multiple="multiple" name="metro">
+                                            <!--<option selected="selected" value="">Hamısı</option>-->
+                                            @foreach (\App\Models\MskMetro::all() as $type)
+                                                <option value="{{ $type['id'] }}" {{ $type['id'] == $request->get('metro')? 'selected':'' }}> {{ $type['name'] }} </option>
+                                            @endforeach
+                                        </select>
 
                                     </div>
                                 </div>
+                                                            
+                                
                                 <div class="form-group col-sm-12">
                                     <label class="col-xs-4 control-label">Qəsəbə</label>
                                     <div class="col-xs-8">
@@ -607,20 +615,62 @@
 <div class="form-group col-sm-12">
 <label class="col-md-4 col-xs-3 control-label">Mob. Nömrə</label>
 <div class="col-md-8 col-xs-9 ">
-<input class="form-control priceInput btn-outline-danger mobHm" data-val="true" data-val-number="Mobil nomre uzre." id="mobHm" name="minPrice" placeholder="Mob. nömrəsi" type="text" value="" />
+<input class="form-control priceInput btn-outline-danger mobHm" data-val="true" data-val-number="Mobil nomre uzre." id="mobHm" name="mobnom" placeholder="Mob. nömrəsi" type="text" value="{{ $request->get('mobnom') }}" />
 </div>
 </div>
+
 <!--son-->
  <!-- sahibkar uzre axtaris -->
 <div class="form-group col-sm-12">
 <label class="col-md-4 col-xs-3 control-label">Sahibkar</label>
 <div class="col-md-8 col-xs-9">
-<input class="form-control priceInput btn-outline-info makHm" data-val="true" data-val-number="The field minArea must be a number." id="" name="minArea" placeholder="Sahibkarın adı" type="text" value="" />
+<input data-validate-length-range="0,40" class="form-control priceInput btn-outline-info makHm" data-val="true" data-val-number="The field minArea must be a number." id="" name="owner" placeholder="Sahibkarın adı" type="text" value="{{ $request->get('owner') }}" />
 </div>
 </div>                                
 <!--son-->
+<!-- status uzre secim -->
+<div class="form-group col-sm-12">
+<label class="col-xs-4  control-label">Status</label>
+<div class="col-xs-8 ">   
+<select class="selectpicker bs-select form-control select2me" data-style="btn-success" data-placeholder="Elanin növünü seçin..." id="statusM" name="secim" > 
+<option selected="selected" value="">Hamısı</option>
+@foreach (\App\Library\MyClass::$buttonStatus2 as $typeK => $type)
+<option value="{{ $typeK }}" {{ $typeK == $request->get('status')? 'selected':'' }}> {{ $type }} </option>
+@endforeach
+</select>
+   
+ </div>
+ </div>
+<!--burda bitir -->
 </div>                      
-                            <div class="col-sm-6">
+<div class="col-sm-6">
+<!-- tarix uzre secim -->
+<div class="form-group col-sm-12">
+    <label class="col-xs-4  control-label">Tarix</label>
+    <div class="col-xs-8 ">   
+
+        <input style="display: inline-block;width: 90%;" type="text" name="date" value="{{ $request->get('date', '') }}" class="form-control daterange"/> 
+        <div style="display: inline-block;padding-top: 5px;" data-toggle="tooltip" data-original-title="Tarixi nəzərə al">
+        <input type="checkbox" name="dateChk" {{ $request->get('dateChk') ? 'checked' : '' }} class="flat" />   
+        </div>
+    </div>
+</div>   
+    
+<!-- tarix uzre son -->
+<!-- agent uzre secim -->
+<div class="form-group col-sm-12">
+<label class="col-xs-4  control-label">Agent(user) üzrə</label>
+<div class="col-xs-8 ">   
+<select class="selectpicker bs-select form-control select2me" data-live-search="true" data-placeholder="Elanin növünü seçin..." id="agent" name="user" >  
+<option selected="selected" value="">Hamısı</option>
+@foreach (\App\User::realUsers()->get() as $type)
+<option value="{{ $type['id'] }}" {{ $type['id'] == $request->get('user')? 'selected':'' }}> {{ $type->fullname() }} </option>
+@endforeach 
+</select>   
+    
+ </div>
+ </div>
+<!--burda bitir -->
                                 <div class="form-group col-sm-12">
                                     <label class="col-xs-4  control-label">Satıcının tipi</label>
                                     <div class="col-xs-8 ">
@@ -635,10 +685,14 @@
                                 <div class="form-group col-sm-12" id="certificateColumn">
                                     <label class="col-xs-4  control-label">Sənəd</label>
                                     <div class="col-xs-8 ">
-                                        <select class="bs-select form-control  documnetSelect" data-placeholder="Kupçalı olub olmadığını seçin..." id="documentType" name="documentType"><option value="0">Kup&#231;alı</option>
-<option value="1">Kup&#231;asız</option>
-<option selected="selected" value="-1">Hamısı</option>
-</select>
+                                        <select class="bs-select form-control  documnetSelect" data-placeholder="Kupçalı olub olmadığını seçin..." id="documentType" name="documentType">
+    
+                                        @foreach (\App\Library\MyClass::$documentTypes as $typeK => $type)
+                                            <option value="{{ $typeK }}" {{ $typeK == $request->get('documentType')? 'selected':'' }}> {{ $type }} </option>
+                                            <option selected="selected" value="">Hamısı</option>
+                                        @endforeach
+                                            
+                                        </select>
                                         <!--<span class="help-block">A block of help text. </span>-->
                                     </div>
                                 </div>
@@ -678,17 +732,25 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group col-sm-12" id="roomRemadeColumn">
+                                <div class="form-group col-sm-12" name="repairing" id="roomRemadeColumn">
                                     <label class="col-xs-4  control-label">D&#252;zəlmə</label>
                                     <div class="col-xs-8 ">
-                                        <select class="bs-select form-control remakeType" data-placeholder="Düzəlmə olub olmadığını seçin..." id="remakeType" name="remakeType"><option value="0">D&#252;zəlməsiz</option>
-<option value="1">Ancaq d&#252;zəlmə</option>
-<option selected="selected" value="-1">Hamısı</option>
-</select>
+                                        <select class="bs-select form-control remakeType" data-placeholder="Düzəlmə olub olmadığını seçin..." id="remakeType" name="remakeType">
+                                            
+                                        @foreach (\App\Library\MyClass::$repairingTypes as $typeK => $type)
+                                            <option value="{{ $typeK }}" {{ $typeK == $request->get('repairing')? 'selected':'' }}> {{ $type }} </option>
+                                        @endforeach
+                                             <option selected="selected" value="">Hamısı</option>
+                                        </select>
                                         <!--<span class="help-block">A block of help text. </span>-->
                                     </div>
                                 </div>
+    
+    
+    
 
+             
+             
 
                                 <div class="form-group col-sm-12" id="floorColumn">
                                     <label class="col-md-4  control-label" id="floorLabelForNonTouch">Mərtəbə</label>
@@ -703,130 +765,15 @@
                                     <div class="col-md-8 col-xs-9 " id="floorContentForTouch">
                                         <select id="minFloor" name="minFloor" class="bs-select form-control input-xsmall select2" data-style="btn-default btn-outline-success">
                                             
+                                                                            
                                             <option selected>1</option>
                                             
-                                            <option >2</option>
-                                            
-                                            <option >3</option>
-                                            
-                                            <option >4</option>
-                                            
-                                            <option >5</option>
-                                            
-                                            <option >6</option>
-                                            
-                                            <option >7</option>
-                                            
-                                            <option >8</option>
-                                            
-                                            <option >9</option>
-                                            
-                                            <option >10</option>
-                                            
-                                            <option >11</option>
-                                            
-                                            <option >12</option>
-                                            
-                                            <option >13</option>
-                                            
-                                            <option >14</option>
-                                            
-                                            <option >15</option>
-                                            
-                                            <option >16</option>
-                                            
-                                            <option >17</option>
-                                            
-                                            <option >18</option>
-                                            
-                                            <option >19</option>
-                                            
-                                            <option >20</option>
-                                            
-                                            <option >21</option>
-                                            
-                                            <option >22</option>
-                                            
-                                            <option >23</option>
-                                            
-                                            <option >24</option>
-                                            
-                                            <option >25</option>
-                                            
-                                            <option >26</option>
-                                            
-                                            <option >27</option>
-                                            
-                                            <option >28</option>
-                                            
-                                            <option >29</option>
-                                            
-                                            <option >30</option>
-                                            
-                                            <option >31</option>
+                                     
                                         </select>
 
                                         <select id="maxFloor" name="maxFloor" class="bs-select form-control input-xsmall select2" data-style="btn-default btn-outline-success">
                                             
-                                            <option >1</option>
-                                            
-                                            <option >2</option>
-                                            
-                                            <option >3</option>
-                                            
-                                            <option >4</option>
-                                            
-                                            <option >5</option>
-                                            
-                                            <option >6</option>
-                                            
-                                            <option >7</option>
-                                            
-                                            <option >8</option>
-                                            
-                                            <option >9</option>
-                                            
-                                            <option >10</option>
-                                            
-                                            <option >11</option>
-                                            
-                                            <option >12</option>
-                                            
-                                            <option >13</option>
-                                            
-                                            <option >14</option>
-                                            
-                                            <option >15</option>
-                                            
-                                            <option >16</option>
-                                            
-                                            <option >17</option>
-                                            
-                                            <option >18</option>
-                                            
-                                            <option >19</option>
-                                            
-                                            <option >20</option>
-                                            
-                                            <option >21</option>
-                                            
-                                            <option >22</option>
-                                            
-                                            <option >23</option>
-                                            
-                                            <option >24</option>
-                                            
-                                            <option >25</option>
-                                            
-                                            <option >26</option>
-                                            
-                                            <option >27</option>
-                                            
-                                            <option >28</option>
-                                            
-                                            <option >29</option>
-                                            
-                                            <option >30</option>
+                                     
                                             
                                             <option selected>31</option>
                                         </select>
@@ -990,9 +937,11 @@
                                 <div class="form-group col-sm-12" id="areaColumn">
                                     <label class="col-md-4 col-xs-3 control-label">Sahəsi (m2)</label>
                                     <div class="col-md-8 col-xs-9">
-                                        <input class="form-control priceInput btn-outline-info" data-val="true" data-val-number="The field minArea must be a number." id="minArea" name="minArea" placeholder="min" type="text" value="" />
+                                        
+                                        <input class="form-control priceInput btn-outline-info" data-val="true" data-val-number="The field minArea must be a number." id="minArea" name="area1" placeholder="min" type="number" value="{{ $request->get('area1') }}" />
 
-                                        <input class="form-control priceInput btn-outline-info" data-val="true" data-val-number="The field maxArea must be a number." id="maxArea" name="maxArea" placeholder="max" type="text" value="" />
+                                        <input class="form-control priceInput btn-outline-info" data-val="true" data-val-number="The field maxArea must be a number." id="maxArea" name="area2" placeholder="max" type="number" value="{{ $request->get('area2') }}" />
+                                        
                                     </div>
                                 </div>
 
@@ -1016,7 +965,7 @@
                         <div class="row">
                             <div class="col-sm-offset-4 col-sm-3">
                                 <div id="anchor"></div>
-                                <button type="submit" onclick="$('#adsDateCat').val('All');" class="btn btn-lg btn-block green-sharp" id="search" name="search"><i class="fa fa-search"></i> Axtar </button>
+                                <button type="submit" onclick="$('[name=page]').val(1);" class="btn btn-lg btn-block green-sharp" id="search" name="search"><i class="fa fa-search"></i> Axtar </button>
                             </div>
                         </div>
                     </div>
@@ -1221,25 +1170,7 @@
                         <form class="form-horizontal form-label-left formFinder" novalidate="" method="get">
 
                             <input type="hidden" name="page" value="{{ $request->get("page",1) }}">
-                            <div class="form-group">
-                                <label class="control-label col-md-2">Elanlar</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="announcement">
-                                        <option value="1" {{ $request->get('announcement', 1) == 1 ? 'selected' : '' }}>Fərdi əlavə</option>
-                                        <option value="2" {{ $request->get('announcement', 1) == 2 ? 'selected' : '' }}>Saytlardan elanlar</option>
-                                    </select>
-                                </div>
 
-                                <label class="control-label col-md-2">Tarix</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <input style="display: inline-block;width: 90%;" type="text" name="date" value="{{ $request->get('date', '') }}" class="form-control daterange"/>
-                                        <div style="display: inline-block;padding-top: 5px;" data-toggle="tooltip" data-original-title="Tarixi nəzərə al">
-                                            <input type="checkbox" name="dateChk" {{ $request->get('dateChk') ? 'checked' : '' }} class="flat" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-2">Kategoria</label>
@@ -1252,16 +1183,7 @@
                                     </select>
                                 </div>
 
-                                <label class="control-label col-md-2">Agent (user)</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="user">
-                                        <option value="">Hamısı</option>
-                                        @foreach (\App\User::realUsers()->get() as $type)
-                                            <option value="{{ $type['id'] }}" {{ $type['id'] == $request->get('user')? 'selected':'' }}> {{ $type->fullname() }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+    
 
                             <div class="form-group">
                                 <label class="control-label col-md-2">Elanın Tipi</label>
@@ -1274,27 +1196,8 @@
                                     </select>
                                 </div>
 
-                                <label class="control-label col-md-2">Təmiri</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="repairing">
-                                        <option value="">Hamısı</option>
-                                        @foreach (\App\Library\MyClass::$repairingTypes as $typeK => $type)
-                                            <option value="{{ $typeK }}" {{ $typeK == $request->get('repairing')? 'selected':'' }}> {{ $type }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label class="control-label col-md-2">Sənədin Tipi</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="documentType">
-                                        <option value="">Hamısı</option>
-                                        @foreach (\App\Library\MyClass::$documentTypes as $typeK => $type)
-                                            <option value="{{ $typeK }}" {{ $typeK == $request->get('documentType')? 'selected':'' }}> {{ $type }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+      
 
                                 <label class="control-label col-md-2">Şəhər</label>
                                 <div class="col-md-4">
@@ -1318,21 +1221,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="control-label col-md-2">Sahə</label>
-                                <div class="col-md-4">
-                                    <div class="input-group">
-                                        <input type="number" name="area1" value="{{ $request->get('area1') }}" class="form-control" placeholder="Minimum">
-                                        <span class="input-group-addon">-</span>
-                                        <input type="number" name="area2" value="{{ $request->get('area2') }}" class="form-control" placeholder="Maksimum">
-                                    </div>
-                                </div>
-
-                                <label class="control-label col-md-2">Sahibkar</label>
-                                <div class="col-md-4">
-                                    <input type="text" data-validate-length-range="0,40" name="owner" value="{{ $request->get('owner') }}" class="form-control"/>
-                                </div>
-                            </div>
+  
 
                             <div class="form-group">
                                 <label class="control-label col-md-2">Otaq</label>
@@ -1344,11 +1233,7 @@
                                     </div>
                                 </div>
 
-                                <label class="control-label col-md-2">Nömrə</label>
-                                <div class="col-md-4">
-                                    <input type="text" name="mobnom" value="{{ $request->get('mobnom') }}" class="form-control"/>
-                                </div>
-                            </div>
+                     
 
                             <div class="form-group">
                                 <label class="control-label col-md-2">Mərtəbə</label>
@@ -1360,16 +1245,7 @@
                                     </div>
                                 </div>
 
-                                <label class="control-label col-md-2">Metro</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="metro">
-                                        <option value="">Hamısı</option>
-                                        @foreach (\App\Models\MskMetro::all() as $type)
-                                            <option value="{{ $type['id'] }}" {{ $type['id'] == $request->get('metro')? 'selected':'' }}> {{ $type['name'] }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                     
 
                             <div class="form-group">
                                 <label class="control-label col-md-2">Yer m.</label>
@@ -1380,17 +1256,6 @@
                                         <input type="number" name="locatedFloor2" value="{{ $request->get('locatedFloor2') }}" class="form-control" placeholder="Maksimum">
                                     </div>
                                 </div>
-
-                                <label class="control-label col-md-2">Status</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="status">
-                                        <option value="">Hamısı</option>
-                                        @foreach (\App\Library\MyClass::$buttonStatus2 as $typeK => $type)
-                                            <option value="{{ $typeK }}" {{ $typeK == $request->get('status')? 'selected':'' }}> {{ $type }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
 
 
                             <div class="form-group">
@@ -1418,15 +1283,78 @@
 
                     </div>
                 </div>
-
+{{ $announcements->links('admin.pagination', ['paginator' => $announcements]) }}
                 <!-- end x-content -->
+    <br/><br/><br/><br/><br/><br/><br/>  
 
-                <div class="content">
+<div class="content">
+<!-- elanlarin headr hissesi--> 
+   
+        <div class="portlet-search">
+            <div class="row searchSummary ">
+                    <div class="col-sm-5">
+                                <h3 class="">Son sutkanın elanları 1270 .<i class="text-nowrap"> Səhifə 1 / 378 </i></h3>
+                    </div>
 
-                    <div class="row">
+                    <div class="col-sm-7">
+                        <ul class='sorting'><li class='active'>Öncə yenilər</li><li><a href="">Ucuzdan-bahaya</a></li><li><a href="">Bahadan-ucuza</a></li></ul>
+                    </div>
+            </div>
+        </div> 
 
-                        <div class="col-md-12 text-center">
-
+<!-- elanlarin headr hissesi son--> 
+<div class="row">
+@foreach ($announcements as $announcement )
+<div class="items">
+<div class="item">
+<div class="item-picture">
+<a href="" target="_blank">
+<img src="images/logo.jpg" alt="">
+</a>
+<h3 class="item-price"><span class="price-amount">{{ $announcement->amount }}</span> <span class="currency">AZN</span></h3>
+<div class="item-certificate">{!! $announcement->getDocumentType() !!}</div>
+<span class='item-owner-type agent'>{!! $announcement['is_makler'] == 1?"(Vasitəçi)":'(Mülkiyyətçi)' !!}</span>
+<div class="item-sell-rent-property sell">{{ $announcement->getBuldingType() }}</div>
+</div>
+<div class="item-properities">
+<h1 class="item-category">
+<b class="text-primary  ">{{ $announcement->getAnnouncementType() }}</b>
+</h1>
+<h1 class="text-nowrap">
+<span class="text-nowrap"><b>{{ $announcement->area }}</b> m&#178; </span>
+</h1>
+<!-- nastroyka bolmesi -->
+<th>
+@if( \App\Library\MyHelper::has_priv("announcement_pro", \App\Library\MyClass::PRIV_CAN_ADD) )
+<a class="option-details" href="{{ route('announcement_insert',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+<a class="option-details" href="{{ route('announcement_pro_delete',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+<a class="option-details" href="" data-toggle="tooltip" data-original-title="Elan ver"><i class="fa fa-share-alt"></i></a>
+<a class="option-details" style="width: 24px;" href="{{ route('announcement_pro_status',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="{{ isset(\App\Library\MyClass::$buttonStatus[$announcement->status]) ? \App\Library\MyClass::$buttonStatus[$announcement->status] : '-' }}"><i class="fa fa-thumb-tack"></i></a>
+@endif
+</th>
+<!-- nastroyka bolmesi son -->
+</div>
+<div class="details" >
+<span class="text-nowrap"><i class="fa fa-circle"></i><b>Bakı/Abşeron</b></span>
+<span class="text-nowrap"><i class="fa fa-circle "></i><b>Sabun&#231;u r.</b></span>
+<span class="text-nowrap"><i class="fa fa-circle "></i><b>Maştağa</b></span>
+<p class="item-address">
+ Maştağa qəs.;
+</p>
+<p class="description">
+{{ $announcement->getShortContent() }}
+</p>
+<a class="more-details" href="{{ route('announcement_pro_info',['announcement'=>$announcement->id]) }}" target="_blank" >Ətraflı <i class="fa fa-caret-right"></i></a>
+<span class="item-date"><i class="fa fa-calendar"></i> {{ App\Library\Date::d($announcement->date,'d-m-Y') }}</span>
+ @foreach ($announcement['numbers'] as $typeK => $num)   
+<span class="item-nom"><i class="fa fa-mobile-phone" style="font-size:20px; color:red;"></i> {{ $num['number'] }}</span>
+ @endforeach    
+<span class="item-source"> {!! $announcement->site !!} a</span>
+</div>
+</div>
+ @endforeach
+<div class="col-md-12 text-center">
+ <br/><br/><br/><br/><br/><br/><br/>
                             <form class="">
                                 <table class="table table-striped">
 

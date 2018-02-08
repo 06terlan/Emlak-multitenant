@@ -1742,8 +1742,18 @@ a:hover {
         background-color: #eeeeee !important;
 }
 
-#huseynzadeM + .select2me > .selectpicker {
+#elansecim + .select2me > .selectpicker {
+        border-color: #23bbd2 !important;
+}
+
+#agent + .select2me > .selectpicker {
         background-color: #23bbd2 !important;
+        border-color: #23bbd2 !important!;
+        color: white !important;
+}
+
+#statusM + .select2me > .selectpicker {
+        border-color: #23bbd2 !important!;
 }
 
 #buildingType + .select2me > .selectpicker {
@@ -2410,6 +2420,16 @@ h2.todo-tasklist-item-title
     bottom: 0px;
 }
 
+.item .item-nom
+{
+    position:absolute;
+    padding: 2px 5px;
+    color: #637b89;
+    font-size: 13px;
+    left:110px;
+    bottom: 0px;
+}
+
 .item .item-source
 {
     position:absolute;
@@ -2420,7 +2440,7 @@ h2.todo-tasklist-item-title
     bottom:0px;
 }
 
-.item-date-and-source
+.item-date-and-nom-and-source
 {
     display:inline-block;
     width:100%;
@@ -2686,6 +2706,34 @@ p.description{
     font-size: 10px;
     margin-left: 6px;
     vertical-align: 1px;
+}
+
+.option-details .fa-thumb-tack {
+    font-size: 18px;
+    vertical-align: -10px;
+    margin-left: 15px;
+    color: red;
+}
+
+.option-details .fa-share-alt {
+    font-size: 18px;
+    vertical-align: -10px;
+    margin-left: 15px;
+    color: #23bbd2;
+}
+
+.option-details .fa-trash {
+    font-size: 18px;
+    vertical-align: -10px;
+    margin-left: 15px;
+    color: #f8cc46;
+}
+
+.option-details .fa-edit {
+    font-size: 18px;
+    vertical-align: -10px;
+    margin-left: 450px;
+    color: #65bc7d;
 }
 
 .item .details > span.text-nowrap > i {

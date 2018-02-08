@@ -135,8 +135,8 @@
         });
 
     </script>
-
-
+<!-- Fontawesome5 HAl-hazirda iwledmirem-->
+<!--{!! Html::script('admin/assets/build/new/fontawesome5.0.6/svg-with-js/js/fontawesome-all.js') !!}-->
 <!-- NProgress -->
 {!! Html::script('admin/assets/vendors/nprogress/nprogress.js') !!}
 <!-- bootstrap-progressbar -->

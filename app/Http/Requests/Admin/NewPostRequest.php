@@ -33,6 +33,8 @@ class NewPostRequest extends FormRequest
             'short_content' => 'required|min:5|max:200|string',
             'content'       => 'required|min:5|string',
             'id'            => 'required|integer'
+
+            'site'         => 'max:40',
         ];
     }
 }

@@ -87,6 +87,8 @@ class ReportAnnouncemetGraphicRequest extends FormRequest
 
             'owner'         => 'max:40',
 
+            'site'         => 'max:40',
+
             'mobnom'        => '',
 
             'user'          => '',

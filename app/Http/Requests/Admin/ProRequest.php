@@ -82,6 +82,8 @@ class ProRequest extends FormRequest
 
             'owner'         => 'max:40',
 
+            'site'          => 'max:40',
+
             'mobnom'        => 'required|array',
 
             'user'          => 'required',

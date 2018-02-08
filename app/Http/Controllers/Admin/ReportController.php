@@ -80,6 +80,7 @@ class ReportController extends Controller
         if($request->has('amount1')) $announcements->where("amount", '>=', $request->get('amount1'));
         if($request->has('amount2')) $announcements->where("amount", '<=', $request->get('amount2'));
         if($request->has('owner')) $announcements->where("owner", 'like', '%'.$request->get('owner').'%');
+        if($request->has('site')) $announcements->where("site", 'like', '%'.$request->get('site').'%');
         if($request->has('mobnom'))  $announcements->whereHas('numbers', function ($query) use ($request){ $query->where('pure_number', 'like', '%'.MyHelper::pureNumber($request->get('mobnom')).'%'); });
 
         if($request->has('date1')) $announcements->where("date", '>=' ,Date::d($request->get('date1'), 'Y-m-d'));
