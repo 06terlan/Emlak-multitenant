@@ -31,6 +31,7 @@ class UpdateUserPassRequest extends FormRequest
             'old_password' => 'required|min:5|string|isuserpass',
             'password' => 'required|min:5|string',
             're_password' => 'required|min:5|same:password|string',
+
         ];
     }
 }

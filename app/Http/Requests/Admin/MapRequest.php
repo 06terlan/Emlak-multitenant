@@ -67,6 +67,8 @@ class MapRequest extends FormRequest
 
             'owner'         => 'max:40',
 
+            'site'         => 'max:40',
+
             'date1'         => 'date_format:d-m-Y',
 
             'date2'         => 'date_format:d-m-Y',
