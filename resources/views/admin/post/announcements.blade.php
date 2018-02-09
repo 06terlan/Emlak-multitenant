@@ -583,6 +583,7 @@
         <span class="item-date"><i class="fa fa-calendar"></i> {{ App\Library\Date::d($announcement->date,'d-m-Y') }}</span>
         @foreach ($announcement['numbers'] as $typeK => $num)   
         <span class="item-nom"><i class="fa fa-mobile-phone" style="font-size:20px; color:red;"></i> {{ $num['number'] }}</span>
+        <span class="item-sahibkar"><i class="fa fa-user" style="font-size:20px; color:#23bbd2;"></i> <b>{{ $announcement->owner }}</b></span>
         @endforeach    
         <span class="item-source"> tap.az </span>
         </div>

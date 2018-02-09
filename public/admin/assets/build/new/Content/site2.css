@@ -2446,6 +2446,17 @@ h2.todo-tasklist-item-title
     bottom: 0px;
 }
 
+.item .item-sahibkar
+{
+    position:absolute;
+    padding: 2px 5px; 
+    color: #637b89;
+    font-size: 13px;
+    left:250px;
+    bottom: 0px;
+}
+
+
 .item .item-source
 {
     position:absolute;
