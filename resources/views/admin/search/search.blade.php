@@ -31,85 +31,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                
-<!-- Lazimli -->
-
-<script>
-    function showAppFilters(){
-        
-        switch($('#elansecim').val()) {
-            case '0':  // her ikisinde
-                $("#").removeClass("hidden");
-                $("").addClass("hidden");
-                break;
-
-            case '1':  // Ferdiler uzre 
-                $("").removeClass("hidden");
-                $("").addClass("hidden");
-                break;
-
-            case '2':  // Elanlar üzrə
-                $("#agent, #statusM").removeClass("hidden");
-                $("#agent, #statusM").addClass("hidden");
-                break;
-
-                
-            default:
-                break;
-        }
-
-        switch($('#entityType').val()) {
-            case '0':  // Bina ev mənzil
-                $("#roomColumn, #roomRemadeColumn, #floorColumn, #floorTypeColumn, #buildinFloorsColumn, #areaColumn, #buildingTypeColumn").removeClass("hidden");
-                $("#parcelAreaColumn").addClass("hidden");
-                break;
-
-            case '1':  // Həyət evi / Villa
-                $("#roomColumn, #roomRemadeColumn, #parcelAreaColumn, #areaColumn").removeClass("hidden");
-                $("#floorColumn, #floorTypeColumn, #buildinFloorsColumn, #buildingTypeColumn").addClass("hidden");
-                break;
-
-            case '2':  // Qaraj
-                $("#areaColumn").removeClass("hidden");
-                $("#roomColumn, #roomRemadeColumn, #floorColumn, #floorTypeColumn, #buildinFloorsColumn, #parcelAreaColumn, #buildingTypeColumn").addClass("hidden");
-                break;
-
-            case '3':  // Ofis
-                $("#floorColumn, #floorTypeColumn, #buildinFloorsColumn, #areaColumn").removeClass("hidden");
-                $("#parcelAreaColumn, #roomColumn, #roomRemadeColumn, #buildingTypeColumn").addClass("hidden");
-                break;            
-
-            case '4':  // Torpaq sahəsi
-                $("#areaColumn").removeClass("hidden");
-                $("#roomColumn, #roomRemadeColumn, #floorColumn, #floorTypeColumn, #buildinFloorsColumn, #parcelAreaColumn, #buildingTypeColumn").addClass("hidden");
-                break;              
-
-            case '5':  // Obyekt
-                $("#floorColumn, #floorTypeColumn, #buildinFloorsColumn, #areaColumn").removeClass("hidden");
-                $("#parcelAreaColumn, #roomColumn, #roomRemadeColumn, #buildingTypeColumn").addClass("hidden");
-                break;   
-                
-            default:
-                break;
-        }
-
-        switch($('#purpose').val()) {
-            case '0': //satilir
-                $("#loanColumn").removeClass("hidden");
-                break;
-            case '1': //kiraye
-                $("#loanColumn").addClass("hidden");
-                break;
-            case '2': //gunluk kiraye
-                $("#loanColumn").addClass("hidden");
-                break;
-
-            default:
-                break;
-        }
-        
-    }
-</script>
+            
                 
 <form class="" role="form" action="/search#anchor">
     <!-- BEGIN PORTLET-->
@@ -143,15 +65,15 @@
                     <div class="form-horizontal form-body ">
                         <div class="row">
                             <div class="col-sm-6">
-<!-- axtarish uzre secim -->
-<div class="form-group col-sm-12">
-<label class="col-xs-4  control-label">Elanın n&#246;v&#252;</label>
-<div class="col-xs-8 ">   
-<select class="selectpicker bs-select form-control select2me huseynzadeM" data-placeholder="Elanin növünü seçin..." id="elansecim" name="elansecim" >  
-<option selected="selected" value="">Hər ikisində</option>
-<option value="1" {{ $request->get('announcement', 1) == 1 ? 'selected' : '' }}>Fərdilər üzrə</option>
-<option value="2" {{ $request->get('announcement', 1) == 2 ? 'selected' : '' }}>Elanlar üzrə</option>
-    </select>
+                                <!-- axtarish uzre secim -->
+                                <div class="form-group col-sm-12">
+                                <label class="col-xs-4  control-label">Elanın n&#246;v&#252;</label>
+                                <div class="col-xs-8 ">   
+                                <select class=" bs-select form-control selectpicker" data-placeholder="Elanin növünü seçin..." id="elansecim" name="elansecim" >  
+                                <option selected="selected" value="">Hər ikisində</option>
+                                <option value="1">Fərdilər üzrə</option>
+                                <option value="2">Elanlar üzrə</option>
+                                    </select>
                                         <!--<span class="help-block">A block of help text. </span>-->
                                     </div>
                                 </div>
@@ -161,7 +83,7 @@
                                 <div class="form-group col-sm-12">
                                     <label class="col-xs-4  control-label">Obyektin n&#246;v&#252;</label>
                                     <div class="col-xs-8 ">
-                                        <select class="bs-select form-control select2me" data-placeholder="Obyektin növünü seçin..." id="entityType" name="entityType"><option selected="selected" value="0">Bina ev mənzil</option>
+                                        <select class="bs-select form-control selectpicker" data-placeholder="Obyektin növünü seçin..." id="entityType" name="entityType"><option selected="selected" value="0">Bina ev mənzil</option>
 <option value="1">Həyət evi / Villa, Bağ evi</option>
 <option value="2">Qaraj</option>
 <option value="3">Ofis</option>
@@ -175,7 +97,7 @@
                                 <div class="form-group col-sm-12" id="buildingTypeColumn">
                                     <label class="col-xs-4 control-label">Binanın n&#246;v&#252;</label>
                                     <div class="col-xs-8">
-                                        <select class="bs-select form-control select2me" data-placeholder="Binanın növünü seçin..." data-val="true" data-val-required="The buildingType field is required." id="buildingType" name="buildingType"><option value="0">Yeni tikili</option>
+                                        <select class="bs-select form-control selectpicker" data-placeholder="Binanın növünü seçin..." data-val="true" data-val-required="The buildingType field is required." id="buildingType" name="buildingType"><option value="0">Yeni tikili</option>
 <option value="1">K&#246;hnə tikili</option>
 <option selected="selected" value="-1">Hamısı</option>
 </select>
@@ -185,7 +107,7 @@
                                 <div class="form-group col-sm-12">
                                     <label class="col-xs-4 control-label">Elanın n&#246;v&#252;</label>
                                     <div class="col-xs-8">
-                                        <select class="bs-select form-control select2me" data-placeholder="Elanın növünü seçin..." data-style="btn-info" id="purpose" name="purpose"><option selected="selected" value="0">Satılır</option>
+                                        <select class="bs-select form-control selectpicker" data-placeholder="Elanın növünü seçin..." data-style="btn-info" id="purpose" name="purpose"><option selected="selected" value="0">Satılır</option>
 <option value="1">Kirayə</option>
 <option value="2">G&#252;nl&#252;k kirayə</option>
 </select>
@@ -274,7 +196,7 @@
                                     <label class="col-xs-4 control-label">Rayon</label>
                                     <div class="col-xs-8">
 
-                                        <select class="bs-select form-control select2me" data-placeholder="Rayonları seçin..." data-style="btn-danger" id="region" multiple="multiple" name="region"><option value="10">Nərimanov r.</option>
+                                        <select class="bs-select form-control" data-placeholder="Rayonları seçin..." data-style="btn-danger" id="region" multiple="multiple" name="region"><option value="10">Nərimanov r.</option>
 <option value="11">Nizami r.</option>
 <option value="12">Səbail r.</option>
 <option value="13">Sabun&#231;u r.</option>
@@ -299,7 +221,7 @@
                                 <div class="form-group col-sm-12">
                                     <label class="col-xs-4 control-label">Metro</label>
                                     <div class="col-xs-8">
-                                        <select class="bs-select form-control select2me" data-placeholder="Metroları seçin..." data-style="purple" id="subwayStation" multiple="multiple" name="metro">
+                                        <select class="bs-select form-control" data-placeholder="Metroları seçin..." data-style="purple" id="subwayStation" multiple="multiple" name="metro">
                                             <!--<option selected="selected" value="">Hamısı</option>-->
                                             @foreach (\App\Models\MskMetro::all() as $type)
                                                 <option value="{{ $type['id'] }}" {{ $type['id'] == $request->get('metro')? 'selected':'' }}> {{ $type['name'] }} </option>
@@ -313,7 +235,7 @@
                                 <div class="form-group col-sm-12">
                                     <label class="col-xs-4 control-label">Qəsəbə</label>
                                     <div class="col-xs-8">
-                                        <select class="bs-select form-control select2me" data-placeholder="Qəsəbələri seçin..." data-style="purple" id="district" multiple="multiple" name="district"><option value="274">&#220;mid</option>
+                                        <select class="bs-select form-control" data-placeholder="Qəsəbələri seçin..." data-style="purple" id="district" multiple="multiple" name="district"><option value="274">&#220;mid</option>
 <option value="273">Şonqar</option>
 <option value="272">Şıxlar </option>
 <option value="271">Qızıldaş</option>
@@ -445,7 +367,7 @@
                                 <div class="form-group col-sm-12">
                                     <label class="col-xs-4 control-label">Nişangah</label>
                                     <div class="col-xs-8">
-                                        <select class="bs-select form-control select2me" data-placeholder="Nişangahı seçin..." data-style="purple" id="orientmark" multiple="multiple" name="orientmark"><option value="30">Axundov bağı  </option>
+                                        <select class="bs-select form-control" data-placeholder="Nişangahı seçin..." data-style="purple" id="orientmark" multiple="multiple" name="orientmark"><option value="30">Axundov bağı  </option>
 <option value="31">Ayna Sultanova heykəli </option>
 <option value="182">Azadlıq meydanı  </option>
 <option value="174">Azneft meydanı  </option>
@@ -632,7 +554,7 @@
 <div class="form-group col-sm-12">
 <label class="col-xs-4  control-label">Status</label>
 <div class="col-xs-8 ">   
-<select class="selectpicker bs-select form-control select2me" data-style="btn-success" data-placeholder="Elanin növünü seçin..." id="statusM" name="secim" > 
+<select class= "bs-select form-control " data-style="btn-success" data-placeholder="Elanin növünü seçin..." id="statusM" name="secim" > 
 <option selected="selected" value="">Hamısı</option>
 @foreach (\App\Library\MyClass::$buttonStatus2 as $typeK => $type)
 <option value="{{ $typeK }}" {{ $typeK == $request->get('status')? 'selected':'' }}> {{ $type }} </option>
@@ -661,7 +583,7 @@
 <div class="form-group col-sm-12">
 <label class="col-xs-4  control-label">Agent(user) üzrə</label>
 <div class="col-xs-8 ">   
-<select class="selectpicker bs-select form-control select2me" data-live-search="true" data-placeholder="Elanin növünü seçin..." id="agent" name="user" >  
+<select class= "form-control select2me" data-placeholder="Elanin növünü seçin..." id="agent" name="user" >  
 <option selected="selected" value="">Hamısı</option>
 @foreach (\App\User::realUsers()->get() as $type)
 <option value="{{ $type['id'] }}" {{ $type['id'] == $request->get('user')? 'selected':'' }}> {{ $type->fullname() }} </option>
@@ -674,7 +596,7 @@
                                 <div class="form-group col-sm-12">
                                     <label class="col-xs-4  control-label">Satıcının tipi</label>
                                     <div class="col-xs-8 ">
-                                        <select class="bs-select form-control select2me" data-placeholder="Elan verənin tipini seçin..." id="ownerType" name="ownerType"><option value="0">Ancaq m&#252;lkiyyət&#231;i</option>
+                                        <select class="bs-select form-control selectpicker" data-placeholder="Elan verənin tipini seçin..." id="ownerType" name="ownerType"><option value="0">Ancaq m&#252;lkiyyət&#231;i</option>
 <option value="1">Ancaq vasitə&#231;i</option>
 <option selected="selected" value="-1">Hamısı</option>
 </select>
@@ -685,7 +607,7 @@
                                 <div class="form-group col-sm-12" id="certificateColumn">
                                     <label class="col-xs-4  control-label">Sənəd</label>
                                     <div class="col-xs-8 ">
-                                        <select class="bs-select form-control  documnetSelect" data-placeholder="Kupçalı olub olmadığını seçin..." id="documentType" name="documentType">
+                                        <select class="bs-select form-control  selectpicker" data-placeholder="Kupçalı olub olmadığını seçin..." id="documentType" name="documentType">
     
                                         @foreach (\App\Library\MyClass::$documentTypes as $typeK => $type)
                                             <option value="{{ $typeK }}" {{ $typeK == $request->get('documentType')? 'selected':'' }}> {{ $type }} </option>
@@ -701,7 +623,7 @@
                                 <div class="form-group col-sm-12" id="loanColumn">
                                     <label class="col-xs-4  control-label">Kredit şərti</label>
                                     <div class="col-xs-8 ">
-                                        <select class="bs-select form-control  loanSelect" data-placeholder="Kredit şərtini seçin..." id="loanType" name="loanType"><option value="0">Kreditlə</option>
+                                        <select class="bs-select form-control  selectpicker" data-placeholder="Kredit şərtini seçin..." id="loanType" name="loanType"><option value="0">Kreditlə</option>
 <option value="1">Kreditsiz</option>
 <option selected="selected" value="-1">Hamısı</option>
 </select>
@@ -735,7 +657,7 @@
                                 <div class="form-group col-sm-12" name="repairing" id="roomRemadeColumn">
                                     <label class="col-xs-4  control-label">D&#252;zəlmə</label>
                                     <div class="col-xs-8 ">
-                                        <select class="bs-select form-control remakeType" data-placeholder="Düzəlmə olub olmadığını seçin..." id="remakeType" name="remakeType">
+                                        <select class="bs-select form-control selectpicker" data-placeholder="Düzəlmə olub olmadığını seçin..." id="remakeType" name="remakeType">
                                             
                                         @foreach (\App\Library\MyClass::$repairingTypes as $typeK => $type)
                                             <option value="{{ $typeK }}" {{ $typeK == $request->get('repairing')? 'selected':'' }}> {{ $type }} </option>
@@ -763,7 +685,7 @@
                                     </div>
                                     <label class="col-md-4 col-xs-3 control-label" id="floorLabelForTouch">Mərtəbə</label>
                                     <div class="col-md-8 col-xs-9 " id="floorContentForTouch">
-                                        <select id="minFloor" name="minFloor" class="bs-select form-control input-xsmall select2" data-style="btn-default btn-outline-success">
+                                        <select id="minFloor" name="minFloor" class="bs-select form-control input-xsmall selectpicker" data-style="btn-default btn-outline-success">
                                             
                                                                             
                                             <option selected>1</option>
@@ -771,7 +693,7 @@
                                      
                                         </select>
 
-                                        <select id="maxFloor" name="maxFloor" class="bs-select form-control input-xsmall select2" data-style="btn-default btn-outline-success">
+                                        <select id="maxFloor" name="maxFloor" class="bs-select form-control input-xsmall maxFloor" data-style="btn-default btn-outline-success">
                                             
                                      
                                             
@@ -1480,6 +1402,96 @@
             {
                 $(".collapse-link").click();
             }
+            
+            function showAppFilters(){
+        
+                
+
+                /*switch($('#entityType').val()) {
+                    case '0':  // Bina ev mənzil
+                        $("#roomColumn, #roomRemadeColumn, #floorColumn, #floorTypeColumn, #buildinFloorsColumn, #areaColumn, #buildingTypeColumn").removeClass("hidden");
+                        $("#parcelAreaColumn").addClass("hidden");
+                        break;
+
+                    case '1':  // Həyət evi / Villa
+                        $("#roomColumn, #roomRemadeColumn, #parcelAreaColumn, #areaColumn").removeClass("hidden");
+                        $("#floorColumn, #floorTypeColumn, #buildinFloorsColumn, #buildingTypeColumn").addClass("hidden");
+                        break;
+
+                    case '2':  // Qaraj
+                        $("#areaColumn").removeClass("hidden");
+                        $("#roomColumn, #roomRemadeColumn, #floorColumn, #floorTypeColumn, #buildinFloorsColumn, #parcelAreaColumn, #buildingTypeColumn").addClass("hidden");
+                        break;
+
+                    case '3':  // Ofis
+                        $("#floorColumn, #floorTypeColumn, #buildinFloorsColumn, #areaColumn").removeClass("hidden");
+                        $("#parcelAreaColumn, #roomColumn, #roomRemadeColumn, #buildingTypeColumn").addClass("hidden");
+                        break;            
+
+                    case '4':  // Torpaq sahəsi
+                        $("#areaColumn").removeClass("hidden");
+                        $("#roomColumn, #roomRemadeColumn, #floorColumn, #floorTypeColumn, #buildinFloorsColumn, #parcelAreaColumn, #buildingTypeColumn").addClass("hidden");
+                        break;              
+
+                    case '5':  // Obyekt
+                        $("#floorColumn, #floorTypeColumn, #buildinFloorsColumn, #areaColumn").removeClass("hidden");
+                        $("#parcelAreaColumn, #roomColumn, #roomRemadeColumn, #buildingTypeColumn").addClass("hidden");
+                        break;   
+
+                    default:
+                        break;
+                }
+
+                switch($('#purpose').val()) {
+                    case '0': //satilir
+                        $("#loanColumn").removeClass("hidden");
+                        break;
+                    case '1': //kiraye
+                        $("#loanColumn").addClass("hidden");
+                        break;
+                    case '2': //gunluk kiraye
+                        $("#loanColumn").addClass("hidden");
+                        break;
+
+                    default:
+                        break;
+                }*/
+
+            }
+
+            //$('#purpose, #entityType, #buildingType, #ownerType, #minFloor, #maxFloor, #remakeType, #documentType, #loanType , #elansecim').selectpicker();
+
+            $('.select2me').select2();
+
+            $("#subwayStation, #region, #district, #orientmark").select2({
+                allowClear: true
+            });
+
+            $('#elansecim').change(function(){
+                
+                $("#agent").parents(".form-group:eq(0)").show();
+
+                switch($(this).val()) {
+                    /*case '0':  // her ikisinde
+                        $("#").removeClass("hidden");
+                        $("").addClass("hidden");
+                        break;
+
+                    case '1':  // Ferdiler uzre 
+                        $("").removeClass("hidden");
+                        $("").addClass("hidden");
+                        break;*/
+
+                    case '2':  // Elanlar üzrə
+                        $("#agent").parents(".form-group:eq(0)").hide();
+                        break;
+                    default:
+                        break;
+                }
+            });
+
         });
     </script>
+        
+        
 @endsection
