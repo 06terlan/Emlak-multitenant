@@ -111,7 +111,7 @@ class MSKController extends Controller
                 }
 
                 $groupData->group_name = $request->get('group_name');
-                $groupData->tenant_id = Auth::user()->tenant_id;
+                $groupData->tenant_id = Auth::user()->group->super_admin == 1 ? $request->get('tenant',1) : Auth::user()->tenant_id;
                 $groupData->available_types = json_encode($request->get('available_types', []));
                 $groupData->available_building_types = json_encode($request->get('available_building_types', []));
                 $groupData->available_modules = json_encode($request->get('available_modules', []));

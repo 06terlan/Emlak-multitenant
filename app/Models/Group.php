@@ -12,7 +12,7 @@ class Group extends Model
 
     public static function realData()
     {
-        return MyHelper::addTenantFilter( self::orderBy('id', 'DESC'), true );
+        return MyHelper::addTenantFilter( self::orderBy('id', 'DESC') );
     }
 
     public function getModulePriv($module)
@@ -32,5 +32,10 @@ class Group extends Model
     public function users()
     {
         return $this->hasMany(User::class);
+    }
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
     }
 }
