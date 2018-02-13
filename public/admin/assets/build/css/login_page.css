@@ -76,9 +76,9 @@ button:hover{cursor:pointer;}
 }
 .validate-input{position:relative;}
 /*! CSS Used fontfaces */
-@font-face{font-family:Material-Design-Iconic-Font;src:url(/admin/assets/fonts/iconic/fonts/Material-Design-Iconic-Font.woff2?v=2.2.0) format('woff2'),url(/admin/assets/fonts/iconic/fonts/Material-Design-Iconic-Font.woff?v=2.2.0) format('woff'),url(/admin/assets/fonts/iconic/fonts/Material-Design-Iconic-Font.ttf?v=2.2.0) format('truetype');}
-@font-face{font-family:Poppins-Regular;src:url(/admin/assets/fonts/poppins/Poppins-Regular.ttf);}
-@font-face{font-family:Poppins-Medium;src:url(/admin/assets/fonts/poppins/Poppins-Medium.ttf);}
+@font-face{font-family:Material-Design-Iconic-Font;src:url(../../fonts/iconic/fonts/Material-Design-Iconic-Font.woff2?v=2.2.0) format('woff2'),url(../../assets/fonts/iconic/fonts/Material-Design-Iconic-Font.woff?v=2.2.0) format('woff'),url(../../assets/fonts/iconic/fonts/Material-Design-Iconic-Font.ttf?v=2.2.0) format('truetype');}
+@font-face{font-family:Poppins-Regular;src:url(../../../assets/fonts/poppins/Poppins-Regular.ttf);}
+@font-face{font-family:Poppins-Medium;src:url(../../../assets/fonts/poppins/Poppins-Medium.ttf);}
 
 #container {
     position:fixed;
@@ -90,7 +90,7 @@ button:hover{cursor:pointer;}
     left:0;
     height: 100%;
     width: 100%;
-    background-image: url(/admin/images/login/loading.gif);
+    background-image: url(../../images/login/loading.gif);
     background-repeat: no-repeat;
 }
 

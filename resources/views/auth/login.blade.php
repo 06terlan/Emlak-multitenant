@@ -3,10 +3,10 @@
 @section('content')
 
     <div id="container" xmlns="">
-        <img src="/admin/images/login/bg-1.jpg" style="background-image: url(/admin/images/login/loading.gif)">
-        <img src="/admin/images/login/bg-2.jpg" style="background-image: url(/admin/images/login/loading.gif)">
-        <img src="/admin/images/login/bg-3.jpg" style="background-image: url(/admin/images/login/loading.gif)">
-        <img src="/admin/images/login/bg-4.jpg" style="background-image: url(/admin/images/login/loading.gif)">
+        <img src="{{ asset('admin/images/login/bg-1.jpg') }}" style="background-image: url( {{asset('/admin/images/login/loading.gif')}} )">
+        <img src="{{ asset('/admin/images/login/bg-2.jpg') }}" style="background-image: url( {{ asset('/admin/images/login/loading.gif') }} )">
+        <img src="{{ asset('/admin/images/login/bg-3.jpg') }}" style="background-image: url( {{ asset('/admin/images/login/loading.gif') }} )">
+        <img src="{{ asset('/admin/images/login/bg-4.jpg') }}" style="background-image: url( {{ asset('/admin/images/login/loading.gif') }} )">
     </div>
 
     <div class="limiter">
