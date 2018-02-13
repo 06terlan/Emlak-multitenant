@@ -6,6 +6,7 @@ use App\Library\MyClass;
 use App\Library\MyHelper;
 use App\Models\Group;
 use App\Models\MskMakler;
+use App\Models\MskMetro;
 use \Illuminate\Support\MessageBag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -74,7 +75,8 @@ class MSKController extends Controller
 
     #endregion
 
-    #regin group
+    #region group
+
     public function group()
     {
         $groups = Group::realData()->paginate( MyClass::ADMIN_ROW_COUNT );
@@ -136,5 +138,61 @@ class MSKController extends Controller
 
         return redirect()->back();
     }
+
+    #endregion
+
+    #region metro
+
+    public function metro()
+    {
+        $metros = MskMetro::paginate( MyClass::ADMIN_ROW_COUNT );
+
+        return view( 'admin.msk.metro', [ 'metros' => $metros ]);
+    }
+
+    public function metroAddEdit(Request $request, $metro)
+    {
+        if($request->isMethod('post'))
+        {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|string|min:1|max:50'
+            ]);
+
+            if ($validator->fails())
+            {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+            else
+            {
+                if($metro== 0)
+                {
+                    $metroData = new MskMetro();
+                }
+                else
+                {
+                    $metroData = MskMetro::find($metro);
+                }
+
+                $metroData->name = $request->get('name');
+                $metroData->save();
+
+                return redirect()->route('msk_metro');
+            }
+        }
+        else
+        {
+            $metroData = MskMetro::find($metro);
+            return view( 'admin.msk.metroAddEdit', [ 'metro' => $metroData, 'id' => $metro ]);
+        }
+
+    }
+
+    public function metroDelete(MskMetro $metro)
+    {
+        $metro->delete();
+
+        return redirect()->back();
+    }
+
     #endregion
 }
