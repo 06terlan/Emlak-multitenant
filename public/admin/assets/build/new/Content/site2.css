@@ -2409,7 +2409,23 @@ h2.todo-tasklist-item-title
     background-color: rgba(249, 188, 10, 0.75);
 }
 
+/* # cerge secim */
+.item-secim-property
+{
+    position: absolute;
+    padding: 2px 5px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    top:162px;
+    left:0px;
+}
 
+.item-secim-property.cerge
+{
+    background-color: rgb(35, 187, 210);
+}
+/* # cerge secim */
 .item .item-date
 {
     position:absolute;
@@ -2429,6 +2445,17 @@ h2.todo-tasklist-item-title
     left:110px;
     bottom: 0px;
 }
+
+.item .item-sahibkar
+{
+    position:absolute;
+    padding: 2px 5px; 
+    color: #637b89;
+    font-size: 13px;
+    left:250px;
+    bottom: 0px;
+}
+
 
 .item .item-source
 {
@@ -2515,6 +2542,29 @@ h2.todo-tasklist-item-title
     padding-left: 4px;
 }
 
+.emeliyyat-bolumu-icon {
+    margin-left: 180px;
+}
+
+.emeliyyat-icon .fa-edit {
+    color: rgb(101, 188, 125);
+    font-weight: 500;
+}
+
+.emeliyyat-icon .fa-trash {
+    color: rgb(255, 0, 0);
+    font-weight: 500;
+}
+
+.emeliyyat-icon .fa-share-alt {
+    color: rgb(35, 187, 210);
+    font-weight: 500;
+}
+
+.emeliyyat-icon .fa-thumb-tack {
+    color: rgb(58, 146, 235);
+    font-weight: 500;
+}
 
 @media(max-width: 950px) {
     #floorTypeColumn label.btn

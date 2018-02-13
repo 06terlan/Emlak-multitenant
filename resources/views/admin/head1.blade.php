@@ -35,7 +35,7 @@
 
 <title>Emlak bazası</title>
 
-
+{!! Html::style('admin/assets/build/new/info/css/info.css') !!}
 <!-- Bootstrap 4.0.0 -->
 {!! Html::style('admin/assets/build/new/Content/bootstrap.min.css') !!}
 <!-- huseynzade new 1.3.1 -->
