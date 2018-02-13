@@ -14,8 +14,7 @@
 
 /* Admin panel */
 Auth::routes();
-Route::group(['prefix' => 'admin', 'middleware' => 'auth' ], function(){
-
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'tenant'] ], function(){
 
 	Route::get('{home?}', 'Admin\HomeController@home')->where('home','home')->name('home');
 

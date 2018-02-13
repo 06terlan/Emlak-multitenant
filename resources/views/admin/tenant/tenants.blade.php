@@ -53,7 +53,7 @@
                                         <td>{{ $tenans->perPage() * ($tenans->currentPage() - 1) + $loop->iteration }}</td>
                                         <td>{{ $tenan->company_name }}</td>
                                         <td>{{ $tenan->getType() }}</td>
-                                        <td>{{ \App\Library\Date::d($tenan->last_date) }}</td>
+                                        <td>{{ $tenan->last_date == null ? '-' : \App\Library\Date::d($tenan->last_date) }}</td>
                                         <td>{{ \App\Library\Date::d($tenan->created_at, "d-m-Y H:i") }}</td>
                                         <th>
                                             @if( \App\Library\MyHelper::has_priv('tenant', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
