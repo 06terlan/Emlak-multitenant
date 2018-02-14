@@ -41,48 +41,39 @@
                 $("#").removeClass("hidden");
                 $("").addClass("hidden");
                 break;
-
             case '1':  // Ferdiler uzre 
                 $("").removeClass("hidden");
                 $("").addClass("hidden");
                 break;
-
             case '2':  // Elanlar üzrə
                 $("#agent, #statusM").removeClass("hidden");
                 $("#agent, #statusM").addClass("hidden");
                 break;
-
                 
             default:
                 break;
         }
-
         switch($('#entityType').val()) {
             case '0':  // Bina ev mənzil
                 $("#roomColumn, #roomRemadeColumn, #floorColumn, #floorTypeColumn, #buildinFloorsColumn, #areaColumn, #buildingTypeColumn").removeClass("hidden");
                 $("#parcelAreaColumn").addClass("hidden");
                 break;
-
             case '1':  // Həyət evi / Villa
                 $("#roomColumn, #roomRemadeColumn, #parcelAreaColumn, #areaColumn").removeClass("hidden");
                 $("#floorColumn, #floorTypeColumn, #buildinFloorsColumn, #buildingTypeColumn").addClass("hidden");
                 break;
-
             case '2':  // Qaraj
                 $("#areaColumn").removeClass("hidden");
                 $("#roomColumn, #roomRemadeColumn, #floorColumn, #floorTypeColumn, #buildinFloorsColumn, #parcelAreaColumn, #buildingTypeColumn").addClass("hidden");
                 break;
-
             case '3':  // Ofis
                 $("#floorColumn, #floorTypeColumn, #buildinFloorsColumn, #areaColumn").removeClass("hidden");
                 $("#parcelAreaColumn, #roomColumn, #roomRemadeColumn, #buildingTypeColumn").addClass("hidden");
                 break;            
-
             case '4':  // Torpaq sahəsi
                 $("#areaColumn").removeClass("hidden");
                 $("#roomColumn, #roomRemadeColumn, #floorColumn, #floorTypeColumn, #buildinFloorsColumn, #parcelAreaColumn, #buildingTypeColumn").addClass("hidden");
                 break;              
-
             case '5':  // Obyekt
                 $("#floorColumn, #floorTypeColumn, #buildinFloorsColumn, #areaColumn").removeClass("hidden");
                 $("#parcelAreaColumn, #roomColumn, #roomRemadeColumn, #buildingTypeColumn").addClass("hidden");
@@ -91,7 +82,6 @@
             default:
                 break;
         }
-
         switch($('#purpose').val()) {
             case '0': //satilir
                 $("#loanColumn").removeClass("hidden");
@@ -102,7 +92,6 @@
             case '2': //gunluk kiraye
                 $("#loanColumn").addClass("hidden");
                 break;
-
             default:
                 break;
         }
@@ -529,125 +518,223 @@
             </div>
         </div> 
 
-<!-- elanlarin headr hissesi son-->                             
-<!--Elanlar new version -->
-@foreach ($announcements as $announcement ) 
-<div class="items">
-    <div class="item">
-        <div class="item-picture">
-        <a href="" target="_blank">
-        <img src="images/elan/main.jpg" alt="">
-        </a>
-        <h3 class="item-price"><span class="price-amount">{{ $announcement->amount }}</span> <span class="currency">AZN</span></h3>
-        <div class="item-credit">Kreditlə</div>
-        <div class="item-certificate">Kupcali</div>
-        <span class='item-owner-type agent'>{!! $announcement['is_makler'] == 1?"(Vasitəçi)":'(Mülkiyyətçi)' !!}</span>
-        <div class="item-sell-rent-property sell">{{ $announcement->getBuldingType() }}</div>
-        <!--<div class="item-sell-rent-property rent">Kirayə</div> Kirayeler ucun reng-->
-        <!--<div class="item-sell-rent-property rent">Günlük kirayə</div> Buda gunluk kiraye -->
-        <div class="item-secim-property cerge">{{ $announcements->perPage() * ($announcements->currentPage() - 1) + $loop->iteration }} </div>
-        </div>
-        <div class="item-properities">
-        <h1 class="item-category">
-        <b class="text-primary  ">{{ $announcement->getAnnouncementType() }}</b>
-        </h1>
-        <h1 class="text-nowrap">
-        <span class="text-nowrap"><b>2</b> otaq<span class="remade"> (düzəlmə)</span></span>
-        <span class="text-nowrap"><b>45 {{ $announcement->area }}</b> m&#178; </span>
-        <span class="text-nowrap"><b>7 / 9</b> Mərtəbə </span>
-        <!-- nastroyka bolmesi -->
-            @if( \App\Library\MyHelper::has_priv("announcement_pro", \App\Library\MyClass::PRIV_CAN_ADD) )
-        <span class="text-nowrap"> <a class="emeliyyat-bolumu-icon" href=""></a> </span>
-        <span class="text-nowrap"><a class="emeliyyat-icon" href="{{ route('announcement_pro_add_from',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Edit (Ferdilere)"><i class="fa fa-edit"></i></a></span>
-        <span class="text-nowrap"><a class="emeliyyat-icon" href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash"></i></a> </span>
-        <span class="text-nowrap"><a class="emeliyyat-icon" href="" data-toggle="tooltip" data-original-title="Elan ver"><i class="fa fa-share-alt"></i></a> </span>
-        <span class="text-nowrap"><a class="emeliyyat-icon" style="width: 24px;" href="{{ route('announcement_pro_status',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="{{ isset(\App\Library\MyClass::$buttonStatus[$announcement->status]) ? \App\Library\MyClass::$buttonStatus[$announcement->status] : '-' }}"><i class="fa fa-thumb-tack"></i></a> </span>
-            @endif
-        <!-- nastroyka bolmesi son -->
-        </h1>
+<!-- elanlarin headr hissesi son-->   
 
+<!--Elanlar new version -->
+<style>
+.shape{    
+    border-style: solid; border-width: 0 91px 52px 0; 
+    float:right; 
+    height: 0px; 
+    width: 0px;
+    -ms-transform:rotate(360deg); /* IE 9 */
+    -o-transform: rotate(360deg);  /* Opera 10.5 */
+    -webkit-transform:rotate(360deg); /* Safari and Chrome */
+    transform:rotate(360deg);
+}
+.offer{
+    background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
+}
+.offer:hover {
+    -webkit-transform: scale(1.1); 
+    -moz-transform: scale(1.1); 
+    -ms-transform: scale(1.1); 
+    -o-transform: scale(1.1); 
+    transform:rotate scale(1.1); 
+    -webkit-transition: all 0.4s ease-in-out; 
+-moz-transition: all 0.4s ease-in-out; 
+-o-transition: all 0.4s ease-in-out;
+transition: all 0.4s ease-in-out;
+    }
+.shape {
+    border-color: rgba(255,255,255,0) #d9534f rgba(255,255,255,0) rgba(255,255,255,0);
+}
+.offer-radius{
+    border-radius:7px;
+}
+.offer-danger { border-color: #d9534f; }
+.offer-danger .shape{
+    border-color: transparent #d9534f transparent transparent;
+}
+.offer-success {    border-color: #5cb85c; }
+.offer-success .shape{
+    border-color: transparent #5cb85c transparent transparent;
+}
+.offer-default {    border-color: #999999; }
+.offer-default .shape{
+    border-color: transparent #999999 transparent transparent;
+}
+.offer-primary {    border-color: #428bca; }
+.offer-primary .shape{
+    border-color: transparent #428bca transparent transparent;
+}
+.offer-info {   border-color: #5bc0de; }
+.offer-info .shape{
+    border-color: transparent #5bc0de transparent transparent;
+}
+.offer-warning {    border-color: #f0ad4e; }
+.offer-warning .shape{
+    border-color: transparent #f0ad4e transparent transparent;
+}
+
+.shape-text{
+    color:#fff;
+    font-size:11px;
+    font-weight:bold;
+    position:relative;
+    right:-31px;
+    top:-2px;
+    white-space: nowrap;
+    -ms-transform:rotate(30deg); /* IE 9 */
+    -o-transform: rotate(360deg);  /* Opera 10.5 */
+    -webkit-transform:rotate(30deg); /* Safari and Chrome */
+    transform:rotate(30deg);
+}   
+.offer-content{
+    padding:0 20px 10px;
+}
+
+
+.offer-content img {
+    width: 220px;
+    height: 190px;
+    margin: -50px -17.5px;
+    /* left: 9px; */
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
+
+.backColor {
+    position: absolute;
+    top: 10px;
+    left: 17px;
+    border-radius: 6px;
+    background-color: rgba(238, 106, 96, 0.9);
+    padding: 2px 5px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+.offer:hover h2 {
+    top: 1px;
+    left: 8px;
+    }
+
+.shape p {
+    font-size: 14px;
+}
+
+.offer-content h3 {
+    color: #428bca;
+    font-weight: 600;
+}
+
+.row .fa-long-arrow-right {
+    font-size: 22px !important;
+    color: red;
+}
+
+.fa {
+    margin-top: 6px;
+    font-size: 18px !important;
+}
+
+.fa.fa-edit{
+    color: rgb(101, 188, 125);
+}
+
+.fa.fa-trash {
+    color: rgb(255, 0, 0);
+}
+
+.fa.fa-share-alt {
+    color: rgb(35, 187, 210);
+}
+
+.fa.fa-thumb-tack {
+    color: rgb(58, 146, 235);
+}
+
+.fa.fa-calendar {
+    color: rgb(255, 0, 0);
+}
+
+.xetd:before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 9px;
+    width: 190px;
+    height: 2px;
+    background-color: rgb(35, 187, 210);
+}
+</style>
+
+
+<div class="container">
+    <div class="row">
+
+
+@foreach ($announcements as $announcement ) 
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="offer offer-radius offer-primary">
+                <div class="shape">
+                    <div class="shape-text">
+                        {!! $announcement['is_makler'] == 1?"(Vasitəçi)":'Mülkiyyətçi' !!}                             
+                    </div>
+                </div>
+                <div class="offer-content">
+                    <img src="images/logo.jpg">
+                    <h2 class="backColor">{{ $announcement->amount }} <span style="font-size: 17; font-weight: 200;">AZN</span></h2>
+                    <h3 class="lead text-center" style="font-size: 16px;">{{ $announcement->getAnnouncementType() }}</h3>   
+                <!--     <p class="text-center" style="font-size: 14px; color: red; margin-top: -10px;">Yeni tikili</p>    -->                 
+
+
+                    <div class="row">
+                        <div class="col-sm-8 text-left"  style="font-weight: 700; color: red; font-size: 16px;""><p>Baki / Abseron</p></div>    
+                        <div class="col-sm-4 text-right"  style="font-weight: 600; color: rgb(58, 146, 235); font-size: 16px;"><p>{{ $announcement->getBuldingType() }}</p></div>      
+                    </div>
+
+                    <!-- <h4>Xususiyyetler</h4> -->
+                    <ul class="text-left">
+                        <li><p style="font-weight: 600;">2 otaq</p></li>
+                        <li><p style="font-weight: 600;">45 m²</p></li>
+                        <li><p style="font-weight: 600;">7 / 9 Mərtəbə</p></li>
+                    </ul>
+
+                    <div class="row">
+                        <p></p>
+                        <div class="col-sm-8 text-left" style="font-size: 14px;"><i class="fa fa-calendar"></i> {{ App\Library\Date::d($announcement->date,'d-m-Y') }}</div>    
+                        <!-- <div class="col-sm-4 text-left" style="font-size: 11px;">yeniemlak.az</div>  -->   
+                        <div class="col-sm-4 text-right"><a href="{{ route('announcement_info',['announcement'=>$announcement->id]) }}"> <i class="fa fa-long-arrow-right"></i> </a> <p></p></div>    
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4 text-left" style="font-size: 16px; font-weight: 600; color: green;"># {{ $announcements->perPage() * ($announcements->currentPage() - 1) + $loop->iteration }}</div>    
+                        <div class="col-sm-8 text-right" style="color: #dfba49;"><p>yeniemlak.az</p></div>       
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 text-center xetd"> 
+                            <a href="{{ route('announcement_pro_add_from',['id'=>$announcement->id]) }}"> <i class="fa fa-edit"></i> </a> </div>
+                        <div class="col-sm-3 text-center"> 
+                            <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}"> <i class="fa fa-trash"></i> </a> </div>
+                        <div class="col-sm-3 text-center"> 
+                            <a href=""> <i class="fa fa-share-alt"></i> </a> </div>
+                        <div class="col-sm-3 text-center"> 
+                            <a href=""> <i class="fa fa-thumb-tack"></i> </a> </div>      
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <div class="details" >
-        <span class="text-nowrap"><i class="fa fa-circle "></i><b>Bakı/Abşeron</b></span>
-        <span class="text-nowrap"><i class="fa fa-circle "></i><b>Sabun&#231;u r.</b></span>
-        <span class="text-nowrap"><i class="fa fa-circle "></i><b>Maştağa</b></span>
-        <span class="text-nowrap"><i class="fa fa-circle "></i><img src="images/elan/m.png" class="hidden mPng"><b>Xalqlar Dostluğu m.</b></span>
-        <p class="item-address">
-        Bakı şəhəri, Afiyəddin Cəlilov 27A
-        </p>
-        <p class="description">
-        {{ $announcement->getShortContent() }}
-        </p>
-           
-         <a class="more-details" href="{{ route('announcement_info',['announcement'=>$announcement->id]) }}" target="_blank" data-toggle="tooltip" data-original-title="İnfo">Ətraflı <i class="fa fa-caret-right"></i></a>
-        <span class="item-date"><i class="fa fa-calendar"></i> {{ App\Library\Date::d($announcement->date,'d-m-Y') }}</span>
-        @foreach ($announcement['numbers'] as $typeK => $num)   
-        <span class="item-nom"><i class="fa fa-mobile-phone" style="font-size:20px; color:red;"></i> {{ $num['number'] }}</span>
-        <span class="item-sahibkar"><i class="fa fa-user" style="font-size:20px; color:#23bbd2;"></i> <b>{{ $announcement->owner }}</b></span>
-        @endforeach    
-        <span class="item-source"> tap.az </span>
-        </div>
+@endforeach
+
     </div>
 </div>
- @endforeach
-<!--Elanlar new version SON -->                            
-                            
-                            
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Başlıq</th>
-                                    <th>Content</th>
-                                    <th>Tipi</th>
-                                    <th>Qiymət</th>
-                                    <th>Tarix</th>
-                                    <th>Link</th>
-                                    <th>Əməliyyatlar</th>
-                                </tr>
-                            </thead>
+<!--Elanlar new version end-->
 
-                            <thead>
-                                <tr>
-                                    <th data-toggle="tooltip" data-original-title="Maklersiz elanlar">
-                                        <input type="checkbox" name="no_makler" {{ $request->get("no_makler") ? 'checked' : '' }} class="flat formFind" />
-                                    </th>
-                                    <th><input class="form-control formFind" name="header" value="{{ $request->get("header") }}" placeholder="Başlıq"></th>
-                                    <th><input class="form-control formFind" name="content" value="{{ $request->get("content") }}" placeholder="Content"></th>
-                                    <th>
-                                        <select class="form-control formFind" name="type">
-                                            <option></option>
-                                            @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
-                                                <option value="{{ $typeK }}" {{ $typeK == $request->get("type") ? 'selected':'' }}> {{ $type }} </option>
-                                            @endforeach
-                                        </select>
-                                    </th>
-                                    <th><input class="form-control formFind" name="amount" value="{{ $request->get("amount") }}" placeholder="Qiymət"></th>
-                                    <th><input class="form-control formFind" name="date" value="{{ $request->get("date") }}" placeholder="Tarix"></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($announcements as $announcement )
-                                    <tr>
-                                        <td>{{ $announcements->perPage() * ($announcements->currentPage() - 1) + $loop->iteration }} {!! $announcement['is_makler']==1?"<i style='color:red;font-size:20px' class='fa fa-child' data-toggle='tooltip' data-original-title='Makler'></i>":'' !!}</td>
-                                        <td>{{ $announcement->header }}</td>
-                                        <td>{{ $announcement->getShortContent() }}</td>
-                                        <td>{{ $announcement->getAnnouncementType() }}</td>
-                                        <td>{{ $announcement->amount }}</td>
-                                        <td>{{ App\Library\Date::d($announcement->date,'d-m-Y') }}</td>
-                                        <td><a target="_blank" href="{{ $announcement->link }}"> Link </a> </td>
-                                        <th>
-                                            <a href="{{ route('announcement_info',['announcement'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="İnfo" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i></a>
-
-                                            @if( \App\Library\MyHelper::has_priv("announcement", \App\Library\MyClass::PRIV_CAN_ADD) )
-                                                <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
-                                                <a href="{{ route('announcement_pro_add_from',['id'=>$announcement->id]) }}" data-toggle="tooltip" data-original-title="Fərdiyə əlavə et" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-                                            @endif
-                                        </th>
-                                    </tr>
-                                @endforeach
-                            </tbody>
                         </table>
                     </form>
                     <div class="row">
