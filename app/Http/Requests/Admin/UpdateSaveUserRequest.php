@@ -31,13 +31,10 @@ class UpdateSaveUserRequest extends FormRequest
     {
         return [
             'name' => 'required|min:1|string',
-
             'site'         => 'max:40',
-
-
             'login' => 'required|min:5|string',
             'email' => 'required|email|string',
-            'group_id' => 'required|exists:groups,id,tenant_id,'.Auth::user()->tenant_id
+            'group_id' => 'required|exists:groups,id' . ( Auth::user()->group->super_admin == 1 ? '' : ',tenant_id,'.Auth::user()->tenant_id )
         ];
     }
 }

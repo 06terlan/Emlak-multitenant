@@ -16,6 +16,10 @@
                 <div class="x_content">
                     <br>
                     <form autocomplete="off" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ url('admin/users/addEdit/'.$id) }}">
+                        <!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+                        <input type="text" class="fake-autofill-fields" name="asasd"/>
+                        <input type="password" class="fake-autofill-fields" name="asds"/>
+
                         <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Name
                             </label>
@@ -56,8 +60,9 @@
                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Group</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" name="group_id" required="">
+                                    <option value="0">Select Group</option>
                                     @foreach (\App\Models\Group::realData()->get() as $type)
-                                        <option value="{{ $type['id'] }}" {{ $type['id'] == $User['group_id']? 'selected':'' }}> {{ $type['group_name'] }} </option>
+                                        <option tenant_id = "{{ $type['tenant_id'] }}" value="{{ $type['id'] }}" {{ $type['id'] == $User['group_id']? 'selected':'' }}> {{ $type['group_name'] }} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -92,6 +97,13 @@
 
 @section('css')
     {!! Html::style('admin/assets/vendors/iCheck/skins/flat/green.css') !!}
+
+    <style>
+        .fake-autofill-fields{
+            position: absolute;
+            top: -500px;
+        }
+    </style>
 @endsection
 
 @section('scripts')
@@ -99,6 +111,17 @@
     {!! Html::script('admin/assets/vendors/iCheck/icheck.min.js') !!}
 
     <script type="text/javascript">
-        $("select[name=role]").val({{ $User['role'] }});
+
+        @if( Auth::user()->group->super_admin == 1 )
+            $("select[name=tenant]").change(function () {
+                $("select[name=group_id] option").hide();
+                $("select[name=group_id] option[tenant_id='"+$(this).val()+"'], select[name=group_id] option[value='0']").show();
+                $("select[name=group_id]").val(0);
+            }).trigger("change");
+
+            @if( $id > 0 )
+                $("select[name=group_id]").val({{ $User['group_id'] }});
+            @endif
+        @endif
     </script>
 @endsection

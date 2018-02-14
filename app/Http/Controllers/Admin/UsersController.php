@@ -66,7 +66,7 @@ class UsersController extends Controller
 
         if($id == 0)
         {
-            $validate = Validator::make($request->all(), ['password' => 'required|string|min:6']);
+            $validate = Validator::make($request->all(), ['password' => 'required|string|min:6|max:20']);
             if($validate->fails()) return redirect()->back()->withErrors($validate);
 
             $user = new User();
