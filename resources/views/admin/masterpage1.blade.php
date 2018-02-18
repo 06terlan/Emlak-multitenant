@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    @include('admin.head')
+    @include('admin.head1')
 </head>
 
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
-        @include('admin.menu')
+    @include('admin.menu')
 
-        <!-- page content -->
+    <!-- page content -->
         <div class="right_col" role="main">
             @yield('content')
         </div>
@@ -17,7 +17,7 @@
 
         <footer>
             <div class="pull-right">
-                 Created by <a href="">A.Terlan</a>
+                Created by <a href="">A.Terlan</a>
             </div>
             <div class="clearfix"></div>
         </footer>
