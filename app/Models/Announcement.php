@@ -55,4 +55,9 @@ class Announcement extends Model
     {
         return $this->belongsToMany(Tenant::class, 'deleted_announcements');
     }
+
+    public function city()
+    {
+        return $this->hasOne(MskCity::class, 'id', 'msk_city_id');
+    }
 }

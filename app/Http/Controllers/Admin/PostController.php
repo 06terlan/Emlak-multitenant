@@ -16,14 +16,13 @@ class PostController extends Controller
 {
     public function index(PostRequest $request)
     {
-        $announcements = Announcement::realAnnouncements()
-            ->select('*', DB::raw('(SELECT 1 FROM `numbers` INNER JOIN msk_maklers ON msk_maklers.pure_number = numbers.pure_number WHERE numbers.announcement_id = announcements.id limit 1) as is_makler'));
+        $announcements = Announcement::realAnnouncements(true)->with('city');
 
         $announcements->whereIn('type', json_decode(Auth::user()->group->available_types) );
         $announcements->whereIn('buldingType', json_decode(Auth::user()->group->available_building_types) );
 
         if($request->has('type')) $announcements->where('type', $request->get('type'));
-        if($request->has('buldingSecondType')) $announcements->whereIn('type2', $request->get('buldingSecondType'));
+        if($request->has('type') && $request->get('type') == "building" && $request->has('buldingSecondType')) $announcements->whereIn('type2', $request->get('buldingSecondType'));
         if($request->has('city')) $announcements->whereIn('city', $request->get('city'));
         if($request->has('buldingType')) $announcements->whereIn('buldingType', $request->get('buldingType'));
         if($request->has('amount1')) $announcements->where("amount", '>=', $request->get('amount1'));

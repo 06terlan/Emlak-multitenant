@@ -33,12 +33,14 @@ $factory->define(App\Models\Announcement::class, function (Faker\Generator $fake
         'header' => $faker->text(200),
         'content' => $faker->paragraph(10),
         'site' => "asdasd.com",
-        'city' => \App\Models\MskCity::all()->random()->id,
+        'msk_city_id' => \App\Models\MskCity::all()->random()->id,
         'type' => $type,
         'type2' => $type === 'building' ? array_rand(\App\Library\MyClass::$buldingSecondType, 1) : null,
         'buldingType' => array_rand(\App\Library\MyClass::$buldingType, 1),
         'amount' => $faker->numberBetween(10,100000),
         'owner' => $faker->name,
+        'roomCount' => $faker->numberBetween(1,50),
+        'area' => $faker->numberBetween(10,1000),
         'date' => \App\Library\Date::d(null, "Y-m-d")
     ];
 });

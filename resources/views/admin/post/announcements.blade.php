@@ -15,12 +15,8 @@
                 </div>
                 <div class="x_content">
                     <form method="get" action="">
-                        <div class="portlet light ">
-                            <div class="portlet-body">
-                                <div class="actions">
-                                    <input data-val="true" data-val-required="The adsDateCat field is required." id="adsDateCat" name="adsDateCat" type="hidden" value="Today">
-                                </div>
-                            </div>
+                        <input type="hidden" name="sent" value="1">
+                        <div class="portlet light">
                             <div class="tabbable tabbable-custom nav-justified">
                                 <ul class="nav nav-tabs nav-justified">
                                     <li class="active">
@@ -327,36 +323,33 @@
                     <div class="row">
                         @foreach ($announcements as $announcement )
                             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                <div class="offer offer-radius offer-primary">
+                                <div class="offer offer-radius {!! $announcement['owner_type'] == 1 ? 'offer-primary' : '' !!}">
                                     <div class="shape">
                                         <div class="shape-text">
-                                            {!! $announcement['is_makler'] == 1?"(Vasitəçi)":'Mülkiyyətçi' !!}
+                                            {!! $announcement['owner_type'] == 1 ? 'Vasitəçi' : 'Mülkiyyətçi' !!}
                                         </div>
                                     </div>
+                                    <img src="images/logo.jpg">
+                                    <h2 class="backColor">{{ $announcement->amount }} <span style="font-size: 17px; font-weight: 200;">AZN</span></h2>
+                                    <h2 class="backColor2">{{ $announcement->getBuldingType() }} </h2>
                                     <div class="offer-content">
-                                        <img src="images/logo.jpg">
-                                         <h2 class="backColor">{{ $announcement->amount }} <span style="font-size: 17; font-weight: 200;">AZN</span></h2>
                                          <h3 class="lead text-center" style="font-size: 16px;">{{ $announcement->getAnnouncementType() }}</h3>
-                                         <!--     <p class="text-center" style="font-size: 14px; color: red; margin-top: -10px;">Yeni tikili</p>    -->
                                          <div class="row">
-                                             <div class="col-sm-8 text-left"  style="font-weight: 700; color: red; font-size: 16px;">Baki / Abseron</div>
-                                             <div class="col-sm-4 text-right"  style="font-weight: 600; color: rgb(58, 146, 235); font-size: 16px;"><p>{{ $announcement->getBuldingType() }}</p></div>
+                                             <div class="col-sm-8 text-left"  style="font-weight: 700; color: red; font-size: 16px;">{{ $announcement->city->name }} / {{ $announcement->place }}</div>
                                          </div>
-                                        <!-- <h4>Xususiyyetler</h4> -->
                                         <ul class="text-left">
-                                            <li><p style="font-weight: 600;">2 otaq</p></li>
-                                            <li><p style="font-weight: 600;">45 m²</p></li>
-                                            <li><p style="font-weight: 600;">7 / 9 Mərtəbə</p></li>
+                                            <li><p style="font-weight: 600;">{{ $announcement->owner }}</p></li>
+                                            <li><p style="font-weight: 600;">{{ $announcement->roomCount }} otaq</p></li>
+                                            <li><p style="font-weight: 600;">{{ $announcement->area }} m²</p></li>
                                         </ul>
                                         <div class="row">
                                             <p></p>
                                             <div class="col-sm-8 text-left" style="font-size: 14px;"><i class="fa fa-calendar"></i> {{ App\Library\Date::d($announcement->date,'d-m-Y') }}</div>
-                                            <!-- <div class="col-sm-4 text-left" style="font-size: 11px;">yeniemlak.az</div>  -->
-                                            <div class="col-sm-4 text-right"><a href="{{ route('announcement_info',['announcement'=>$announcement->id]) }}"> <i class="fa fa-long-arrow-right"></i> </a> <p></p></div>
+                                            <div class="col-sm-4 text-right"><a href="{{ $announcement->link }}"> <i class="fa fa-long-arrow-right"></i> </a> <p></p></div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-4 text-left" style="font-size: 16px; font-weight: 600; color: green;"># {{ $announcements->perPage() * ($announcements->currentPage() - 1) + $loop->iteration }}</div>
-                                            <div class="col-sm-8 text-right" style="color: #dfba49;"><p>yeniemlak.az</p></div>
+                                            <div class="col-sm-4 text-left" style="font-size: 16px; font-weight: 600; color: green;">#{{ $announcement->id }}</div>
+                                            <div class="col-sm-8 text-right" style="color: #dfba49;"><p>{{ $announcement->site }}</p></div>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-3 text-center xetd">
@@ -364,7 +357,7 @@
                                             <div class="col-sm-3 text-center">
                                                 <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}"> <i class="fa fa-trash"></i> </a> </div>
                                             <div class="col-sm-3 text-center">
-                                                <a href=""> <i class="fa fa-share-alt"></i> </a> </div>
+                                                <a href="{{ route('announcement_pro_add_from',['id'=>$announcement->id]) }}" > <i class="fa fa-share-alt"></i> </a> </div>
                                             <div class="col-sm-3 text-center">
                                                 <a href=""> <i class="fa fa-thumb-tack"></i> </a> </div>
                                         </div>
@@ -376,7 +369,7 @@
                     <!-- announcements end -->
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            {{ $announcements->links('admin.pagination', ['paginator' => $announcements]) }}
+                            {{ $announcements->appends($request->except('page'))->links('admin.pagination', ['paginator' => $announcements]) }}
                         </div>
                     </div>
                 </div>
@@ -407,7 +400,8 @@
         $(function () {
 
             $(".select2me").select2({
-                placeholder: "Hamısı"
+                placeholder: "Hamısı",
+                allowClear: true
             });
 
             $('input.daterange').daterangepicker({
@@ -420,10 +414,9 @@
                 dateInput.val(start.format('DD-MM-YYYY'));
             });
 
-            if( "{{ $request->get('page','') }}" != "" )
-            {
+            @if($request->has('sent'))
                 $(".collapse-link").click();
-            }
+            @endif
         });
     </script>
 @endsection

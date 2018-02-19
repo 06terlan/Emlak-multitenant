@@ -36,7 +36,7 @@ class MyClass
 
             1 => 'İcarə',
             2 => 'Satış',
-            3 => 'Günlük kirayə'
+            3 => 'Günlük'
 
     ];
 
@@ -204,7 +204,7 @@ class MyClass
 
     */
 
-    const ADMIN_ROW_COUNT = 10;
+    const ADMIN_ROW_COUNT = 12;
 
 
 
