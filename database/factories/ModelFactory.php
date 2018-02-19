@@ -26,12 +26,16 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Models\Announcement::class, function (Faker\Generator $faker) {
 
+    $type = array_rand(\App\Library\MyClass::$announcementTypes, 1);
+
     return [
         'link' => $faker->url,
         'header' => $faker->text(200),
         'content' => $faker->paragraph(10),
         'site' => "asdasd.com",
-        'type' => array_rand(\App\Library\MyClass::$announcementTypes, 1),
+        'city' => \App\Models\MskCity::all()->random()->id,
+        'type' => $type,
+        'type2' => $type === 'building' ? array_rand(\App\Library\MyClass::$buldingSecondType, 1) : null,
         'buldingType' => array_rand(\App\Library\MyClass::$buldingType, 1),
         'amount' => $faker->numberBetween(10,100000),
         'owner' => $faker->name,

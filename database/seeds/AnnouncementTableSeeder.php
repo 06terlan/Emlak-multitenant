@@ -22,6 +22,9 @@ class AnnouncementTableSeeder extends Seeder
                     $makler->number = $number->number;
                     $makler->pure_number = $number->pure_number;
                     $makler->save();
+
+                    $announcement->owner_type = 1;
+                    $announcement->save();
                 }
             });
     }

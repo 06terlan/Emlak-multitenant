@@ -35,9 +35,31 @@ class MyClass
     [
 
             1 => 'İcarə',
+            2 => 'Satış',
+            3 => 'Günlük kirayə'
 
-            2 => 'Satış'
+    ];
 
+    /**
+
+     * Available bulding types second
+
+     */
+    public static $buldingSecondType =
+    [
+        'new' => 'Yeni tikili',
+        'old' => 'Köhnə tikili'
+    ];
+
+    /**
+
+     * Available bulding types second
+
+     */
+    public static $ownerType =
+    [
+        0 => 'Ancaq mülkiyyətçi',
+        1 => 'Ancaq vasitəçi'
     ];
 
 
@@ -87,9 +109,11 @@ class MyClass
 
     [
 
-        'new_bulding' => 'Yeni tikili',
+        /*'new_bulding' => 'Yeni tikili',
 
-        'old_building' => 'Kohne tikili',
+        'old_building' => 'Kohne tikili',*/
+
+        'building' => 'Bina ev mənzil',
 
         'house' => 'Heyet evi',
 

@@ -21,9 +21,12 @@ class Announcement extends Migration
             //features
             $table->string('site',100)->nullable();
             $table->string('type',50)->nullable();
+            $table->string('type2',5)->nullable();
             $table->tinyInteger("buldingType")->nullable();
+            $table->smallInteger("city")->nullable();
             $table->decimal('amount',10,2)->nullable();
             $table->string("owner", 40)->nullable();
+            $table->tinyInteger('owner_type')->default(0);
 
             $table->date('date')->nullable();
             $table->timestamps();

@@ -9,18 +9,17 @@
                 <div class="x_title">
                     <h2>Elanlar</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                        <li><a class="collapse-link" data-toggle="tooltip" data-original-title="Gizlət/Göstər"><i class="fa fa-chevron-up"></i></a></li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <form method="get" action="" class="formFinder">
-                        <input type="hidden" name="page" value="{{ $request->get("page",1) }}">
+                    <form method="get" action="">
                         <div class="portlet light ">
                             <div class="portlet-body">
-
                                 <div class="actions">
-                                    <input data-val="true" data-val-required="The adsDateCat field is required." id="adsDateCat" name="adsDateCat" type="hidden" value="Today"> </div>
+                                    <input data-val="true" data-val-required="The adsDateCat field is required." id="adsDateCat" name="adsDateCat" type="hidden" value="Today">
+                                </div>
                             </div>
                             <div class="tabbable tabbable-custom nav-justified">
                                 <ul class="nav nav-tabs nav-justified">
@@ -40,196 +39,103 @@
                                         </a>
                                     </li>
                                 </ul>
-                                <div class="tab-content">
+                                <div class="tab-content" style="padding-top: 15px;">
                                     <div class="tab-pane active" id="search">
                                         <div class="form-horizontal form-body ">
                                             <div class="row">
-                                                <div class="col-sm-6">
-
-
-                                                    <div class="form-group col-sm-12">
-                                                        <label class="col-xs-4  control-label">Obyektin növü</label>
-                                                        <div class="col-xs-8 ">
-                                                            <select class="bs-select form-control select2me" data-placeholder="Obyektin növünü seçin..." id="entityType" name="entityType"><option selected="selected" value="0">Bina ev mənzil</option>
-                                                                <option value="1">Həyət evi / Villa, Bağ evi</option>
-                                                                <option value="2">Qaraj</option>
-                                                                <option value="3">Ofis</option>
-                                                                <option value="4">Torpaq sahəsi</option>
-                                                                <option value="5">Obyekt</option>
-                                                            </select>
-                                                            <!--<span class="help-block">A block of help text. </span>-->
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group col-sm-12" id="buildingTypeColumn">
-                                                        <label class="col-xs-4 control-label">Binanın növü</label>
-                                                        <div class="col-xs-8">
-                                                            <select class="bs-select form-control select2me" data-placeholder="Binanın növünü seçin..." data-val="true" data-val-required="The buildingType field is required." id="buildingType" name="buildingType"><option value="0">Yeni tikili</option>
-                                                                <option value="1">Köhnə tikili</option>
-                                                                <option selected="selected" value="-1">Hamısı</option>
+                                                <div class="col-sm-12 col-md-6">
+                                                    <div class="form-group col-xs-12">
+                                                        <label class="col-xs-3 control-label">Obyektin növü</label>
+                                                        <div class="col-xs-9">
+                                                            <select class="form-control select2me" name="type">
+                                                                <option></option>
+                                                                @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
+                                                                    <option value="{{ $typeK }}" {{ $typeK == $request->get('type')? 'selected':'' }}> {{ $type }} </option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
-
-                                                    <div class="form-group col-sm-12">
-                                                        <label class="col-xs-4 control-label">Elanın növü</label>
-                                                        <div class="col-xs-8">
-                                                            <select class="bs-select form-control select2me" data-placeholder="Elanın növünü seçin..." data-style="btn-info" id="purpose" name="purpose"><option selected="selected" value="0">Satılır</option>
-                                                                <option value="1">Kirayə</option>
-                                                                <option value="2">Günlük kirayə</option>
+                                                    <div class="form-group col-xs-12">
+                                                        <label class="col-xs-3 control-label">Binanın növü</label>
+                                                        <div class="col-xs-9">
+                                                            <select class="form-control select2me" multiple name="buldingSecondType[]">
+                                                                @foreach (\App\Library\MyClass::$buldingSecondType as $typeK => $type)
+                                                                    <option value="{{ $typeK }}" {{ in_array($typeK, $request->get('buldingSecondType',[])) ? 'selected':'' }}> {{ $type }} </option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
-
-                                                    <div class="form-group col-sm-12">
-                                                        <label class="col-xs-4 control-label">Şəhər</label>
-                                                        <div class="col-xs-8">
-                                                            <select class="bs-select form-control select2me" data-placeholder="Şəhəri seçin..." data-style="btn-danger" data-val="true" data-val-number="The field city must be a number." data-val-required="The city field is required." id="city" name="city"><option value="11">Astara</option>
-                                                                <option value="30">Ağstafa</option>
-                                                                <option value="75">Ağsu</option>
-                                                                <option selected="selected" value="1">Bakı/Abşeron</option>
-                                                                <option value="76">Balakən</option>
-                                                                <option value="17">Beyləqan</option>
-                                                                <option value="18">Bərdə</option>
-                                                                <option value="9">Cəlilabad</option>
-                                                                <option value="22">Göyçay</option>
-                                                                <option value="2">Gəncə</option>
-                                                                <option value="77">Kürdəmir</option>
-                                                                <option value="8">Lənkəran</option>
-                                                                <option value="37">Masallı</option>
-                                                                <option value="20">Mingəçevir</option>
-                                                                <option value="80">Naxçıvan</option>
-                                                                <option value="7">Neftçala</option>
-                                                                <option value="36">Oğuz</option>
-                                                                <option value="33">Qax</option>
-                                                                <option value="79">Qazax</option>
-                                                                <option value="24">Quba</option>
-                                                                <option value="25">Qusar</option>
-                                                                <option value="39">Qəbələ</option>
-                                                                <option value="14">Saatlı</option>
-                                                                <option value="15">Sabirabad</option>
-                                                                <option value="6">Salyan</option>
-                                                                <option value="3">Sumqayıt</option>
-                                                                <option value="29">Tovuz</option>
-                                                                <option value="26">Xaçmaz</option>
-                                                                <option value="31">Xudat</option>
-                                                                <option value="34">Xırdalan</option>
-                                                                <option value="41">Xızı</option>
-                                                                <option value="32">Zaqatala</option>
-                                                                <option value="38">İsmayıllı</option>
-                                                                <option value="28">Şabran</option>
-                                                                <option value="16">Şamaxı</option>
-                                                                <option value="5">Şirvan</option>
-                                                                <option value="19">Şəki</option>
-                                                                <option value="4">Şəmkir</option>
-                                                                <option value="81">Ağcəbədi</option>
-                                                                <option value="82">Ağdam</option>
-                                                                <option value="83">Ağdaş</option>
-                                                                <option value="84">Biləsuvar</option>
-                                                                <option value="85">Cəbrayıl</option>
-                                                                <option value="86">Daşkəsən</option>
-                                                                <option value="87">Dəliməmmədli</option>
-                                                                <option value="88">Fizuli</option>
-                                                                <option value="89">Gədəbəy</option>
-                                                                <option value="90">Goranboy</option>
-                                                                <option value="91">Göygöl</option>
-                                                                <option value="92">Göytəpə</option>
-                                                                <option value="93">Hacıqabul</option>
-                                                                <option value="94">Horadiz</option>
-                                                                <option value="95">İmişli</option>
-                                                                <option value="96">Kəlbəcər</option>
-                                                                <option value="97">Laçın</option>
-                                                                <option value="98">Lerik</option>
-                                                                <option value="101">Liman</option>
-                                                                <option value="102">Naftalan</option>
-                                                                <option value="103">Qobustan</option>
-                                                                <option value="104">Qubadlı</option>
-                                                                <option value="105">Samux</option>
-                                                                <option value="106">Siyəzən</option>
-                                                                <option value="107">Şuşa</option>
-                                                                <option value="108">Tərtər</option>
-                                                                <option value="109">Nabran</option>
-                                                                <option value="110">Xocavənd</option>
-                                                                <option value="111">Yardımlı</option>
-                                                                <option value="112">Yevlax</option>
-                                                                <option value="113">Zəngilan</option>
-                                                                <option value="114">Zərdab</option>
+                                                    <div class="form-group col-xs-12">
+                                                        <label class="col-xs-3 control-label">Elanın növü</label>
+                                                        <div class="col-xs-9">
+                                                            <select class="form-control select2me" multiple name="buldingType[]">
+                                                                @foreach (\App\Library\MyClass::$buldingType as $typeK => $type)
+                                                                    <option value="{{ $typeK }}" {{ in_array($typeK, $request->get('buldingType',[])) ? 'selected':'' }}> {{ $type }} </option>
+                                                                @endforeach
                                                             </select>
-
-                                                            <!--<span class="help-block">A block of help text. </span>-->
                                                         </div>
                                                     </div>
-
-
+                                                    <div class="form-group col-xs-12">
+                                                        <label class="col-xs-3 control-label">Şəhər</label>
+                                                        <div class="col-xs-9">
+                                                            <select class="form-control select2me" multiple name="city[]">
+                                                                @foreach (\App\Models\MskCity::get() as $type)
+                                                                    <option value="{{ $type['id'] }}" {{ in_array($type['id'], $request->get('city',[])) ? 'selected':'' }}> {{ $type->name }} </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <!-- tarix uzre secim -->
+                                                <div class="col-sm-12 col-md-6">
                                                     <div class="form-group col-sm-12">
-                                                        <label class="col-xs-4  control-label">Tarix</label>
-                                                        <div class="col-xs-8 ">
-
-                                                            <input style="display: inline-block;width: 90%;" type="text" name="date" value="" class="form-control daterange">
-                                                            <div style="display: inline-block;padding-top: 5px;" data-toggle="tooltip" data-original-title="Tarixi nəzərə al">
-                                                                <div class="icheckbox_flat-green" style="position: relative;"><input type="checkbox" name="dateChk" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                                                        <label class="col-xs-3  control-label">Tarix</label>
+                                                        <div class="col-xs-9 ">
+                                                            <div class="input-group" >
+                                                                <input type="text" class="form-control daterange" onclick="dateInput = $(this);" name="date1" value="{{ $request->get('date1','') }}" placeholder="Minimum">
+                                                                <span class="input-group-addon">-</span>
+                                                                <input type="text" class="form-control daterange" onclick="dateInput = $(this);" name="date2" value="{{ $request->get('date2','') }}" placeholder="Maksimum">
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                    <!-- tarix uzre son -->
-
                                                     <div class="form-group col-sm-12">
-                                                        <label class="col-xs-4  control-label">Satıcının tipi</label>
-                                                        <div class="col-xs-8 ">
-                                                            <select class="bs-select form-control select2me" data-placeholder="Elan verənin tipini seçin..." id="ownerType" name="ownerType"><option value="0">Ancaq mülkiyyətçi</option>
-                                                                <option value="1">Ancaq vasitəçi</option>
-                                                                <option selected="selected" value="-1">Hamısı</option>
+                                                        <label class="col-xs-3  control-label">Satıcının tipi</label>
+                                                        <div class="col-xs-9 ">
+                                                            <select class="form-control select2me" name="ownerType">
+                                                                <option></option>
+                                                                @foreach (\App\Library\MyClass::$ownerType as $typeK => $type)
+                                                                    <option value="{{ $typeK }}" {{ $typeK == $request->get('ownerType',-1) ? 'selected':'' }}> {{ $type }} </option>
+                                                                @endforeach
                                                             </select>
-                                                            <!--<span class="help-block">A block of help text. </span>-->
                                                         </div>
                                                     </div>
-
-
-
-
-
-
-
-
-                                                    <div class="form-group col-sm-12" id="floorTypeColumn">
-                                                        <div class="col-xs-8 col-xs-offset-4">
-
-                                                            <div class="checkbox">
-                                                                <input type="checkbox" id="exceptLastFloor" name="exceptLastFloor" value="true">
-                                                                <label for="exceptLastFloor">
-                                                                    Axırıncı mərtəbə olmasın
-                                                                </label>
+                                                    <div class="form-group col-sm-12">
+                                                        <label class="col-xs-3 control-label">Qiymət</label>
+                                                        <div class="col-xs-9">
+                                                            <div class="input-group">
+                                                                <input type="number" name="amount1" value="{{ $request->get('amount1') }}" class="form-control" placeholder="Minimum">
+                                                                <span class="input-group-addon">-</span>
+                                                                <input type="number" name="amount2" value="{{ $request->get('amount2') }}" class="form-control" placeholder="Maksimum">
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                     <div class="form-group col-sm-12">
-                                                        <label class="col-md-4 col-xs-3 control-label">Qiymət</label>
-                                                        <div class="col-md-8 col-xs-9 ">
-                                                            <input class="form-control priceInput btn-outline-danger" data-val="true" data-val-number="The field minPrice must be a number." id="minPrice" name="minPrice" placeholder="min" type="text" value="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);">
-
-                                                            <input class="form-control priceInput btn-outline-danger" data-val="true" data-val-number="The field maxPrice must be a number." id="maxPrice" name="maxPrice" placeholder="max" type="text" value="">
+                                                        <label class="col-xs-3 control-label">Mərtəbə</label>
+                                                        <div class="col-xs-9">
+                                                            <div class="input-group">
+                                                                <input type="number" name="locatedFloor1" value="{{ $request->get('locatedFloor1') }}" class="form-control" placeholder="Minimum">
+                                                                <span class="input-group-addon">-</span>
+                                                                <input type="number" name="locatedFloor2" value="{{ $request->get('locatedFloor2') }}" class="form-control" placeholder="Maksimum">
+                                                            </div>
                                                         </div>
                                                     </div>
-
-
-
                                                 </div>
                                             </div>
-
                                         </div>
-
-
                                         <div class="form-actions noborder" id="list">
                                             <div class="row">
-                                                <div class="col-sm-offset-4 col-sm-3">
+                                                <div class="col-xs-12">
                                                     <div id="anchor"></div>
-                                                    <button type="submit" onclick="$('[name=page]').val(1);" class="btn btn-lg btn-block green-sharp" id="search" name="search"><i class="fa fa-search"></i> Axtar </button>
+                                                    <button type="submit" class="btn btn btn-round btn-success" style="margin-top: 30px; width: 75%; height: 65px; font-size: 22px; font-weight: bold; margin-left: 15%;"><i class="fa fa-search"></i> Axtar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -482,84 +388,42 @@
 @section('css')
     {{--  bootstrap-wysiwyg --}}
     {!! Html::style('admin/assets/vendors/jquery-confirm-master/css/jquery-confirm.css') !!}
-    {{--  iCheck --}}
-    {!! Html::style('admin/assets/vendors/iCheck/skins/flat/green.css') !!}
+    <!-- bootstrap-daterangepicker -->
+    {!! Html::style('admin/assets/vendors/bootstrap-daterangepicker/daterangepicker.css') !!}
+    <!-- select2 -->
+    {!! Html::style('admin/assets/build/new/Plugins/select2.css') !!}
 @endsection
 
 @section('scripts')
     {!! Html::script('admin/assets/vendors/jquery-confirm-master/js/jquery-confirm.js') !!}
-    {{--  iCheck --}}
-    {!! Html::script('admin/assets/vendors/iCheck/icheck.min.js') !!}
+    <!-- bootstrap-daterangepicker -->
+    {!! Html::script('admin/assets/vendors/moment/moment.min.js') !!}
+    {!! Html::script('admin/assets/vendors/bootstrap-daterangepicker/daterangepicker.js') !!}
+    <!-- select2 -->
+    {!! Html::script('admin/assets/build/new/Plugins/select2.min.js') !!}
 
     <script>
+        var dateInput;
         $(function () {
-            $("input.flat.formFind").on('ifChanged', function (e) {
-                $(this).parents("form:eq(0)").submit();
+
+            $(".select2me").select2({
+                placeholder: "Hamısı"
             });
+
+            $('input.daterange').daterangepicker({
+                singleDatePicker: true,
+                autoUpdateInput: false,
+                locale: {
+                    format: 'DD-MM-YYYY'
+                },
+            }, function(start, end, label){
+                dateInput.val(start.format('DD-MM-YYYY'));
+            });
+
+            if( "{{ $request->get('page','') }}" != "" )
+            {
+                $(".collapse-link").click();
+            }
         });
-
-        function showAppFilters(){
-
-            switch($('#elansecim').val()) {
-                case '0':  // her ikisinde
-                    $("#").removeClass("hidden");
-                    $("").addClass("hidden");
-                    break;
-                case '1':  // Ferdiler uzre
-                    $("").removeClass("hidden");
-                    $("").addClass("hidden");
-                    break;
-                case '2':  // Elanlar üzrə
-                    $("#agent, #statusM").removeClass("hidden");
-                    $("#agent, #statusM").addClass("hidden");
-                    break;
-
-                default:
-                    break;
-            }
-            switch($('#entityType').val()) {
-                case '0':  // Bina ev mənzil
-                    $("#roomColumn, #roomRemadeColumn, #floorColumn, #floorTypeColumn, #buildinFloorsColumn, #areaColumn, #buildingTypeColumn").removeClass("hidden");
-                    $("#parcelAreaColumn").addClass("hidden");
-                    break;
-                case '1':  // Həyət evi / Villa
-                    $("#roomColumn, #roomRemadeColumn, #parcelAreaColumn, #areaColumn").removeClass("hidden");
-                    $("#floorColumn, #floorTypeColumn, #buildinFloorsColumn, #buildingTypeColumn").addClass("hidden");
-                    break;
-                case '2':  // Qaraj
-                    $("#areaColumn").removeClass("hidden");
-                    $("#roomColumn, #roomRemadeColumn, #floorColumn, #floorTypeColumn, #buildinFloorsColumn, #parcelAreaColumn, #buildingTypeColumn").addClass("hidden");
-                    break;
-                case '3':  // Ofis
-                    $("#floorColumn, #floorTypeColumn, #buildinFloorsColumn, #areaColumn").removeClass("hidden");
-                    $("#parcelAreaColumn, #roomColumn, #roomRemadeColumn, #buildingTypeColumn").addClass("hidden");
-                    break;
-                case '4':  // Torpaq sahəsi
-                    $("#areaColumn").removeClass("hidden");
-                    $("#roomColumn, #roomRemadeColumn, #floorColumn, #floorTypeColumn, #buildinFloorsColumn, #parcelAreaColumn, #buildingTypeColumn").addClass("hidden");
-                    break;
-                case '5':  // Obyekt
-                    $("#floorColumn, #floorTypeColumn, #buildinFloorsColumn, #areaColumn").removeClass("hidden");
-                    $("#parcelAreaColumn, #roomColumn, #roomRemadeColumn, #buildingTypeColumn").addClass("hidden");
-                    break;
-
-                default:
-                    break;
-            }
-            switch($('#purpose').val()) {
-                case '0': //satilir
-                    $("#loanColumn").removeClass("hidden");
-                    break;
-                case '1': //kiraye
-                    $("#loanColumn").addClass("hidden");
-                    break;
-                case '2': //gunluk kiraye
-                    $("#loanColumn").addClass("hidden");
-                    break;
-                default:
-                    break;
-            }
-
-        }
     </script>
 @endsection
