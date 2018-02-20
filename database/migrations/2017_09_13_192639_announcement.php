@@ -23,7 +23,7 @@ class Announcement extends Migration
             $table->string('type',50)->nullable();
             $table->string('type2',5)->nullable(); //new
             $table->tinyInteger("buldingType")->nullable();
-            $table->smallInteger("msk_city_id")->nullable(); //new
+            $table->smallInteger("city_id")->nullable(); //new
             $table->decimal('amount',10,2)->nullable();
             $table->tinyInteger("roomCount")->nullable(); //new
             $table->smallInteger("area")->nullable(); //new

@@ -33,7 +33,7 @@ $factory->define(App\Models\Announcement::class, function (Faker\Generator $fake
         'header' => $faker->text(200),
         'content' => $faker->paragraph(10),
         'site' => "asdasd.com",
-        'msk_city_id' => \App\Models\MskCity::all()->random()->id,
+        'city_id' => \App\Models\MskCity::all()->random()->id,
         'type' => $type,
         'type2' => $type === 'building' ? array_rand(\App\Library\MyClass::$buldingSecondType, 1) : null,
         'buldingType' => array_rand(\App\Library\MyClass::$buldingType, 1),
@@ -71,13 +71,15 @@ $factory->define(App\Models\ProAnnouncement::class, function (Faker\Generator $f
 
     $status = array_rand(\App\Library\MyClass::$buldingType, 1);
     $user = \App\User::all()->random();
+    $type = array_rand(\App\Library\MyClass::$announcementTypes, 1);
 
     return [
         'userId' => $user->id,
         'tenant_id' => $user->tenant_id,
         'header' => $faker->text(200),
         'content' => $faker->paragraph(10),
-        'type' => array_rand(\App\Library\MyClass::$announcementTypes, 1),
+        'type' => $type,
+        'type2' => $type === 'building' ? array_rand(\App\Library\MyClass::$buldingSecondType, 1) : null,
         'buldingType' => $status,
         'amount' => $faker->numberBetween(10,100000),
         'area' => $faker->numberBetween(10,1000),
@@ -85,6 +87,8 @@ $factory->define(App\Models\ProAnnouncement::class, function (Faker\Generator $f
         'locatedFloor' => $faker->numberBetween(1,20),
         'floorCount' => $faker->numberBetween(1,20),
         'metro_id' => \App\Models\MskMetro::all()->random()->id,
+        'city_id' => \App\Models\MskCity::all()->random()->id,
+        'place' => str_limit($faker->address, 20, ''),
         'documentType' => array_rand(\App\Library\MyClass::$documentTypes, 1),
         'repairing' => array_rand(\App\Library\MyClass::$repairingTypes, 1),
         'locations' => (random_int(400000000,409999999)/10000000) . "," . (random_int(490000000,499999999)/10000000),

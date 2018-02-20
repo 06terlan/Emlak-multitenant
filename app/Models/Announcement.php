@@ -58,6 +58,6 @@ class Announcement extends Model
 
     public function city()
     {
-        return $this->hasOne(MskCity::class, 'id', 'msk_city_id');
+        return $this->belongsTo(MskCity::class);
     }
 }

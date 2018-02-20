@@ -124,5 +124,10 @@ class ProAnnouncement extends Model
     {
         return $this->belongsTo(MskMetro::class);
     }
+
+    public function city()
+    {
+        return $this->belongsTo(MskCity::class);
+    }
 }
 

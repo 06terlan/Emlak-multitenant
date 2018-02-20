@@ -123,6 +123,8 @@ class ProController extends Controller
 
         $newAnnouncement->type = Input::get("type");
 
+        $newAnnouncement->type2 = Input::get("type") == "building" ? Input::get("type2") : null;
+
         $newAnnouncement->buldingType = Input::get("buldingType");
 
         $newAnnouncement->status = Input::get("buldingType");
@@ -144,7 +146,9 @@ class ProController extends Controller
         //new
         $newAnnouncement->metro_id = Input::get("metro");
 
-        $newAnnouncement->city = Input::get("city");
+        $newAnnouncement->city_id = Input::get("city");
+
+        $newAnnouncement->place = Input::get("place");
 
         $newAnnouncement->owner = Input::get("owner");
 
@@ -187,6 +191,8 @@ class ProController extends Controller
 
         $newAnnouncement->type = Input::get("type");
 
+        $newAnnouncement->type2 = Input::get("type") == "building" ? Input::get("type2") : null;
+
         $newAnnouncement->buldingType = Input::get("buldingType");
 
         $newAnnouncement->status = Input::get("buldingType");
@@ -208,11 +214,13 @@ class ProController extends Controller
         //new
         $newAnnouncement->metro_id = Input::get("metro");
 
-        $newAnnouncement->city = Input::get("city");
+        $newAnnouncement->city_id = Input::get("city");
+
+        $newAnnouncement->place = Input::get("place");
 
         $newAnnouncement->owner = Input::get("owner");
 
-        $newAnnouncement->site = Input::get("site");
+        //$newAnnouncement->site = Input::get("site");
 
         $newAnnouncement->link = $announcement->link;
 

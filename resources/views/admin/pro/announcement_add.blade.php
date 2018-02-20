@@ -52,7 +52,7 @@
 
                         <div class="item form-group">
 
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Kategoria
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Obyektin növü
 
                             </label>
 
@@ -63,6 +63,28 @@
                                     @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
 
                                         <option value="{{ $typeK }}" {{ $typeK == $announcement['type']? 'selected':'' }}> {{ $type }} </option>
+
+                                    @endforeach
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                        <div class="item form-group">
+
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Binanın növü
+
+                            </label>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                <select class="form-control" name="type2" required="">
+
+                                    @foreach (\App\Library\MyClass::$buldingSecondType as $typeK => $type)
+
+                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['type2']? 'selected':'' }}> {{ $type }} </option>
 
                                     @endforeach
 
@@ -162,15 +184,22 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" name="city" required="">
                                     @foreach ( \App\Models\MskCity::all() as $city)
-                                        <option value="{{ $city['id'] }}" {{ $city['id'] == $announcement['msk_city_id']? 'selected':'' }}> {{ $city->name }} </option>
+                                        <option value="{{ $city['id'] }}" {{ $city['id'] == $announcement['city_id']? 'selected':'' }}> {{ $city->name }} </option>
                                     @endforeach
                                 </select>
                             </div>
 
                         </div>
 
+                        <div class="item form-group">
 
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Address</label>
 
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" data-validate-minmax="1,20" name="place" class="form-control" placeholder="Address" value="{{ $announcement['place'] }}">
+                            </div>
+
+                        </div>
 
                         <div class="item form-group">
 
@@ -226,7 +255,7 @@
 
                                     @foreach (\App\Library\MyClass::$documentTypes as $typeK => $type)
 
-                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['type']? 'selected':'' }}> {{ $type }} </option>
+                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['documentType']? 'selected':'' }}> {{ $type }} </option>
 
                                     @endforeach
 
@@ -248,7 +277,7 @@
 
                                     @foreach (\App\Library\MyClass::$repairingTypes as $typeK => $type)
 
-                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['type']? 'selected':'' }}> {{ $type }} </option>
+                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['repairing']? 'selected':'' }}> {{ $type }} </option>
 
                                     @endforeach
 
@@ -397,6 +426,8 @@
 
 
 @section('css')
+    <!-- select2 -->
+    {!! Html::style('admin/assets/build/new/Plugins/select2.css') !!}
 
     {{--  bootstrap-wysiwyg --}}
     <style>
@@ -429,9 +460,39 @@
 @section('scripts')
     <!-- jquery.inputmask -->
     {!! Html::script('admin/assets/vendors/jquery.inputmask/jquery.inputmask.bundle.min.js') !!}
+    <!-- select2 -->
+    {!! Html::script('admin/assets/build/new/Plugins/select2.min.js') !!}
 
     {!! Html::script('admin/assets/vendors/validator/validator.js') !!}
     <script type="text/javascript">
+        $("select").select2({
+            //placeholder: "Hamısı",
+            //allowClear: true
+        });
+
+        $("select[name='type']").change(function(){
+            $("select[name='type2']").parents('.form-group').hide();
+            $("input[name='locatedFloor']").parents('.form-group').show();
+            $("input[name='roomCount']").parents('.form-group').show();
+            $("input[name='floorCount']").parents('.form-group').show();
+            $("select[name='repairing']").parents('.form-group').show();
+
+            switch ($(this).val()){
+                case 'building':
+                    $("select[name='type2']").parents('.form-group').show();
+                    break;
+                case 'land':
+                    $("input[name='locatedFloor']").parents('.form-group').hide();
+                    $("input[name='roomCount']").parents('.form-group').hide();
+                    $("input[name='floorCount']").parents('.form-group').hide();
+                    $("select[name='repairing']").parents('.form-group').hide();
+                    break;
+                case 'garage':
+                    $("input[name='locatedFloor']").parents('.form-group').hide();
+                    break;
+            }
+        }).trigger("change");
+
         $(".addNumber").click(function(){
             $(this).before('<div class="numb"> <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="\'mask\' : \'(999) 999-9999\'" name="mobnom[]" type="text" class="form-control" placeholder="Nömrə"> <button type="submit" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents(\'.numb:eq(0)\').remove()"><i class="fa fa-trash"></i></button> </div>');
             $("#allNubers .numb:last input").inputmask("mask", {"mask": "(999) 999-9999"});

@@ -60,6 +60,8 @@ class ProRequest extends FormRequest
 
             'type'          => ['required', Rule::in(array_keys(MyClass::$announcementTypes))],
 
+            'type2'          => ['string', Rule::in(array_keys(MyClass::$buldingSecondType))],
+
             'amount'        => 'required|numeric|min:1|max:99999999',
 
             'area'          => '',
@@ -79,6 +81,8 @@ class ProRequest extends FormRequest
             'metro'         => 'integer|exists:msk_metros,id',
 
             'city'          => 'integer|exists:msk_cities,id',
+
+            'place'         => 'string|nullable|max:20',
 
             'owner'         => 'max:40',
 
