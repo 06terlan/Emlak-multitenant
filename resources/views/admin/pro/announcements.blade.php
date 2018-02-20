@@ -36,8 +36,6 @@
 
                     <form method="get" action="" class="formFinder">
 
-                        <input type="hidden" name="page" value="{{ $request->get("page",1) }}">
-
                         <table class="table table-striped">
 
                             <thead>
@@ -177,7 +175,7 @@
 
                         <div class="col-md-12 text-center">
 
-                            {{ $announcements->links('admin.pagination', ['paginator' => $announcements]) }}
+                            {{ $announcements->appends($request->except('page'))->links('admin.pagination', ['paginator' => $announcements]) }}
 
                         </div>
 

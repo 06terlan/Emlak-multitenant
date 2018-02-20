@@ -148,7 +148,7 @@ class ProController extends Controller
 
         $newAnnouncement->owner = Input::get("owner");
 
-         $newAnnouncement->site = Input::get("site");
+         //$newAnnouncement->site = Input::get("site");
 
         $newAnnouncement->locations = Input::get("loc_lat") . "," . Input::get("loc_lng");
 

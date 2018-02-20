@@ -19,7 +19,6 @@
                 </div>
                 <div class="x_content">
                     <form method="get" action="" class="formFinder">
-                        <input type="hidden" name="page" value="">
                         <table class="table table-striped formFinder">
                             <thead>
                                 <tr>
@@ -45,7 +44,7 @@
                     </form>
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            {{ $metros->links('admin.pagination', ['paginator' => $metros]) }}
+                            {{ $metros->appends($request->except('page'))->links('admin.pagination', ['paginator' => $metros]) }}
                         </div>
                     </div>
                 </div>

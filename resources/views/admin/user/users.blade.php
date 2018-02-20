@@ -18,7 +18,6 @@
                 </div>
                 <div class="x_content">
                     <form method="get" action="" class="formFinder">
-                        <input type="hidden" name="page" value="{{ $request->get("page",1) }}">
                         <table class="table table-striped formFinder">
                             <thead>
                                 <tr>
@@ -86,7 +85,7 @@
                     </form>
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            {{ $Users->links('admin.pagination', ['paginator' => $Users]) }}
+                            {{ $Users->appends($request->except('page'))->links('admin.pagination', ['paginator' => $Users]) }}
                         </div>
                     </div>
                 </div>

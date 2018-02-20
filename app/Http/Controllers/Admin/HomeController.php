@@ -123,7 +123,8 @@ class HomeController extends Controller
 
     public function test()
     {
+        $count = 0;
 
-        return "End";
+        return "End " . $count;
     }
 }

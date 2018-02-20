@@ -160,9 +160,11 @@
                             </label>
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <input name="city" data-validate-length-range="1,20" type="text" class="form-control" placeholder="Şəhər" value="{{ $announcement['city'] }}">
-
+                                <select class="form-control" name="city" required="">
+                                    @foreach ( \App\Models\MskCity::all() as $city)
+                                        <option value="{{ $city['id'] }}" {{ $city['id'] == $announcement['msk_city_id']? 'selected':'' }}> {{ $city->name }} </option>
+                                    @endforeach
+                                </select>
                             </div>
 
                         </div>

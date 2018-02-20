@@ -95,7 +95,7 @@ $(function() {
             $(this).parents("form:eq(0)").submit();
     });
 
-    $(".mypages .btn-info[href]").click(function(e) {
+    /*$(".mypages .btn-info[href]").click(function(e) {
         var form = $(".formFinder");
         if(form.length > 0)
         {
@@ -105,7 +105,7 @@ $(function() {
             return false;
         }
         else return true;
-    });
+    });*/
 });
 
 $(".menu_section .child_menu:not(:has(li))").parents("li:eq(0)").remove();

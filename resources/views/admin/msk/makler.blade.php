@@ -19,7 +19,6 @@
                 </div>
                 <div class="x_content">
                     <form method="get" action="" class="formFinder">
-                        <input type="hidden" name="page" value="">
                         <table class="table table-striped formFinder">
                             <thead>
                                 <tr>
@@ -47,7 +46,7 @@
                     </form>
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            {{ $makles->links('admin.pagination', ['paginator' => $makles]) }}
+                            {{ $makles->appends($request->except('page'))->links('admin.pagination', ['paginator' => $makles]) }}
                         </div>
                     </div>
                 </div>

@@ -78,11 +78,11 @@ class ProRequest extends FormRequest
 
             'metro'         => 'integer|exists:msk_metros,id',
 
-            'city'          => 'max:20',
+            'city'          => 'integer|exists:msk_cities,id',
 
             'owner'         => 'max:40',
 
-            'site'          => 'max:40',
+            //'site'          => 'max:40',
 
             'mobnom'        => 'required|array',
 

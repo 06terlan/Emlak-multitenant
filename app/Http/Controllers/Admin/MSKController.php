@@ -17,13 +17,13 @@ class MSKController extends Controller
 {
     #region makler
 
-    public function makler()
+    public function makler(Request $request)
     {
         $makles = MskMakler::realData()->paginate( MyClass::ADMIN_ROW_COUNT );
 
         //$announcements = $makles->paginate( MyClass::ADMIN_ROW_COUNT );
 
-        return view( 'admin.msk.makler', [ 'makles' => $makles ]);
+        return view( 'admin.msk.makler', [ 'makles' => $makles, 'request'=> $request ]);
     }
 
     public function maklerAddEdit(Request $request, $makler)
@@ -77,11 +77,11 @@ class MSKController extends Controller
 
     #region group
 
-    public function group()
+    public function group(Request $request)
     {
         $groups = Group::realData()->paginate( MyClass::ADMIN_ROW_COUNT );
 
-        return view( 'admin.msk.group', [ 'groups' => $groups ]);
+        return view( 'admin.msk.group', [ 'groups' => $groups, 'request' => $request ]);
     }
 
     public function groupAddEdit(Request $request, $group)
@@ -143,11 +143,11 @@ class MSKController extends Controller
 
     #region metro
 
-    public function metro()
+    public function metro(Request $request)
     {
         $metros = MskMetro::paginate( MyClass::ADMIN_ROW_COUNT );
 
-        return view( 'admin.msk.metro', [ 'metros' => $metros ]);
+        return view( 'admin.msk.metro', [ 'metros' => $metros, 'request' => $request ]);
     }
 
     public function metroAddEdit(Request $request, $metro)
