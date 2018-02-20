@@ -136,34 +136,34 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="sell">
+                                    <div class="tab-pane links_data" id="sell">
                                         <div class="row">
 
                                             <div class="col-xs-4 col-new">
                                                 <h4 class="text-primary text-nowrap">Yeni tikililər</h4>
                                                 <ul>
                                                     <li class="">
-                                                        <a href="/1-otaqli-yeni-tikili-evler-satilir">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=new&buldingType[]=2&locatedFloor1=1&locatedFloor2=1">
                                                             1 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/2-otaqli-yeni-tikili-evler-satilir">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=new&buldingType[]=2&locatedFloor1=2&locatedFloor2=2">
                                                             2 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/3-otaqli-yeni-tikili-evler-satilir">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=new&buldingType[]=2&locatedFloor1=3&locatedFloor2=3">
                                                             3 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/4-otaqli-yeni-tikili-evler-satilir">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=new&buldingType[]=2&locatedFloor1=4&locatedFloor2=4">
                                                             4 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/5-6-7-8-ve-cox-otaqli-yeni-tikili-evler-satilir">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=new&buldingType[]=2&locatedFloor1=5">
                                                             5 otaqlı və daha çox
                                                         </a>
                                                     </li>
@@ -173,27 +173,27 @@
                                                 <h4 class="text-primary text-nowrap">Köhnə tikililər</h4>
                                                 <ul>
                                                     <li class="">
-                                                        <a href="/1-otaqli-kohne-tikili-evler-satilir">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=old&buldingType[]=2&locatedFloor1=1&locatedFloor2=1">
                                                             1 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/2-otaqli-kohne-tikili-evler-satilir">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=old&buldingType[]=2&locatedFloor1=2&locatedFloor2=2">
                                                             2 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/3-otaqli-kohne-tikili-evler-satilir">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=old&buldingType[]=2&locatedFloor1=3&locatedFloor2=3">
                                                             3 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/4-otaqli-kohne-tikili-evler-satilir">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=old&buldingType[]=2&locatedFloor1=4&locatedFloor2=4">
                                                             4 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/5-6-7-8-ve-cox-otaqli-kohne-tikili-evler-satilir">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=old&buldingType[]=2&locatedFloor1=5">
                                                             5 otaqlı və daha çox
                                                         </a>
                                                     </li>
@@ -202,56 +202,55 @@
                                             <div class="col-xs-4 col-obj">
                                                 <ul>
                                                     <li class="">
-                                                        <a href="/menziller-satilir">Mənzillər</a>
+                                                        <a href="?sent=1&type=building&buldingType[]=2">Mənzillər</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/evler-villalar-bag-satilir">Evlər/Villalar, Bağlar</a>
+                                                        <a href="?sent=1&type=house&buldingType[]=2">Heyet evi</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/ofis-satilir">Ofislər</a>
+                                                        <a href="?sent=1&type=office&buldingType[]=2">Ofislər</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/qaraj-sat%C4%B1l%C4%B1r">Qarajlar</a>
+                                                        <a href="?sent=1&type=garage&buldingType[]=2">Qarajlar</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/torpaq-satilir">Torpaq</a>
+                                                        <a href="?sent=1&type=land&buldingType[]=2">Torpaq</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/obyekt-satilir">Obyektlər</a>
+                                                        <a href="?sent=1&type=object&buldingType[]=2">Obyektlər</a>
                                                     </li>
                                                 </ul>
                                             </div>
 
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="rent">
+                                    <div class="tab-pane links_data" id="rent">
                                         <div class="row">
-
                                             <div class="col-xs-4 col-new">
                                                 <h4 class="text-primary text-nowrap">Yeni tikililər</h4>
                                                 <ul>
                                                     <li class="">
-                                                        <a href="/1-otaqli-kiraye-evler-yeni-tikili">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=new&buldingType[]=1&locatedFloor1=1&locatedFloor2=1">
                                                             1 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/2-otaqli-kiraye-evler-yeni-tikili">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=new&buldingType[]=1&locatedFloor1=2&locatedFloor2=2">
                                                             2 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/3-otaqli-kiraye-evler-yeni-tikili">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=new&buldingType[]=1&locatedFloor1=3&locatedFloor2=3">
                                                             3 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/4-otaqli-kiraye-evler-yeni-tikili">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=new&buldingType[]=1&locatedFloor1=4&locatedFloor2=4">
                                                             4 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/5-6-7-8-ve-cox-otaqli-kiraye-evler-yeni-tikili">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=new&buldingType[]=1&locatedFloor1=5">
                                                             5 otaqlı və daha çox
                                                         </a>
                                                     </li>
@@ -261,27 +260,27 @@
                                                 <h4 class="text-primary text-nowrap">Köhnə tikililər</h4>
                                                 <ul>
                                                     <li class="">
-                                                        <a href="/1-otaqli-kiraye-evler-kohne-tikili">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=old&buldingType[]=1&locatedFloor1=1&locatedFloor2=1">
                                                             1 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/2-otaqli-kiraye-evler-kohne-tikili">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=old&buldingType[]=1&locatedFloor1=2&locatedFloor2=2">
                                                             2 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/3-otaqli-kiraye-evler-kohne-tikili">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=old&buldingType[]=1&locatedFloor1=3&locatedFloor2=3">
                                                             3 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/4-otaqli-kiraye-evler-kohne-tikili">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=old&buldingType[]=1&locatedFloor1=4&locatedFloor2=4">
                                                             4 otaqlı mənzillər
                                                         </a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/5-6-7-8-ve-cox-otaqli-kiraye-evler-kohne-tikili">
+                                                        <a href="?sent=1&type=building&buldingSecondType[]=old&buldingType[]=1&locatedFloor1=5">
                                                             5 otaqlı və daha çox
                                                         </a>
                                                     </li>
@@ -290,22 +289,22 @@
                                             <div class="col-xs-4 col-obj">
                                                 <ul>
                                                     <li class="">
-                                                        <a href="/kiraye-menziller">Mənzillər</a>
+                                                        <a href="?sent=1&type=building&buldingType[]=1">Mənzillər</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/kiraye-evler-villalar-baglar-bag-evleri">Evlər/Villalar, Bağlar</a>
+                                                        <a href="?sent=1&type=house&buldingType[]=1">Heyet evi</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/kiraye-ofis">Ofislər</a>
+                                                        <a href="?sent=1&type=office&buldingType[]=1">Ofislər</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/kiraye-qarajlar">Qarajlar</a>
+                                                        <a href="?sent=1&type=garage&buldingType[]=1">Qarajlar</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/kiraye-torpaq">Torpaq</a>
+                                                        <a href="?sent=1&type=land&buldingType[]=1">Torpaq</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/kiraye-obyekler">Obyektlər</a>
+                                                        <a href="?sent=1&type=object&buldingType[]=1">Obyektlər</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -333,11 +332,11 @@
                                     <h2 class="backColor">{{ $announcement->amount }} <span style="font-size: 17px; font-weight: 200;">AZN</span></h2>
                                     <h2 class="backColor2">{{ $announcement->getBuldingType() }} </h2>
                                     <div class="offer-content">
-                                         <h3 class="lead text-center" style="font-size: 16px;">{{ $announcement->getAnnouncementType() }}</h3>
+                                         <h3 class="lead text-center" style="font-size: 16px;margin-bottom: 0px">{{ $announcement->getAnnouncementType() }}</h3>
                                          <div class="row">
-                                             <div class="col-sm-8 text-left"  style="font-weight: 700; color: red; font-size: 16px;">{{ $announcement->city->name }} / {{ $announcement->place }}</div>
+                                             <div class="col-sm-12"  style="font-weight: 700; color: red; font-size: 15px;height: 44px">{{ $announcement->city->name }} / {{ $announcement->place }}</div>
                                          </div>
-                                        <ul class="text-left">
+                                        <ul class="text-left" style="padding-left: 15px;">
                                             <li><p style="font-weight: 600;">{{ $announcement->owner }}</p></li>
                                             <li><p style="font-weight: 600;">{{ $announcement->roomCount }} otaq</p></li>
                                             <li><p style="font-weight: 600;">{{ $announcement->area }} m²</p></li>
@@ -345,7 +344,7 @@
                                         <div class="row">
                                             <p></p>
                                             <div class="col-sm-8 text-left" style="font-size: 14px;"><i class="fa fa-calendar"></i> {{ App\Library\Date::d($announcement->date,'d-m-Y') }}</div>
-                                            <div class="col-sm-4 text-right"><a href="{{ $announcement->link }}"> <i class="fa fa-long-arrow-right"></i> </a> <p></p></div>
+                                            <div class="col-sm-4 text-right"><a target="_blank" href="{{ $announcement->link }}"> <i class="fa fa-long-arrow-right"></i> </a> <p></p></div>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-4 text-left" style="font-size: 16px; font-weight: 600; color: green;">#{{ $announcement->id }}</div>
@@ -353,13 +352,13 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-3 text-center xetd">
-                                                <a href="{{ route('announcement_pro_add_from',['id'=>$announcement->id]) }}"> <i class="fa fa-edit"></i> </a> </div>
+                                                <a href="{{ route('announcement_info',['id'=>$announcement->id]) }}"> <i class="fa fa-info-circle" data-toggle="tooltip" data-original-title="Ətraflı"></i> </a> </div>
                                             <div class="col-sm-3 text-center">
-                                                <a href="{{ route('announcement_delete',['id'=>$announcement->id]) }}"> <i class="fa fa-trash"></i> </a> </div>
+                                                <a href=""> <i href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" class="fa fa-trash deleteAction" data-toggle="tooltip" data-original-title="Sil"></i> </a> </div>
                                             <div class="col-sm-3 text-center">
-                                                <a href="{{ route('announcement_pro_add_from',['id'=>$announcement->id]) }}" > <i class="fa fa-share-alt"></i> </a> </div>
+                                                <a href="{{ route('announcement_pro_add_from',['id'=>$announcement->id]) }}" > <i class="fa fa-share-alt" data-toggle="tooltip" data-original-title="Fərdiyə əlavə"></i> </a> </div>
                                             <div class="col-sm-3 text-center">
-                                                <a href=""> <i class="fa fa-thumb-tack"></i> </a> </div>
+                                                <a href="" data-toggle="tooltip" data-original-title="İşarələ"> <i class="fa fa-thumb-tack"></i> </a> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -385,6 +384,56 @@
     {!! Html::style('admin/assets/vendors/bootstrap-daterangepicker/daterangepicker.css') !!}
     <!-- select2 -->
     {!! Html::style('admin/assets/build/new/Plugins/select2.css') !!}
+
+    <style>
+        .links_data .col-new,.links_data .col-old,.links_data .col-obj {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding-left: 60px;
+            display: inline-block;
+            line-height: 30px;
+            margin-bottom: 0px;
+        }
+
+        .links_data .col-new ul,.links_data .col-old ul,.links_data .col-obj ul {
+            list-style-type: none;
+            padding-left: 0px;
+        }
+
+        .links_data .col-new li,.links_data .col-old li,.links_data .col-obj li {
+            padding-left: 0px;
+            white-space: nowrap;
+            margin-left: -60px;
+            padding-left: 60px;
+            /* cursor: pointer; */
+        }
+
+        .links_data .col-new a,.links_data .col-old a,.links_data .col-obj a {
+            color: #2b4a5c;
+            font-size: 13px;
+        }
+
+        .links_data .col-new li::before,.links_data .col-old li::before,.links_data .col-obj li::before {
+            content: "\f111";
+            font-size: 6px !important;
+            vertical-align: middle;
+            padding: 0px 10px 0px 10px;
+            color: #428bca;
+            font: normal normal normal 14px/1 FontAwesome;
+            text-rendering: auto;
+            bottom: 1px;
+            position: relative;
+        }
+
+        .links_data .col-new li:hover,.links_data .col-old li:hover,.links_data .col-obj li:hover,.links_data .col-new li.active,.links_data .col-old li.active,.links_data .col-obj li.active {
+            /* background: #fdfaeb; */
+            background: #eee;
+        }
+
+        #rent.tab-pane .row > .col-new li::before, #rent.tab-pane .row > .col-old li::before, #rent.tab-pane .row > .col-obj li::before {
+            color: #f9bb05;
+        }
+    </style>
 @endsection
 
 @section('scripts')
@@ -412,6 +461,30 @@
                 },
             }, function(start, end, label){
                 dateInput.val(start.format('DD-MM-YYYY'));
+            });
+
+            $("select[name='type']").change(function(){
+               $("select[name='buldingSecondType[]']").parents('.form-group').hide();
+               $("input[name='locatedFloor1']").parents('.form-group').show();
+
+                //val
+                $("select[name='buldingSecondType[]']").val(null).trigger('change');
+
+               switch ($(this).val()){
+                   case 'building':
+                       $("select[name='buldingSecondType[]']").parents('.form-group').show();
+                       break;
+                   case 'land':
+                       $("input[name='locatedFloor1']").parents('.form-group').hide();
+                       //val
+                       $("input[name='locatedFloor1'],input[name='locatedFloor2']").val('');
+                       break;
+                   case 'garage':
+                       $("input[name='locatedFloor1']").parents('.form-group').hide();
+                       //val
+                       $("input[name='locatedFloor1'],input[name='locatedFloor2']").val('');
+                       break;
+               }
             });
 
             @if($request->has('sent'))

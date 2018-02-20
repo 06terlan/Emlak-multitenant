@@ -55,6 +55,6 @@ class PostController extends Controller
         if( Auth::user()->group->super_admin == 1 ) $announcement->delete();
         else $announcement->deleted_tenants()->attach(Auth::user()->tenant_id);
         
-        return redirect()->route("announcement");
+        return redirect()->back();
     }
 }

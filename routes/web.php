@@ -38,7 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'tenant'] ], functio
     Route::get('announcement_pro/add/from/{announcement}', 'Admin\ProController@addFromAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_add_from')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_ADD);
     Route::post('announcement_pro/insert_act/from/{announcement}', 'Admin\ProController@inserEditK2')->where('announcement', '[0-9]{1,}')->name('announcement_insert_act_from')->middleware('priv:announcement,'.\App\Library\MyClass::PRIV_CAN_ADD);
 
-    //announcement
+    //announcement pro
     Route::get('announcement_pro', 'Admin\ProController@index')->name('announcement_pro')->middleware('priv:announcement_pro,'.\App\Library\MyClass::PRIV_CAN_SEE);
     Route::get('announcement_pro/info/{announcement}', 'Admin\ProController@InfoAction')->where('announcement','[0-9]{1,}')->name('announcement_pro_info')->middleware('priv:announcement_pro,'.\App\Library\MyClass::PRIV_CAN_SEE);
     Route::get('announcement_pro/insert/{announcement}', 'Admin\ProController@inserEditAction')->where('announcement', '[0-9]{1,}')->name('announcement_insert')->middleware('priv:announcement_pro,'.\App\Library\MyClass::PRIV_CAN_ADD);

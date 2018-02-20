@@ -38,9 +38,10 @@ $factory->define(App\Models\Announcement::class, function (Faker\Generator $fake
         'type2' => $type === 'building' ? array_rand(\App\Library\MyClass::$buldingSecondType, 1) : null,
         'buldingType' => array_rand(\App\Library\MyClass::$buldingType, 1),
         'amount' => $faker->numberBetween(10,100000),
-        'owner' => $faker->name,
+        'owner' => str_limit($faker->name, 20, ''),
         'roomCount' => $faker->numberBetween(1,50),
         'area' => $faker->numberBetween(10,1000),
+        'place' => str_limit($faker->address, 20, ''),
         'date' => \App\Library\Date::d(null, "Y-m-d")
     ];
 });
