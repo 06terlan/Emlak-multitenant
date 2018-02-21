@@ -35,6 +35,7 @@ class CreateProAnnouncement extends Migration
             $table->string('link', 200)->nullable();
             $table->string('locations', 50)->nullable();
             $table->string("place", 20)->nullable(); //new
+            $table->boolean("owner_type", 20)->default(0); //new
             $table->date('date');
 
             $table->tinyInteger("status");

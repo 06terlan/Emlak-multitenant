@@ -47,29 +47,15 @@ class ProController extends Controller
         $announcements->whereIn('type', json_decode(Auth::user()->group->available_types) );
         $announcements->whereIn('buldingType', json_decode(Auth::user()->group->available_building_types) );
 
-        if($request->has('header')) $announcements->where('header', 'like', '%'.$request->get('header').'%');
-
-        if($request->has('content')) $announcements->where('content', 'like', '%'.$request->get('content').'%');
-
         if($request->has('type')) $announcements->where('type', $request->get('type'));
-
-        if($request->has('amount')) $announcements->where('amount', 'like', '%'.$request->get('amount').'%');
-
-        if($request->has('date')) $announcements->where(DB::raw("DATE_FORMAT(date, '%d-%m-%Y')"), 'like', '%'.$request->get('date').'%');
-
-        if($request->has('status')) $announcements->where('status', $request->get('status'));
-
-        if($request->has('tenant')) $announcements->where('tenant_id', $request->get('tenant'));
-
-        if($request->has('user'))
-        {
-            $announcements->whereHas('author', function ($query) use ($request){
-
-               $query->where(DB::raw("concat(COALESCE(firstname,''),' ',COALESCE(surname,''))"), 'like', "%".$request->get("user")."%");
-            });
-        }
-
-        if($request->has('no_makler')) $announcements->where(DB::raw("(SELECT 1 FROM `pro_numbers` INNER JOIN msk_maklers ON msk_maklers.pure_number = pro_numbers.pure_number WHERE pro_numbers.pro_announcement_id = pro_announcements.id limit 1)"),  null);
+        if($request->has('type') && $request->get('type') == "building" && $request->has('buldingSecondType')) $announcements->whereIn('type2', $request->get('buldingSecondType'));
+        if($request->has('city')) $announcements->whereIn('city', $request->get('city'));
+        if($request->has('buldingType')) $announcements->whereIn('buldingType', $request->get('buldingType'));
+        if($request->has('amount1')) $announcements->where("amount", '>=', $request->get('amount1'));
+        if($request->has('amount2')) $announcements->where("amount", '<=', $request->get('amount2'));
+        if($request->has('date1')) $announcements->where("date", '>=' ,Date::d($request->get('date1'), 'Y-m-d'));
+        if($request->has('date2')) $announcements->where("date", '<=' ,Date::d($request->get('date2'), 'Y-m-d'));
+        if($request->has('ownerType')) $announcements->where("owner_type", $request->get('ownerType'));
 
         $announcements = $announcements->paginate( MyClass::ADMIN_ROW_COUNT );
 

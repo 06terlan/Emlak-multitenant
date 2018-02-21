@@ -99,7 +99,7 @@
                                                             <select class="form-control select2me" name="ownerType">
                                                                 <option></option>
                                                                 @foreach (\App\Library\MyClass::$ownerType as $typeK => $type)
-                                                                    <option value="{{ $typeK }}" {{ $typeK == $request->get('ownerType',-1) ? 'selected':'' }}> {{ $type }} </option>
+                                                                    <option value="{{ $typeK }}" {{ $request->has('ownerType') && $typeK == $request->get('ownerType',-1) ? 'selected':'' }}> {{ $type }} </option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
