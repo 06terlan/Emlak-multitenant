@@ -46,7 +46,7 @@
 
                         <div class="item form-group">
 
-                            <label class="control-label col-md-3 col-sm-3 col-xs-3">Kategoria:</label>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-3">Obyektin növü:</label>
 
                             <div class="col-md-6 col-sm-6 col-xs-3" style="line-height: 36px;">
 

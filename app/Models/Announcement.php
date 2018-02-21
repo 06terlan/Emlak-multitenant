@@ -41,6 +41,11 @@ class Announcement extends Model
         return isset(MyClass::$announcementTypes[$this->type]) ? MyClass::$announcementTypes[$this->type] : "-";
     }
 
+    public function getAnnouncementType2()
+    {
+        return isset(MyClass::$buldingSecondType[$this->type2]) ? MyClass::$buldingSecondType[$this->type2] : "-";
+    }
+
     public function getBuldingType()
     {
         return isset(MyClass::$buldingType[$this->buldingType]) ? MyClass::$buldingType[$this->buldingType] : "-";
