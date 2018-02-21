@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Library\MyClass;
 use App\Library\MyHelper;
 use App\Models\Group;
+use App\Models\MskCity;
 use App\Models\MskMakler;
 use App\Models\MskMetro;
 use \Illuminate\Support\MessageBag;
@@ -190,6 +191,61 @@ class MSKController extends Controller
     public function metroDelete(MskMetro $metro)
     {
         $metro->delete();
+
+        return redirect()->back();
+    }
+
+    #endregion
+
+    #region city
+
+    public function city(Request $request)
+    {
+        $cities = MskCity::paginate( MyClass::ADMIN_ROW_COUNT );
+
+        return view( 'admin.msk.city', [ 'cities' => $cities, 'request' => $request ]);
+    }
+
+    public function cityAddEdit(Request $request, $city)
+    {
+        if($request->isMethod('post'))
+        {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|string|min:1|max:50'
+            ]);
+
+            if ($validator->fails())
+            {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+            else
+            {
+                if($city== 0)
+                {
+                    $cityData = new MskCity();
+                }
+                else
+                {
+                    $cityData = MskCity::find($city);
+                }
+
+                $cityData->name = $request->get('name');
+                $cityData->save();
+
+                return redirect()->route('msk_city');
+            }
+        }
+        else
+        {
+            $cityData = MskCity::find($city);
+            return view( 'admin.msk.cityAddEdit', [ 'metro' => $cityData, 'id' => $city ]);
+        }
+
+    }
+
+    public function cityDelete(MskCity $city)
+    {
+        $city->delete();
 
         return redirect()->back();
     }
