@@ -372,14 +372,12 @@
                                             <div class="col-sm-8 text-right" style="color: #dfba49;"><p>{{ $announcement->site }}</p></div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-3 text-center xetd">
-                                                <a href="{{ route('announcement_info',['id'=>$announcement->id]) }}"> <i class="fa fa-info-circle" data-toggle="tooltip" data-original-title="Ətraflı"></i> </a> </div>
-                                            <div class="col-sm-3 text-center">
-                                                <a href=""> <i href="{{ route('announcement_delete',['id'=>$announcement->id]) }}" class="fa fa-trash deleteAction" data-toggle="tooltip" data-original-title="Sil"></i> </a> </div>
-                                            <div class="col-sm-3 text-center">
-                                                <a href="{{ route('announcement_pro_add_from',['id'=>$announcement->id]) }}" > <i class="fa fa-share-alt" data-toggle="tooltip" data-original-title="Fərdiyə əlavə"></i> </a> </div>
-                                            <div class="col-sm-3 text-center">
-                                                <a href="" data-toggle="tooltip" data-original-title="İşarələ"> <i class="fa fa-thumb-tack"></i> </a> </div>
+                                            <div class="col-sm-4 text-center xetd">
+                                                <a href="{{ route('announcement_pro_info',['id'=>$announcement->id]) }}"> <i class="fa fa-info-circle" data-toggle="tooltip" data-original-title="Ətraflı"></i> </a> </div>
+                                            <div class="col-sm-4 text-center">
+                                                <a href=""> <i href="{{ route('announcement_pro_delete',['id'=>$announcement->id]) }}" class="fa fa-trash deleteAction" data-toggle="tooltip" data-original-title="Sil"></i> </a> </div>
+                                            <div class="col-sm-4 text-center">
+                                                <a href="{{ route('announcement_pro_status',['announcement'=>$announcement->id]) }}" > <i class="fa fa-check-square-o" data-toggle="tooltip" data-original-title="{{ isset(\App\Library\MyClass::$buttonStatus[$announcement->status]) ? \App\Library\MyClass::$buttonStatus[$announcement->status] : '-' }}"></i> </a> </div>
                                         </div>
                                     </div>
                                 </div>
