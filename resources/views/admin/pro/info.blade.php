@@ -193,6 +193,10 @@
                                         </div>
 
                                         <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                            <div class="elanBox">Status: <span class="textColorSpan">&#0160; {!! $announcement->getStatus() !!} </span></div>
+                                        </div>
+
+                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                                             <div class="elanBox">
                                                 <i class="fa fa-calendar" style="color:#23bbd2"></i> Tarix: <span class="textColorSpan">&#0160; 08.05.2018 </span>
                                             </div>

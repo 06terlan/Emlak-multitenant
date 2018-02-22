@@ -48,6 +48,7 @@ class ProController extends Controller
         $announcements->whereIn('buldingType', json_decode(Auth::user()->group->available_building_types) );
 
         if($request->has('type')) $announcements->where('type', $request->get('type'));
+        if($request->has('status')) $announcements->whereIn('status', $request->get('status'));
         if($request->has('type') && $request->get('type') == "building" && $request->has('buldingSecondType')) $announcements->whereIn('type2', $request->get('buldingSecondType'));
         if($request->has('city')) $announcements->whereIn('city', $request->get('city'));
         if($request->has('buldingType')) $announcements->whereIn('buldingType', $request->get('buldingType'));

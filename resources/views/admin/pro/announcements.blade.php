@@ -101,6 +101,16 @@
                                                             </select>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group col-xs-12">
+                                                        <label class="col-xs-3 control-label">Status</label>
+                                                        <div class="col-xs-9">
+                                                            <select class="form-control select2me" multiple name="status[]">
+                                                                @foreach (\App\Library\MyClass::$buttonStatus2 as $typeK => $type)
+                                                                    <option value="{{ $typeK }}" {{ in_array($typeK, $request->get('status',[])) ? 'selected':'' }}> {{ $type }} </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-6">
                                                     <div class="form-group col-sm-12">
@@ -352,6 +362,7 @@
                                     <img src="images/logo.jpg">
                                     <h2 class="backColor">{{ $announcement->amount }} <span style="font-size: 17px; font-weight: 200;">AZN</span></h2>
                                     <h2 class="backColor2">{{ $announcement->getBuldingType() }} </h2>
+                                    <h2 class="backColor3">{!! $announcement->getStatus() !!} </h2>
                                     <div class="offer-content">
                                         <h3 class="lead text-center" style="font-size: 16px;margin-bottom: 0px">{{ $announcement->getAnnouncementType() }}</h3>
                                         <div class="row">
