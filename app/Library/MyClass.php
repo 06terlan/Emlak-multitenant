@@ -195,6 +195,8 @@ class MyClass
     */
 
     const USER_PROFIL_PIC_DIR = '/admin/images/user/';
+    const ANN_PIC_DIR = '/admin/images/ann/';
+    const ANN_THUMB_PIC_DIR = '/admin/images/ann_thumb/';
 
 
 

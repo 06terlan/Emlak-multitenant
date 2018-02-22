@@ -91,21 +91,27 @@ class ProAnnouncement extends Model
 
 
     public function getDocumentType()
-
     {
-
         return isset(MyClass::$documentTypes[$this->documentType]) ? MyClass::$documentTypes[$this->documentType] : "-";
-
     }
 
 
-
     public function getRepairing()
-
     {
-
         return isset(MyClass::$repairingTypes[$this->repairing]) ? MyClass::$repairingTypes[$this->repairing] : "-";
+    }
 
+    public function clearPictures()
+    {
+        foreach ($this->pictures as $picture)
+        {
+            $path1 = public_path( MyClass::ANN_PIC_DIR . $picture['file_name'] );
+            $path2 = public_path( MyClass::ANN_THUMB_PIC_DIR . $picture['file_name'] );
+            if( !empty($picture['file_name']) && file_exists($path1) ) @unlink($path1);
+            if( !empty($picture['file_name']) && file_exists($path2) ) @unlink($path2);
+
+            $picture->delete();
+        }
     }
 
     public function numbers()
@@ -131,6 +137,11 @@ class ProAnnouncement extends Model
     public function city()
     {
         return $this->belongsTo(MskCity::class);
+    }
+
+    public function pictures()
+    {
+        return $this->hasMany(Picture::class);
     }
 }
 

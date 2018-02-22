@@ -32,7 +32,7 @@
 
                     <br>
 
-                    <form autocomplete="off" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ isset($from) && $from > 0 ? route('announcement_insert_act_from',['announcement' => $from]) : route('announcement_insert_act',['announcement' => $id]) }}">
+                    <form autocomplete="off" enctype="multipart/form-data" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ isset($from) && $from > 0 ? route('announcement_insert_act_from',['announcement' => $from]) : route('announcement_insert_act',['announcement' => $id]) }}">
 
                         <input type="hidden" value="{{ isset($from) ? $from : 0 }}" name="from" />
 
@@ -325,10 +325,29 @@
                                 @else
                                         <div class="numb">
                                             <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="'mask' : '(999) 999-9999'" name="mobnom[]" type="text" class="form-control" value="" placeholder="Nömrə">
-                                            <button type="button" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
+                                            <button type="button" class="btn btn-danger btn-xs" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
                                         </div>
                                 @endif
                                 <button type="button" class="btn btn-success addNumber">+ Add</button>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Şəkil
+
+                            </label>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12" id="allPictures">
+                                {{--<div class="numb">
+                                    <input style="width: 80%;display: inline-block;" accept="image/*" required="" type="file" name="pictures[]" class="form-control">
+                                    <button type="button" class="btn btn-danger btn-xs" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
+                                </div>--}}
+                                <button type="button" class="btn btn-success addPicture">+ Add</button>
                             </div>
 
                             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -496,6 +515,10 @@
         $(".addNumber").click(function(){
             $(this).before('<div class="numb"> <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="\'mask\' : \'(999) 999-9999\'" name="mobnom[]" type="text" class="form-control" placeholder="Nömrə"> <button type="submit" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents(\'.numb:eq(0)\').remove()"><i class="fa fa-trash"></i></button> </div>');
             $("#allNubers .numb:last input").inputmask("mask", {"mask": "(999) 999-9999"});
+        });
+
+        $(".addPicture").click(function(){
+            $(this).before('<div class="numb"> <input style="width: 80%;display: inline-block;" accept="image/*" required="" type="file" name="pictures[]" class="form-control"> <button type="button" class="btn btn-danger btn-xs" onclick="$(this).parents(\'.numb:eq(0)\').remove()"><i class="fa fa-trash"></i></button> </div>');
         });
 
         var map;

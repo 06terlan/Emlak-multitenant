@@ -74,7 +74,13 @@
 
                                     <!--section #phto-->
                                     <div id="photo_div" class="infoPhoto">
-
+                                        @foreach($announcement['pictures'] as $picture)
+                                            <div class="thumbnail col-md-4" style="height: auto">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; height: 100%; display: block;" data-original="{{ url(\App\Library\MyClass::ANN_PIC_DIR . $picture->file_name) }}" src="{{ url(\App\Library\MyClass::ANN_THUMB_PIC_DIR . $picture->file_name) }}" alt="image">
+                                                </div>
+                                            </div>
+                                        @endforeach
                                     </div>
                                      <!--section #phto end-->
 
@@ -227,6 +233,8 @@
 @endsection
 
 @section('css')
+    {{--  view --}}
+    {!! Html::style('admin/assets/vendors/view/css/viewer.css') !!}
     {{--  bootstrap-wysiwyg --}}
     {!! Html::style('admin/assets/vendors/jquery-confirm-master/css/jquery-confirm.css') !!}
     {{--  bootstrap-wysiwyg --}}
@@ -253,9 +261,38 @@
 @endsection
 
 @section('scripts')
+    {!! Html::script('admin/assets/vendors/view/js/viewer.js') !!}
     {!! Html::script('admin/assets/vendors/jquery-confirm-master/js/jquery-confirm.js') !!}
 
     <script type="text/javascript">
+        var pictures = document.querySelector('#photo_div');
+        var options = {
+            // inline: true,
+            url: 'data-original',
+            ready: function (e) {
+                console.log(e.type);
+            },
+            show: function (e) {
+                console.log(e.type);
+            },
+            shown: function (e) {
+                console.log(e.type);
+            },
+            hide: function (e) {
+                console.log(e.type);
+            },
+            hidden: function (e) {
+                console.log(e.type);
+            },
+            view: function (e) {
+                console.log(e.type);
+            },
+            viewed: function (e) {
+                console.log(e.type);
+            }
+        };
+        viewer = new Viewer(pictures, options);
+
         function show(div, el)
         {
             $(".footerBox .active").removeClass('active');

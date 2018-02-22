@@ -2,6 +2,8 @@
 /public/hot
 /public/storage
 /public/admin/images/user
+/public/admin/images/ann
+/public/admin/images/ann_thumb
 /storage/*.key
 /.idea
 /.vagrant

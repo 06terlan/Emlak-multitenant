@@ -84,6 +84,10 @@ class ProRequest extends FormRequest
 
             'place'         => 'string|nullable|max:20',
 
+            'pictures'      => 'nullable|array|max:6',
+
+            'pictures.*'    => 'image|max:3000',
+
             'owner'         => 'max:40',
 
             //'site'          => 'max:40',

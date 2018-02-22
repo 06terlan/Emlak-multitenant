@@ -359,7 +359,7 @@
                                             {!! $announcement['owner_type'] == 1 ? 'Vasitəçi' : 'Mülkiyyətçi' !!}
                                         </div>
                                     </div>
-                                    <img src="images/logo.jpg">
+                                    <img src="{{ count($announcement->pictures) > 0 ? url(\App\Library\MyClass::ANN_THUMB_PIC_DIR . $announcement->pictures[0]->file_name ) : 'images/logo.jpg' }}">
                                     <h2 class="backColor">{{ $announcement->amount }} <span style="font-size: 17px; font-weight: 200;">AZN</span></h2>
                                     <h2 class="backColor2">{{ $announcement->getBuldingType() }} </h2>
                                     <h2 class="backColor3">{!! $announcement->getStatus() !!} </h2>
@@ -383,11 +383,13 @@
                                             <div class="col-sm-8 text-right" style="color: #dfba49;"><p>{{ $announcement->site }}</p></div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-4 text-center xetd">
+                                            <div class="col-sm-3 text-center xetd">
                                                 <a href="{{ route('announcement_pro_info',['id'=>$announcement->id]) }}"> <i class="fa fa-info-circle" data-toggle="tooltip" data-original-title="Ətraflı"></i> </a> </div>
-                                            <div class="col-sm-4 text-center">
+                                            <div class="col-sm-3 text-center">
                                                 <a href=""> <i href="{{ route('announcement_pro_delete',['id'=>$announcement->id]) }}" class="fa fa-trash deleteAction" data-toggle="tooltip" data-original-title="Sil"></i> </a> </div>
-                                            <div class="col-sm-4 text-center">
+                                            <div class="col-sm-3 text-center">
+                                                <a href="{{ route('announcement_insert',['id'=>$announcement->id]) }}"> <i  class="fa fa-edit" data-toggle="tooltip" data-original-title="Düzəliş"></i> </a> </div>
+                                            <div class="col-sm-3 text-center">
                                                 <a href="{{ route('announcement_pro_status',['announcement'=>$announcement->id]) }}" > <i class="fa fa-check-square-o" data-toggle="tooltip" data-original-title="{{ isset(\App\Library\MyClass::$buttonStatus[$announcement->status]) ? \App\Library\MyClass::$buttonStatus[$announcement->status] : '-' }}"></i> </a> </div>
                                         </div>
                                     </div>

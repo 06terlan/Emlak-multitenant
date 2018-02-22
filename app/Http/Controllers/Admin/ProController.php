@@ -14,6 +14,7 @@ use App\Library\MyClass;
 use App\Library\MyHelper;
 
 use App\Models\Announcement;
+use App\Models\Picture;
 use App\Models\ProAnnouncement;
 
 use App\Http\Controllers\Controller;
@@ -27,6 +28,7 @@ use Illuminate\Support\Facades\Input;
 
 use Illuminate\Support\Facades\Validator;
 
+use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -155,6 +157,27 @@ class ProController extends Controller
             $numebrC->pure_number = MyHelper::pureNumber($number);
 
             $newAnnouncement->numbers()->save($numebrC);
+        }
+
+        //pictures
+        if( $request->hasFile('pictures') )
+        {
+            $newAnnouncement->clearPictures();
+
+            foreach ($request->file('pictures') as $key => $picture)
+            {
+                $newName = uniqid() . "." . $picture->extension();
+                if( $picture->isValid() )
+                {
+                    Image::make($picture->getRealPath())->resize(200, 200)->save( public_path( MyClass::ANN_THUMB_PIC_DIR . $newName ) );
+                    $picture->move(public_path(MyClass::ANN_PIC_DIR), $newName);
+
+
+                    $pic = new Picture();
+                    $pic->file_name = $newName;
+                    $newAnnouncement->pictures()->save($pic);
+                }
+            }
         }
 
         return redirect()->route('announcement_pro');
