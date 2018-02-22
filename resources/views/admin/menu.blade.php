@@ -1,13 +1,14 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ route('home') }}" class="site_title"><i class="fa fa-paw"></i> <span>Əmlak bazası</span></a>
+            <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+            <a href="{{ route('home') }}" class="site_title"><i class="fa fa-paw"></i> <span style="font-family:'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive">Online Baza</span></a>
         </div>
 
         <div class="clearfix"></div>
 
         <!-- menu profile quick info -->
-        <div class="profile clearfix">
+        <!--<div class="profile clearfix">
             <div class="profile_pic">
                 <img src="{{ url(Auth::user()->photo()) }}" alt="..." class="img-circle profile_img">
             </div>
@@ -15,7 +16,7 @@
                 <span>Welcome,</span>
                 <h2>{{ Auth::user()->fullname() }}</h2>
             </div>
-        </div>
+        </div>-->
         <!-- /menu profile quick info -->
 
         <br />
@@ -23,7 +24,7 @@
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
-                <h3>General</h3>
+                <!--<h3>General</h3>-->
                 <ul class="nav side-menu">
                     <li><a href="{{ route('home') }}"><i class="fa fa-home"></i> Home</a></li>
                     @foreach(\App\Library\MyClass::$modules as $val)
@@ -74,7 +75,9 @@
             <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
-            <span style="color: #73879c;font-weight:400;font-size: 27px;line-height: 56px;">{{ Auth::user()->tenant->company_name }}</span>
+            <span style="color: #73879c;font-weight:400;font-size: 27px;line-height: 56px;">
+                <span style="font-family:'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive; color:#5584ff">{{ Auth::user()->tenant->company_name }}</span>
+            </span>
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -95,8 +98,8 @@
 
                 <li role="presentation" class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-green" id="not-count">{{ $countStr }}</span>
+                        <i class="fa fa-bell" style="color: #0e1a35; font-size:18px"></i>
+                        <span class="badge bg-green" id="not-count">{{ $countStr }}</span> 
                     </a>
                     <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu" style="height:280px;overflow-y: auto;">
                         @include('admin.notfication', ['announcements' => App\Models\Announcement::todayAnnouncements()->take(\App\Library\MyClass::INFO_COUNT)->get()])
