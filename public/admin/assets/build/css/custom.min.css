@@ -150,3 +150,147 @@ Card view
     height: 2px;
     background-color: rgb(35, 187, 210);
 }
+
+/* Info Page */
+.infoPage .headrBox {
+    background-color: #fff !important;
+    border: 1px solid #23bbd2 !important;
+}
+.infoPage .leftBox {
+    height: 350px !important;
+    margin-top: 15px;
+    background-color: #fff !important;
+    border: 1px solid #23bbd2 !important;
+}
+.infoPage .rightBox {
+    padding: 0rem 10px !important;
+    margin-top: 15px;
+    background-color: #fff !important;
+    border: 1px solid #23bbd2 !important;
+}
+.infoPage .footerBox {
+    padding: 0rem 10px !important;
+    margin-top: 15px;
+    background-color: #fff !important;
+    border: 1px solid #23bbd2 !important;
+}
+.infoPage .effect7 {
+    position: relative;
+}
+.infoPage .effect7:before,
+.infoPage .effect7:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    -moz-border-radius: 100px / 10px;
+    border-radius: 100px / 10px;
+}
+.infoPage .effect7:after {
+    right: 10px;
+    left: auto;
+    -webkit-transform: skew(8deg) rotate(3deg);
+    -moz-transform: skew(8deg) rotate(3deg);
+    -ms-transform: skew(8deg) rotate(3deg);
+    -o-transform: skew(8deg) rotate(3deg);
+    transform: skew(8deg) rotate(3deg);
+}
+.infoPage .listClass ul {
+    list-style: none;
+    padding-left: 0px;
+}
+.infoPage .listClass ul li {
+    display: inline;
+    padding: 8px 18px;
+    padding: .5rem 1.5rem;
+    cursor: pointer;
+}
+.infoPage .listClass {
+    margin-top: 10px;
+    float: right;
+}
+.infoPage .listClassLeft ul {
+    list-style: none;
+    padding-left: 0px;
+}
+.infoPage .listClassLeft ul li {
+    display: inline;
+    padding: 8px 18px;
+    padding: .5rem 1.5rem;
+    cursor: pointer;
+}
+.infoPage .listClassLeft {
+    margin-top: 10px;
+    float: left;
+}
+.infoPage .iconSpan {
+    color: #515762;
+    font-size: 14px;
+    font-weight: 300;
+}
+.infoPage .listClass .fa {
+    color: #23bbd2;
+    font-size: 18px;
+    padding-left: 2px;
+}
+.infoPage .listClassLeft .fa {
+    color: #23bbd2;
+    font-size: 18px;
+    padding-left: 2px;
+}
+.infoPage .headrBox h3 {
+    color: #515762;
+    padding-left: 15px;
+}
+.infoPage .Button {
+    width: 100%;
+    background: none;
+    border: none;
+    height: 40px;
+}
+.infoPage .Button:hover {
+    border-bottom: 3px solid #88c940;
+    color: #88c940;
+}
+.infoPage .Button.active {
+    border-bottom: 3px solid #88c940;
+    color: #88c940;
+}
+.infoPage .footerBox {
+    font-size: 18px;
+    color: #23bbd2;
+}
+.infoPage .contentBox {
+    padding: 0rem 10px !important;
+    margin-top: 15px;
+    background-color: #fff !important;
+    border: 1px solid #23bbd2 !important;
+}
+.infoPage .infoPhoto {
+    background-size: cover;
+    background-color: #eee;
+    overflow: hidden;
+    height: 345px;
+    margin-top: 2px;
+}
+.infoPage .rightBox h4 {
+    margin-top: 45px;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+.infoPage .elanBox {
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+.infoPage .textColorSpan {
+    color: #88c940;
+}

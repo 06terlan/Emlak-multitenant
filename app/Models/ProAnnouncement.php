@@ -74,7 +74,10 @@ class ProAnnouncement extends Model
 
     }
 
-
+    public function getAnnouncementType2()
+    {
+        return isset(MyClass::$buldingSecondType[$this->type2]) ? MyClass::$buldingSecondType[$this->type2] : "-";
+    }
 
 
     public function getBuldingType()
