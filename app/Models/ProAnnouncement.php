@@ -105,11 +105,6 @@ class ProAnnouncement extends Model
     {
         foreach ($this->pictures as $picture)
         {
-            $path1 = public_path( MyClass::ANN_PIC_DIR . $picture['file_name'] );
-            $path2 = public_path( MyClass::ANN_THUMB_PIC_DIR . $picture['file_name'] );
-            if( !empty($picture['file_name']) && file_exists($path1) ) @unlink($path1);
-            if( !empty($picture['file_name']) && file_exists($path2) ) @unlink($path2);
-
             $picture->delete();
         }
     }

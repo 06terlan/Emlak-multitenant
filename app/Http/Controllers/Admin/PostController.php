@@ -45,8 +45,22 @@ class PostController extends Controller
         return view('admin.post.announcement_info',$dataToBlade);
     }
 
-    public function delete($announcement)
+    public function delete(Request $request, $announcement)
     {
+        if($announcement == 0 && is_array(@json_decode($request->get('ids'))))
+        {
+            $ids = array_map(function ($n){ return (int)$n; }, json_decode($request->get('ids')));
+            $anns = Announcement::realAnnouncements(false)->whereIn('id', $ids)->get();
+
+            foreach ($anns as $ann)
+            {
+                //$ann->clearPictures();
+                $ann->deleted_tenants()->attach(Auth::user()->tenant_id);
+            }
+
+            return redirect()->back();
+        }
+
         $announcement = Announcement::realAnnouncements(false)->find($announcement);
 
         if( !$announcement->exists() )

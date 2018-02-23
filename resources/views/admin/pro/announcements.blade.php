@@ -347,6 +347,15 @@
                 </div>
 
                 <div class="content">
+                    <div class="row" id="multi_button">
+                        <div class="col-md-12">
+                            <label>
+                                Çoxlu seçim <input type="checkbox" class="js-switch" id="multimpe_check"/>
+                            </label>
+
+                            <a style="margin-top: 3px;display: none" class="btn btn-danger" href="javascript:multiDeletBtn()"><i class="fa fa-trash"></i> Sil</a>
+                        </div>
+                    </div>
                     <!-- announcements -->
                     <div class="row">
                         @foreach ($announcements as $announcement )
@@ -355,6 +364,9 @@
                                     <div class="shape">
                                         <div class="shape-text">
                                             {!! $announcement['owner_type'] == 1 ? 'Vasitəçi' : 'Mülkiyyətçi' !!}
+                                        </div>
+                                        <div class="check_div">
+                                            <input type="checkbox" class="flat" ann_id="{{ $announcement->id }}">
                                         </div>
                                     </div>
                                     <img src="{{ count($announcement->pictures) > 0 ? url(\App\Library\MyClass::ANN_THUMB_PIC_DIR . $announcement->pictures[0]->file_name ) : 'images/logo.jpg' }}">
@@ -422,6 +434,10 @@
     {!! Html::style('admin/assets/vendors/bootstrap-daterangepicker/daterangepicker.css') !!}
     <!-- select2 -->
     {!! Html::style('admin/assets/build/new/Plugins/select2.css') !!}
+    <!-- Switchery -->
+    {!! Html::style('admin/assets/vendors/switchery/switchery.min.css') !!}
+    <!-- iCheck -->
+    {!! Html::style('admin/assets/vendors/iCheck/skins/flat/green.css') !!}
 
     <style>
         .links_data .col-new,.links_data .col-old,.links_data .col-obj {
@@ -486,10 +502,50 @@
     {!! Html::script('admin/assets/vendors/bootstrap-daterangepicker/daterangepicker.js') !!}
     <!-- select2 -->
     {!! Html::script('admin/assets/build/new/Plugins/select2.min.js') !!}
+    <!-- Switchery -->
+    {!! Html::script('admin/assets/vendors/switchery/switchery.min.js') !!}
+    <!-- iCheck -->
+    {!! Html::script('admin/assets/vendors/iCheck/icheck.min.js') !!}
 
     <script>
+        function multiDeletBtn() {
+            let hrefD = "{{ route('announcement_pro_delete',['announcement'=> 0]) }}?multi=true";
+
+            let ids = [];
+            $(".offer .check_div .flat:checked").each(function (n) {
+                ids.push($(this).attr('ann_id'));
+            });
+
+            $.confirm({
+                title: 'Təsdiq',
+                content: 'Silmək istədiyinizə əminsizin?',
+                type: 'red',
+                typeAnimated: true,
+                buttons: {
+                    "Sil": function () {
+                        window.location.href = hrefD + "&ids=" + JSON.stringify(ids);
+                    },
+                    "İmtina": function () {
+
+                    },
+                }
+            });
+        }
+
         var dateInput;
         $(function () {
+
+            $("#multimpe_check").change(function () {
+                if($(this).is(":checked"))
+                {
+                    $("#multi_button a.btn").show();
+                    $(".offer .check_div").show();
+                }
+                else{
+                    $("#multi_button a.btn").hide();
+                    $(".offer .check_div").hide();
+                }
+            });
 
             $(".select2me").select2({
                 placeholder: "Hamısı",

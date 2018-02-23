@@ -128,9 +128,11 @@
                                         <div class="elanBox">Sahə m<sup>2</sup>: <span class="textColorSpan">&#0160; {{ $announcement->area }} </span></div>
                                     </div>
 
-                                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
-                                        <div class="elanBox">Otaq sayı: <span class="textColorSpan">&#0160; {{ $announcement->roomCount }} </span></div>
-                                    </div>
+                                    @if($announcement->type != 'land')
+                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                            <div class="elanBox">Otaq sayı: <span class="textColorSpan">&#0160; {{ $announcement->roomCount }} </span></div>
+                                        </div>
+                                    @endif
 
                                     <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                                         <div class="elanBox">Sahibi: <span class="textColorSpan">&#0160; {{ $announcement->owner }} </span></div>

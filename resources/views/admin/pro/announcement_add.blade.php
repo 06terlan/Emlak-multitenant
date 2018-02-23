@@ -508,6 +508,17 @@
                     break;
                 case 'garage':
                     $("input[name='locatedFloor']").parents('.form-group').hide();
+                    $("input[name='roomCount']").parents('.form-group').hide();
+                    $("input[name='floorCount']").parents('.form-group').hide();
+                    break;
+                case 'house':
+                case 'villa':
+                case 'garden_house':
+                    $("input[name='locatedFloor']").parents('.form-group').hide();
+                    break;
+                case 'office':
+                case 'object':
+                    $("input[name='roomCount']").parents('.form-group').hide();
                     break;
             }
         }).trigger("change");

@@ -166,25 +166,33 @@
                                             <div class="elanBox">Sahə m<sup>2</sup>: <span class="textColorSpan">&#0160; {{ $announcement->area }} </span></div>
                                         </div>
 
-                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
-                                            <div class="elanBox">Otaq sayı: <span class="textColorSpan">&#0160; {{ $announcement->roomCount }} </span></div>
-                                        </div>
+                                        @if(!in_array($announcement->type, ['land', 'garage', 'object', 'office']))
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                                <div class="elanBox">Otaq sayı: <span class="textColorSpan">&#0160; {{ $announcement->roomCount }} </span></div>
+                                            </div>
+                                        @endif
 
-                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
-                                            <div class="elanBox">Yerləşdiyi mərtəbə: <span class="textColorSpan">&#0160; {{ $announcement->locatedFloor }} </span></div>
-                                        </div>
+                                        @if(!in_array($announcement->type, ['land', 'garage', 'house', 'villa', 'garden_house']))
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                                <div class="elanBox">Yerləşdiyi mərtəbə: <span class="textColorSpan">&#0160; {{ $announcement->locatedFloor }} </span></div>
+                                            </div>
+                                        @endif
 
-                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
-                                            <div class="elanBox">Mərtəbə sayı: <span class="textColorSpan">&#0160; {{ $announcement->floorCount }} </span></div>
-                                        </div>
+                                        @if(!in_array($announcement->type, ['land', 'garage']))
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                                <div class="elanBox">Mərtəbə sayı: <span class="textColorSpan">&#0160; {{ $announcement->floorCount }} </span></div>
+                                            </div>
+                                        @endif
 
                                         <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                                             <div class="elanBox">Sənədin tipi: <span class="textColorSpan">&#0160; {{ $announcement->getDocumentType() }} </span></div>
                                         </div>
 
-                                        <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
-                                            <div class="elanBox">Təmiri: <span class="textColorSpan">&#0160; {{ $announcement->getRepairing() }} </span></div>
-                                        </div>
+                                        @if(!in_array($announcement->type, ['land']))
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                                                <div class="elanBox">Təmiri: <span class="textColorSpan">&#0160; {{ $announcement->getRepairing() }} </span></div>
+                                            </div>
+                                        @endif
 
                                         <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                                             <div class="elanBox">Sahibi: <span class="textColorSpan">&#0160; {{ $announcement->owner }} </span></div>
@@ -210,8 +218,9 @@
 
                                         <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                                             <div class="elanBox">
+                                                <a class="btn btn-primary" style="width: 100%;" href="{{ route('announcement_insert',['id'=>$announcement->id]) }}"><i class="fa fa-edit"></i> Düzəliş</a>
                                                 <a class="btn btn-danger deleteAction" style="width: 100%;" href="{{ route('announcement_pro_delete',['id'=>$announcement->id]) }}"><i class="fa fa-trash"></i> Elanı sil</a>
-                                                <a class="btn btn-primary" style="width: 100%;" href="{{ route('announcement_pro_status',['id'=>$announcement->id]) }}"><i class="fa fa-check-square-o"></i> {{ isset(\App\Library\MyClass::$buttonStatus[$announcement->status]) ? \App\Library\MyClass::$buttonStatus[$announcement->status] : '-' }}</a>
+                                                <a class="btn btn-info" style="width: 100%;" href="{{ route('announcement_pro_status',['id'=>$announcement->id]) }}"><i class="fa fa-check-square-o"></i> {{ isset(\App\Library\MyClass::$buttonStatus[$announcement->status]) ? \App\Library\MyClass::$buttonStatus[$announcement->status] : '-' }}</a>
                                             </div>
                                         </div>
                                     </div>

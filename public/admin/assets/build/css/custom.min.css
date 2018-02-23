@@ -92,6 +92,12 @@ Card view
     -webkit-transform:rotate(360deg); /* Safari and Chrome */
     transform:rotate(360deg);
 }
+.offer .shape .check_div{
+    position: absolute;
+    top: 0;
+    left: 70px;
+    display: none;
+}
 .offer{
     background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
 }

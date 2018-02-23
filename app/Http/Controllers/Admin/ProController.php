@@ -15,6 +15,7 @@ use App\Library\MyClass;
 use App\Library\MyHelper;
 
 use App\Models\Announcement;
+use App\Models\MskMakler;
 use App\Models\Picture;
 use App\Models\ProAnnouncement;
 
@@ -123,15 +124,15 @@ class ProController extends Controller
 
         $newAnnouncement->area = Input::get("area");
 
-        $newAnnouncement->roomCount = Input::get("roomCount");
+        $newAnnouncement->roomCount = in_array(Input::get("type"), ['land', 'garage', 'object', 'office']) ? null : Input::get("roomCount");
 
-        $newAnnouncement->locatedFloor = Input::get("locatedFloor");
+        $newAnnouncement->locatedFloor = in_array(Input::get("type"), ['land', 'garage', 'house', 'villa', 'garden_house']) ? null : Input::get("locatedFloor");
 
-        $newAnnouncement->floorCount = Input::get("floorCount");
+        $newAnnouncement->floorCount = in_array(Input::get("type"), ['land', 'garage']) ? null : Input::get("floorCount");
 
         $newAnnouncement->documentType = Input::get("documentType");
 
-        $newAnnouncement->repairing = Input::get("repairing");
+        $newAnnouncement->repairing = in_array(Input::get("type"), ['land']) ? null : Input::get("repairing");
 
         //new
         $newAnnouncement->metro_id = Input::get("metro");
@@ -142,7 +143,7 @@ class ProController extends Controller
 
         $newAnnouncement->owner = Input::get("owner");
 
-         //$newAnnouncement->site = Input::get("site");
+        $newAnnouncement->owner_type = 0;
 
         $newAnnouncement->locations = Input::get("loc_lat") . "," . Input::get("loc_lng");
 
@@ -150,6 +151,7 @@ class ProController extends Controller
 
         $newAnnouncement->save();
 
+        $numbers = [];
         ProNumber::where('pro_announcement_id', $announcement)->delete();
         foreach (Input::get("mobnom") as $number)
         {
@@ -157,7 +159,14 @@ class ProController extends Controller
             $numebrC->number = $number;
             $numebrC->pure_number = MyHelper::pureNumber($number);
 
+            $numbers[] = $numebrC->pure_number;
             $newAnnouncement->numbers()->save($numebrC);
+        }
+
+        if( count($numbers) > 0 && MskMakler::whereIn('pure_number', $numbers)->count() > 0 )
+        {
+            $newAnnouncement->owner_type = 1;
+            $newAnnouncement->save();
         }
 
         //pictures
@@ -212,15 +221,15 @@ class ProController extends Controller
 
         $newAnnouncement->area = Input::get("area");
 
-        $newAnnouncement->roomCount = Input::get("roomCount");
+        $newAnnouncement->roomCount = in_array(Input::get("type"), ['land', 'garage', 'object', 'office']) ? null : Input::get("roomCount");
 
-        $newAnnouncement->locatedFloor = Input::get("locatedFloor");
+        $newAnnouncement->locatedFloor = in_array(Input::get("type"), ['land', 'garage', 'house', 'villa', 'garden_house']) ? null : Input::get("locatedFloor");
 
-        $newAnnouncement->floorCount = Input::get("floorCount");
+        $newAnnouncement->floorCount = in_array(Input::get("type"), ['land', 'garage']) ? null : Input::get("floorCount");
 
         $newAnnouncement->documentType = Input::get("documentType");
 
-        $newAnnouncement->repairing = Input::get("repairing");
+        $newAnnouncement->repairing = in_array(Input::get("type"), ['land']) ? null : Input::get("repairing");
 
         //new
         $newAnnouncement->metro_id = Input::get("metro");
@@ -231,7 +240,7 @@ class ProController extends Controller
 
         $newAnnouncement->owner = Input::get("owner");
 
-        //$newAnnouncement->site = Input::get("site");
+        $newAnnouncement->owner_type = 0;
 
         $newAnnouncement->link = $announcement->link;
 
@@ -241,21 +250,45 @@ class ProController extends Controller
 
         $newAnnouncement->save();
 
+        $numbers = [];
+        ProNumber::where('pro_announcement_id', $announcement)->delete();
         foreach (Input::get("mobnom") as $number)
         {
             $numebrC = new ProNumber();
             $numebrC->number = $number;
             $numebrC->pure_number = MyHelper::pureNumber($number);
 
+            $numbers[] = $numebrC->pure_number;
             $newAnnouncement->numbers()->save($numebrC);
+        }
+
+        if( count($numbers) > 0 && MskMakler::whereIn('pure_number', $numbers)->count() > 0 )
+        {
+            $newAnnouncement->owner_type = 1;
+            $newAnnouncement->save();
         }
 
         return redirect()->route('announcement_pro');
 
     }
 
-    public function delete($announcement)
+    public function delete(Request $request, $announcement)
     {
+        if($announcement == 0 && is_array(@json_decode($request->get('ids'))))
+        {
+            $ids = array_map(function ($n){ return (int)$n; }, json_decode($request->get('ids')));
+            $anns = ProAnnouncement::realAnnouncements(false)->whereIn('id', $ids)->get();
+
+            foreach ($anns as $ann)
+            {
+                $ann->clearPictures();
+                $ann->deleted = 1;
+                $ann->save();
+            }
+
+            return redirect()->back();
+        }
+
         $announcement = ProAnnouncement::realAnnouncements()->find($announcement);
 
         if( !$announcement->exists() )

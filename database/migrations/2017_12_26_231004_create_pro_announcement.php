@@ -27,7 +27,7 @@ class CreateProAnnouncement extends Migration
             $table->smallInteger("locatedFloor")->nullable();
             $table->smallInteger("floorCount")->nullable();
             $table->tinyInteger("documentType");
-            $table->tinyInteger("repairing");
+            $table->tinyInteger("repairing")->nullable();
 
             $table->integer("metro_id")->nullable();
             $table->smallInteger("city_id")->nullable();
