@@ -8,6 +8,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\ProRequest;
 
+use App\Http\Requests\Admin\ProSearchRequest;
 use App\Library\Date;
 use App\Library\MyClass;
 
@@ -39,7 +40,7 @@ class ProController extends Controller
 
     //
 
-    public function index(Request $request)
+    public function index(ProSearchRequest $request)
 
     {
 
@@ -52,7 +53,7 @@ class ProController extends Controller
         if($request->has('type')) $announcements->where('type', $request->get('type'));
         if($request->has('status')) $announcements->whereIn('status', $request->get('status'));
         if($request->has('type') && $request->get('type') == "building" && $request->has('buldingSecondType')) $announcements->whereIn('type2', $request->get('buldingSecondType'));
-        if($request->has('city')) $announcements->whereIn('city', $request->get('city'));
+        if($request->has('city')) $announcements->whereIn('city_id', $request->get('city'));
         if($request->has('buldingType')) $announcements->whereIn('buldingType', $request->get('buldingType'));
         if($request->has('amount1')) $announcements->where("amount", '>=', $request->get('amount1'));
         if($request->has('amount2')) $announcements->where("amount", '<=', $request->get('amount2'));

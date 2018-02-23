@@ -31,52 +31,39 @@ class SearchRequest extends FormRequest
     public function rules()
     {
         return [
-            'header'        => 'max:200',
+            'type' => ['string', 'nullable', Rule::in(array_keys(MyClass::$announcementTypes))],
 
-            'type'          => [Rule::in(array_merge(array_keys(MyClass::$announcementTypes),['']))],
+            'buldingSecondType' => 'array|nullable',
 
-            'buldingType'  => [Rule::in(array_merge(array_keys(MyClass::$buldingType),['']))],
+            'buldingSecondType.*' => ['string', Rule::in(array_keys(MyClass::$buldingSecondType))],
 
-            'amount1'        => '',
+            'buldingType' => 'array|nullable',
 
-            'amount2'        => '',
+            'buldingType.*' => ['string', Rule::in(array_keys(MyClass::$buldingType))],
 
-            'area1'          => '',
+            'city' => 'array|nullable',
 
-            'area2'          => '',
+            'city.*' => 'integer|exists:msk_cities,id',
 
-            'roomCount1'     => 'max:255',
+            'date1'         => 'nullable|date_format:d-m-Y',
 
-            'roomCount2'     => 'max:255',
+            'date2'         => 'nullable|date_format:d-m-Y',
 
+            'ownerType' => ['integer', 'nullable', Rule::in(array_keys(MyClass::$ownerType))],
 
-            'locatedFloor1'  => 'max:30000',
+            'locatedFloor1'  => 'integer|nullable|max:30000',
 
-            'locatedFloor2'  => 'max:30000',
+            'locatedFloor2'  => 'integer|nullable|max:30000',
 
-            'floorCount1'    => 'max:30000',
+            'amount1'        => 'numeric|nullable|max:99999999',
 
-            'floorCount2'    => 'max:30000',
+            'amount2'        => 'numeric|nullable|max:99999999',
 
-            'documentType'  => [Rule::in(array_merge(array_keys(MyClass::$documentTypes), ['']))],
+            'status'        => 'array|nullable',
 
-            'repairing'     => [Rule::in(array_merge(array_keys(MyClass::$repairingTypes), ['']))],
+            'status.*'        => ['integer', Rule::in(array_keys(MyClass::$buttonStatus2))],
 
-            'content'       => '',
-
-            'metro'         => 'integer|exists:msk_metros,id',
-
-            'city'          => 'max:20',
-
-            'owner'         => 'max:40',
-
-            'site'         => 'max:40',
-
-            'mobnom'        => '',
-
-            'user'          => '',
-
-            'status'          => ''
+            'which' =>  'integer|nullable|in:1,2',
         ];
     }
 }

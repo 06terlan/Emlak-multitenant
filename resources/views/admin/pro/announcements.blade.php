@@ -1,7 +1,5 @@
 @extends('admin.masterpage')
 
-
-
 @section('content')
 
     @include('admin.error')
@@ -24,7 +22,7 @@
 
                     <ul class="nav navbar-right panel_toolbox">
 
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                        <li><a class="collapse-link" data-toggle="tooltip" data-original-title="Gizlət/Göstər"><i class="fa fa-chevron-up"></i></a></li>
 
                     </ul>
 
@@ -481,7 +479,7 @@
 
 @section('scripts')
     {{--  jquery-confirm --}}
-    {!! Html::script('admin/assets/vendors/jquery-confirm-master/js/jquery-confirm.js') !!}\
+    {!! Html::script('admin/assets/vendors/jquery-confirm-master/js/jquery-confirm.js') !!}
 
     <!-- bootstrap-daterangepicker -->
     {!! Html::script('admin/assets/vendors/moment/moment.min.js') !!}

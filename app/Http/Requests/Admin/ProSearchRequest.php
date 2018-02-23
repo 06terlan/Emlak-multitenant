@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
-class PostRequest extends FormRequest
+class ProSearchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -58,6 +58,10 @@ class PostRequest extends FormRequest
             'amount1'        => 'numeric|nullable|max:99999999',
 
             'amount2'        => 'numeric|nullable|max:99999999',
+
+            'status'        => 'array|nullable',
+
+            'status.*'        => ['integer', Rule::in(array_keys(MyClass::$buttonStatus2))]
         ];
     }
 }
