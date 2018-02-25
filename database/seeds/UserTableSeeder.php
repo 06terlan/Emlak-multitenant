@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
         $tenant = new \App\Models\Tenant();
         $tenant->company_name = "Owner";
         $tenant->last_date = null;
-        $tenant->type = 'big_company';
+        $tenant->type = 1;
         $tenant->save();
 
 

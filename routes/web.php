@@ -79,6 +79,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'tenant'] ], functio
     Route::any('msk/city/addEdit/{city}', 'Admin\MSKController@cityAddEdit')->where('city', '[0-9]{1,}')->name('msk_city_add_edit')->middleware('priv:msk_city,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);
     Route::get('msk/city/delete/{city}', 'Admin\MSKController@cityDelete')->where('city', '[0-9]{1,}')->name('msk_city_delete')->middleware('priv:msk_city,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);
 
+    Route::get('msk/type', 'Admin\MSKController@type')->name('msk_type')->middleware('priv:msk_type,'.\App\Library\MyClass::PRIV_CAN_SEE);
+    Route::any('msk/type/addEdit/{type}', 'Admin\MSKController@typeAddEdit')->where('type', '[0-9]{1,}')->name('msk_type_add_edit')->middleware('priv:msk_type,'.\App\Library\MyClass::PRIV_CAN_ADD);
+    Route::get('msk/type/delete/{type}', 'Admin\MSKController@typeDelete')->where('type', '[0-9]{1,}')->name('msk_type_delete')->middleware('priv:msk_type,'.\App\Library\MyClass::PRIV_CAN_ADD);
+
     //ajax
     Route::post('announcement/getLast', 'Admin\AjaxController@getLastAnnouncement')->name('getLastAnnouncementAjax');
 

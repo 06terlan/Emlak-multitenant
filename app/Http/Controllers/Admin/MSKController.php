@@ -8,6 +8,8 @@ use App\Models\Group;
 use App\Models\MskCity;
 use App\Models\MskMakler;
 use App\Models\MskMetro;
+use App\Models\MskType;
+use App\Models\Tenant;
 use \Illuminate\Support\MessageBag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -111,11 +113,15 @@ class MSKController extends Controller
                     $groupData = Group::realData()->find($group);
                 }
 
+                $available_modules = $request->get('available_modules', []);
+                $check_modules = Auth::user()->group->super_admin == 1 ? Tenant::find($request->get('tenant'))->msk_type->getAvailableModules() : Auth::user()->group->tenant->msk_type->getAvailableModules();
+                foreach ($available_modules as $key => $val) if( !isset($check_modules[$key]) || $check_modules[$key] < 2 ) unset($available_modules[$key]);
+
                 $groupData->group_name = $request->get('group_name');
-                $groupData->tenant_id = Auth::user()->group->super_admin == 1 ? $request->get('tenant',1) : Auth::user()->tenant_id;
+                $groupData->tenant_id = Auth::user()->group->super_admin == 1 ? $request->get('tenant') : Auth::user()->tenant_id;
                 $groupData->available_types = json_encode($request->get('available_types', []));
                 $groupData->available_building_types = json_encode($request->get('available_building_types', []));
-                $groupData->available_modules = json_encode($request->get('available_modules', []));
+                $groupData->available_modules = json_encode($available_modules);
                 $groupData->save();
 
                 return redirect()->route('msk_group');
@@ -246,6 +252,69 @@ class MSKController extends Controller
     public function cityDelete(MskCity $city)
     {
         $city->delete();
+
+        return redirect()->back();
+    }
+
+    #endregion
+
+    #region type
+
+    public function type(Request $request)
+    {
+        $types = MskType::paginate( MyClass::ADMIN_ROW_COUNT );
+
+        return view( 'admin.msk.type', [ 'types' => $types, 'request' => $request ]);
+    }
+
+    public function typeAddEdit(Request $request, $type)
+    {
+        if($request->isMethod('post'))
+        {
+            $validator = Validator::make($request->all(), [
+                'type_name' => 'string|min:1|max:30',
+                'user_count' => 'integer|min:1|max:100',
+                'available_modules' => 'array',
+            ]);
+
+            if ($validator->fails())
+            {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+            else
+            {
+                if($type == 0)
+                {
+                    $typeData = new MskType();
+                }
+                else
+                {
+                    $typeData = MskType::find($type);
+                }
+
+                $typeData->name = $request->get('type_name');
+                $typeData->user_count = $request->get('user_count');
+                $typeData->available_modules = json_encode($request->get('available_modules', []));
+                $typeData->save();
+
+                return redirect()->route('msk_type');
+            }
+        }
+        else
+        {
+            $typeData = MskType::find($type);
+            if($typeData === false) return response()->view("errors.403",[],403);
+            return view( 'admin.msk.typeAddEdit', [ 'type' => $typeData, 'id' => $type ]);
+        }
+
+    }
+
+    public function typeDelete(Group $type, MessageBag $message_bag)
+    {//bagli yoxdursa
+        if($type->users()->count() > 0) return redirect()->back()->withErrors($message_bag->add('error', 'Bu qrupa bağlı istifadəçilər var!'));
+        if( $type->tenant_id != Auth::user()->tenant_id ) return response()->view("errors.403",[],403);
+
+        $type->delete();
 
         return redirect()->back();
     }

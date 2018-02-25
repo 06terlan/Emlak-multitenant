@@ -28,8 +28,8 @@
                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Type</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" name="type" required="">
-                                    @foreach (\App\Library\MyClass::$companyTypes as $typeK => $type)
-                                        <option value="{{ $typeK }}" {{ $typeK == $Tenant['type']? 'selected':'' }}> {{ $type }} </option>
+                                    @foreach (\App\Models\MskType::all() as $type)
+                                        <option value="{{ $type['id'] }}" {{ $type['id'] == $Tenant['type']? 'selected':'' }}> {{ $type['name'] }} </option>
                                     @endforeach
                                 </select>
                             </div>

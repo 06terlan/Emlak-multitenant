@@ -29,7 +29,7 @@
 <!-- bootstrap-progressbar -->
 {!! Html::style('admin/assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') !!}
 <!-- Custom Theme Style -->
-{!! Html::style('admin/assets/build/css/custom.min.css') !!}
+{!! Html::style('admin/assets/build/css/custom.min.css?v=1') !!}
 <!-- PNotify -->
 {!! Html::style('admin/assets/vendors/pnotify/dist/pnotify.css') !!}
 {!! Html::style('admin/assets/vendors/pnotify/dist/pnotify.buttons.css') !!}

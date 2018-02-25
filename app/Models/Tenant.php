@@ -28,4 +28,9 @@ class Tenant extends Model
     {
         return $this->hasMany(Group::class);
     }
+
+    public function msk_type()
+    {
+        return $this->belongsTo(MskType::class,'type','id');
+    }
 }

@@ -67,6 +67,14 @@ class UsersController extends Controller
         if($id == 0)
         {
             $validate = Validator::make($request->all(), ['password' => 'required|string|min:6|max:20']);
+            //check user count
+            if( User::realUsers()->count() >= Auth::user()->tenant->msk_type->user_count )
+            {
+                $validate->errors()->add('no', 'İstifadəçi əlavə olunma sayısını aşırsız.');
+                return redirect()->back()->withErrors($validate);
+            }
+
+
             if($validate->fails()) return redirect()->back()->withErrors($validate);
 
             $user = new User();

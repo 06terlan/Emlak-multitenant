@@ -272,6 +272,7 @@ class MyClass
             'msk_makler' => ['name'=> 'Maklerlər', 'icon'=> '',  'route'=> 'msk_makler', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
             'msk_metro' => ['name'=> 'Metrolar', 'icon'=> '',  'route'=> 'msk_metro', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
             'msk_city' => ['name'=> 'Şəhərlər', 'icon'=> '',  'route'=> 'msk_city', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
+            'msk_type' => ['name'=> 'Şirkət növləri', 'icon'=> '',  'route'=> 'msk_type', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
             ]
         ]
     ];

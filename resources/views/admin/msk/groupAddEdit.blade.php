@@ -48,6 +48,8 @@
                                             <label class="col-md-7"><i class="{{ $type['icon'] }}"></i> {{ $type['name'] }}:</label>
                                             @foreach ($type['child'] as $K => $t)
                                                 @if( $t['priv'] > 3 && ($id == 0 || $group->super_admin != 1) ) @continue; @endif
+                                                @if( $id > 0 && ( !isset($group->tenant->msk_type->getAvailableModules()[$t['route']]) || $group->tenant->msk_type->getAvailableModules()[$t['route']] < 2 ) ) @continue; @endif
+                                                @if( $id == 0 && Auth::user()->group->tenant->msk_type->getAvailableModules()[$t['route']] < 2 ) @continue; @endif
                                                 <div class="col-md-12" style="padding-left: 50px">
                                                     <label class="col-md-5">{{ $t['name'] }}:</label>
                                                     <div class="col-md-7">
@@ -60,6 +62,8 @@
                                         </div>
                                     @else
                                         @if( $type['priv'] > 3 && ($id == 0 || $group->super_admin != 1) ) @continue; @endif
+                                        @if( $id > 0 && ( !isset($group->tenant->msk_type->getAvailableModules()[$type['route']]) || $group->tenant->msk_type->getAvailableModules()[$type['route']] < 2 ) ) @continue; @endif
+                                        @if( $id == 0 && Auth::user()->group->tenant->msk_type->getAvailableModules()[$type['route']] < 2 ) @continue; @endif
                                         <div class="col-md-12">
                                             <label class="col-md-5"><i class="{{ $type['icon'] }}"></i> {{ $type['name'] }}:</label>
                                             <div class="col-md-7">

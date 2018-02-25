@@ -114,7 +114,7 @@ $factory->define(App\Models\Tenant::class, function (Faker\Generator $faker) {
 
     return [
         'company_name' => $faker->company,
-        'type' => array_rand(\App\Library\MyClass::$companyTypes, 1),
+        'type' => 1,
         'last_date' => \App\Library\Date::d(null, "Y-m-t")
     ];
 });
