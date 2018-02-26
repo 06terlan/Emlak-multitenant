@@ -16,7 +16,7 @@ class TenantHaveAccess
      */
     public function handle($request, Closure $next)
     {
-        if( Auth::user()->tenant->last_date == null || strtotime(Auth::user()->tenant->last_date) >= strtotime(date("d-m-Y")) )
+        if( Auth::user()->group->super_admin == 1 || strtotime(Auth::user()->tenant->last_date) >= strtotime(date("d-m-Y")) )
         {
             return $next($request);
         }
