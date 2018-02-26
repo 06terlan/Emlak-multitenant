@@ -24,6 +24,7 @@
                                 <tr>
                                     <th width="40px">#</th>
                                     <th>Group Name</th>
+                                    <th>Dəyəri</th>
                                     @if(\App\Library\MyHelper::has_priv("msk_type", \App\Library\MyClass::PRIV_CAN_ADD))
                                         <th>Action</th>
                                     @endif
@@ -34,6 +35,7 @@
                                     <tr>
                                         <td>{{ $types->perPage() * ($types->currentPage() - 1) + $loop->iteration }}</td>
                                         <td>{{ $type->name }}</td>
+                                        <td>{{ $type->amount }}</td>
                                         <td>
                                             @if(\App\Library\MyHelper::has_priv("msk_type", \App\Library\MyClass::PRIV_CAN_ADD))
                                                 <a href="{{ route('msk_type_add_edit',['type' => $type->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>

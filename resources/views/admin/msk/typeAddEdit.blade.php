@@ -24,6 +24,13 @@
                             </div>
                         </div>
                         <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Dəyəri
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input required="" name="amount" data-validate-minmax="1,50000" type="number" class="form-control" placeholder="Dəyəri" value="{{ $type['amount'] }}">
+                            </div>
+                        </div>
+                        <div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">İstifadəçi sayı
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">

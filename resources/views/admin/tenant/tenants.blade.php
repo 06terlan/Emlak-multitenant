@@ -51,13 +51,14 @@
                                     <tr>
                                         <td>{{ $tenans->perPage() * ($tenans->currentPage() - 1) + $loop->iteration }}</td>
                                         <td>{{ $tenan->company_name }}</td>
-                                        <td>{{ $tenan->getType() }}</td>
+                                        <td>{{ $tenan->msk_type->name }}</td>
                                         <td>{{ $tenan->last_date == null ? '-' : \App\Library\Date::d($tenan->last_date) }}</td>
                                         <td>{{ \App\Library\Date::d($tenan->created_at, "d-m-Y H:i") }}</td>
                                         <th>
                                             @if( \App\Library\MyHelper::has_priv('tenant', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
                                                 <a href="{{ route('tenant_add_edit', ['tenant' => $tenan->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
                                                 <a href="{{ route('tenant_delete', ['tenant' => $tenan->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
+                                                <a href="{{ route('tenant_payment', ['tenant' => $tenan->id]) }}" data-toggle="tooltip" data-original-title="Ödəniş" class="btn btn-success btn-xs"><i class="fa fa-plus-square"></i></a>
                                             @endif
                                         </th>
                                     </tr>

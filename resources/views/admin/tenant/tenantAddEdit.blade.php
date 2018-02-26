@@ -34,13 +34,13 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="item form-group">
+                        {{--<div class="item form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Last date
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input name="last_date" type="text" required="" class="form-control daterange" placeholder="Last date" value="{{ \App\Library\Date::d($Tenant['last_date'], "d-m-Y") }}">
                             </div>
-                        </div>
+                        </div>--}}
 
                         <div class="ln_solid"></div>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">

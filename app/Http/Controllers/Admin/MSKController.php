@@ -274,6 +274,7 @@ class MSKController extends Controller
             $validator = Validator::make($request->all(), [
                 'type_name' => 'string|min:1|max:30',
                 'user_count' => 'integer|min:1|max:100',
+                'amount'    => 'integer|min:1|max:50000',
                 'available_modules' => 'array',
             ]);
 
@@ -294,6 +295,7 @@ class MSKController extends Controller
 
                 $typeData->name = $request->get('type_name');
                 $typeData->user_count = $request->get('user_count');
+                $typeData->amount = $request->get('amount');
                 $typeData->available_modules = json_encode($request->get('available_modules', []));
                 $typeData->save();
 
@@ -309,10 +311,9 @@ class MSKController extends Controller
 
     }
 
-    public function typeDelete(Group $type, MessageBag $message_bag)
-    {//bagli yoxdursa
-        if($type->users()->count() > 0) return redirect()->back()->withErrors($message_bag->add('error', 'Bu qrupa bağlı istifadəçilər var!'));
-        if( $type->tenant_id != Auth::user()->tenant_id ) return response()->view("errors.403",[],403);
+    public function typeDelete(MskType $type, MessageBag $message_bag)
+    {
+        if($type->tenants()->count() > 0) return redirect()->back()->withErrors($message_bag->add('error', 'Bağlı tenantlar var!'));
 
         $type->delete();
 

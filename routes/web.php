@@ -52,6 +52,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'tenant'] ], functio
     Route::get('tenant/addEdit/{tenant}', 'Admin\TenantController@addEdit')->where('tenant','[0-9]{1,}')->name('tenant_add_edit')->middleware('priv:tenant,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);
     Route::post('tenant/addEdit/{tenant}', 'Admin\TenantController@addEditTenant')->where('tenant','[0-9]{1,}')->name('tenant_add_edit_act')->middleware('priv:tenant,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);
     Route::get('tenant/delete/{tenant}', 'Admin\TenantController@delete')->where('tenant','[0-9]{1,}')->name('tenant_delete')->middleware('priv:tenant,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);
+    Route::get('tenant/payment/{tenant}', 'Admin\TenantController@payment')->where('tenant','[0-9]{1,}')->name('tenant_payment')->middleware('priv:tenant,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);
+    Route::post('tenant/payment/{tenant}', 'Admin\TenantController@payment_action')->where('tenant','[0-9]{1,}')->name('tenant_payment_action')->middleware('priv:tenant,'.\App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD);
 
     //search
     Route::get('search', 'Admin\SearchController@indexAction')->name('search')->middleware('priv:search,'.\App\Library\MyClass::PRIV_CAN_SEE);

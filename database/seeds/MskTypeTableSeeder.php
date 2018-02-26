@@ -29,6 +29,7 @@ class MskTypeTableSeeder extends Seeder
 
         $type = new \App\Models\MskType();
         $type->name = "Böyük şirkət";
+        $type->amount = 100;
         $type->available_modules = json_encode($privArr);
         $type->user_count = 10;
         $type->save();

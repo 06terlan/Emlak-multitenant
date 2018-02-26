@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\Admin\UpdateSaveTenantRequest;
 use App\Library\Date;
 use App\Library\MyClass;
+use App\Models\Payment;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class TenantController extends Controller
 {
@@ -53,10 +55,44 @@ class TenantController extends Controller
 
         $newTenant->company_name = $request->get('company_name');
         $newTenant->type = $request->get('type');
-        $newTenant->last_date = Date::d($request->get('last_date'), "Y-m-d");
         $newTenant->save();
 
         return redirect()->route('tenant');
+    }
+
+    public function payment(Tenant $tenant)
+    {
+        return view('admin.tenant.payment', ['tenant' => $tenant]);
+    }
+
+    public function payment_action(Request $request, Tenant $tenant)
+    {
+        $validator = Validator::make($request->all(), [
+            'month_count' => 'integer|min:1|max:10'
+        ]);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        else
+        {
+            $months = (int)$request->month_count;
+            $firtDate = max(strtotime($tenant->last_date), time());
+            $lastDate = date('Y-m-d', strtotime("+$months months", $firtDate));
+
+            $tenant->last_date = $lastDate;
+            $tenant->save();
+
+            $payment = new Payment();
+            $payment->type = $tenant->type;
+            $payment->month_count = $months;
+            $payment->amount = $months * $tenant->msk_type->amount;
+            $payment->tenant_id = $tenant->id;
+            $payment->save();
+
+            return redirect()->route('tenant');
+        }
     }
 
     public function delete(Tenant $tenant)

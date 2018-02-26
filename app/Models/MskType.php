@@ -21,4 +21,9 @@ class MskType extends Model
 
         return $this->availableModules ? $this->availableModules : ($this->availableModules = json_decode($this->available_modules, true));
     }
+
+    public function tenants()
+    {
+        return $this->hasMany(Tenant::class, 'type', 'id');
+    }
 }

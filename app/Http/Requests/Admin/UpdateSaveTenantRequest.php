@@ -33,7 +33,7 @@ class UpdateSaveTenantRequest extends FormRequest
         return [
             'company_name' => 'min:5|max:100|string',
             'type' => 'integer|required|exists:msk_types,id',
-            'last_date' => 'required|date_format:d-m-Y'
+            //'last_date' => 'required|date_format:d-m-Y'
         ];
     }
 }

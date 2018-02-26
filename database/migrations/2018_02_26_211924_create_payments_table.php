@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMskTypesTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateMskTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('msk_types', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("name", 30);
-            $table->integer("amount");
-            $table->tinyInteger("user_count");
-            $table->text("available_modules");
+            $table->integer('amount');
+            $table->integer('month_count');
+            $table->integer('type');
+            $table->unsignedInteger('tenant_id');
             $table->timestamps();
+
+            $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('RESTRICT');
         });
     }
 
@@ -30,6 +32,6 @@ class CreateMskTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('msk_types');
+        Schema::dropIfExists('payments');
     }
 }
