@@ -11,24 +11,14 @@ class MskCityTableSeeder extends Seeder
      */
     public function run()
     {
-        $metro = new \App\Models\MskCity();
-        $metro->name = "Bakı";
-        $metro->save();
+        $cities = ["Ağstafa","Ağsu","Abşeron","Bakı","Balakən","Beyləqan","Bərdə","Cəlilabad","Göyçay","Gəncə","Kürdəmir","Lənkəran","Masallı","Mingəçevir","Naxçıvan","Neftçala","Oğuz","Qax","Qazax","Quba","Qusar","Qəbələ","Saatlı","Sabirabad","Salyan","Sumqayıt","Tovuz","Xaçmaz","Xudat","Xırdalan","Xızı","Zaqatala","İsmayıllı","Şabran","Şamaxı","Şirvan","Şəki","Şəmkir","Ağcəbədi","Ağdam","Ağdaş","Biləsuvar","Cəbrayıl","Daşkəsən","Dəliməmmədli","Fizuli","Gədəbəy","Goranboy","Göygöl","Göytəpə","Hacıqabul","Horadiz","İmişli","Kəlbəcər","Laçın","Lerik","Liman","Naftalan","Qobustan","Qubadlı","Samux","Siyəzən","Şuşa","Tərtər","Nabran","Xocavənd","Yardımlı","Yevlax","Zəngilan","Zərdab"];
 
-        $metro = new \App\Models\MskCity();
-        $metro->name = "Astara";
-        $metro->save();
-
-        $metro = new \App\Models\MskCity();
-        $metro->name = "Quba";
-        $metro->save();
-
-        $metro = new \App\Models\MskCity();
-        $metro->name = "Qusar";
-        $metro->save();
-
-        $metro = new \App\Models\MskCity();
-        $metro->name = "Sumqayit";
-        $metro->save();
+        foreach ($cities as $city)
+        {
+            $metro = new \App\Models\MskCity();
+            $metro->name = $city;
+            $metro->pure_name = \App\Library\MyHelper::pureString($city);
+            $metro->save();
+        }
     }
 }

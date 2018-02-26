@@ -6,6 +6,8 @@ use App\Library\Dom\Dom;
 use App\Library\ErrorLog;
 use App\Library\MyHelper;
 use App\Models\Announcement;
+use App\Models\MskCity;
+use App\Models\MskMakler;
 use App\Models\Number;
 
 class SiteComp
@@ -70,16 +72,39 @@ class SiteComp
             $mobnom     = @$this->findEr($htmlAlt, $this->dataArr['mobnom'])->plaintext;
             if($mobnom === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [mobnom]"); continue; }
 
+            $city     = @$this->findEr($htmlAlt, $this->dataArr['cityDom'])->plaintext;
+            $city     = $city != null ? $this->getCity($city) : null;
+            if($city === null || $city == 0){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [cityDom]"); continue; }
+
+            if( $this->dataArr['roomCountDom'] !== null )
+            {
+                $roomCountDom     = @$this->findEr($htmlAlt, $this->dataArr['roomCountDom'])->plaintext;
+                if($roomCountDom === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [roomCountDom]"); continue; }
+            }else{
+                $roomCountDom = null;
+            }
+
+            if( $this->dataArr['areaDom'] !== null )
+            {
+                $areaDom     = @$this->findEr($htmlAlt, $this->dataArr['areaDom'])->plaintext;
+                if($areaDom === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [areaDom]"); continue; }
+            }else{
+                $areaDom = null;
+            }
+
+            $placeDom     = @$this->findEr($htmlAlt, $this->dataArr['placeDom'])->plaintext;
+            if($placeDom === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [placeDom]"); continue; }
+
             $date       = @$htmlAlt->find( $this->dataArr['dateDom'] )[0]->plaintext;
             $realDate	= $this->createDate($date);
             if($date === null || $realDate === false ){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [dateDom]"); continue; }
 
-            if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay ))
+            if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom ))
             {
             	break;
             }
 
-            $count++;
+            $count++; break;//sadasdasd
         }
 
         return $count;
@@ -108,7 +133,13 @@ class SiteComp
         return $match[0];
     }
 
-    private function InsetCheck( $link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay )
+    private function getCity($cityName)
+    {
+        $city = MskCity::where('pure_name', MyHelper::pureString($cityName))->first();
+        return $city ? $city->id : 0;
+    }
+
+    private function InsetCheck( $link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom )
     {
         if( $toDay === true && date("Y-m-d") != $realDate ) return false;
 
@@ -121,16 +152,29 @@ class SiteComp
     	$announcement->type = $this->dataArr['type'];
         $announcement->site = $this->dataArr['location'];
         $announcement->buldingType = $this->dataArr['buldingType'];
+        $announcement->type2 = $this->dataArr['type2'];
+        $announcement->city_id = $city;
+        $announcement->roomCount = $roomCountDom;
+        $announcement->area = $areaDom;
+        $announcement->place = str_limit($placeDom,30,"");
         $announcement->owner = mb_strimwidth(trim($owner), 0, 40);
     	$announcement->save();
 
+    	$numbers = [];
         foreach ($this->createMob($mobnom) as $number)
         {
             $numberC = new Number();
             $numberC->number = $number;
             $numberC->pure_number = MyHelper::pureNumber($number);
 
+            $numbers[] = $numberC->pure_number;
             $announcement->numbers()->save($numberC);
+        }
+        //is makler
+        if( count($numbers) > 0 && MskMakler::whereIn('pure_number', $numbers)->count() > 0 )
+        {
+            $announcement->owner_type = 1;
+            $announcement->save();
         }
 
     	usleep(1000 * 100);

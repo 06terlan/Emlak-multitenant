@@ -236,6 +236,7 @@ class MSKController extends Controller
                 }
 
                 $cityData->name = $request->get('name');
+                $cityData->pure_name = MyHelper::pureString($request->get('name'));
                 $cityData->save();
 
                 return redirect()->route('msk_city');

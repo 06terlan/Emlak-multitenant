@@ -16,6 +16,7 @@ class CreateMskCitiesTable extends Migration
         Schema::create('msk_cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 50);
+            $table->string('pure_name', 50);
             $table->softDeletes();
         });
     }

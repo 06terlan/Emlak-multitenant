@@ -32,6 +32,14 @@ class MyHelper
     }
 
     /*
+    * pure string
+    */
+    public static function pureString($string)
+    {
+        return str_replace(['ü','ö','ğ','i','ı','ə','ç','ş',' '], ['u','o','g','i','i','e','c','s',''], mb_strtolower($string));
+    }
+
+    /*
     * get makler
     */
     public static function getMakler($number)

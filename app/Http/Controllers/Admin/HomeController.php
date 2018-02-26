@@ -123,7 +123,25 @@ class HomeController extends Controller
 
     public function test()
     {
-        $count = 0;
+        $count = $count = (new SiteComp([
+            'link'          => 'http://tap.az/all/real-estate/commercial-real-estate?p[820]=4165&p[818]=4163',
+            'objectsDom'    => '.categories-products .products .products-i',
+            'linkDom'       => '$this',
+            'location'      => 'http://tap.az',
+            'headerDom'     => '.lot-header .title-container h1',
+            'contentDom'    => '.lot-body .lot-text',
+            'amountDom'     => '.lot-header .price .price-val',
+            'dateDom'       => '.aside-page .lot-info',
+            'owner'         => ['.author .name', 0],
+            'mobnom'        => ['.author .phone', 0],
+            'type'          => 'office',
+            'buldingType'   => self::TYPE_ICARE,
+            'type2'         => null, //
+            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'roomCountDom'  => null, //
+            'areaDom'       => null, //
+            'placeDom'       => [['.property', 3], ['.property-value', 0]], //
+        ], true))->getObjectData(true);
 
         return "End " . $count;
     }
