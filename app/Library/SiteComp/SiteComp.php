@@ -2,6 +2,7 @@
 
 namespace App\Library\SiteComp;
 
+use App\Library\DataFunctions\Functions;
 use App\Library\Dom\Dom;
 use App\Library\ErrorLog;
 use App\Library\MyHelper;
@@ -72,8 +73,7 @@ class SiteComp
             $mobnom     = @$this->findEr($htmlAlt, $this->dataArr['mobnom'])->plaintext;
             if($mobnom === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [mobnom]"); continue; }
 
-            $city     = @$this->findEr($htmlAlt, $this->dataArr['cityDom'])->plaintext;
-            $city     = $city != null ? $this->getCity($city) : null;
+            $city     = @$this->findEr($htmlAlt, $this->dataArr['cityDom'])['plaintext'];
             if($city === null || $city == 0){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [cityDom]"); continue; }
 
             if( $this->dataArr['roomCountDom'] !== null )
@@ -133,12 +133,6 @@ class SiteComp
         return $match[0];
     }
 
-    private function getCity($cityName)
-    {
-        $city = MskCity::where('pure_name', MyHelper::pureString($cityName))->first();
-        return $city ? $city->id : 0;
-    }
-
     private function InsetCheck( $link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom )
     {
         if( $toDay === true && date("Y-m-d") != $realDate ) return false;
@@ -182,9 +176,14 @@ class SiteComp
     	return true;
     }
 
-    private function findEr($where, $find, $index = false)
+    public function findEr($where, $find, $index = false)
     {
         if($where === null || $where === false) return null;
+        else if(isset($find[0]) && $find[0] == 'function')
+        {
+            $func = "App\Library\DataFunctions\Functions::" . $find[1];
+            return $func($this, $where);
+        }
 
         if( is_array($find) )
         {

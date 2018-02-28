@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Library\DataFunctions\Functions;
 use App\Library\MyClass;
 use App\Library\MyHelper;
 use App\Models\Announcement;
@@ -137,11 +138,11 @@ class HomeController extends Controller
             'type'          => 'office',
             'buldingType'   => self::TYPE_ICARE,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'],//[['.property', 0], ['.property-value', 0]], //
             'roomCountDom'  => null, //
             'areaDom'       => null, //
             'placeDom'       => [['.property', 3], ['.property-value', 0]], //
-        ], true))->getObjectData(true);
+        ], true))->getObjectData(false);
 
         return "End " . $count;
     }

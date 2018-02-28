@@ -621,7 +621,7 @@ class GetDatas extends Command
             'type'          => 'building',
             'buldingType'   => self::TYPE_ICARE,
             'type2'         => 'new', //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => [['.property', 4], ['.property-value', 0]], //
             'areaDom'       => [['.property', 3], ['.property-value', 0]], //
             'placeDom'       => [['.property', 5], ['.property-value', 0]], //
@@ -643,7 +643,7 @@ class GetDatas extends Command
             'type'          => 'building',
             'buldingType'   => self::TYPE_SATISH,
             'type2'         => 'new', //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => [['.property', 4], ['.property-value', 0]], //
             'areaDom'       => [['.property', 3], ['.property-value', 0]], //
             'placeDom'       => [['.property', 5], ['.property-value', 0]], //
@@ -666,7 +666,7 @@ class GetDatas extends Command
             'type'          => 'building',
             'buldingType'   => self::TYPE_ICARE,
             'type2'         => 'old', //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => [['.property', 4], ['.property-value', 0]], //
             'areaDom'       => [['.property', 3], ['.property-value', 0]], //
             'placeDom'       => [['.property', 5], ['.property-value', 0]], //
@@ -688,7 +688,7 @@ class GetDatas extends Command
             'type'          => 'building',
             'buldingType'   => self::TYPE_SATISH,
             'type2'         => 'old', //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => [['.property', 4], ['.property-value', 0]], //
             'areaDom'       => [['.property', 3], ['.property-value', 0]], //
             'placeDom'       => [['.property', 5], ['.property-value', 0]], //
@@ -711,7 +711,7 @@ class GetDatas extends Command
             'type'          => 'garden_house',
             'buldingType'   => self::TYPE_ICARE,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
             'areaDom'       => [['.property', 3], ['.property-value', 0]], //
             'placeDom'       => [['.property', 4], ['.property-value', 0]], //
@@ -733,7 +733,7 @@ class GetDatas extends Command
             'type'          => 'garden_house',
             'buldingType'   => self::TYPE_SATISH,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
             'areaDom'       => [['.property', 3], ['.property-value', 0]], //
             'placeDom'       => [['.property', 4], ['.property-value', 0]], //
@@ -756,7 +756,7 @@ class GetDatas extends Command
             'type'          => 'house',
             'buldingType'   => self::TYPE_ICARE,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
             'areaDom'       => [['.property', 3], ['.property-value', 0]], //
             'placeDom'       => [['.property', 4], ['.property-value', 0]], //
@@ -778,7 +778,7 @@ class GetDatas extends Command
             'type'          => 'house',
             'buldingType'   => self::TYPE_SATISH,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
             'areaDom'       => [['.property', 3], ['.property-value', 0]], //
             'placeDom'       => [['.property', 4], ['.property-value', 0]], //
@@ -801,7 +801,7 @@ class GetDatas extends Command
             'type'          => 'villa',
             'buldingType'   => self::TYPE_ICARE,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
             'areaDom'       => [['.property', 3], ['.property-value', 0]], //
             'placeDom'       => [['.property', 4], ['.property-value', 0]], //
@@ -823,7 +823,7 @@ class GetDatas extends Command
             'type'          => 'villa',
             'buldingType'   => self::TYPE_SATISH,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
             'areaDom'       => [['.property', 3], ['.property-value', 0]], //
             'placeDom'       => [['.property', 4], ['.property-value', 0]], //
@@ -846,7 +846,7 @@ class GetDatas extends Command
             'type'          => 'office',
             'buldingType'   => self::TYPE_ICARE,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
             'areaDom'       => null, //
             'placeDom'       => [['.property', 3], ['.property-value', 0]], //
@@ -868,7 +868,7 @@ class GetDatas extends Command
             'type'          => 'office',
             'buldingType'   => self::TYPE_SATISH,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
             'areaDom'       => null, //
             'placeDom'       => [['.property', 3], ['.property-value', 0]], //
@@ -891,7 +891,7 @@ class GetDatas extends Command
             'type'          => 'object',
             'buldingType'   => self::TYPE_ICARE,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
             'areaDom'       => null, //
             'placeDom'       => [['.property', 3], ['.property-value', 0]], //
@@ -913,7 +913,7 @@ class GetDatas extends Command
             'type'          => 'object',
             'buldingType'   => self::TYPE_SATISH,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
             'areaDom'       => null, //
             'placeDom'       => [['.property', 3], ['.property-value', 0]], //
@@ -936,7 +936,7 @@ class GetDatas extends Command
             'type'          => 'land',
             'buldingType'   => self::TYPE_SATISH,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
             'areaDom'       => [['.property', 1], ['.property-value', 0]], //
             'placeDom'       => [['.property', 2], ['.property-value', 0]], //
@@ -959,7 +959,7 @@ class GetDatas extends Command
             'type'          => 'garage',
             'buldingType'   => self::TYPE_SATISH,
             'type2'         => null, //
-            'cityDom'       => [['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
             'areaDom'       => [['.property', 1], ['.property-value', 0]], //
             'placeDom'       => [['.property', 2], ['.property-value', 0]], //
