@@ -376,7 +376,7 @@
                                     <div class="offer-content">
                                         <h3 class="lead text-center" style="font-size: 16px;margin-bottom: 0px">{{ $announcement->getAnnouncementType() }}</h3>
                                         <div class="row">
-                                            <div class="col-sm-12"  style="font-weight: 700; color: red; font-size: 15px;height: 44px">{{ $announcement->city->name }} / {{ $announcement->place }}</div>
+                                            <div class="col-sm-12"  style="font-weight: 700; color: red; font-size: 15px;height: 44px">{{ str_limit($announcement->city->name . '/' . $announcement->place, 40) }}</div>
                                         </div>
                                         <ul class="text-left" style="padding-left: 15px;">
                                             <li><p style="font-weight: 600;">{{ $announcement->owner }}</p></li>

@@ -51,35 +51,35 @@ class SiteComp
     	foreach ($objects as $object)
         {
             $link = @$this->findEr($object, $this->dataArr['linkDom'])->href; //for link
-            if($link === null){ $this->errorLog->error("[" . $this->location . "] Link tapilmadi -> [" . $link . "]"); continue; }
+            if($link === null){ $this->errorLog->error("[" . $this->location.$link . "] Link tapilmadi -> [" . $link . "]"); continue; }
 
             if( Announcement::isLinkExist($this->location.$link) ) break;
 
             $htmlAlt = $this->dom->file_get_html($this->location.$link);
-            if($htmlAlt === null || $htmlAlt === false){ $this->errorLog->error("[" . $this->location . "] Obyek acilmir -> [" . $this->location.$link . "]"); continue; }
+            if($htmlAlt === null || $htmlAlt === false){ $this->errorLog->error("[" . $this->location.$link . "] Obyek acilmir -> [" . $this->location.$link . "]"); continue; }
 
             $header     = @$htmlAlt->find( $this->dataArr['headerDom'] )[0]->innertext;
-            if($header === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi [headerDom]"); continue; }
+            if($header === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi [headerDom]"); continue; }
 
             $content    = @$htmlAlt->find( $this->dataArr['contentDom'] )[0]->innertext;
-            if($content === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [contentDom]"); continue; }
+            if($content === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [contentDom]"); continue; }
 
             $amount     = @$htmlAlt->find( $this->dataArr['amountDom'] )[0]->plaintext;
-            if($amount === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [amountDom]"); continue; }
+            if($amount === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [amountDom]"); continue; }
 
             $owner     = @$this->findEr($htmlAlt, $this->dataArr['owner'])->plaintext;
-            if($owner === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [owner]"); continue; }
+            if($owner === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [owner]"); continue; }
 
             $mobnom     = @$this->findEr($htmlAlt, $this->dataArr['mobnom'])->plaintext;
-            if($mobnom === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [mobnom]"); continue; }
+            if($mobnom === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [mobnom]"); continue; }
 
             $city     = @$this->findEr($htmlAlt, $this->dataArr['cityDom'])['plaintext'];
-            if($city === null || $city == 0){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [cityDom]"); continue; }
+            if($city === null || $city == 0){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [cityDom]"); continue; }
 
             if( $this->dataArr['roomCountDom'] !== null )
             {
                 $roomCountDom     = @$this->findEr($htmlAlt, $this->dataArr['roomCountDom'])->plaintext;
-                if($roomCountDom === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [roomCountDom]"); continue; }
+                if($roomCountDom === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [roomCountDom]"); continue; }
             }else{
                 $roomCountDom = null;
             }
@@ -87,24 +87,24 @@ class SiteComp
             if( $this->dataArr['areaDom'] !== null )
             {
                 $areaDom     = @$this->findEr($htmlAlt, $this->dataArr['areaDom'])->plaintext;
-                if($areaDom === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [areaDom]"); continue; }
+                if($areaDom === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [areaDom]"); continue; }
             }else{
                 $areaDom = null;
             }
 
             $placeDom     = @$this->findEr($htmlAlt, $this->dataArr['placeDom'])->plaintext;
-            if($placeDom === null){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [placeDom]"); continue; }
+            if($placeDom === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [placeDom]"); continue; }
 
             $date       = @$htmlAlt->find( $this->dataArr['dateDom'] )[0]->plaintext;
             $realDate	= $this->createDate($date);
-            if($date === null || $realDate === false ){ $this->errorLog->error("[" . $this->location . "] Info tapilmadi -> [dateDom]"); continue; }
+            if($date === null || $realDate === false ){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [dateDom]"); continue; }
 
             if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom ))
             {
             	break;
             }
 
-            $count++; break;//sadasdasd
+            $count++; //break;//sadasdasd
         }
 
         return $count;
@@ -148,10 +148,10 @@ class SiteComp
         $announcement->buldingType = $this->dataArr['buldingType'];
         $announcement->type2 = $this->dataArr['type2'];
         $announcement->city_id = $city;
-        $announcement->roomCount = $roomCountDom;
-        $announcement->area = $areaDom;
-        $announcement->place = str_limit($placeDom,30,"");
-        $announcement->owner = mb_strimwidth(trim($owner), 0, 40);
+        $announcement->roomCount = (int)$roomCountDom;
+        $announcement->area = (int)$areaDom;
+        $announcement->place = str_limit(trim($placeDom),255,"");
+        $announcement->owner = str_limit(trim($owner), 40, "");
     	$announcement->save();
 
     	$numbers = [];

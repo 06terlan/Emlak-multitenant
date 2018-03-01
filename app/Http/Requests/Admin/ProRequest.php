@@ -82,7 +82,7 @@ class ProRequest extends FormRequest
 
             'city'          => 'integer|exists:msk_cities,id',
 
-            'place'         => 'string|nullable|max:20',
+            'place'         => 'string|nullable|max:255',
 
             'pictures'      => 'nullable|array|max:6',
 

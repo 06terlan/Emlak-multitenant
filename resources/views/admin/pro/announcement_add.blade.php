@@ -196,7 +196,7 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Address</label>
 
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" data-validate-minmax="1,20" name="place" class="form-control" placeholder="Address" value="{{ $announcement['place'] }}">
+                                <input type="text" data-validate-minmax="1,255" name="place" class="form-control" placeholder="Address" value="{{ $announcement['place'] }}">
                             </div>
 
                         </div>

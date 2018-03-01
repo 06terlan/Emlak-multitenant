@@ -124,25 +124,25 @@ class HomeController extends Controller
 
     public function test()
     {
-        $count = $count = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/commercial-real-estate?p[820]=4165&p[818]=4163',
-            'objectsDom'    => '.categories-products .products .products-i',
-            'linkDom'       => '$this',
-            'location'      => 'http://tap.az',
-            'headerDom'     => '.lot-header .title-container h1',
-            'contentDom'    => '.lot-body .lot-text',
-            'amountDom'     => '.lot-header .price .price-val',
-            'dateDom'       => '.aside-page .lot-info',
-            'owner'         => ['.author .name', 0],
-            'mobnom'        => ['.author .phone', 0],
-            'type'          => 'office',
-            'buldingType'   => self::TYPE_ICARE,
+        $count = (new SiteComp([
+            'link'          => 'http://vipemlak.az/torpaq-satilir',
+            'objectsDom'    => '.pranto',
+            'linkDom'       => ['a', 0],
+            'location'      => 'http://vipemlak.az',
+            'headerDom'     => 'article h1',
+            'contentDom'    => '#openhalf .infotd100',
+            'amountDom'     => '.infotd2 span',
+            'dateDom'       => '.clearfix .viewsbb',
+            'owner'         => ['#openhalf .infotd2', 3],
+            'mobnom'        => ['#openhalf .infotd2', 4],
+            'type'          => 'land',
+            'buldingType'   => self::TYPE_SATISH,
             'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'],//[['.property', 0], ['.property-value', 0]], //
+            'cityDom'       => ['function', 'vipemlakGetCity'],
             'roomCountDom'  => null, //
-            'areaDom'       => null, //
-            'placeDom'       => [['.property', 3], ['.property-value', 0]], //
-        ], true))->getObjectData(false);
+            'areaDom'       => ['#openhalf .infotd2', 1], //
+            'placeDom'       => ['#openhalf .infotd100', 1], //
+        ],true))->getObjectData(false);
 
         return "End " . $count;
     }

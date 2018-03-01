@@ -49,7 +49,9 @@ class ErrorLog
 	}
 
 	public function error($error)
-	{	
+	{
+        $error = "(" . date("d-m-Y H:i") . ")" . $error;
+
 		array_unshift($this->AllError, $error);
 		$this->errorCount++;
 

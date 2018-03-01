@@ -14,12 +14,20 @@ use App\Models\MskCity;
 
 class Functions
 {
+    # tapaz
     public static function tapazGetCity($tt, $where)
     {
         $cityName     = @$tt->findEr($where, [['.property', 0], ['.property-value', 0]])->plaintext;
         if($cityName == null) return null;
 
         $city = MskCity::where('pure_name', MyHelper::pureString($cityName))->first();
+        return ['plaintext' => ( $city ? $city->id : 0 ) ];
+    }
+
+    # vipemlak
+    public static function vipemlakGetCity($tt, $where)
+    {
+        $city = MskCity::where('pure_name', MyHelper::pureString('baki'))->first();
         return ['plaintext' => ( $city ? $city->id : 0 ) ];
     }
 }
