@@ -124,8 +124,8 @@ class HomeController extends Controller
 
     public function test()
     {
-        $count = (new SiteComp([
-            'link'          => 'http://vipemlak.az/torpaq-satilir',
+        $count = 0;/*(new SiteComp([
+            'link'          => 'http://vipemlak.az/obyekt-ofis-satilir',
             'objectsDom'    => '.pranto',
             'linkDom'       => ['a', 0],
             'location'      => 'http://vipemlak.az',
@@ -135,14 +135,14 @@ class HomeController extends Controller
             'dateDom'       => '.clearfix .viewsbb',
             'owner'         => ['#openhalf .infotd2', 3],
             'mobnom'        => ['#openhalf .infotd2', 4],
-            'type'          => 'land',
+            'type'          => 'object',
             'buldingType'   => self::TYPE_SATISH,
             'type2'         => null, //
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => null, //
-            'areaDom'       => ['#openhalf .infotd2', 1], //
+            'roomCountDom'  => ['#openhalf .infotd2', 1], //
+            'areaDom'       => ['#openhalf .infotd2', 2], //
             'placeDom'       => ['#openhalf .infotd100', 1], //
-        ],true))->getObjectData(false);
+        ],true))->getObjectData(false);*/
 
         return "End " . $count;
     }

@@ -92,8 +92,13 @@ class SiteComp
                 $areaDom = null;
             }
 
-            $placeDom     = @$this->findEr($htmlAlt, $this->dataArr['placeDom'])->plaintext;
-            if($placeDom === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [placeDom]"); continue; }
+            if( $this->dataArr['placeDom'] !== null )
+            {
+                $placeDom     = @$this->findEr($htmlAlt, $this->dataArr['placeDom'])->plaintext;
+                if($placeDom === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [placeDom]"); continue; }
+            }else{
+                $placeDom = null;
+            }
 
             $date       = @$htmlAlt->find( $this->dataArr['dateDom'] )[0]->plaintext;
             $realDate	= $this->createDate($date);

@@ -358,8 +358,8 @@ class GetDatas extends Command
             'contentDom'    => '#openhalf .infotd100',
             'amountDom'     => '.infotd2 span',
             'dateDom'       => '.clearfix .viewsbb',
-            'owner'         => ['#openhalf .infotd2', 4],
-            'mobnom'        => ['#openhalf .infotd2', 5],
+            'owner'         => ['#openhalf .infotd2', 3],
+            'mobnom'        => ['#openhalf .infotd2', 4],
             'type'          => 'object',
             'buldingType'   => self::TYPE_SATISH,
             'type2'         => null, //
@@ -1027,8 +1027,8 @@ class GetDatas extends Command
             'type2'         => null, //
             'cityDom'       => ['function', 'tapazGetCity'], //
             'roomCountDom'  => null, //
-            'areaDom'       => [['.property', 1], ['.property-value', 0]], //
-            'placeDom'       => [['.property', 2], ['.property-value', 0]], //
+            'areaDom'       => null, //
+            'placeDom'       => null, //
         ]))->getObjectData();
         $this->info(" tap.az [garage TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
