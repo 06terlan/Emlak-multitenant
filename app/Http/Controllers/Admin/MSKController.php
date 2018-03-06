@@ -10,6 +10,7 @@ use App\Models\MskMakler;
 use App\Models\MskMetro;
 use App\Models\MskType;
 use App\Models\Tenant;
+use Illuminate\Support\Facades\DB;
 use \Illuminate\Support\MessageBag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -53,10 +54,16 @@ class MSKController extends Controller
                     $maklerData = MskMakler::find($makler);
                 }
 
+                $pureNumber = MyHelper::pureNumber($request->get('number'));
+
                 $maklerData->fullname = $request->get('fullname');
                 $maklerData->number = $request->get('number');
-                $maklerData->pure_number = MyHelper::pureNumber($request->get('number'));
+                $maklerData->pure_number = $pureNumber;
                 $maklerData->save();
+
+                DB::statement("UPDATE `announcements` a 
+                        INNER JOIN numbers b ON a.id = b.announcement_id AND b.pure_number = '$pureNumber'
+                        SET owner_type = 1");
 
                 return redirect()->route('msk_makler');
             }
