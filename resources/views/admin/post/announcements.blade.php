@@ -341,7 +341,7 @@
                                         </div>
                                     </div>
                                     <img src="images/logo.jpg">
-                                    <h2 class="backColor">{{ $announcement->amount }} <span style="font-size: 17px; font-weight: 200;">AZN</span></h2>
+                                    <h2 class="backColor">{{ (int)$announcement->amount }} <span style="font-size: 17px; font-weight: 200;">AZN</span></h2>
                                     <h2 class="backColor2">{{ $announcement->getBuldingType() }} </h2>
                                     <div class="offer-content">
                                          <h3 class="lead text-center" style="font-size: 16px;margin-bottom: 0px">{{ $announcement->getAnnouncementType() }}</h3>

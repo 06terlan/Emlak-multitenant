@@ -370,7 +370,7 @@
                                         </div>
                                     </div>
                                     <img src="{{ count($announcement->pictures) > 0 ? url(\App\Library\MyClass::ANN_THUMB_PIC_DIR . $announcement->pictures[0]->file_name ) : 'images/logo.jpg' }}">
-                                    <h2 class="backColor">{{ $announcement->amount }} <span style="font-size: 17px; font-weight: 200;">AZN</span></h2>
+                                    <h2 class="backColor">{{ (int)$announcement->amount }} <span style="font-size: 17px; font-weight: 200;">AZN</span></h2>
                                     <h2 class="backColor2">{{ $announcement->getBuldingType() }} </h2>
                                     <h2 class="backColor3">{!! $announcement->getStatus() !!} </h2>
                                     <div class="offer-content">

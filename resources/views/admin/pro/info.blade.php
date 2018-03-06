@@ -129,7 +129,7 @@
                                         </span>
                                             @endforeach
                                             <br/>
-                                            <span class="textColorSpan" style="font-size: 20px;">&#0160; 250000.00</span> <span style="font-size:12px;" >AZN</span>
+                                            <span class="textColorSpan" style="font-size: 20px;">&#0160; {{ (int)$announcement->amount }}</span> <span style="font-size:12px;" >AZN</span>
                                         </div>
 
                                         <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
@@ -212,7 +212,7 @@
 
                                         <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
                                             <div class="elanBox">
-                                                <i class="fa fa-calendar" style="color:#23bbd2"></i> Tarix: <span class="textColorSpan">&#0160; 08.05.2018 </span>
+                                                <i class="fa fa-calendar" style="color:#23bbd2"></i> Tarix: <span class="textColorSpan">&#0160; {{ date("d-m-Y", strtotime($announcement->date)) }} </span>
                                             </div>
                                         </div>
 
