@@ -227,11 +227,11 @@ class GetDatas extends Command
             'mobnom'        => ['#openhalf .infotd2', 5],
             'type'          => 'building',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => 'new', //
+            'type2'         => 'new',
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => ['#openhalf .infotd2', 1], //
-            'areaDom'       => ['#openhalf .infotd2', 2], //
-            'placeDom'       => ['#openhalf .infotd100', 1], //
+            'roomCountDom'  => ['#openhalf .infotd2', 1],
+            'areaDom'       => ['#openhalf .infotd2', 2],
+            'placeDom'       => ['#openhalf .infotd100', 1],
         ]))->getObjectData();
         $this->info(" vipemlak.az [new_bulding TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -249,11 +249,11 @@ class GetDatas extends Command
             'mobnom'        => ['#openhalf .infotd2', 5],
             'type'          => 'building',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => 'new', //
+            'type2'         => 'new',
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => ['#openhalf .infotd2', 1], //
-            'areaDom'       => ['#openhalf .infotd2', 2], //
-            'placeDom'       => ['#openhalf .infotd100', 1], //
+            'roomCountDom'  => ['#openhalf .infotd2', 1],
+            'areaDom'       => ['#openhalf .infotd2', 2],
+            'placeDom'       => ['#openhalf .infotd100', 1],
         ]))->getObjectData();
         $this->info(" vipemlak.az [new_bulding TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -272,11 +272,11 @@ class GetDatas extends Command
             'mobnom'        => ['#openhalf .infotd2', 5],
             'type'          => 'building',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => 'old', //
+            'type2'         => 'old',
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => ['#openhalf .infotd2', 1], //
-            'areaDom'       => ['#openhalf .infotd2', 2], //
-            'placeDom'       => ['#openhalf .infotd100', 1], //
+            'roomCountDom'  => ['#openhalf .infotd2', 1],
+            'areaDom'       => ['#openhalf .infotd2', 2],
+            'placeDom'       => ['#openhalf .infotd100', 1],
         ]))->getObjectData();
         $this->info(" vipemlak.az [old_building TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -294,11 +294,11 @@ class GetDatas extends Command
             'mobnom'        => ['#openhalf .infotd2', 5],
             'type'          => 'building',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => 'old', //
+            'type2'         => 'old',
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => ['#openhalf .infotd2', 1], //
-            'areaDom'       => ['#openhalf .infotd2', 2], //
-            'placeDom'       => ['#openhalf .infotd100', 1], //
+            'roomCountDom'  => ['#openhalf .infotd2', 1],
+            'areaDom'       => ['#openhalf .infotd2', 2],
+            'placeDom'       => ['#openhalf .infotd100', 1],
         ]))->getObjectData();
         $this->info(" vipemlak.az [old_building TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -317,11 +317,11 @@ class GetDatas extends Command
             'mobnom'        => ['#openhalf .infotd2', 5],
             'type'          => 'house',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
+            'type2'         => null,
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => ['#openhalf .infotd2', 1], //
-            'areaDom'       => ['#openhalf .infotd2', 2], //
-            'placeDom'       => ['#openhalf .infotd100', 1], //
+            'roomCountDom'  => ['#openhalf .infotd2', 1],
+            'areaDom'       => ['#openhalf .infotd2', 2],
+            'placeDom'       => ['#openhalf .infotd100', 1],
         ]))->getObjectData();
         $this->info(" vipemlak.az [house TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -339,11 +339,11 @@ class GetDatas extends Command
             'mobnom'        => ['#openhalf .infotd2', 5],
             'type'          => 'house',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => null, //
+            'type2'         => null,
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => ['#openhalf .infotd2', 1], //
-            'areaDom'       => ['#openhalf .infotd2', 2], //
-            'placeDom'       => ['#openhalf .infotd100', 1], //
+            'roomCountDom'  => ['#openhalf .infotd2', 1],
+            'areaDom'       => ['#openhalf .infotd2', 2],
+            'placeDom'       => ['#openhalf .infotd100', 1],
         ]))->getObjectData();
         $this->info(" vipemlak.az [house TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -362,11 +362,11 @@ class GetDatas extends Command
             'mobnom'        => ['#openhalf .infotd2', 4],
             'type'          => 'object',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
+            'type2'         => null,
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => ['#openhalf .infotd2', 1], //
-            'areaDom'       => ['#openhalf .infotd2', 2], //
-            'placeDom'       => ['#openhalf .infotd100', 1], //
+            'roomCountDom'  => ['#openhalf .infotd2', 1],
+            'areaDom'       => ['#openhalf .infotd2', 2],
+            'placeDom'       => ['#openhalf .infotd100', 1],
         ]))->getObjectData();
         $this->info(" vipemlak.az [object TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -384,11 +384,11 @@ class GetDatas extends Command
             'mobnom'        => ['#openhalf .infotd2', 5],
             'type'          => 'object',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => null, //
+            'type2'         => null,
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => ['#openhalf .infotd2', 1], //
-            'areaDom'       => ['#openhalf .infotd2', 2], //
-            'placeDom'       => ['#openhalf .infotd100', 1], //
+            'roomCountDom'  => ['#openhalf .infotd2', 1],
+            'areaDom'       => ['#openhalf .infotd2', 2],
+            'placeDom'       => ['#openhalf .infotd100', 1],
         ]))->getObjectData();
         $this->info(" vipemlak.az [object TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -407,11 +407,11 @@ class GetDatas extends Command
             'mobnom'        => ['#openhalf .infotd2', 4],
             'type'          => 'land',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
+            'type2'         => null,
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => null, //
-            'areaDom'       => ['#openhalf .infotd2', 1], //
-            'placeDom'       => ['#openhalf .infotd100', 1], //
+            'roomCountDom'  => null,
+            'areaDom'       => ['#openhalf .infotd2', 1],
+            'placeDom'       => ['#openhalf .infotd100', 1],
         ]))->getObjectData();
         $this->info(" vipemlak.az [land TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -434,11 +434,11 @@ class GetDatas extends Command
             'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'building',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => 'new', //
+            'type2'         => 'new',
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => [['.parameters tr', 3], ['td', 1]], //
-            'areaDom'       => [['.parameters tr', 2], ['td', 1]], //
-            'placeDom'       => ['.badges_block .locations', 0], //
+            'roomCountDom'  => [['.parameters tr', 3], ['td', 1]],
+            'areaDom'       => [['.parameters tr', 2], ['td', 1]],
+            'placeDom'       => ['.badges_block .locations', 0],
         ]))->getObjectData();
         $this->info(" bina.az [new_bulding TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -456,11 +456,11 @@ class GetDatas extends Command
             'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'building',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => 'new', //
+            'type2'         => 'new',
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => [['.parameters tr', 3], ['td', 1]], //
-            'areaDom'       => [['.parameters tr', 2], ['td', 1]], //
-            'placeDom'       => ['.badges_block .locations', 0], //
+            'roomCountDom'  => [['.parameters tr', 3], ['td', 1]],
+            'areaDom'       => [['.parameters tr', 2], ['td', 1]],
+            'placeDom'       => ['.badges_block .locations', 0],
         ]))->getObjectData();
         $this->info(" bina.az [new_bulding TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -479,11 +479,11 @@ class GetDatas extends Command
             'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'building',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => 'old', //
+            'type2'         => 'old',
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => [['.parameters tr', 3], ['td', 1]], //
-            'areaDom'       => [['.parameters tr', 2], ['td', 1]], //
-            'placeDom'       => ['.badges_block .locations', 0], //
+            'roomCountDom'  => [['.parameters tr', 3], ['td', 1]],
+            'areaDom'       => [['.parameters tr', 2], ['td', 1]],
+            'placeDom'       => ['.badges_block .locations', 0],
         ]))->getObjectData();
         $this->info(" bina.az [old_building TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -501,11 +501,11 @@ class GetDatas extends Command
             'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'building',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => 'old', //
+            'type2'         => 'old',
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => [['.parameters tr', 3], ['td', 1]], //
-            'areaDom'       => [['.parameters tr', 2], ['td', 1]], //
-            'placeDom'       => ['.badges_block .locations', 0], //
+            'roomCountDom'  => [['.parameters tr', 3], ['td', 1]],
+            'areaDom'       => [['.parameters tr', 2], ['td', 1]],
+            'placeDom'       => ['.badges_block .locations', 0],
         ]))->getObjectData();
         $this->info(" bina.az [old_building TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -524,11 +524,11 @@ class GetDatas extends Command
             'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'land',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
+            'type2'         => null,
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => null, //
-            'areaDom'       => [['.parameters tr', 1], ['td', 1]], //
-            'placeDom'       => ['.badges_block .locations', 0], //
+            'roomCountDom'  => null,
+            'areaDom'       => [['.parameters tr', 1], ['td', 1]],
+            'placeDom'       => ['.badges_block .locations', 0],
         ]))->getObjectData();
         $this->info(" bina.az [land TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -547,11 +547,11 @@ class GetDatas extends Command
             'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'object',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => null, //
+            'type2'         => null,
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => null, //
-            'areaDom'       => [['.parameters tr', 1], ['td', 1]], //
-            'placeDom'       => ['.badges_block .locations', 0], //
+            'roomCountDom'  => null,
+            'areaDom'       => [['.parameters tr', 1], ['td', 1]],
+            'placeDom'       => ['.badges_block .locations', 0],
         ]))->getObjectData();
         $this->info(" vipemlak.az [object TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -569,11 +569,11 @@ class GetDatas extends Command
             'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'object',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
+            'type2'         => null,
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => null, //
-            'areaDom'       => [['.parameters tr', 1], ['td', 1]], //
-            'placeDom'       => ['.badges_block .locations', 0], //
+            'roomCountDom'  => null,
+            'areaDom'       => [['.parameters tr', 1], ['td', 1]],
+            'placeDom'       => ['.badges_block .locations', 0],
         ]))->getObjectData();
         $this->info(" vipemlak.az [object TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -592,11 +592,11 @@ class GetDatas extends Command
             'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'office',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => null, //
+            'type2'         => null,
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => [['.parameters tr', 3], ['td', 1]], //
-            'areaDom'       => [['.parameters tr', 1], ['td', 1]], //
-            'placeDom'       => ['.badges_block .locations', 0], //
+            'roomCountDom'  => [['.parameters tr', 3], ['td', 1]],
+            'areaDom'       => [['.parameters tr', 1], ['td', 1]],
+            'placeDom'       => ['.badges_block .locations', 0],
         ]))->getObjectData();
         $this->info(" bina.az [office TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -614,11 +614,11 @@ class GetDatas extends Command
             'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'office',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
+            'type2'         => null,
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => [['.parameters tr', 3], ['td', 1]], //
-            'areaDom'       => [['.parameters tr', 1], ['td', 1]], //
-            'placeDom'       => ['.badges_block .locations', 0], //
+            'roomCountDom'  => [['.parameters tr', 3], ['td', 1]],
+            'areaDom'       => [['.parameters tr', 1], ['td', 1]],
+            'placeDom'       => ['.badges_block .locations', 0],
         ]))->getObjectData();
         $this->info(" bina.az [office TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -637,11 +637,11 @@ class GetDatas extends Command
             'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'garden_house',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => null, //
+            'type2'         => null,
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => null, //
-            'areaDom'       => [['.parameters tr', 1], ['td', 1]], //
-            'placeDom'       => ['.badges_block .locations', 0], //
+            'roomCountDom'  => null,
+            'areaDom'       => [['.parameters tr', 1], ['td', 1]],
+            'placeDom'       => ['.badges_block .locations', 0],
         ]))->getObjectData();
         $this->info(" bina.az [garden_house TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -659,11 +659,11 @@ class GetDatas extends Command
             'mobnom'        => ['.contacts .phone-container', 0],
             'type'          => 'garden_house',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
+            'type2'         => null,
             'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => null, //
-            'areaDom'       => [['.parameters tr', 1], ['td', 1]], //
-            'placeDom'       => ['.badges_block .locations', 0], //
+            'roomCountDom'  => null,
+            'areaDom'       => [['.parameters tr', 1], ['td', 1]],
+            'placeDom'       => ['.badges_block .locations', 0],
         ]))->getObjectData();
         $this->info(" bina.az [garden_house TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -686,11 +686,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'building',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => 'new', //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => [['.property', 4], ['.property-value', 0]], //
-            'areaDom'       => [['.property', 3], ['.property-value', 0]], //
-            'placeDom'       => [['.property', 5], ['.property-value', 0]], //
+            'type2'         => 'new',
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => [['.property', 4], ['.property-value', 0]],
+            'areaDom'       => [['.property', 3], ['.property-value', 0]],
+            'placeDom'       => [['.property', 5], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [new_bulding TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -708,11 +708,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'building',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => 'new', //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => [['.property', 4], ['.property-value', 0]], //
-            'areaDom'       => [['.property', 3], ['.property-value', 0]], //
-            'placeDom'       => [['.property', 5], ['.property-value', 0]], //
+            'type2'         => 'new',
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => [['.property', 4], ['.property-value', 0]],
+            'areaDom'       => [['.property', 3], ['.property-value', 0]],
+            'placeDom'       => [['.property', 5], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [new_bulding TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -731,11 +731,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'building',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => 'old', //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => [['.property', 4], ['.property-value', 0]], //
-            'areaDom'       => [['.property', 3], ['.property-value', 0]], //
-            'placeDom'       => [['.property', 5], ['.property-value', 0]], //
+            'type2'         => 'old',
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => [['.property', 4], ['.property-value', 0]],
+            'areaDom'       => [['.property', 3], ['.property-value', 0]],
+            'placeDom'       => [['.property', 5], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [old_building TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -753,11 +753,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'building',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => 'old', //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => [['.property', 4], ['.property-value', 0]], //
-            'areaDom'       => [['.property', 3], ['.property-value', 0]], //
-            'placeDom'       => [['.property', 5], ['.property-value', 0]], //
+            'type2'         => 'old',
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => [['.property', 4], ['.property-value', 0]],
+            'areaDom'       => [['.property', 3], ['.property-value', 0]],
+            'placeDom'       => [['.property', 5], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [old_building TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -776,11 +776,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'garden_house',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => null, //
-            'areaDom'       => [['.property', 3], ['.property-value', 0]], //
-            'placeDom'       => [['.property', 4], ['.property-value', 0]], //
+            'type2'         => null,
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => null,
+            'areaDom'       => [['.property', 3], ['.property-value', 0]],
+            'placeDom'       => [['.property', 4], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [garden_house TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -798,11 +798,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'garden_house',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => null, //
-            'areaDom'       => [['.property', 3], ['.property-value', 0]], //
-            'placeDom'       => [['.property', 4], ['.property-value', 0]], //
+            'type2'         => null,
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => null,
+            'areaDom'       => [['.property', 3], ['.property-value', 0]],
+            'placeDom'       => [['.property', 4], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [garden_house TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -821,11 +821,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'house',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => null, //
-            'areaDom'       => [['.property', 3], ['.property-value', 0]], //
-            'placeDom'       => [['.property', 4], ['.property-value', 0]], //
+            'type2'         => null,
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => null,
+            'areaDom'       => [['.property', 3], ['.property-value', 0]],
+            'placeDom'       => [['.property', 4], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [house TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -843,11 +843,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'house',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => null, //
-            'areaDom'       => [['.property', 3], ['.property-value', 0]], //
-            'placeDom'       => [['.property', 4], ['.property-value', 0]], //
+            'type2'         => null,
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => null,
+            'areaDom'       => [['.property', 3], ['.property-value', 0]],
+            'placeDom'       => [['.property', 4], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [house TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -866,11 +866,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'villa',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => null, //
-            'areaDom'       => [['.property', 3], ['.property-value', 0]], //
-            'placeDom'       => [['.property', 4], ['.property-value', 0]], //
+            'type2'         => null,
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => null,
+            'areaDom'       => [['.property', 3], ['.property-value', 0]],
+            'placeDom'       => [['.property', 4], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [villa TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -888,11 +888,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'villa',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => null, //
-            'areaDom'       => [['.property', 3], ['.property-value', 0]], //
-            'placeDom'       => [['.property', 4], ['.property-value', 0]], //
+            'type2'         => null,
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => null,
+            'areaDom'       => [['.property', 3], ['.property-value', 0]],
+            'placeDom'       => [['.property', 4], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [villa TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -911,11 +911,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'office',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => null, //
-            'areaDom'       => null, //
-            'placeDom'       => [['.property', 3], ['.property-value', 0]], //
+            'type2'         => null,
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => null,
+            'areaDom'       => null,
+            'placeDom'       => [['.property', 3], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [office TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -933,11 +933,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'office',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => null, //
-            'areaDom'       => null, //
-            'placeDom'       => [['.property', 3], ['.property-value', 0]], //
+            'type2'         => null,
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => null,
+            'areaDom'       => null,
+            'placeDom'       => [['.property', 3], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [office TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -956,11 +956,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'object',
             'buldingType'   => self::TYPE_ICARE,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => null, //
-            'areaDom'       => null, //
-            'placeDom'       => [['.property', 3], ['.property-value', 0]], //
+            'type2'         => null,
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => null,
+            'areaDom'       => null,
+            'placeDom'       => [['.property', 3], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [object TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -978,11 +978,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'object',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => null, //
-            'areaDom'       => null, //
-            'placeDom'       => [['.property', 3], ['.property-value', 0]], //
+            'type2'         => null,
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => null,
+            'areaDom'       => null,
+            'placeDom'       => [['.property', 3], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [object TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -1001,11 +1001,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'land',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => null, //
-            'areaDom'       => [['.property', 1], ['.property-value', 0]], //
-            'placeDom'       => [['.property', 2], ['.property-value', 0]], //
+            'type2'         => null,
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => null,
+            'areaDom'       => [['.property', 1], ['.property-value', 0]],
+            'placeDom'       => [['.property', 2], ['.property-value', 0]],
         ]))->getObjectData();
         $this->info(" tap.az [land TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -1024,11 +1024,11 @@ class GetDatas extends Command
             'mobnom'        => ['.author .phone', 0],
             'type'          => 'garage',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'tapazGetCity'], //
-            'roomCountDom'  => null, //
-            'areaDom'       => null, //
-            'placeDom'       => null, //
+            'type2'         => null,
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => null,
+            'areaDom'       => null,
+            'placeDom'       => null,
         ]))->getObjectData();
         $this->info(" tap.az [garage TYPE_SATISH] count: ".$count." \n");
         $bar->advance();

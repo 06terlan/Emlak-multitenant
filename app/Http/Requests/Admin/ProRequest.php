@@ -78,7 +78,7 @@ class ProRequest extends FormRequest
 
             'content'       => 'required',
 
-            'metro'         => 'integer|exists:msk_metros,id',
+            'metro'         => ['integer', Rule::in(array_keys(MyClass::$metros))],
 
             'city'          => 'integer|exists:msk_cities,id',
 

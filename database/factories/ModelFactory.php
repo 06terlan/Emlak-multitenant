@@ -86,7 +86,7 @@ $factory->define(App\Models\ProAnnouncement::class, function (Faker\Generator $f
         'roomCount' => $faker->numberBetween(1,50),
         'locatedFloor' => $faker->numberBetween(1,20),
         'floorCount' => $faker->numberBetween(1,20),
-        'metro_id' => \App\Models\MskMetro::all()->random()->id,
+        'metro_id' => array_rand(\App\Library\MyClass::$metros, 1),
         'city_id' => \App\Models\MskCity::all()->random()->id,
         'place' => str_limit($faker->address, 20, ''),
         'documentType' => array_rand(\App\Library\MyClass::$documentTypes, 1),

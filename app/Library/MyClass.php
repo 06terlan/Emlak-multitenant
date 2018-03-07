@@ -270,11 +270,44 @@ class MyClass
         'msk' => ['name' => 'Msk', 'icon'=> 'fa fa-wrench', 'child'=> [
             'msk_group' => ['name'=> 'Qruplar', 'icon'=> '',  'route'=> 'msk_group', 'priv'=> MyClass::PRIV_CAN_SEE],
             'msk_makler' => ['name'=> 'Maklerlər', 'icon'=> '',  'route'=> 'msk_makler', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
-            'msk_metro' => ['name'=> 'Metrolar', 'icon'=> '',  'route'=> 'msk_metro', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
+            //'msk_metro' => ['name'=> 'Metrolar', 'icon'=> '',  'route'=> 'msk_metro', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
             'msk_city' => ['name'=> 'Şəhərlər', 'icon'=> '',  'route'=> 'msk_city', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
             'msk_type' => ['name'=> 'Şirkət növləri', 'icon'=> '',  'route'=> 'msk_type', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
             ]
         ]
     ];
+
+    /**
+
+     * metros
+
+     */
+
+    public static $metros =
+        [
+            1 => ['Gənclik m.', ''],
+            2 => ['Ulduz m.', ''],
+            3 => ['Həzi Aslanov m.', ''],
+            4 => ['Elmlər Akademiyası m.', ''],
+            5 => ['Nizami m.', ''],
+            6 => ['Şah İsmayıl Xətai m.', ''],
+            7 => ['İçəri Şəhər m.', ''],
+            8 => ['Sahil m.', ''],
+            9 => ['Koroğlu m.', ''],
+            10 => ['20 Yanvar m.', ''],
+            11 => ['Əhmədli m.', ''],
+            12 => ['Qara Qarayev m.', ''],
+            13 => ['Neftçilər m.', ''],
+            14 => ['Xalqlar Dostluğu m.', ''],
+            15 => ['Memar Əcəmi m.', ''],
+            16 => ['Azadlıq Prospekti m.', ''],
+            17 => ['Nəsimi m.', ''],
+            18 => ['Dərnəgül m.', ''],
+            19 => ['Cəfər Cabbarlı m.', ''],
+            20 => ['Bakmil m.', ''],
+            21 => ['İnşaatçılar m.', ''],
+            22 => ['28 May m.', ''],
+            23 => ['Avtovağzal m.', ''],
+        ];
 }
 

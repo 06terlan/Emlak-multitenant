@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(MskTypeTableSeeder::class);
         $this->call(UserTableSeeder::class );
-        $this->call(MskMetroTableSeeder::class);
         $this->call(MskCityTableSeeder::class);
         $this->call(AnnouncementTableSeeder::class);
         $this->call(ProAnnouncementTableSeeder::class);

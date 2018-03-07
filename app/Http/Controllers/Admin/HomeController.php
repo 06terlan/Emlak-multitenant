@@ -124,25 +124,26 @@ class HomeController extends Controller
 
     public function test()
     {
-        $count = 0;/*(new SiteComp([
-            'link'          => 'http://vipemlak.az/obyekt-ofis-satilir',
-            'objectsDom'    => '.pranto',
-            'linkDom'       => ['a', 0],
-            'location'      => 'http://vipemlak.az',
-            'headerDom'     => 'article h1',
-            'contentDom'    => '#openhalf .infotd100',
-            'amountDom'     => '.infotd2 span',
-            'dateDom'       => '.clearfix .viewsbb',
-            'owner'         => ['#openhalf .infotd2', 3],
-            'mobnom'        => ['#openhalf .infotd2', 4],
-            'type'          => 'object',
-            'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null, //
-            'cityDom'       => ['function', 'vipemlakGetCity'],
-            'roomCountDom'  => ['#openhalf .infotd2', 1], //
-            'areaDom'       => ['#openhalf .infotd2', 2], //
-            'placeDom'       => ['#openhalf .infotd100', 1], //
-        ],true))->getObjectData(false);*/
+        $count = (new SiteComp([
+            'link'          => 'http://tap.az/all/real-estate/apartments?p[740]=3724&p[747]=3849',
+            'objectsDom'    => '.categories-products .products .products-i',
+            'linkDom'       => '$this',
+            'location'      => 'http://tap.az',
+            'headerDom'     => '.lot-header .title-container h1',
+            'contentDom'    => '.lot-body .lot-text',
+            'amountDom'     => '.lot-header .price .price-val',
+            'dateDom'       => '.aside-page .lot-info',
+            'owner'         => ['.author .name', 0],
+            'mobnom'        => ['.author .phone', 0],
+            'type'          => 'building',
+            'buldingType'   => self::TYPE_ICARE,
+            'type2'         => 'new', //
+            'cityDom'       => ['function', 'tapazGetCity'],
+            'roomCountDom'  => [['.property', 4], ['.property-value', 0]],
+            'areaDom'       => [['.property', 3], ['.property-value', 0]],
+            'placeDom'      => [['.property', 5], ['.property-value', 0]],
+            'metroDom'      => ['function', 'getMetroTapaz'], //
+        ],true))->getObjectData(false);
 
         return "End " . $count;
     }

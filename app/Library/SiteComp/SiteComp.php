@@ -18,6 +18,7 @@ class SiteComp
 	private $dom = null;
 	private $location = null;
 	private $dataArr = null;
+	public $pageData = [];
 
     public function __construct( $dataArr, $debug = false )//$link, $objectsDom, $linkDom, $location, $headerDom, $contentDom, $amountDom, $dateDom)
     {
@@ -63,6 +64,7 @@ class SiteComp
 
             $content    = @$htmlAlt->find( $this->dataArr['contentDom'] )[0]->innertext;
             if($content === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [contentDom]"); continue; }
+            $pageData['contentDom'] = $content;
 
             $amount     = @$htmlAlt->find( $this->dataArr['amountDom'] )[0]->plaintext;
             if($amount === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [amountDom]"); continue; }
@@ -96,6 +98,7 @@ class SiteComp
             {
                 $placeDom     = @$this->findEr($htmlAlt, $this->dataArr['placeDom'])->plaintext;
                 if($placeDom === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [placeDom]"); continue; }
+                $pageData['placeDom'] = $placeDom;
             }else{
                 $placeDom = null;
             }
@@ -109,7 +112,7 @@ class SiteComp
             	break;
             }
 
-            $count++; //break;//sadasdasd
+            $count++; break;//sadasdasd
         }
 
         return $count;

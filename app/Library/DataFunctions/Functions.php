@@ -24,6 +24,11 @@ class Functions
         return ['plaintext' => ( $city ? $city->id : 0 ) ];
     }
 
+    public static function getMetroTapaz($tt, $where)
+    {
+
+    }
+
     # vipemlak
     public static function vipemlakGetCity($tt, $where)
     {
