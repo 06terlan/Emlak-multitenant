@@ -61,7 +61,7 @@ class MapRequest extends FormRequest
 
             'content'       => '',
 
-            'metro'         => 'integer|exists:msk_metros,id',
+            'metro'         => 'integer|nullable',
 
             'city'          => 'max:20',
 
