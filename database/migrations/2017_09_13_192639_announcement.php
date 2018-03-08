@@ -21,15 +21,16 @@ class Announcement extends Migration
             //features
             $table->string('site',100)->nullable();
             $table->string('type',50)->nullable();
-            $table->string('type2',5)->nullable(); //new
+            $table->string('type2',5)->nullable();
             $table->tinyInteger("buldingType")->nullable();
-            $table->smallInteger("city_id")->nullable(); //new
+            $table->smallInteger("city_id")->nullable();
             $table->decimal('amount',10,2)->nullable();
-            $table->tinyInteger("roomCount")->nullable(); //new
-            $table->smallInteger("area")->nullable(); //new
+            $table->tinyInteger("roomCount")->nullable();
+            $table->smallInteger("area")->nullable();
             $table->string("owner", 40)->nullable();
-            $table->string("place", 255)->nullable(); //new
+            $table->string("place", 255)->nullable();
             $table->tinyInteger('owner_type')->default(0);
+            $table->tinyInteger('metro_id')->nullable(); //new
 
             $table->date('date')->nullable();
             $table->timestamps();

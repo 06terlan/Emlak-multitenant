@@ -42,7 +42,8 @@ $factory->define(App\Models\Announcement::class, function (Faker\Generator $fake
         'roomCount' => $faker->numberBetween(1,50),
         'area' => $faker->numberBetween(10,1000),
         'place' => str_limit($faker->address, 20, ''),
-        'date' => \App\Library\Date::d(null, "Y-m-d")
+        'date' => \App\Library\Date::d(null, "Y-m-d"),
+        'metro_id' => array_rand(\App\Library\MyClass::$metros, 1),
     ];
 });
 

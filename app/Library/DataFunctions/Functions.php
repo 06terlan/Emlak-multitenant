@@ -9,6 +9,7 @@
 namespace App\Library\DataFunctions;
 
 
+use App\Library\MyClass;
 use App\Library\MyHelper;
 use App\Models\MskCity;
 
@@ -26,7 +27,20 @@ class Functions
 
     public static function getMetroTapaz($tt, $where)
     {
+        if( $tt->pageData['placeDom'] ){
+            foreach (MyClass::$metros as $key => $metro)
+                if(preg_match($metro[1], $tt->pageData['placeDom'])) return ['plaintext' => $key];
+        }
+        if( $tt->pageData['headerDom'] ){
+            foreach (MyClass::$metros as $key => $metro)
+                if(preg_match($metro[1], $tt->pageData['headerDom'])) return ['plaintext' => $key];
+        }
+        if( $tt->pageData['contentDom'] ){
+            foreach (MyClass::$metros as $key => $metro)
+                if(preg_match($metro[1], $tt->pageData['contentDom'])) return ['plaintext' => $key];
+        }
 
+        return ['plaintext' => null];
     }
 
     # vipemlak

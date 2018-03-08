@@ -61,10 +61,11 @@ class SiteComp
 
             $header     = @$htmlAlt->find( $this->dataArr['headerDom'] )[0]->innertext;
             if($header === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi [headerDom]"); continue; }
+            $this->pageData['headerDom'] = $header;
 
             $content    = @$htmlAlt->find( $this->dataArr['contentDom'] )[0]->innertext;
             if($content === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [contentDom]"); continue; }
-            $pageData['contentDom'] = $content;
+            $this->pageData['contentDom'] = $content;
 
             $amount     = @$htmlAlt->find( $this->dataArr['amountDom'] )[0]->plaintext;
             if($amount === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [amountDom]"); continue; }
@@ -98,21 +99,23 @@ class SiteComp
             {
                 $placeDom     = @$this->findEr($htmlAlt, $this->dataArr['placeDom'])->plaintext;
                 if($placeDom === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [placeDom]"); continue; }
-                $pageData['placeDom'] = $placeDom;
+                $this->pageData['placeDom'] = $placeDom;
             }else{
                 $placeDom = null;
             }
+
+            $metro = @$this->findEr($htmlAlt, $this->dataArr['metroDom'])['plaintext'];
 
             $date       = @$htmlAlt->find( $this->dataArr['dateDom'] )[0]->plaintext;
             $realDate	= $this->createDate($date);
             if($date === null || $realDate === false ){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [dateDom]"); continue; }
 
-            if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom ))
+            if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro ))
             {
             	break;
             }
 
-            $count++; break;//sadasdasd
+            $count++; //break;//sadasdasd
         }
 
         return $count;
@@ -141,7 +144,7 @@ class SiteComp
         return $match[0];
     }
 
-    private function InsetCheck( $link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom )
+    private function InsetCheck( $link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro )
     {
         if( $toDay === true && date("Y-m-d") != $realDate ) return false;
 
@@ -160,6 +163,7 @@ class SiteComp
         $announcement->area = (int)$areaDom;
         $announcement->place = str_limit(trim($placeDom),255,"");
         $announcement->owner = str_limit(trim($owner), 40, "");
+        $announcement->metro_id = $metro;
     	$announcement->save();
 
     	$numbers = [];

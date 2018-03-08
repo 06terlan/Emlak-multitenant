@@ -125,7 +125,7 @@ class HomeController extends Controller
     public function test()
     {
         $count = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/apartments?p[740]=3724&p[747]=3849',
+            'link'          => 'http://tap.az/all/real-estate/apartments?p[740]=3724&p[747]=3850',
             'objectsDom'    => '.categories-products .products .products-i',
             'linkDom'       => '$this',
             'location'      => 'http://tap.az',
