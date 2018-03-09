@@ -58,6 +58,10 @@ class PostRequest extends FormRequest
             'amount1'        => 'numeric|nullable|max:99999999',
 
             'amount2'        => 'numeric|nullable|max:99999999',
+
+            'metro'         => 'array|nullable',
+
+            'metro.*' =>  ['integer', Rule::in(array_keys(MyClass::$metros))],
         ];
     }
 }

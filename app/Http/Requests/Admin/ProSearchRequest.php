@@ -61,7 +61,11 @@ class ProSearchRequest extends FormRequest
 
             'status'        => 'array|nullable',
 
-            'status.*'        => ['integer', Rule::in(array_keys(MyClass::$buttonStatus2))]
+            'status.*'        => ['integer', Rule::in(array_keys(MyClass::$buttonStatus2))],
+
+            'metro'         => 'array|nullable',
+
+            'metro.*' =>  ['integer', Rule::in(array_keys(MyClass::$metros))],
         ];
     }
 }

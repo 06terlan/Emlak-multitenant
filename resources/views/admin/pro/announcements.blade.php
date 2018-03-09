@@ -100,11 +100,11 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group col-xs-12">
-                                                        <label class="col-xs-3 control-label">Status</label>
+                                                        <label class="col-xs-3 control-label">Metro</label>
                                                         <div class="col-xs-9">
-                                                            <select class="form-control select2me" multiple name="status[]">
-                                                                @foreach (\App\Library\MyClass::$buttonStatus2 as $typeK => $type)
-                                                                    <option value="{{ $typeK }}" {{ in_array($typeK, $request->get('status',[])) ? 'selected':'' }}> {{ $type }} </option>
+                                                            <select class="form-control select2me" multiple name="metro[]">
+                                                                @foreach (\App\Library\MyClass::$metros as $key => $type)
+                                                                    <option value="{{ $key }}" {{ in_array($key, $request->get('metro',[])) ? 'selected':'' }}> {{ $type[0] }} </option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -150,6 +150,16 @@
                                                                 <span class="input-group-addon">-</span>
                                                                 <input type="number" name="locatedFloor2" value="{{ $request->get('locatedFloor2') }}" class="form-control" placeholder="Maksimum">
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-xs-12">
+                                                        <label class="col-xs-3 control-label">Status</label>
+                                                        <div class="col-xs-9">
+                                                            <select class="form-control select2me" multiple name="status[]">
+                                                                @foreach (\App\Library\MyClass::$buttonStatus2 as $typeK => $type)
+                                                                    <option value="{{ $typeK }}" {{ in_array($typeK, $request->get('status',[])) ? 'selected':'' }}> {{ $type }} </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -369,7 +379,7 @@
                                             <input type="checkbox" class="flat" ann_id="{{ $announcement->id }}">
                                         </div>
                                     </div>
-                                    <img src="{{ count($announcement->pictures) > 0 ? url(\App\Library\MyClass::ANN_THUMB_PIC_DIR . $announcement->pictures[0]->file_name ) : 'images/logo.jpg' }}">
+                                    <img src="{{ count($announcement->pictures) > 0 ? asset(\App\Library\MyClass::ANN_THUMB_PIC_DIR . $announcement->pictures[0]->file_name ) : asset('admin/images/logo.jpg') }}">
                                     <h2 class="backColor">{{ (int)$announcement->amount }} <span style="font-size: 17px; font-weight: 200;">AZN</span></h2>
                                     <h2 class="backColor2">{{ $announcement->getBuldingType() }} </h2>
                                     <h2 class="backColor3">{!! $announcement->getStatus() !!} </h2>

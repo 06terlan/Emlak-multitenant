@@ -81,6 +81,16 @@
                                                             </select>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group col-xs-12">
+                                                        <label class="col-xs-3 control-label">Metro</label>
+                                                        <div class="col-xs-9">
+                                                            <select class="form-control select2me" multiple name="metro[]">
+                                                                @foreach (\App\Library\MyClass::$metros as $key => $type)
+                                                                    <option value="{{ $key }}" {{ in_array($key, $request->get('metro',[])) ? 'selected':'' }}> {{ $type[0] }} </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-6">
                                                     <div class="form-group col-sm-12">
@@ -340,7 +350,7 @@
                                             <input type="checkbox" class="flat" ann_id="{{ $announcement->id }}">
                                         </div>
                                     </div>
-                                    <img src="images/logo.jpg">
+                                    <img src="{{ asset('admin/images/logo.jpg') }}">
                                     <h2 class="backColor">{{ (int)$announcement->amount }} <span style="font-size: 17px; font-weight: 200;">AZN</span></h2>
                                     <h2 class="backColor2">{{ $announcement->getBuldingType() }} </h2>
                                     <div class="offer-content">
