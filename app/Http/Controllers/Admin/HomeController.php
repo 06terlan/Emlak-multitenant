@@ -124,7 +124,7 @@ class HomeController extends Controller
 
     public function test()
     {
-        $count = (new SiteComp([
+        $count = 0;/*(new SiteComp([
             'link'          => 'http://tap.az/all/real-estate/apartments?p[740]=3724&p[747]=3850',
             'objectsDom'    => '.categories-products .products .products-i',
             'linkDom'       => '$this',
@@ -143,7 +143,7 @@ class HomeController extends Controller
             'areaDom'       => [['.property', 3], ['.property-value', 0]],
             'placeDom'      => [['.property', 5], ['.property-value', 0]],
             'metroDom'      => ['function', 'getMetroTapaz'], //
-        ],true))->getObjectData(false);
+        ],true))->getObjectData(false);*/
 
         return "End " . $count;
     }
