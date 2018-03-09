@@ -17,7 +17,7 @@
                             <div class="col-md-3 col-sm-6 col-xs-12">
                                 <div class="thumbnail" style="height: 150px;width: 150px;">
                                     <div class="image view view-first" style="height: 100%;">
-                                        <img style="width: 140px;height: 140px;display: block;" src="{{ url(Auth::user()->photo()) }}" alt="profil photo">
+                                        <img style="width: 140px;height: 140px;display: block;" src="{{ asset(Auth::user()->photo()) }}" alt="profil photo">
                                     </div>
                                 </div>
                             </div>
