@@ -23,7 +23,7 @@ class PostController extends Controller
 
         if($request->has('type')) $announcements->where('type', $request->get('type'));
         if($request->has('type') && $request->get('type') == "building" && $request->has('buldingSecondType')) $announcements->whereIn('type2', $request->get('buldingSecondType'));
-        if($request->has('city')) $announcements->whereIn('city', $request->get('city'));
+        if($request->has('city')) $announcements->whereIn('city_id', $request->get('city'));
         if($request->has('buldingType')) $announcements->whereIn('buldingType', $request->get('buldingType'));
         if($request->has('amount1')) $announcements->where("amount", '>=', $request->get('amount1'));
         if($request->has('amount2')) $announcements->where("amount", '<=', $request->get('amount2'));
