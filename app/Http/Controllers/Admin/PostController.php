@@ -31,6 +31,8 @@ class PostController extends Controller
         if($request->has('date2')) $announcements->where("date", '<=' ,Date::d($request->get('date2'), 'Y-m-d'));
         if($request->has('ownerType')) $announcements->where("owner_type", $request->get('ownerType'));
         if($request->has('metro')) $announcements->whereIn('metro_id', $request->get('metro'));
+        //if($request->has('locatedFloor1')) $announcements->where("locatedFloor", '>=', $request->get('locatedFloor1'));
+        //if($request->has('locatedFloor2')) $announcements->where("locatedFloor", '<=', $request->get('locatedFloor2'));
 
         $announcements = $announcements->paginate( MyClass::ADMIN_ROW_COUNT );
 
