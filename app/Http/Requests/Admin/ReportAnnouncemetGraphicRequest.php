@@ -81,7 +81,7 @@ class ReportAnnouncemetGraphicRequest extends FormRequest
 
             'content'       => '',
 
-            'metro'         => 'integer|exists:msk_metros,id|nullable',
+            'metro'         => ['integer', 'nullable', Rule::in(array_keys(MyClass::$metros))],
 
             'city'          => 'max:20',
 

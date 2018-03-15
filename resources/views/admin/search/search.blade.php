@@ -361,7 +361,7 @@
                                             {!! $announcement['owner_type'] == 1 ? 'Vasitəçi' : 'Mülkiyyətçi' !!}
                                         </div>
                                     </div>
-                                    <img src="{{ count($announcement->pictures) > 0 ? url(\App\Library\MyClass::ANN_THUMB_PIC_DIR . $announcement->pictures[0]->file_name ) : 'images/logo.jpg' }}">
+                                    <img src="{{ count($announcement->pictures) > 0 ? asset(\App\Library\MyClass::ANN_THUMB_PIC_DIR . $announcement->pictures[0]->file_name ) : asset('admin/images/logo.jpg') }}">
                                     <h2 class="backColor">{{ $announcement->amount }} <span style="font-size: 17px; font-weight: 200;">AZN</span></h2>
                                     <h2 class="backColor2">{{ $announcement->getBuldingType() }} </h2>
                                     <h2 class="backColor3">{!! $announcement->status > 0 ? '<a class="btn btn-success" style="padding: 2px;">Fərdi əlavə</a>' : '<a class="btn btn-info" style="padding: 2px;">Elan</a>' !!} </h2>

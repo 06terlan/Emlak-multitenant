@@ -143,8 +143,8 @@
                                 <div class="col-md-4">
                                     <select class="form-control" name="metro">
                                         <option value="">Hamısı</option>
-                                        @foreach (\App\Models\MskMetro::all() as $type)
-                                            <option value="{{ $type['id'] }}" {{ $type['id'] == $request->get('metro')? 'selected':'' }}> {{ $type['name'] }} </option>
+                                        @foreach (\App\Library\MyClass::$metros as $key => $type)
+                                            <option value="{{ $key }}" {{ $key == $request->get('metro')? 'selected':'' }}> {{ $type[0] }} </option>
                                         @endforeach
                                     </select>
                                 </div>
