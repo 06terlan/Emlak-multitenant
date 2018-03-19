@@ -256,23 +256,23 @@ class MyClass
 
     public static $modules =
     [
-        'dashboard' => ['name'=> 'Dashboard', 'icon'=> 'fa fa-dashboard',  'route'=> 'dashboard', 'priv'=> MyClass::PRIV_CAN_SEE],
-        'tenant' => ['name'=> 'Tenantlar', 'icon'=> 'fa fa-briefcase',  'route'=> 'tenant', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
-        'users' => ['name'=> 'İstifadəçilər', 'icon'=> 'fa fa-user',  'route'=> 'users', 'priv'=> MyClass::PRIV_CAN_SEE],
-        'announcement' => ['name'=> 'Elanlar', 'icon'=> 'fa fa-share-alt',  'route'=> 'announcement', 'priv'=> MyClass::PRIV_CAN_SEE],
-        'announcement_pro' => ['name'=> 'Elanlar fərdi əlavə', 'icon'=> 'fa fa-share-alt-square', 'route'=> 'announcement_pro', 'priv'=> MyClass::PRIV_CAN_SEE],
-        'search' => ['name'=> 'Axtarış', 'icon'=> 'fa fa-search',  'route'=> 'search', 'priv'=> MyClass::PRIV_CAN_SEE],
-        'map' => ['name'=> 'Xəritə', 'icon'=> 'fa fa-map-marker',  'route'=> 'map', 'priv'=> MyClass::PRIV_CAN_SEE],
-        'report' => ['name' => 'Hesabatlar', 'icon'=> 'fa fa-bar-chart', 'child'=> [
-            'report_announcement_graphic_report' => ['name'=> 'F.Elanlar kateqoria qrafiki hesabat', 'icon'=> '',  'route'=> 'report_announcement_graphic_report', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'dashboard' => ['name'=> 'Dashboard', 'icon'=> 'person',  'route'=> 'dashboard', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'tenant' => ['name'=> 'Tenantlar', 'icon'=> 'person',  'route'=> 'tenant', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
+        'users' => ['name'=> 'İstifadəçilər', 'icon'=> 'person',  'route'=> 'users', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'announcement' => ['name'=> 'Elanlar', 'icon'=> 'person-alt',  'route'=> 'announcement', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'announcement_pro' => ['name'=> 'Elanlar fərdi əlavə', 'icon'=> 'person', 'route'=> 'announcement_pro', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'search' => ['name'=> 'Axtarış', 'icon'=> 'person',  'route'=> 'search', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'map' => ['name'=> 'Xəritə', 'icon'=> 'person',  'route'=> 'map', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'report' => ['name' => 'Hesabatlar', 'icon'=> 'person', 'child'=> [
+            'report_announcement_graphic_report' => ['name'=> 'F.Elanlar kateqoria qrafiki hesabat', 'icon'=> 'P',  'route'=> 'report_announcement_graphic_report', 'priv'=> MyClass::PRIV_CAN_SEE],
             ]
         ],
-        'msk' => ['name' => 'Msk', 'icon'=> 'fa fa-wrench', 'child'=> [
-            'msk_group' => ['name'=> 'Qruplar', 'icon'=> '',  'route'=> 'msk_group', 'priv'=> MyClass::PRIV_CAN_SEE],
-            'msk_makler' => ['name'=> 'Maklerlər', 'icon'=> '',  'route'=> 'msk_makler', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
-            //'msk_metro' => ['name'=> 'Metrolar', 'icon'=> '',  'route'=> 'msk_metro', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
-            'msk_city' => ['name'=> 'Şəhərlər', 'icon'=> '',  'route'=> 'msk_city', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
-            'msk_type' => ['name'=> 'Şirkət növləri', 'icon'=> '',  'route'=> 'msk_type', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
+        'msk' => ['name' => 'Msk', 'icon'=> 'person', 'child'=> [
+            'msk_group' => ['name'=> 'Qruplar', 'icon'=> 'P',  'route'=> 'msk_group', 'priv'=> MyClass::PRIV_CAN_SEE],
+            'msk_makler' => ['name'=> 'Maklerlər', 'icon'=> 'P',  'route'=> 'msk_makler', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
+            //'msk_metro' => ['name'=> 'Metrolar', 'icon'=> 'P',  'route'=> 'msk_metro', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
+            'msk_city' => ['name'=> 'Şəhərlər', 'icon'=> 'P',  'route'=> 'msk_city', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
+            'msk_type' => ['name'=> 'Şirkət növləri', 'icon'=> 'P',  'route'=> 'msk_type', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
             ]
         ]
     ];

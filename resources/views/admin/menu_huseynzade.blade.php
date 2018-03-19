@@ -59,120 +59,42 @@
             </div>
         </div>
         <ul class="nav">
-
-            <li class="nav-item active ">
-                <a class="nav-link" href="">
-                    <i class="material-icons">timeline</i>
-                    <p> İlk Səhifə </p>
-                </a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="./dashboard">
-                    <i class="material-icons">dashboard</i>
-                    <p> Göstəriş paneli </p>
-                </a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="./tenants">
-                    <i class="material-icons">add_to_queue</i>
-                    <p> Şirkətlər </p>
-                </a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="./users">
-                    <i class="material-icons">record_voice_over</i>
-                    <p> İstifadəçilər </p>
-                </a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="./announcement">
-                    <i class="material-icons">announcement</i>
-                    <p> Gələn Elanlar </p>
-                </a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="./announcement_pro">
-                    <i class="material-icons">note_add</i>
-                    <p> Fərdi Elanlar </p>
-                </a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="./search">
-                    <i class="material-icons">search</i>
-                    <p> Axtarış </p>
-                </a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="./map">
-                    <i class="material-icons">place</i>
-                    <p> Xəritə </p>
-                </a>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
-                    <i class="material-icons">report</i>
-                    <p> Hesabatlar
-                       <b class="caret"></b>
-                    </p>
-                </a>
-
-                <div class="collapse" id="pagesExamples">
-                    <ul class="nav">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./report/announcement_graphic_report">
-                              <span class="sidebar-mini"> FG </span>
-                              <span class="sidebar-normal"> Fərdi Grafik </span>
+            @php $currentRoute = \Request::route()->getName(); @endphp
+            @foreach(\App\Library\MyClass::$modules as $val)
+                @if( isset($val['child']) )
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#pagesExamples{{ $loop->iteration }}">
+                            <i class="material-icons">{{ $val['icon'] }}</i>
+                            <p> {{ $val['name'] }}
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="pagesExamples{{ $loop->iteration }}">
+                            <ul class="nav">
+                                @foreach($val['child'] as $k => $v)
+                                    @if( \App\Library\MyHelper::has_priv($v['route'], $v['priv']) )
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route($v['route']) }}">
+                                                <span class="sidebar-mini"> {{ $v['icon'] }} </span>
+                                                <span class="sidebar-normal"> {{ $v['name'] }} </span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </div>
+                    </li>
+                @else
+                    @if( \App\Library\MyHelper::has_priv($val['route'], $val['priv']) )
+                        <li class="nav-item {{ $currentRoute == $val['route'] ? 'active':'' }}">
+                            <a class="nav-link" href="{{ route($val['route']) }}">
+                                <i class="material-icons">{{ $val['icon'] }}</i>
+                                <p> {{ $val['name'] }} </p>
                             </a>
                         </li>
-                    </ul>
-                </div>
-            </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
-                    <i class="material-icons">apps</i>
-                    <p> MSK
-                       <b class="caret"></b>
-                    </p>
-                </a>
-
-                <div class="collapse" id="componentsExamples">
-                    <ul class="nav">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./msk/group">
-                              <span class="sidebar-mini"> G </span>
-                              <span class="sidebar-normal"> Gruplar </span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./msk/makler">
-                              <span class="sidebar-mini"> AG </span>
-                              <span class="sidebar-normal"> Agentlər </span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./msk/city">
-                              <span class="sidebar-mini"> Ş </span>
-                              <span class="sidebar-normal"> Şəhərlər </span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="./msk/type">
-                              <span class="sidebar-mini"> ŞN </span>
-                              <span class="sidebar-normal"> Şirkət növləri </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                    @endif
+                @endif
+            @endforeach
 
         </ul>
     </div>
@@ -262,7 +184,7 @@
                         .
 
                         <!-- ic hisse deyisen son -->
-       
+
                       </div>
                     </div>
 
