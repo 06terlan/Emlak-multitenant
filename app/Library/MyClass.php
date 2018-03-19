@@ -256,7 +256,7 @@ class MyClass
 
     public static $modules =
     [
-        'home' => ['name'=> 'İlk Səhifə', 'icon'=> 'timeline',  'route'=> 'home', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'home' => ['name'=> 'İlk Səhifə', 'icon'=> 'timeline',  'route'=> 'home', 'priv'=> 0],
         'dashboard' => ['name'=> 'Göstəriş paneli', 'icon'=> 'dashboard',  'route'=> 'dashboard', 'priv'=> MyClass::PRIV_CAN_SEE],
         'tenant' => ['name'=> 'Şirkətlər', 'icon'=> 'add_to_queue',  'route'=> 'tenant', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
         'users' => ['name'=> 'İstifadəçilər', 'icon'=> 'record_voice_over',  'route'=> 'users', 'priv'=> MyClass::PRIV_CAN_SEE],
