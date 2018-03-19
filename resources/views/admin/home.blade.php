@@ -1,4 +1,4 @@
-@extends('admin.masterpage')
+@extends('admin.masterpage_huseynzade')
 
 @section('content')
 
