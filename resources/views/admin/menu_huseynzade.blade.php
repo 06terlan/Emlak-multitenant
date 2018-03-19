@@ -138,32 +138,32 @@
                     <a class="nav-link" href="#huseynzade">
             <i class="material-icons">lock</i>
                         <p>
-              <span class="d-lg-none d-md-block">Stats</span>
+              <span class="d-lg-none d-md-block">bağla</span>
             </p>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">notifications</i>
             <span class="notification">5</span>
                         <p>
-                            <span class="d-lg-none d-md-block">Some Actions</span>
+                            <span class="d-lg-none d-md-block"> Gələn elan</span>
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Mike John responded to your email</a>
-                        <a class="dropdown-item" href="#">You have 5 new tasks</a>
-                        <a class="dropdown-item" href="#">You're now friend with Andrew</a>
-                        <a class="dropdown-item" href="#">Another Notification</a>
-                        <a class="dropdown-item" href="#">Another One</a>
+                        @php
+                            $count = App\Models\Announcement::todayAnnouncements()->count();
+                            $countStr = $count;
+                            if( $countStr > \App\Library\MyClass::INFO_COUNT ) $countStr = \App\Library\MyClass::INFO_COUNT."+";
+                        @endphp
                     </div>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#huseynzade">
-            <i class="material-icons">lock</i>
+                    <a class="nav-link" href="{{ URL::to('admin/logout') }}">
+            <i class="material-icons">power_settings_new</i>
                       <p>
-              <span class="d-lg-none d-md-block">Account</span>
+              <span class="d-lg-none d-md-block">Tam çıxış</span>
             </p>
                     </a>
                 </li>
