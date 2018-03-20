@@ -13,7 +13,7 @@
             @yield('content')
 
         <!-- /page content -->
-
+		@include('admin.menu_huseynzade_2')
       
 
 

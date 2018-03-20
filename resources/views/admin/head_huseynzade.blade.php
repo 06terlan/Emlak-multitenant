@@ -25,7 +25,7 @@
 
 	<!-- Bootstrap CSS -->
     {!! Html::style('admin/assets/build/huseynzade/css/material-dashboard.min.css?v=1') !!}
-    {!! Html::style('admin/assets/build/huseynzade/for-demo/css/demo.css?v=1') !!}
+    {!! Html::style('admin/assets/build/huseynzade/css/for-demo/demo.css?v=1') !!}
     <!-- huseynzade -->
     {!! Html::style('admin/assets/build/huseynzade/css/huseynzade.css?v=1.1') !!}
 
