@@ -95,21 +95,7 @@
     @endforeach
                     <div class="row">
                         <div class="col-md-6 ml-auto mr-auto">
-                            <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#link" aria-label="Previous">
-                                <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
-                            <div class="ripple-container"></div></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#link">1</a></li>
-                        <li class="page-item active"><a class="page-link" href="#link">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#link">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#link" aria-label="Next">
-                                <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
-                            <div class="ripple-container"></div></a>
-                        </li>
-                    </ul>
+                            
                             {{ $announcements->appends($request->except('page'))->links('admin.pagination', ['paginator' => $announcements]) }}
                         </div>
                     </div>

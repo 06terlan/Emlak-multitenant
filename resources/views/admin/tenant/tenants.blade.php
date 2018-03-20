@@ -3,9 +3,9 @@
 @section('content')
     @include('admin.error')
 
-   <!--  @if( \App\Library\MyHelper::has_priv('tenant', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
-        <a href="{{ route('tenant_add_edit',['tenant' => 0]) }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Add</a>
-    @endif -->
+    @if( \App\Library\MyHelper::has_priv('tenant', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
+        <a href="{{ route('tenant_add_edit',['tenant' => 0]) }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Şirkət Əlavə et</a>
+    @endif
 
     <div class="row">
       <div class="col-md-12">
@@ -44,13 +44,13 @@
                               <td tabindex="0" class="sorting_1">{{ $tenans->perPage() * ($tenans->currentPage() - 1) + $loop->iteration }}</td>
                               <td>{{ $tenan->company_name }}</td>
                               <td>{{ $tenan->msk_type->name }}</td>
-                              <td>{{ $tenan->last_date == null ? '-' : \App\Library\Date::d($tenan->last_date) }}</td>
                               <td>{{ \App\Library\Date::d($tenan->created_at, "d-m-Y H:i") }}</td>
+                              <td>{{ $tenan->last_date == null ? '-' : \App\Library\Date::d($tenan->last_date) }}</td>
                               <td class="text-right">
                                 @if( \App\Library\MyHelper::has_priv('tenant', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
-                                  <a href="#" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">favorite</i></a>
-                                  <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i></a>
-                                  <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
+                                  <a href="{{ route('tenant_add_edit', ['tenant' => $tenan->id]) }}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i></a>
+                                  <a href="{{ route('tenant_delete', ['tenant' => $tenan->id]) }}" class="btn btn-link btn-danger btn-just-icon edit"><i class="material-icons">close</i></a>
+                                  <a href="{{ route('tenant_payment', ['tenant' => $tenan->id]) }}" class="btn btn-link btn-warning btn-just-icon remove"><i class="material-icons">dvr</i></a>
                                 @endif
                               </td>
                           </tr>
@@ -62,7 +62,8 @@
           </div>
         <div class="row">
             <div class="col-sm-12 col-md-5">
-                <div class="dataTables_info" id="datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 40 entries</div>
+                <div class="dataTables_info" id="datatables_info" role="status" aria-live="polite">
+                	<span style="font-weight: 700">40 </span>girişdən <span style="font-weight: 700">1</span> ilə <span style="font-weight: 700">10</span> arasında göstərilir </div>
             </div>
         <div class="col-sm-12 col-md-7">
             {{ $tenans->appends($request->except('page'))->links('admin.pagination', ['paginator' => $tenans]) }}
