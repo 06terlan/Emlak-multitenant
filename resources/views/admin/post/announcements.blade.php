@@ -74,7 +74,7 @@
                            <!--  <a href="#pablo"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;">(Yeni Tikili)</span> -->
                         <!-- </div> -->
                     <!-- </div> -->
-                    <div><span class="badge badge-danger">{!! $announcement['owner_type'] == 1 ? 'Vasitəçi' : 'Mülkiyyətçi' !!}</span> <!-- <label class="label-control">(Sahibkar)</label> --></div>
+                    <div><span class="badge {!! $announcement['owner_type'] == 1 ? 'badge-danger' : 'badge-success' !!}">{!! $announcement['owner_type'] == 1 ? 'Vasitəçi' : 'Mülkiyyətçi' !!}</span> <!-- <label class="label-control">(Sahibkar)</label> --></div>
                 </h4>
                 <br />
                 <div class="row">
