@@ -67,6 +67,7 @@
 
                         <div class="row">
                             <div class="col-sm-12">
+                                <form method="get" action="" class="formFinder">
                                 <table id="datatables" class="table table-striped table-no-bordered table-hover dataTable dtr-inline" cellspacing="0" width="100%" style="width: 100%;" role="grid" aria-describedby="datatables_info">
                      <thead>
                           <tr role="row">
@@ -105,7 +106,11 @@
                       </thead> -->
 
                       <tfoot>
-                          <tr><th rowspan="1" colspan="1">ID</th><th rowspan="1" colspan="1">Tam adı</th><th rowspan="1" colspan="1">E-mail</th><th rowspan="1" colspan="1">İstifadəçi adı</th><th rowspan="1" colspan="1">Grup</th><th rowspan="1" colspan="1">Şirkət</th><th class="text-right" rowspan="1" colspan="1">Tədbirlər</th></tr>
+                          <tr><th rowspan="1" colspan="1">ID</th><th rowspan="1" colspan="1">Tam adı</th><th rowspan="1" colspan="1">E-mail</th><th rowspan="1" colspan="1">İstifadəçi adı</th><th rowspan="1" colspan="1">Grup</th>
+                            @if( Auth::user()->group->super_admin == 1 )
+                            <th rowspan="1" colspan="1">Şirkət</th>
+                            @endif
+                            <th class="text-right" rowspan="1" colspan="1">Tədbirlər</th></tr>
                       </tfoot>
                       <tbody>          
                         @foreach ($Users as $user)
@@ -132,6 +137,7 @@
                       </tbody>
 
                   </table>
+              </form>
               </div>
           </div>
         <div class="row" style="margin-top: 15px">

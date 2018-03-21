@@ -43,7 +43,7 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="flag">
-                                                                    <img src="../assets/img/flags/US.png">
+                                                                    <img src="../admin/assets/build/huseynzade/img/icons/dashboard/apartments.svg">
                                                                 </div>
                                                             </td>
                                                             <td>Bina ev Mənzil</td>
@@ -57,7 +57,7 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="flag">
-                                                                    <img src="../assets/img/flags/DE.png">
+                                                                    <img src="../admin/assets/build/huseynzade/img/icons/dashboard/cottage.svg">
                                                                 </div>
                                                             </td>
                                                             <td>Həyət evi</td>
@@ -71,7 +71,7 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="flag">
-                                                                    <img src="../assets/img/flags/AU.png">
+                                                                    <img src="../admin/assets/build/huseynzade/img/icons/dashboard/village.svg">
                                                                 </div>
                                                             </td>
                                                             <td>Villa</td>
@@ -85,7 +85,7 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="flag">
-                                                                    <img src="../assets/img/flags/GB.png">
+                                                                    <img src="../admin/assets/build/huseynzade/img/icons/dashboard/house.svg">
                                                                 </div>
                                                             </td>
                                                             <td>Bağ evi</td>
@@ -99,7 +99,7 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="flag">
-                                                                    <img src="../assets/img/flags/GB.png">
+                                                                    <img src="../admin/assets/build/huseynzade/img/icons/dashboard/3d-building.svg">
                                                                 </div>
                                                             </td>
                                                             <td>Ofis</td>
@@ -113,7 +113,7 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="flag">
-                                                                    <img src="../assets/img/flags/GB.png">
+                                                                    <img src="../admin/assets/build/huseynzade/img/icons/dashboard/garage.svg">
                                                                 </div>
                                                             </td>
                                                             <td>Qaraj</td>
@@ -127,7 +127,7 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="flag">
-                                                                    <img src="../assets/img/flags/RO.png">
+                                                                    <img src="../admin/assets/build/huseynzade/img/icons/dashboard/forest.svg">
                                                                 </div>
                                                             </td>
                                                             <td>Torpağ</td>
@@ -141,7 +141,7 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="flag">
-                                                                    <img src="../assets/img/flags/BR.png">
+                                                                    <img src="../admin/assets/build/huseynzade/img/icons/dashboard/map-location.svg">
                                                                 </div>
                                                             </td>
                                                             <td>Obyekt</td>
