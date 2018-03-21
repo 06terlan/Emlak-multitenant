@@ -126,7 +126,7 @@ class ProAnnouncement extends Model
 
     public function metro()
     {
-        return $this->belongsTo(MskMetro::class);
+        return isset(MyClass::$metros[$this->metro_id]) ? MyClass::$metros[$this->metro_id][0] : "-";
     }
 
     public function city()

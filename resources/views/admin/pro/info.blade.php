@@ -155,7 +155,7 @@
                                         </div>
 
                                         <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
-                                            <div class="elanBox">Metro: <span class="textColorSpan">&#0160; {{ $announcement->metro->name }} </span></div>
+                                            <div class="elanBox">Metro: <span class="textColorSpan">&#0160; {{ $announcement->metro() }} </span></div>
                                         </div>
 
                                         <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">

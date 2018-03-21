@@ -65,4 +65,9 @@ class Announcement extends Model
     {
         return $this->belongsTo(MskCity::class);
     }
+
+    public function metro()
+    {
+        return isset(MyClass::$metros[$this->metro_id]) ? MyClass::$metros[$this->metro_id][0] : "-";
+    }
 }
