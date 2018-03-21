@@ -89,7 +89,7 @@
                 <br />
                 <div class="row">
                     <div class="col-md-4 ml-auto mr-auto col-sm-6 text-center">{{ App\Library\Date::d($announcement->date,'d-m-Y') }}</div>
-                        <div class="col-md-4 ml-auto mr-auto col-sm-6 text-center"><span style="color:yellowgreen;" class="right">{!! $announcement->getStatus() !!}</span></div><br />
+                        <div class="col-md-4 ml-auto mr-auto col-sm-6 text-center"><span class="right">{!! $announcement->getStatus() !!}</span></div><br />
                     </div>
                 </div>
             <div class="card-footer">

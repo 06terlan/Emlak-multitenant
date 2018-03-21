@@ -35,13 +35,13 @@ class ProAnnouncement extends Model
         switch ($this->status)
         {
             case 1:
-                return "<button style='padding: 2px;' type='button' class='btn btn-info' >İcarədə deyil </button>";
+                return "<span style='color: yellowgreen; font-size:12px' class='text-right'>İcarədə deyil </span> ";
             case 2:
-                return "<button style='padding: 2px;' type='button' class='btn btn-success' >Satılmayıb </button>";
+                return "<span style='color: green' class='text-right'>Satılmayıb </span>";
             case 3:
-                return "<button style='padding: 2px;' type='button' class='btn btn-warning' >İcarədə </button>";
+                return "<span style='color: #ff6600' class='text-right'>İcarədə </span>";
             case 4:
-                return "<button style='padding: 2px;' type='button' class='btn btn-primary' >Satılıb </button>";
+                return "<span style='color: #9c27b0' class='text-right'>Satılıb </span>";
         }
     }
 
