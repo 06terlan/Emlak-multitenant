@@ -1,98 +1,143 @@
-@extends('admin.masterpage')
+@extends('admin.masterpage_huseynzade')
 
 @section('content')
     @include('admin.error')
 
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>İstifadəçi</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <br>
-                    <form autocomplete="off" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ url('admin/users/addEdit/'.$id) }}">
-                        <!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
-                        <input type="text" class="fake-autofill-fields" name="asasd"/>
-                        <input type="password" class="fake-autofill-fields" name="asds"/>
+        <div class="col-md-12">
 
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Name
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input required="" name="name" data-validate-length-range="5,20" type="text" class="form-control has-feedback-left" placeholder="Name" value="{{ $User['firstname'] }}">
-                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Surname
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control has-feedback-left" placeholder="Surname" value="{{ $User['surname'] }}">
-                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Login
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" value="{{ $User['login'] }}" name="login" placeholder="Login" required="required" class="form-control col-md-7 col-xs-12">
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input autocomplete="off" required="" name="email" type="email" class="form-control has-feedback-left" value="{{ $User['email'] }}" placeholder="Email">
-                                <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label for="password" class="control-label col-md-3">Password </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input autocomplete="off" @if ($id == 0) {{ 'required=""' }} @endif type="password" placeholder="Password" name="password" data-validate-length="5,20" class="form-control col-md-7 col-xs-12">
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Group</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select class="form-control" name="group_id" required="">
-                                    <option value="0">Select Group</option>
-                                    @foreach (\App\Models\Group::realData()->get() as $type)
-                                        <option tenant_id = "{{ $type['tenant_id'] }}" value="{{ $type['id'] }}" {{ $type['id'] == $User['group_id']? 'selected':'' }}> {{ $type['group_name'] }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        @if( Auth::user()->group->super_admin == 1 )
-                            <div class="item form-group">
-                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tenant</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select class="form-control" name="tenant" required="">
-                                        @foreach (\App\Models\Tenant::realTenants()->get() as $type)
-                                            <option value="{{ $type['id'] }}" {{ $type['id'] == $User['tenant_id']? 'selected':'' }}> {{ $type['company_name'] }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        @endif
-
-                        <div class="ln_solid"></div>
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="form-group">
-                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <button type="submit" class="btn btn-success">Save</button>
-                                <a class="btn btn-default" href="{{ url('admin/users/') }}" type="reset">Cancel</a>
-                            </div>
-                        </div>
-                    </form>
+        <div class="card ">
+            
+            <div class="card-header card-header-rose card-header-text">
+                <div class="card-text">
+                    <h4 class="card-title">İstifadəçi dəyişikliyi</h4>
                 </div>
             </div>
+            
+        <div class="card-body ">
+        
+        
+                            <form autocomplete="off" novalidate=""  method="post" action="{{ url('admin/users/addEdit/'.$id) }}" class="form-horizontal">
+                                <input type="text" class="fake-autofill-fields" name="asasd"/>
+                                <input type="password" class="fake-autofill-fields" name="asds"/>
+                                    
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Adı</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <!-- <span class="input-group-text">
+                                                    <i class="material-icons">email</i> -->
+                                                
+                                                <input required="" name="name" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçinin Şəxsi Adı" value="{{ $User['firstname'] }}">
+                                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span><!-- </span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Soyadı</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <!-- <span class="input-group-text">
+                                                    <i class="material-icons">email</i> -->
+                                                
+                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="{{ $User['surname'] }}"><!-- </span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">İstifadəçi adı</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <!-- <span class="input-group-text">
+                                                    <i class="material-icons">email</i> -->
+                                                
+                                                <input type="text" value="{{ $User['login'] }}" name="login" required="required" class="form-control" placeholder="İstifadəçi adı" value=""><!-- </span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">E-mail</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <!-- <span class="input-group-text">
+                                                    <i class="material-icons">email</i> -->
+                                                
+                                                <input autocomplete="off" required="" name="email" type="email" class="form-control" placeholder="E-mail" value="{{ $User['email'] }}"><!-- </span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Parol</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <!-- <span class="input-group-text">
+                                                    <i class="material-icons">email</i> -->
+                                                
+                                                <input autocomplete="off" @if ($id == 0) {{ 'required=""' }} @endif type="password" name="password" data-validate-length="5,20" class="form-control" placeholder="Parol" value=""><!-- </span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Grup</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
+                                                    <option value="0">Grup Seç</option>
+                                                    @foreach (\App\Models\Group::realData()->get() as $type)
+                                                        <option tenant_id = "{{ $type['tenant_id'] }}" value="{{ $type['id'] }}" {{ $type['id'] == $User['group_id']? 'selected':'' }}> {{ $type['group_name'] }} </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if( Auth::user()->group->super_admin == 1 )
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Şirkət</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <select class="selectpicker" name="tenant" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-red">
+                                                    @foreach (\App\Models\Tenant::realTenants()->get() as $type)
+                                                        <option value="{{ $type['id'] }}" {{ $type['id'] == $User['tenant_id']? 'selected':'' }}> {{ $type['company_name'] }} </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    <div class="ln_solid"></div>
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                    <div class="row" style="margin-top: 20px">
+                                        <div class="col-sm-2 col-md-4 mr-auto ml-auto">
+                                        </div>
+                                        <div class="col-sm-5 col-md-2 mr-auto ml-auto">
+                                            <button class="btn btn-success" type="submit">Saxla<div class="ripple-container"></div></button>
+                                        </div>
+                                        <div class="col-sm-5 col-md-6 mr-auto ml-auto">
+                                            <button class="btn btn-danger" onclick="window.location.href='{{ url('admin/users/') }}'" type="reset">Geriyə<div class="ripple-container"></div></button>
+                                        </div>
+
+                                    </div>
+
+                            </form> 
+        
         </div>
+  
     </div>
+
+</div>
+
 @endsection
 
 @section('css')

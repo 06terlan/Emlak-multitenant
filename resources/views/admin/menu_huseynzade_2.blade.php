@@ -64,6 +64,7 @@
                       <span class="badge filter badge-green" data-color="green"></span>
                       <span class="badge filter badge-orange" data-color="orange"></span>
                       <span class="badge filter badge-danger" data-color="danger"></span>
+                      <span class="badge filter badge-white" data-color="white"></span>
                       <span class="badge filter badge-rose active" data-color="rose"></span>
                     </div>
                     <div class="clearfix"></div>
@@ -76,6 +77,7 @@
                       <div class="ml-auto mr-auto">
                           <span class="badge filter badge-white" data-color="white"></span>
                           <span class="badge filter badge-black active" data-color="black"></span>
+                          <span class="badge filter badge-danger" data-color="red"></span>
                       </div>
                       <div class="clearfix"></div>
                   </a>

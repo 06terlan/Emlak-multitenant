@@ -79,9 +79,16 @@
 
 @section('css')
     {{--  bootstrap-wysiwyg --}}
-    {!! Html::style('admin/assets/vendors/jquery-confirm-master/css/jquery-confirm.css') !!}
+  <!--   {!! Html::style('admin/assets/vendors/jquery-confirm-master/css/jquery-confirm.css') !!} -->
 @endsection
 
 @section('scripts')
-    {!! Html::script('admin/assets/vendors/jquery-confirm-master/js/jquery-confirm.js') !!}
+<script>
+    var lastId = 17669;
+    var notficationCount = 200;
+    var _token = "Rkd9ZEEpJk0TgZxUqRDTnlFAnoOQtpgXaJfeTpW9";
+    var link = "http://emlakbazasi.com/public/index.php/admin/announcement/getLast";
+</script>
+
+<!--     {!! Html::script('admin/assets/vendors/jquery-confirm-master/js/jquery-confirm.js') !!} -->
 @endsection

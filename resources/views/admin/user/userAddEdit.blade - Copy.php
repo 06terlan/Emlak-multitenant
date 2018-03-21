@@ -1,0 +1,127 @@
+@extends('admin.masterpage')
+
+@section('content')
+    @include('admin.error')
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>İstifadəçi</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br>
+                    <form autocomplete="off" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ url('admin/users/addEdit/'.$id) }}">
+                        <!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+                        <input type="text" class="fake-autofill-fields" name="asasd"/>
+                        <input type="password" class="fake-autofill-fields" name="asds"/>
+
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Name
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input required="" name="name" data-validate-length-range="5,20" type="text" class="form-control has-feedback-left" placeholder="Name" value="{{ $User['firstname'] }}">
+                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Surname
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control has-feedback-left" placeholder="Surname" value="{{ $User['surname'] }}">
+                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Login
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" value="{{ $User['login'] }}" name="login" placeholder="Login" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input autocomplete="off" required="" name="email" type="email" class="form-control has-feedback-left" value="{{ $User['email'] }}" placeholder="Email">
+                                <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="password" class="control-label col-md-3">Password </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input autocomplete="off" @if ($id == 0) {{ 'required=""' }} @endif type="password" placeholder="Password" name="password" data-validate-length="5,20" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Group</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select class="form-control" name="group_id" required="">
+                                    <option value="0">Select Group</option>
+                                    @foreach (\App\Models\Group::realData()->get() as $type)
+                                        <option tenant_id = "{{ $type['tenant_id'] }}" value="{{ $type['id'] }}" {{ $type['id'] == $User['group_id']? 'selected':'' }}> {{ $type['group_name'] }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        @if( Auth::user()->group->super_admin == 1 )
+                            <div class="item form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tenant</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select class="form-control" name="tenant" required="">
+                                        @foreach (\App\Models\Tenant::realTenants()->get() as $type)
+                                            <option value="{{ $type['id'] }}" {{ $type['id'] == $User['tenant_id']? 'selected':'' }}> {{ $type['company_name'] }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        @endif
+
+                        <div class="ln_solid"></div>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button type="submit" class="btn btn-success">Save</button>
+                                <a class="btn btn-default" href="{{ url('admin/users/') }}" type="reset">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('css')
+    {!! Html::style('admin/assets/vendors/iCheck/skins/flat/green.css') !!}
+
+    <style>
+        .fake-autofill-fields{
+            position: absolute;
+            top: -500px;
+        }
+    </style>
+@endsection
+
+@section('scripts')
+    {!! Html::script('admin/assets/vendors/validator/validator.js') !!}
+    {!! Html::script('admin/assets/vendors/iCheck/icheck.min.js') !!}
+
+    <script type="text/javascript">
+
+        @if( Auth::user()->group->super_admin == 1 )
+            $("select[name=tenant]").change(function () {
+                $("select[name=group_id] option").hide();
+                $("select[name=group_id] option[tenant_id='"+$(this).val()+"'], select[name=group_id] option[value='0']").show();
+                $("select[name=group_id]").val(0);
+            }).trigger("change");
+
+            @if( $id > 0 )
+                $("select[name=group_id]").val({{ $User['group_id'] }});
+            @endif
+        @endif
+    </script>
+@endsection

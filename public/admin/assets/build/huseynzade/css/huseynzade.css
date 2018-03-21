@@ -120,14 +120,12 @@
 
 
 
-
-
-
-
-
 .btn {
         text-transform: none !important;
 }
 
 
-
+/*input bolmesi ucun*/ 
+.hm-input-top {
+    margin-top: 15px !important;
+}

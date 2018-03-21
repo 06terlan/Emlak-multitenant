@@ -14,6 +14,9 @@
     <div class="logo">
         <a href="" class="simple-text logo-mini">
              OB
+             <!-- <div class="logo-img"> 
+                <img src="../admin/assets/build/huseynzade/img/baza-logo.png">
+            </div> -->
         </a>
 
         <a href="" class="simple-text logo-normal">
