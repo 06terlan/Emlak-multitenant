@@ -67,7 +67,7 @@
                                     </label>
                                 </div>
                             </div> -->
-                            <div class="col-md-12 text-center">
+                            <div class="col-md-12 text-center">A
                                 <a href="{{ $announcement->link }}"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;"> {{ $announcement->type == 'building' ? '(' . $announcement->getAnnouncementType2() . ')':'' }} </span>
                             </div>
                         </div>
