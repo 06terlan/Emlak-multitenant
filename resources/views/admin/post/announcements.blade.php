@@ -68,7 +68,7 @@
                                 </div>
                             </div> -->
                             <div class="col-md-12 text-center">
-                                <a href="{{ $announcement->link }}"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;">(Yeni Tikili)</span>
+                                <a href="{{ $announcement->link }}"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;"> {{ $announcement->type == 'building' ? '(' . $announcement->getAnnouncementType2() . ')':'' }} </span>
                             </div>
                         </div>
                            <!--  <a href="#pablo"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;">(Yeni Tikili)</span> -->
