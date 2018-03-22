@@ -1,108 +1,171 @@
-@extends('admin.masterpage')
+@extends('admin.masterpage_huseynzade')
 
 @section('content')
     @include('admin.error')
 
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>Makler</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <br>
-                    <form autocomplete="off" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ route('msk_group_add_edit', ['group' => $id]) }}">
-                        <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Group Name
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input required="" name="group_name" data-validate-length-range="1,20" type="text" class="form-control" placeholder="Group Name" value="{{ $group['group_name'] }}">
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Görəcəyi kategorialar</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
-                                    <input type="checkbox" name="available_types[]" value="{{ $typeK }}" {{ $id > 0 && in_array($typeK,json_decode($group->available_types)) ? 'checked' : '' }} class="flat" /> {{ $type }} <br/>
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Görəcəyi elanın tipləri</label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                @foreach (\App\Library\MyClass::$buldingType as $typeK => $type)
-                                    <input type="checkbox" name="available_building_types[]" value="{{ $typeK }}" {{ $id > 0 && in_array($typeK,json_decode($group->available_building_types)) ? 'checked' : '' }} class="flat" /> {{ $type }} <br/>
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="item form-group">
-                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Modullar</label>
-                            <div class="col-md-9 col-sm-12 col-xs-12">
-                                @foreach (\App\Library\MyClass::$modules as $typeK => $type)
-                                    @if( isset($type['child']) )
-                                        <div class="col-md-12">
-                                            <label class="col-md-7"><i class="{{ $type['icon'] }}"></i> {{ $type['name'] }}:</label>
-                                            @foreach ($type['child'] as $K => $t)
-                                                @if( $t['priv'] > 3 && ($id == 0 || $group->super_admin != 1) ) @continue; @endif
-                                                @if( $id > 0 && ( !isset($group->tenant->msk_type->getAvailableModules()[$t['route']]) || $group->tenant->msk_type->getAvailableModules()[$t['route']] < 2 ) ) @continue; @endif
-                                                @if( $id == 0 && Auth::user()->group->tenant->msk_type->getAvailableModules()[$t['route']] < 2 ) @continue; @endif
-                                                <div class="col-md-12" style="padding-left: 50px">
-                                                    <label class="col-md-5">{{ $t['name'] }}:</label>
-                                                    <div class="col-md-7">
-                                                        Görmür <input type="radio" class="flat" name="available_modules[{{ $t['route'] }}]" id="{{ $t['route'] }}" value="1" {{ $id >0 && $group->getModulePriv($t['route']) == 1 ? 'checked' : '' }} />
-                                                        &nbsp;&nbsp;&nbsp;&nbsp; Görür <input type="radio" class="flat" name="available_modules[{{ $t['route'] }}]" id="{{ $t['route'] }}" value="2" {{ $id >0 && $group->getModulePriv($t['route']) == 2 ? 'checked' : '' }} />
-                                                        &nbsp;&nbsp;&nbsp;&nbsp; Əlavə edir <input type="radio" class="flat" name="available_modules[{{ $t['route'] }}]" id="{{ $t['route'] }}" value="3" {{ $id >0 && $group->getModulePriv($t['route']) == 3 ? 'checked' : '' }} />
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    @else
-                                        @if( $type['priv'] > 3 && ($id == 0 || $group->super_admin != 1) ) @continue; @endif
-                                        @if( $id > 0 && ( !isset($group->tenant->msk_type->getAvailableModules()[$type['route']]) || $group->tenant->msk_type->getAvailableModules()[$type['route']] < 2 ) ) @continue; @endif
-                                        @if( $id == 0 && Auth::user()->group->tenant->msk_type->getAvailableModules()[$type['route']] < 2 ) @continue; @endif
-                                        <div class="col-md-12">
-                                            <label class="col-md-5"><i class="{{ $type['icon'] }}"></i> {{ $type['name'] }}:</label>
-                                            <div class="col-md-7">
-                                                Görmür <input type="radio" class="flat" name="available_modules[{{ $type['route'] }}]" id="{{ $type['route'] }}" value="1" {{ $id >0 && $group->getModulePriv($type['route']) == 1 ? 'checked' : '' }} />
-                                                &nbsp;&nbsp;&nbsp;&nbsp; Görür <input type="radio" class="flat" name="available_modules[{{ $type['route'] }}]" id="{{ $type['route'] }}" value="2" {{ $id >0 && $group->getModulePriv($type['route']) == 2 ? 'checked' : '' }} />
-                                                &nbsp;&nbsp;&nbsp;&nbsp; Əlavə edir <input type="radio" class="flat" name="available_modules[{{ $type['route'] }}]" id="{{ $type['route'] }}" value="3" {{ $id >0 && $group->getModulePriv($type['route']) == 3 ? 'checked' : '' }} />
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </div>
-                        </div>
+    <div class="col-md-12">
 
-                        @if( Auth::user()->group->super_admin == 1 )
-                            <div class="item form-group">
-                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tenant</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select class="form-control" name="tenant" required="">
-                                        @foreach (\App\Models\Tenant::realTenants()->get() as $type)
-                                            <option value="{{ $type['id'] }}" {{ $type['id'] == $group['tenant_id']? 'selected':'' }}> {{ $type['company_name'] }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        @endif
-
-                        <div class="ln_solid"></div>
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="form-group">
-                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                <button type="submit" class="btn btn-success">Save</button>
-                                <a class="btn btn-default" href="{{ redirect()->back()->getTargetUrl() }}" type="reset">Cancel</a>
-                            </div>
-                        </div>
-                    </form>
+        <div class="card ">
+            
+            <div class="card-header card-header-rose card-header-text">
+                <div class="card-text">
+                    <h4 class="card-title">Agent Grup</h4>
                 </div>
             </div>
+            
+        <div class="card-body ">
+        
+        
+                            <form autocomplete="off" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ route('msk_group_add_edit', ['group' => $id]) }}">
+                                    
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Grupun adı</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+
+                                                <input required="" name="group_name" data-validate-length-range="1,20" type="text" class="form-control" placeholder="Grupun adı" value="{{ $group['group_name'] }}">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- kategorialar -->
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Görəcəyi kategorialar</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+
+                                          <div class="form-check form-check-inline">
+                                              <label class="form-check-label">
+                                                  <input class="form-check-input" type="checkbox" value="">
+                                                   Obyekt   
+                                                  <span class="form-check-sign">
+                                                      <span class="check"></span>
+                                                  </span>
+                                              </label>
+                                          </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- kategorialar son -->
+
+                                    <!-- Elan tipi -->
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Görəcəyi Elanın tipi</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+
+                                          <div class="form-check form-check-inline">
+                                              <label class="form-check-label">
+                                                  <input class="form-check-input" type="checkbox" value="">
+                                                   İcarə   
+                                                  <span class="form-check-sign">
+                                                      <span class="check"></span>
+                                                  </span>
+                                              </label>
+                                          </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Elan tipi son -->
+
+                                    <!-- Modullar -->
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Modullar</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+
+                                                <div class="row">
+
+                                                    <div class="col-sm-3">
+                                                        <label class="text-left" style="margin-top: 15px; font-weight: 500; color: blue"> Göstəriş paneli</label>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check">
+                                                          <label class="form-check-label">
+                                                              <input class="form-check-input" type="radio" name="exampleRadios" value="option1" >
+                                                              Görmür
+                                                              <span class="circle">
+                                                                  <span class="check"></span>
+                                                              </span>
+                                                          </label>
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check">
+                                                          <label class="form-check-label">
+                                                              <input class="form-check-input" type="radio" name="exampleRadios" value="option1" >
+                                                              Görür
+                                                              <span class="circle">
+                                                                  <span class="check"></span>
+                                                              </span>
+                                                          </label>
+                                                      </div>
+                                                    </div>
+
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check">
+                                                          <label class="form-check-label">
+                                                              <input class="form-check-input" type="radio" name="exampleRadios" value="option1" >
+                                                              Əlavə edir
+                                                              <span class="circle">
+                                                                  <span class="check"></span>
+                                                              </span>
+                                                          </label>
+                                                      </div>
+                                                    </div>
+
+                                                </div> <!-- row -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modullar son -->
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Tipi</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <select class="selectpicker" name="tenant" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan">
+                                                    
+                                                        @foreach (\App\Models\Tenant::realTenants()->get() as $type)
+                                                            <option value="{{ $type['id'] }}" {{ $type['id'] == $group['tenant_id']? 'selected':'' }}> {{ $type['company_name'] }} </option>
+                                                        @endforeach
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-top: 20px">
+                                        <div class="col-sm-2 col-md-4 mr-auto ml-auto">
+                                        </div>
+                                        <div class="col-sm-5 col-md-2 mr-auto ml-auto">
+                                            <button class="btn btn-success" type="submit">Success<div class="ripple-container"></div></button>
+                                        </div>
+                                        <div class="col-sm-5 col-md-6 mr-auto ml-auto">
+                                            <button class="btn btn-danger" onclick="window.location.href='{{ redirect()->back()->getTargetUrl() }}'" type="reset">Geriyə<div class="ripple-container"></div></button>
+                                        </div>
+
+                                    </div>
+
+                            </form> 
+        
         </div>
+  
     </div>
+
+</div>
+    
 @endsection
 
 @section('css')

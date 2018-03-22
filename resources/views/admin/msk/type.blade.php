@@ -1,60 +1,66 @@
-@extends('admin.masterpage')
+@extends('admin.masterpage_huseynzade')
 
 @section('content')
     @include('admin.error')
 
-    @if(\App\Library\MyHelper::has_priv("msk_type", \App\Library\MyClass::PRIV_CAN_ADD))
+    <!-- @if(\App\Library\MyHelper::has_priv("msk_type", \App\Library\MyClass::PRIV_CAN_ADD))
         <a href="{{ route('msk_type_add_edit',['type' => 0]) }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Add</a>
-    @endif
+    @endif -->
 
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>Şirkət növləri</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <form method="get" action="" class="formFinder">
-                        <table class="table table-striped formFinder">
-                            <thead>
-                                <tr>
-                                    <th width="40px">#</th>
-                                    <th>Group Name</th>
-                                    <th>Dəyəri</th>
-                                    @if(\App\Library\MyHelper::has_priv("msk_type", \App\Library\MyClass::PRIV_CAN_ADD))
-                                        <th>Action</th>
-                                    @endif
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($types as $type)
-                                    <tr>
-                                        <td>{{ $types->perPage() * ($types->currentPage() - 1) + $loop->iteration }}</td>
-                                        <td>{{ $type->name }}</td>
-                                        <td>{{ $type->amount }}</td>
-                                        <td>
-                                            @if(\App\Library\MyHelper::has_priv("msk_type", \App\Library\MyClass::PRIV_CAN_ADD))
-                                                <a href="{{ route('msk_type_add_edit',['type' => $type->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
-                                                <a href="{{ route('msk_type_delete',['type' => $type->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-xs deleteAction"><i class="fa fa-trash"></i></a>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </form>
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            {{ $types->appends($request->except('page'))->links('admin.pagination', ['paginator' => $types]) }}
-                        </div>
-                    </div>
-                </div>
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-warning card-header-icon">
+              <div class="card-icon">
+                @if(\App\Library\MyHelper::has_priv("msk_type", \App\Library\MyClass::PRIV_CAN_ADD))
+                <a href="{{ route('msk_type_add_edit',['type' => 0]) }}"> <i class="material-icons" style="color: #fff">location_city</i> </a>
+                @endif
+              </div>
+              <h4 class="card-title">Şirkətlər</h4>
+            </div>
+
+            <div class="card-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="text-warning">
+                        <th>ID</th>
+                        <th>Şirkətin adı</th>
+                        <th>Dəyəri</th>
+                        @if(\App\Library\MyHelper::has_priv("msk_type", \App\Library\MyClass::PRIV_CAN_ADD))
+                        <th class="text-right">Tədbirlər</th>
+                        @endif
+                    </thead>
+                    <tbody>
+                        @foreach ($types as $type)
+                        <tr>
+                            <td>{{ $types->perPage() * ($types->currentPage() - 1) + $loop->iteration }}</td>
+                            <th><span style="font-weight: 500">{{ $type->name }}</span></th>
+                            <td><span style="font-weight: 500; color: red">{{ $type->amount }}</span></td>
+                            <th class="text-right">
+                                @if(\App\Library\MyHelper::has_priv("msk_type", \App\Library\MyClass::PRIV_CAN_ADD))
+                                   <a href="{{ route('msk_type_add_edit',['type' => $type->id]) }}" data-toggle="tooltip" data-original-title="Edit" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i></a>
+                                    <a href="{{ route('msk_type_delete',['type' => $type->id]) }}" data-toggle="tooltip" data-original-title="Delete" class="btn btn-link btn-danger btn-just-icon edit"><i class="material-icons">close</i></a>
+                                @endif
+                            </th>
+                        </tr>
+                       @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
+
+
+    <div class="row" style="margin-top: 15px">
+        <div class="col-md-1"></div>
+        <div class="col-sm-12 col-md-7 text-left">
+            <!-- <div class="dataTables_info" id="datatables_info" role="status" aria-live="polite">
+                <span style="font-weight: 700">40 </span>Şirkətdən <span style="font-weight: 700">1</span> ilə <span style="font-weight: 700">10</span> arasında göstərilir </div> -->
+            </div>
+            <div class="col-sm-12 col-md-4">
+            {{ $types->appends($request->except('page'))->links('admin.pagination', ['paginator' => $types]) }}
+            </div>
+        </div>
+    </div>
+
     </div>
 @endsection
 
