@@ -1334,7 +1334,7 @@ var jconfirm, Jconfirm;
     $(window).on('keyup', function () {
         keyDown = false;
     });
-    jconfirm.lastClicked = false;
+    jconfirm.lastClicked = false; 
     $(document).on('mousedown', 'button, a', function () {
         jconfirm.lastClicked = $(this);
     });

@@ -14,18 +14,18 @@
                                       <span class="toggle"></span>
                                                   Çoxlu seçim
                                 </label>
-                                <a style="margin-top: 3px;display: none" class="btn btn-danger btn-link" href="javascript:multiDeletBtn()"><i class="material-icons">close</i></a>
+                                <a style="margin-top: 3px;display: none" class="btn btn-danger btn-link" onclick=demo.showSwal('input-field')><i class="material-icons">close</i></a>
                             </div>
                         </div>
                     </div>
-<br>
+<br> 
 <div class="row">    
 @foreach ($announcements as $announcement )
     <div class="col-md-4">
         <div class="card card-product">
             <div class="card-header card-header-image" data-header-animation="true">
                 <a href="#pablo">
-                    <img class="img" src="assets/build/huseynzade/img/card-1.jpeg">
+                    <img class="img" style="height: 200px" src="assets/build/huseynzade/img/card-1.jpeg">
                 </a>
             </div>
             <div class="card-body">
@@ -67,7 +67,7 @@
                                     </label>
                                 </div>
                             </div> -->
-                            <div class="col-md-12 text-center">A
+                            <div class="col-md-12 text-center">
                                 <a href="{{ $announcement->link }}"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;"> {{ $announcement->type == 'building' ? '(' . $announcement->getAnnouncementType2() . ')':'' }} </span>
                             </div>
                         </div>
@@ -95,9 +95,11 @@
     @endforeach
     <div></div>
                     <div class="row">
-                        <div class="col-md-6 ml-auto mr-auto">
-                            
-                            {{ $announcements->appends($request->except('page'))->links('admin.pagination', ['paginator' => $announcements]) }}
+                        <div class="col-md-3 ml-auto mr-auto"></div>
+                        <div class="col-md-1 ml-auto mr-auto">
+                            <div class="">
+                                {{ $announcements->appends($request->except('page'))->links('admin.pagination', ['paginator' => $announcements]) }}
+                            </div>
                             
                         </div>
                     </div>

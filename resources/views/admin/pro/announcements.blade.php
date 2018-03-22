@@ -5,12 +5,19 @@
     @include('admin.error')
 
 
-    @if( \App\Library\MyHelper::has_priv("announcement_pro", \App\Library\MyClass::PRIV_CAN_ADD) )
-        <a href="{{ route('announcement_insert',['announcement' => 0]) }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Add</a>
-    @endif
+    
 
+        <div class="row">
+            <div class="col-md-3">
+                <h3>Fərdi Elanlar</h3>
+            </div>
+            <div class="col-md-3 ml-auto">
+                @if( \App\Library\MyHelper::has_priv("announcement_pro", \App\Library\MyClass::PRIV_CAN_ADD) )
+                    <a href="{{ route('announcement_insert',['announcement' => 0]) }}" style="margin-top: 35px; position: absolute; border-radius: 7px; background-color: red " class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> <span style="font-size: 16px"> Elan əlavə et </span></a>
+                @endif
+            </div>
+        </div>
 
-    <h3>Fərdi Elanlar</h3> 
                     <!-- Elan secimi --> 
                     <div class="row" id="multi_button">
                         <div class="col-md-12">
@@ -21,7 +28,7 @@
                                       <span class="toggle"></span>
                                                   Çoxlu seçim
                                 </label>
-                                <a style="margin-top: 3px;display: none" class="btn btn-danger btn-link" href="javascript:multiDeletBtn()"><i class="material-icons">close</i></a>
+                                <a style="margin-top: 3px;display: none" class="btn btn-danger btn-link" onclick=demo.showSwal('input-field')><i class="material-icons">close</i></a>
                             </div>
                         </div>
                     </div>
@@ -78,7 +85,7 @@
                                 </div>
                             </div> -->
                             <div class="col-md-12 text-center">
-                                <a href="{{ $announcement->link }}"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;">(Yeni Tikili)</span>
+                                <a href="{{ $announcement->link }}"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;"> {{ $announcement->type == 'building' ? '(' . $announcement->getAnnouncementType2() . ')':'' }} </span>
                             </div>
                         </div>
                            <!--  <a href="#pablo"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;">(Yeni Tikili)</span> -->
@@ -105,9 +112,11 @@
     @endforeach
     <div></div>
                     <div class="row">
-                        <div class="col-md-6 ml-auto mr-auto">
-                            
-                            {{ $announcements->appends($request->except('page'))->links('admin.pagination', ['paginator' => $announcements]) }}
+                        <div class="col-md-3 ml-auto mr-auto"></div>
+                        <div class="col-md-1 ml-auto mr-auto">
+                            <div class="">
+                                {{ $announcements->appends($request->except('page'))->links('admin.pagination', ['paginator' => $announcements]) }}
+                            </div>
                             
                         </div>
                     </div>

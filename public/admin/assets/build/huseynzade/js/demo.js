@@ -904,7 +904,7 @@ var demo = {
                 buttonsStyling: false,
                 confirmButtonClass: "btn btn-success",
                 html: 'You can use <b>bold text</b>, ' +
-                    '<a href="http://github.com">links</a> ' +
+                    '<a href="http://www.bazam.az">links</a> ' +
                     'and other HTML tags'
             }).catch(swal.noop)
 
