@@ -1,4 +1,4 @@
-@extends('admin.masterpage')
+@extends('admin.masterpage_huseynzade')
 
 
 
@@ -7,438 +7,302 @@
     @include('admin.error')
 
 
+<div class="col-md-12">
 
-    <div class="row">
-
-        <div class="col-md-12 col-sm-12 col-xs-12">
-
-            <div class="x_panel">
-
-                <div class="x_title">
-
-                    <h2>Elan</h2>
-
-                    <ul class="nav navbar-right panel_toolbox">
-
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-
-                    </ul>
-
-                    <div class="clearfix"></div>
-
+        <div class="card ">
+            
+            <div class="card-header card-header-rose card-header-text">
+                <div class="card-text">
+                    <h4 class="card-title">İstifadəçi dəyişikliyi</h4>
                 </div>
-
-                <div class="x_content">
-
-                    <br>
-
-                    <form autocomplete="off" enctype="multipart/form-data" class="form-horizontal form-label-left" novalidate=""  method="post" action="{{ isset($from) && $from > 0 ? route('announcement_insert_act_from',['announcement' => $from]) : route('announcement_insert_act',['announcement' => $id]) }}">
-
-                        <input type="hidden" value="{{ isset($from) ? $from : 0 }}" name="from" />
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Header
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <input required="" name="header" data-validate-length-range="5,200" type="text" class="form-control" placeholder="Header" value="{{ $announcement['header'] }}">
-
-                            </div>
-
-                        </div>
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Obyektin növü
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <select class="form-control" name="type" required="">
-
-                                    @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
-
-                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['type']? 'selected':'' }}> {{ $type }} </option>
-
-                                    @endforeach
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Binanın növü
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <select class="form-control" name="type2" required="">
-
-                                    @foreach (\App\Library\MyClass::$buldingSecondType as $typeK => $type)
-
-                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['type2']? 'selected':'' }}> {{ $type }} </option>
-
-                                    @endforeach
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Elanın Tipi
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <select class="form-control" name="buldingType" required="">
-
-                                    @foreach (\App\Library\MyClass::$buldingType as $typeK => $type)
-
-                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['buldingType']? 'selected':'' }}> {{ $type }} </option>
-
-                                    @endforeach
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Dəyəri
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <input required="" type="number" data-validate-minmax="1,99999999" name="amount" type="text" class="form-control" placeholder="Dəyəri" value="{{ $announcement['amount'] }}">
-
-                            </div>
-
-                        </div>
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sahə
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <input type="number" data-validate-minmax="1," name="area" type="text" class="form-control" placeholder="Sahə" value="{{ $announcement['area'] }}">
-
-                            </div>
-
-                        </div>
-
-
-
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Metro
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <select class="form-control" name="metro" required="">
-
-                                    @foreach (\App\Library\MyClass::$metros as $key => $metro)
-
-                                        <option value="{{ $key }}" {{ $key == $announcement['metro_id']? 'selected':'' }}> {{ $metro[0] }} </option>
-
-                                    @endforeach
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-
-
-
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Şəhər
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select class="form-control" name="city" required="">
-                                    @foreach ( \App\Models\MskCity::all() as $city)
-                                        <option value="{{ $city['id'] }}" {{ $city['id'] == $announcement['city_id']? 'selected':'' }}> {{ $city->name }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                        </div>
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Address</label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" data-validate-minmax="1,255" name="place" class="form-control" placeholder="Address" value="{{ $announcement['place'] }}">
-                            </div>
-
-                        </div>
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Otaqların sayı
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <input type="number" data-validate-minmax="1,255" name="roomCount" type="text" class="form-control" placeholder="Otaqların sayı" value="{{ $announcement['roomCount'] }}">
-
-                            </div>
-
-                        </div>
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Yerləşdiyi mərtəbə
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <input type="number" data-validate-minmax="1,30000" name="locatedFloor" type="text" class="form-control" placeholder="Yerləşdiyi mərtəbə" value="{{ $announcement['locatedFloor'] }}">
-
-                            </div>
-
-                        </div>
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Mərtəbə sayı
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <input type="number" data-validate-minmax="1,30000" name="floorCount" type="text" class="form-control" placeholder="Mərtəbə sayı" value="{{ $announcement['floorCount'] }}">
-
-                            </div>
-
-                        </div>
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sənədin tipi
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <select class="form-control" name="documentType" required="">
-
-                                    @foreach (\App\Library\MyClass::$documentTypes as $typeK => $type)
-
-                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['documentType']? 'selected':'' }}> {{ $type }} </option>
-
-                                    @endforeach
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Təmiri
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <select class="form-control" name="repairing" required="">
-
-                                    @foreach (\App\Library\MyClass::$repairingTypes as $typeK => $type)
-
-                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['repairing']? 'selected':'' }}> {{ $type }} </option>
-
-                                    @endforeach
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-
-
-
-
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Sahibkar
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <input name="owner" data-validate-length-range="1,40" type="text" class="form-control" placeholder="Sahibkar" value="{{ $announcement['owner'] }}">
-
-                            </div>
-
-                        </div>
-
-
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nömrə
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12" id="allNubers">
-                                @if($announcement['numbers'] != null)
-                                    @foreach ($announcement['numbers'] as $typeK => $num)
-                                        <div class="numb">
-                                            <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="'mask' : '(999) 999-9999'" name="mobnom[]" type="text" class="form-control" value="{{ $num['number'] }}" placeholder="Nömrə">
-                                            <button type="button" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                    @endforeach
-                                @else
-                                        <div class="numb">
-                                            <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="'mask' : '(999) 999-9999'" name="mobnom[]" type="text" class="form-control" value="" placeholder="Nömrə">
-                                            <button type="button" class="btn btn-danger btn-xs" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                @endif
-                                <button type="button" class="btn btn-success addNumber">+ Add</button>
-                            </div>
-
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-
-                            </div>
-                        </div>
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Şəkil
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12" id="allPictures">
-                                {{--<div class="numb">
-                                    <input style="width: 80%;display: inline-block;" accept="image/*" required="" type="file" name="pictures[]" class="form-control">
-                                    <button type="button" class="btn btn-danger btn-xs" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="fa fa-trash"></i></button>
-                                </div>--}}
-                                <button type="button" class="btn btn-success addPicture">+ Add</button>
-                            </div>
-
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Content
-
-                            </label>
-
-                            <div class="col-md-9 col-sm-6 col-xs-12">
-
-                                <textarea id="descr" style="width:100%;height:251px;" name="content">{{ strip_tags($announcement['content']) }}</textarea>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Agent (user)
-
-                            </label>
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                <select class="form-control" name="user" required="">
-
-                                    @foreach ( \App\User::realUsers()->get() as $user)
-
-                                        <option value="{{ $user['id'] }}" {{ $user['id'] == $announcement['userId']? 'selected':'' }}> {{ $user->fullname() }} </option>
-
-                                    @endforeach
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <div class="item form-group">
-
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Xəritə
-
-                            </label>
-
-                            <div class="col-md-9 col-sm-9 col-xs-9" style="height: 300px;">
-                                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-                                <div id="map" style="width: 100%;height: 100%"></div>
-                            </div>
-
-                        </div>
-
-
-
-                        <div class="ln_solid"></div>
-
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                        <input type="hidden" id="loc_lat" name="loc_lat" value="{{ $id > 0 ? $announcement->getLocations()[0] : '40.4242696' }}">
-                        <input type="hidden" id="loc_lng" name="loc_lng" value="{{ $id > 0 ? $announcement->getLocations()[1] : '49.8522489' }}">
-
-                        <div class="form-group">
-
-                            <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-3">
-
-                                <button type="submit" class="btn btn-success">Save</button>
-
-                                <a class="btn btn-default" href="{{ url()->previous() }}" type="reset"><i class="fa fa-arrow-circle-left"></i> Cancel</a>
-
-                            </div>
-
-                        </div>
-
-                    </form>
-
-                </div>
-
             </div>
+            
+        <div class="card-body ">
+        
+        
+                            <form autocomplete="off" novalidate=""  method="post" action="" class="form-horizontal">
+                                    
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Elanın başlığı</label>
 
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <!-- <span class="input-group-text">
+                                                    <i class="material-icons">email</i> -->
+                                                
+                                                <input required="" name="name" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçinin Şəxsi Adı" value="">
+                                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span><!-- </span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Obyektin növü</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
+                                                    <option value="0">Grup Seç</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Binanın növü</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
+                                                    <option value="0">Grup Seç</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Elanın Tipi</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
+                                                    <option value="0">Grup Seç</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Dəyəri</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                
+                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Sahə</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                
+                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Metro</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
+                                                    <option value="0">Grup Seç</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Şəhər</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
+                                                    <option value="0">Grup Seç</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Ünvan</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                
+                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Otaqların sayı</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                
+                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Yerləşdiyi mərtəbə</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                
+                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Mərtəbə sayı</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                
+                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Sənədin tipi</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
+                                                    <option value="0">Grup Seç</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Təmiri</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
+                                                    <option value="0">Grup Seç</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Sahibkar</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                
+                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- nomre -->
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Şəxsin nömrəsi</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                
+                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- nomre son -->
+
+                                    <!-- photo -->
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right"></label>
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <h4 class="title">Regular Image</h4>
+                                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                                <div class="fileinput-new thumbnail">
+                                                    <img src="../../assets/build/huseynzade/img/image_placeholder.jpg" alt="...">
+                                                </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                <div>
+                                                    <span class="btn btn-rose btn-round btn-file">
+                                                        <span class="fileinput-new">Select image</span>
+                                                        <span class="fileinput-exists">Change</span>
+                                                        <input type="file" name="..." />
+                                                    </span>
+                                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- photo son -->
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label text-right">Ətraflı məlumat</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                
+                                                <textarea name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value=""></textarea>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Agent (user)</label>
+
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group">
+                                                <select class="selectpicker ht-btn" name="user" required="">
+                                                    @foreach ( \App\User::realUsers()->get() as $user)
+
+                                                        <option value="{{ $user['id'] }}" {{ $user['id'] == $announcement['userId']? 'selected':'' }}> {{ $user->fullname() }} </option>
+
+                                                    @endforeach
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    
+                                    <div class="ln_solid"></div>
+                                    <input type="hidden" name="_token" value="">
+
+                                    <div class="row" style="margin-top: 20px">
+                                        <div class="col-sm-2 col-md-4 mr-auto ml-auto">
+                                        </div>
+                                        <div class="col-sm-5 col-md-2 mr-auto ml-auto">
+                                            <button class="btn btn-success" type="submit">Saxla<div class="ripple-container"></div></button>
+                                        </div>
+                                        <div class="col-sm-5 col-md-6 mr-auto ml-auto">
+                                            <button class="btn btn-danger" onclick="window.location.href=''" type="reset">Geriyə<div class="ripple-container"></div></button>
+                                        </div>
+
+                                    </div>
+
+                            </form> 
+        
         </div>
-
+  
     </div>
+
+</div>
+
 
 @endsection
 
@@ -449,7 +313,7 @@
     {!! Html::style('admin/assets/build/new/Plugins/select2.css') !!}
 
     {{--  bootstrap-wysiwyg --}}
-    <style>
+    <!-- <style>
         .numb{
             width: 190px;
         }
@@ -471,7 +335,7 @@
         #pac-input:focus {
             border-color: #4d90fe;
         }
-    </style>
+    </style> -->
 @endsection
 
 
@@ -483,6 +347,34 @@
     {!! Html::script('admin/assets/build/new/Plugins/select2.min.js') !!}
 
     {!! Html::script('admin/assets/vendors/validator/validator.js') !!}
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+          //init DateTimePickers
+          md.initFormExtendedDatetimepickers();
+
+
+          // Sliders Init
+          md.initSliders();
+
+        });
+
+    </script>
+
+      <script type="text/javascript">
+    $().ready(function(){
+        demo.checkFullPageBackgroundImage();
+
+        setTimeout(function(){
+            // after 1000 ms we add the class animated to the login/register card
+            $('.card').removeClass('card-hidden');
+        }, 700)
+    });
+    </script>
+
     <script type="text/javascript">
         $("select").select2({
             //placeholder: "Hamısı",

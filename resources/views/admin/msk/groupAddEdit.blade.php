@@ -22,7 +22,7 @@
                                         <label class="col-sm-2 col-form-label text-right">Grupun adı</label>
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
-                                            <div class="form-group">
+                                            <div class="form-group bmd-form-group is-filled has-success">
 
                                                 <input required="" name="group_name" data-validate-length-range="1,20" type="text" class="form-control" placeholder="Grupun adı" value="{{ $group['group_name'] }}">
 
