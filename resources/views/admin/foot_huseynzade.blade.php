@@ -1,6 +1,6 @@
 
     <!--   Core JS Files   -->
-{!! Html::script('admin/assets/build/huseynzade/js/jquery.min.js') !!}
+{!! Html::script('admin/assets/build/js/jquery-1.11.1.min.js') !!}
 {!! Html::script('admin/assets/build/huseynzade/js/popper.min.js') !!}
 
 
@@ -66,7 +66,7 @@
 {!! Html::script('admin/assets/build/huseynzade/js/bootstrap-notify.js') !!}
 
 <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-{!! Html::script('admin/assets/build/huseynzade/js/jquery-jvectormap.js') !!}
+<!--{!! Html::script('admin/assets/build/huseynzade/js/jquery-jvectormap.js') !!} -->
 
 <!-- Sliders Plugin, full documentation here: https://refreshless.com/nouislider/ -->
 {!! Html::script('admin/assets/build/huseynzade/js/nouislider.min.js') !!}
@@ -87,7 +87,7 @@
 {!! Html::script('admin/assets/build/huseynzade/js/fullcalendar.min.js') !!}
 
 <!-- demo init -->
-{!! Html::script('admin/assets/build/huseynzade/js/demo.js') !!}
+{!! Html::script('admin/assets/build/huseynzade/js/demo.js?1') !!}
 
 
 
@@ -118,9 +118,9 @@
 </script>
 
 <script type="text/javascript">
-	$(document).ready(function(){
+	/*$(document).ready(function(){
 	demo.initVectorMap();
-	});
+	});*/
 </script>
 
 

@@ -939,7 +939,7 @@ var demo = {
         }
     },
 
-    initVectorMap: function() {
+    /*initVectorMap: function() {
         var mapData = {
             "AU": 760,
             "BR": 550,
@@ -976,7 +976,7 @@ var demo = {
                 }]
             },
         });
-    },
+    },*/
 
     initGoogleMaps: function() {
         var myLatlng = new google.maps.LatLng(40.748817, -73.985428);

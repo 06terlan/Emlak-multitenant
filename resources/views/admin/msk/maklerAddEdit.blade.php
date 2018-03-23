@@ -52,7 +52,7 @@
                         </div>
 
                     </form>
-        
+
         </div>
   
     </div>
@@ -68,4 +68,8 @@
     {!! Html::script('admin/assets/vendors/validator/validator.js') !!}
     <!-- jquery.inputmask -->
     {!! Html::script('admin/assets/vendors/jquery.inputmask/jquery.inputmask.bundle.min.js') !!}
+
+    <script>
+        $('[name="number"]').inputmask({"mask": "(999) 999-9999"});
+    </script>
 @endsection
