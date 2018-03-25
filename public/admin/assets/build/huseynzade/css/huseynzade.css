@@ -69,6 +69,50 @@
 }
 
 
+.select2-container .select2-selection--single {
+    border-color: red !important;
+    width: 100% !important;
+    height: 40px;
+    margin-top: 15px;
+    -webkit-transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+}
+
+.select2-container .select2-selection--single:hover {
+    background-color: red;
+    color: #fff;
+    -webkit-transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    margin-top: 17px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b:hover {
+    color: #fff !important;
+    -webkit-transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    margin: 5px 5px !important;
+    font-weight: 400;
+    -webkit-transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered:hover {
+    color: #fff !important;
+    font-weight: 400;
+    -webkit-transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+}
+
+.btn-new-hm-badimcan:hover span {
+    background-color: #9c27b0!important;
+    color: #fff !important; 
+}
+
 .btn-new-hm-tundgoy {
     background-color: #fff;
     border-color: #447df7!important;
