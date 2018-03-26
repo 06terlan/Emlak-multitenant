@@ -13,25 +13,21 @@
             
             <div class="card-header card-header-rose card-header-text">
                 <div class="card-text">
-                    <h4 class="card-title">İstifadəçi dəyişikliyi</h4>
+                    <h4 class="card-title">Fərdi Elan əlavə et</h4>
                 </div>
             </div>
             
         <div class="card-body ">
         
         
-                            <form autocomplete="off" novalidate=""  method="post" action="" class="form-horizontal">
+                            <form autocomplete="off" enctype="multipart/form-data" class="form-horizontal" novalidate=""  method="post" action="{{ isset($from) && $from > 0 ? route('announcement_insert_act_from',['announcement' => $from]) : route('announcement_insert_act',['announcement' => $id]) }}">
                                     
                                     <div class="row">
                                         <label class="col-sm-2 col-form-label text-right">Elanın başlığı</label>
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <!-- <span class="input-group-text">
-                                                    <i class="material-icons">email</i> -->
-                                                
-                                                <input required="" name="name" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçinin Şəxsi Adı" value="">
-                                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span><!-- </span> -->
+                                                <input required="" name="header" data-validate-length-range="5,200" type="text" class="form-control" placeholder="Elanın başlığı" value="{{ $announcement['header'] }}">
                                             </div>
                                         </div>
                                     </div>
@@ -41,8 +37,12 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
-                                                    <option value="0">Grup Seç</option>
+                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-orange" title="">
+                                                    @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
+
+                                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['type']? 'selected':'' }}> {{ $type }} </option>
+
+                                                    @endforeach
                                                     
                                                 </select>
                                             </div>
@@ -54,8 +54,12 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
-                                                    <option value="0">Grup Seç</option>
+                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-red" title="">
+                                                    @foreach (\App\Library\MyClass::$buldingSecondType as $typeK => $type)
+
+                                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['type2']? 'selected':'' }}> {{ $type }} </option>
+
+                                                    @endforeach
                                                     
                                                 </select>
                                             </div>
@@ -67,8 +71,12 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
-                                                    <option value="0">Grup Seç</option>
+                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-goy" title="">
+                                                    @foreach (\App\Library\MyClass::$buldingType as $typeK => $type)
+
+                                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['buldingType']? 'selected':'' }}> {{ $type }} </option>
+
+                                                    @endforeach
                                                     
                                                 </select>
                                             </div>
@@ -81,7 +89,7 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 
-                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                <input required="" type="number" data-validate-minmax="1,99999999" name="amount" type="text" class="form-control" placeholder="Dəyəri" value="{{ $announcement['amount'] }}">
 
                                             </div>
                                         </div>
@@ -93,7 +101,7 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 
-                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                <input type="number" data-validate-minmax="1," name="area" type="text" class="form-control" placeholder="Sahə" value="{{ $announcement['area'] }}">
                                                 
                                             </div>
                                         </div>
@@ -104,8 +112,12 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
-                                                    <option value="0">Grup Seç</option>
+                                                <select style="width: 100%" class="select2 " name="group_id" required="" title="">
+                                                    @foreach (\App\Library\MyClass::$metros as $key => $metro)
+
+                                                        <option value="{{ $key }}" {{ $key == $announcement['metro_id']? 'selected':'' }}> {{ $metro[0] }} </option>
+
+                                                    @endforeach
                                                     
                                                 </select>
                                             </div>
@@ -117,8 +129,10 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
-                                                    <option value="0">Grup Seç</option>
+                                                <select style="width: 100%" class="select2" name="group_id" required="" title="">
+                                                    @foreach ( \App\Models\MskCity::all() as $city)
+                                                        <option value="{{ $city['id'] }}" {{ $city['id'] == $announcement['city_id']? 'selected':'' }}> {{ $city->name }} </option>
+                                                    @endforeach
                                                     
                                                 </select>
                                             </div>
@@ -126,12 +140,12 @@
                                     </div>
 
                                     <div class="row">
-                                        <label class="col-sm-2 col-form-label text-right">Ünvan</label>
+                                        <label class="col-sm-2 col-form-label text-right">Elanın Ünvanı</label>
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 
-                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                <input type="text" data-validate-minmax="1,255" name="place" class="form-control" placeholder="Elanın Ünvanı" value="{{ $announcement['place'] }}">
                                                 
                                             </div>
                                         </div>
@@ -143,7 +157,7 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 
-                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                <input type="number" data-validate-minmax="1,255" name="roomCount" type="text" class="form-control" placeholder="Otaqların sayı" value="{{ $announcement['roomCount'] }}">
                                                 
                                             </div>
                                         </div>
@@ -155,7 +169,7 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 
-                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                <input type="number" data-validate-minmax="1,30000" name="locatedFloor" type="text" class="form-control" placeholder="Yerləşdiyi mərtəbə" value="{{ $announcement['locatedFloor'] }}">
                                                 
                                             </div>
                                         </div>
@@ -167,7 +181,7 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 
-                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                <input type="number" data-validate-minmax="1,30000" name="floorCount" type="text" class="form-control" placeholder="Mərtəbə sayı" value="{{ $announcement['floorCount'] }}">
                                                 
                                             </div>
                                         </div>
@@ -178,8 +192,12 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
-                                                    <option value="0">Grup Seç</option>
+                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-sened" title="">
+                                                    @foreach (\App\Library\MyClass::$documentTypes as $typeK => $type)
+
+                                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['documentType']? 'selected':'' }}> {{ $type }} </option>
+
+                                                    @endforeach
                                                     
                                                 </select>
                                             </div>
@@ -192,7 +210,11 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
-                                                    <option value="0">Grup Seç</option>
+                                                    @foreach (\App\Library\MyClass::$repairingTypes as $typeK => $type)
+
+                                                        <option value="{{ $typeK }}" {{ $typeK == $announcement['repairing']? 'selected':'' }}> {{ $type }} </option>
+
+                                                    @endforeach
                                                     
                                                 </select>
                                             </div>
@@ -205,7 +227,7 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 
-                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                <input name="owner" data-validate-length-range="1,40" type="text" class="form-control" placeholder="Sahibkar" value="{{ $announcement['owner'] }}">
                                                 
                                             </div>
                                         </div>
@@ -218,7 +240,20 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 
-                                                <input name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value="">
+                                                @if($announcement['numbers'] != null)
+                                                @foreach ($announcement['numbers'] as $typeK => $num)
+                                                    <div class="numb">
+                                                        <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="'mask' : '(999) 999-9999'" name="mobnom[]" type="text" class="form-control" value="{{ $num['number'] }}" placeholder="Nömrə">
+                                                        <button type="button" class="btn btn-danger btn-link deleteAction" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="material-icons">close</i></button>
+                                                    </div>
+                                                @endforeach
+                                            @else
+                                                    <div class="numb">
+                                                        <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="'mask' : '(999) 999-9999'" name="mobnom[]" type="text" class="form-control" value="" placeholder="Nömrə">
+                                                        <button type="button" class="btn btn-danger btn-link" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="material-icons">close</i></button>
+                                                    </div>
+                                            @endif
+                                            <button type="button" class="btn btn-success btn-link addNumber"><i class="material-icons">add</i> Nömrə əlavə et</button>
                                                 
                                             </div>
                                         </div>
@@ -237,13 +272,14 @@
                                                 <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                 <div>
                                                     <span class="btn btn-rose btn-round btn-file">
-                                                        <span class="fileinput-new">Select image</span>
-                                                        <span class="fileinput-exists">Change</span>
+                                                        <span class="fileinput-new">Şəkil seçin</span>
+                                                        <span class="fileinput-exists">Dəyiş</span>
                                                         <input type="file" name="..." />
                                                     </span>
-                                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Sil</a>
                                                 </div>
                                             </div>
+                                            <button type="button" class="btn btn-success addPicture">+ Add</button>
                                         </div>
                                     </div>
                                     <!-- photo son -->
@@ -254,7 +290,7 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 
-                                                <textarea name="surname" data-validate-length-range="5,20" type="text" class="form-control" placeholder="İstifadəçin Soyadı" value=""></textarea>
+                                                <textarea id="descr" class="form-control" style="width:100%;height:251px !important; font-style: italic; color: #d43d1a" placeholder="Ətraflı məlumat" name="content">{{ strip_tags($announcement['content']) }}</textarea>
                                                 
                                             </div>
                                         </div>
@@ -265,7 +301,8 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select class="selectpicker ht-btn" name="user" required="">
+
+                                                <select style="width: 100%" class="select2" name="user" required="">
                                                     @foreach ( \App\User::realUsers()->get() as $user)
 
                                                         <option value="{{ $user['id'] }}" {{ $user['id'] == $announcement['userId']? 'selected':'' }}> {{ $user->fullname() }} </option>
@@ -287,10 +324,11 @@
                                         <div class="col-sm-2 col-md-4 mr-auto ml-auto">
                                         </div>
                                         <div class="col-sm-5 col-md-2 mr-auto ml-auto">
-                                            <button class="btn btn-success" type="submit">Saxla<div class="ripple-container"></div></button>
+                                            <button class="btn btn-success" type="submit">&#0160;Saxla&#0160;
+                                                <div class="ripple-container"></div></button>
                                         </div>
                                         <div class="col-sm-5 col-md-6 mr-auto ml-auto">
-                                            <button class="btn btn-danger" onclick="window.location.href=''" type="reset">Geriyə<div class="ripple-container"></div></button>
+                                            <button class="btn btn-danger" onclick="window.location.href='{{ url()->previous() }}'" type="reset">Geriyə<div class="ripple-container"></div></button>
                                         </div>
 
                                     </div>
@@ -376,7 +414,7 @@
     </script>
 
     <script type="text/javascript">
-        $("select").select2({
+        $(".select2").select2({
             //placeholder: "Hamısı",
             //allowClear: true
         });
