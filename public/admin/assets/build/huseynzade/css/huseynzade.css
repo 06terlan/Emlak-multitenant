@@ -25,10 +25,10 @@
     color: #fb404b;
 }
 
-.btn-new-hm-red:hover {
+/*.btn-new-hm-red:hover {
     background-color: #fb404b!important;
     color: #fff !important;
-}
+}*/
 
 .btn-new-hm-orange {
     background-color: #fff;
@@ -37,10 +37,10 @@
     color: #fb404b;
 }
 
-.btn-new-hm-orange:hover {
+/*.btn-new-hm-orange:hover {
     background-color: #ff9800!important;
     color: #fff !important;
-}
+}*/
 
 
 .btn-new-hm-goy {
@@ -50,11 +50,11 @@
     color: #fb404b;
 }
 
-.btn-new-hm-goy:hover {
+/*.btn-new-hm-goy:hover {
     background-color: #00bcd4!important;
     color: #fff !important;
 }
-
+*/
 
 .btn-new-hm-badimcan {
     background-color: #fff;
@@ -63,11 +63,11 @@
     color: #fb404b;
 }
 
-.btn-new-hm-badimcan:hover {
+/*.btn-new-hm-badimcan:hover {
     background-color: #9c27b0!important;
     color: #fff !important;
 }
-
+*/
 
 .select2-container .select2-selection--single {
     border-color: red !important;
@@ -108,10 +108,10 @@
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
 }
 
-.btn-new-hm-badimcan:hover span {
+/*.btn-new-hm-badimcan:hover span {
     background-color: #9c27b0!important;
     color: #fff !important; 
-}
+}*/
 
 .btn-new-hm-tundgoy {
     background-color: #fff;
@@ -120,10 +120,10 @@
     color: #fb404b;
 }
 
-.btn-new-hm-tundgoy:hover {
+/*.btn-new-hm-tundgoy:hover {
     background-color: #447df7!important;
     color: #fff !important;
-}
+}*/
 
 .btn-new-hm-fosfor {
     background-color: #fff;
@@ -132,10 +132,10 @@
     color: #fb404b;
 }
 
-.btn-new-hm-fosfor:hover {
+/*.btn-new-hm-fosfor:hover {
     background-color: #00ff40!important;
     color: #fff !important;
-}
+}*/
 
 .btn-new-hm-sened {
     background-color: #fff;
@@ -144,11 +144,11 @@
     color: #fb404b;
 }
 
-.btn-new-hm-sened:hover {
+/*.btn-new-hm-sened:hover {
     background-color: #00ffff!important;
     color: #fff !important;
 }
-
+*/
 .btn-new-hm-seher {
     background-color: #fff;
     border-color: #749000!important;
@@ -156,11 +156,11 @@
     color: #fb404b;
 }
 
-.btn-new-hm-seher:hover {
+/*.btn-new-hm-seher:hover {
     background-color: #749000!important;
     color: #fff !important;
 }
-
+*/
 
 
 
@@ -187,3 +187,51 @@
 .announcement_img_ht {
     width: 100%;
 }
+
+
+
+/*search*/
+
+.rowHeightH {
+    margin-top: -20px;
+}
+
+.btn-select2-red {
+    border-color: red;
+    border:1px solid red;
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 100% !important;
+}
+
+
+.bootstrap-select>.dropdown-toggle.bs-placeholder, .bootstrap-select>.dropdown-toggle.bs-placeholder:active, .bootstrap-select>.dropdown-toggle.bs-placeholder:focus, .bootstrap-select>.dropdown-toggle.bs-placeholder:hover{
+            background: #fff;
+        }
+
+        .btn.active, .btn.btn-default.active, .btn.btn-default:active, .btn:active, .open>.btn.btn-default.dropdown-toggle, .open>.btn.dropdown-toggle, .show>.btn.btn-default.dropdown-toggle, .show>.btn.dropdown-toggle {
+            background: none;
+            background-color: #fff;
+            color: #919191;
+        }
+
+        .btn.active.focus, .btn.active:focus, .btn.active:hover, .btn.btn-default.active.focus, .btn.btn-default.active:focus, .btn.btn-default.active:hover, .btn.btn-default:active.focus, .btn.btn-default:active:focus, .btn.btn-default:active:hover, .btn:active.focus, .btn:active:focus, .btn:active:hover, .open>.btn.btn-default.dropdown-toggle.focus, .open>.btn.btn-default.dropdown-toggle:focus, .open>.btn.btn-default.dropdown-toggle:hover, .open>.btn.dropdown-toggle.focus, .open>.btn.dropdown-toggle:focus, .open>.btn.dropdown-toggle:hover, .show>.btn.btn-default.dropdown-toggle.focus, .show>.btn.btn-default.dropdown-toggle:focus, .show>.btn.btn-default.dropdown-toggle:hover, .show>.btn.dropdown-toggle.focus, .show>.btn.dropdown-toggle:focus, .show>.btn.dropdown-toggle:hover{
+            background: none;
+            background-color: #fff;
+            color: #919191;
+        }
+
+        .btn, .btn.btn-default {
+            background-color: #fff;
+            color: #919191;
+        }
+
+        .btn.btn-default.focus, .btn.btn-default:focus, .btn.btn-default:hover, .btn.focus, .btn:focus, .btn:hover {
+            background-color: #fff;
+            color: #919191;
+        }
+
+        .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+            width: 100% !important;
+        }

@@ -31,7 +31,7 @@
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
                               <h4 class="title text-right">Elanın Seçimi</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
                                 <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
                                     <option disabled selected>Bina ev Mənzil</option>
                                     <option value="2">Foobar</option>
@@ -40,12 +40,12 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Obyektin növü</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px" >
+                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-orange" title="Single Select">
                                     <option disabled selected>Bina ev Mənzil</option>
                                     <option value="2">Foobar</option>
                                     <option value="3">Is great</option>
@@ -53,12 +53,12 @@
                             </div>
                           </div>
 
-                          <div class="row">
+                          <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Binanın növü</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-red" title="Single Select">
                                     <option disabled selected>Bina ev Mənzil</option>
                                     <option value="2">Foobar</option>
                                     <option value="3">Is great</option>
@@ -66,12 +66,12 @@
                             </div>
                           </div>
 
-                          <div class="row">
+                          <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Elanın növü</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-goy" title="Single Select">
                                     <option disabled selected>Bina ev Mənzil</option>
                                     <option value="2">Foobar</option>
                                     <option value="3">Is great</option>
@@ -79,83 +79,29 @@
                             </div>
                           </div>
 
-                          <div class="row">
+                          <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Şəhər</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
                                 
-                                          <select class="selectpicker form-group-hm" data-live-search="true" title="Select the product" name="">
-                                                <option data-tokens="Get Shit Done Kit" >
-                                                    Get Shit Done Kit
-                                                </option>
+                                        <select class="selectpicker form-group-hm btn-select2-red" data-live-search="true" title="Select the product" name="">
+                                            <option data-tokens="Get Shit Done Kit" >
+                                                Get Shit Done Kit
+                                            </option>
 
-                                                <option data-tokens="" >
-                                                    BB Shit Done Kit
-                                                </option>
+                                            <option data-tokens="" >
+                                                BB Shit Done Kit
+                                            </option>
 
-                                                <option data-tokens="" >
-                                                    DD Shit Done Kit
-                                                </option>
+                                            <option data-tokens="" >
+                                                DD Shit Done Kit
+                                            </option>
 
-                                                <option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option>
-
-                                                <option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    XXX Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option><option data-tokens="" data-id="">
-                                                    RRR Shit Done Kit
-                                                </option>
-
-
-                                          </select>
+                                            <option data-tokens="" data-id="">
+                                                RRR Shit Done Kit
+                                            </option>
+                                        </select>
 
 
 
@@ -164,55 +110,103 @@
                             </div>
                           </div>
 
-                          <div class="row">
+                          <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Rayon</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
-                                    <option disabled selected>Bina ev Mənzil</option>
-                                    <option value="2">Foobar</option>
-                                    <option value="3">Is great</option>
-                                </select>
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                <select class="selectpicker form-group-hm btn-select2-goy" data-live-search="true" title="Select the product" name="">
+                                            <option data-tokens="Get Shit Done Kit" >
+                                                Get Shit Done Kit
+                                            </option>
+
+                                            <option data-tokens="" >
+                                                BB Shit Done Kit
+                                            </option>
+
+                                            <option data-tokens="" >
+                                                DD Shit Done Kit
+                                            </option>
+
+                                            <option data-tokens="" data-id="">
+                                                RRR Shit Done Kit
+                                            </option>
+                                        </select>
                             </div>
                           </div>
 
-                          <div class="row">
+                          <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Metro</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
-                                    <option disabled selected>Bina ev Mənzil</option>
-                                    <option value="2">Foobar</option>
-                                    <option value="3">Is great</option>
-                                </select>
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                <select class="selectpicker form-group-hm btn-select2-orange" data-live-search="true" title="Select the product" name="">
+                                            <option data-tokens="Get Shit Done Kit" >
+                                                Get Shit Done Kit
+                                            </option>
+
+                                            <option data-tokens="" >
+                                                BB Shit Done Kit
+                                            </option>
+
+                                            <option data-tokens="" >
+                                                DD Shit Done Kit
+                                            </option>
+
+                                            <option data-tokens="" data-id="">
+                                                RRR Shit Done Kit
+                                            </option>
+                                        </select>
                             </div>
                           </div>
 
-                          <div class="row">
+                          <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Qəsəbə</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
-                                    <option disabled selected>Bina ev Mənzil</option>
-                                    <option value="2">Foobar</option>
-                                    <option value="3">Is great</option>
-                                </select>
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                <select class="selectpicker form-group-hm btn-select2-badimcan" data-live-search="true" title="Select the product" name="">
+                                            <option data-tokens="Get Shit Done Kit" >
+                                                Get Shit Done Kit
+                                            </option>
+
+                                            <option data-tokens="" >
+                                                BB Shit Done Kit
+                                            </option>
+
+                                            <option data-tokens="" >
+                                                DD Shit Done Kit
+                                            </option>
+
+                                            <option data-tokens="" data-id="">
+                                                RRR Shit Done Kit
+                                            </option>
+                                        </select>
                             </div>
                           </div>
 
-                          <div class="row">
+                          <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Nişangah</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
-                                    <option disabled selected>Bina ev Mənzil</option>
-                                    <option value="2">Foobar</option>
-                                    <option value="3">Is great</option>
-                                </select>
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                <select class="selectpicker form-group-hm btn-select2-tundgoy" data-live-search="true" title="Select the product" name="">
+                                            <option data-tokens="Get Shit Done Kit" >
+                                                Get Shit Done Kit
+                                            </option>
+
+                                            <option data-tokens="" >
+                                                BB Shit Done Kit
+                                            </option>
+
+                                            <option data-tokens="" >
+                                                DD Shit Done Kit
+                                            </option>
+
+                                            <option data-tokens="" data-id="">
+                                                RRR Shit Done Kit
+                                            </option>
+                                        </select>
                             </div>
                           </div>
             </div> <!-- ilk col-6 1ci hisse -->
@@ -221,10 +215,10 @@
 
                         <div class="row">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Satıcının tipi</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-tundgoy" title="Single Select">
                                     <option disabled selected>Bina ev Mənzil</option>
                                     <option value="2">Foobar</option>
                                     <option value="3">Is great</option>
@@ -232,11 +226,37 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Binanın çıxarışı</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-seher" title="Single Select">
+                                    <option disabled selected>Bina ev Mənzil</option>
+                                    <option value="2">Foobar</option>
+                                    <option value="3">Is great</option>
+                                </select>
+                            </div>
+                          </div>
+
+                          <div class="row rowHeightH ">
+                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                              <h4 class="title text-right">Otaq sayı</h4>
+                            </label>
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
+                                    <option disabled selected>Binanın təmiri</option>
+                                    <option value="2">Foobar</option>
+                                    <option value="3">Is great</option>
+                                </select>
+                            </div>
+                          </div>
+
+                          <div class="row rowHeightH ">
+                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                              <h4 class="title text-right">Yerləşdiyi mər.</h4>
+                            </label>
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
                                 <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
                                     <option disabled selected>Bina ev Mənzil</option>
                                     <option value="2">Foobar</option>
@@ -245,11 +265,11 @@
                             </div>
                           </div>
 
-                          <div class="row">
+                          <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Binanın m/s</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
                                 <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
                                     <option disabled selected>Bina ev Mənzil</option>
                                     <option value="2">Foobar</option>
@@ -258,11 +278,11 @@
                             </div>
                           </div>
 
-                          <div class="row">
+                          <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Dəyəri</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
                                 <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
                                     <option disabled selected>Bina ev Mənzil</option>
                                     <option value="2">Foobar</option>
@@ -271,64 +291,41 @@
                             </div>
                           </div>
 
-                          <div class="row">
+                          <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
+                              <h4 class="title text-right">Sahə</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
-                                    <option disabled selected>Bina ev Mənzil</option>
-                                    <option value="2">Foobar</option>
-                                    <option value="3">Is great</option>
-                                </select>
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                <div class="row">
+                                    <div class="col-md-6 col-6 col-sm-6">
+                                        <input type="text" value="" class="form-control" placeholder="min...">
+                                    </div>
+                                    <div class="col-md-6 col-6 col-sm-6">
+                                        <input type="text" value="" class="form-control" placeholder="max...">
+                                    </div>
+                                </div>
                             </div>
                           </div>
 
-                          <div class="row">
+                          <!-- <div class="row rowHeightH">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
                               <h4 class="title text-right">Elanın Seçimi</h4>
                             </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
+                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
                                 <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
                                     <option disabled selected>Bina ev Mənzil</option>
                                     <option value="2">Foobar</option>
                                     <option value="3">Is great</option>
                                 </select>
                             </div>
-                          </div>
-
-                          <div class="row">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
-                                    <option disabled selected>Bina ev Mənzil</option>
-                                    <option value="2">Foobar</option>
-                                    <option value="3">Is great</option>
-                                </select>
-                            </div>
-                          </div>
-
-                          <div class="row">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
-                                    <option disabled selected>Bina ev Mənzil</option>
-                                    <option value="2">Foobar</option>
-                                    <option value="3">Is great</option>
-                                </select>
-                            </div>
-                          </div>
+                          </div> -->
 
 
             </div> <!-- ilk col-6 2ci hisse -->
         </div> <!-- ilk row -->
 
     </div>
-</div>
+</div></div>
 
 
 
@@ -342,6 +339,47 @@
 
     {!! Html::style('admin/assets/build/huseynzade/css/application.css?v=1.1') !!}
      
+
+     <style type="text/css">
+
+        .btn-select2-red {
+            border-color: red;
+            border:1px solid red;
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        .btn-select2-orange {
+            border-color: #ff9800;
+            border:1px solid #ff9800;
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        .btn-select2-goy {
+            border-color: #00bcd4;
+            border:1px solid #00bcd4;
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        .btn-select2-badimcan {
+            border-color: #9c27b0;
+            border:1px solid #9c27b0;
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        .btn-select2-tundgoy {
+            border-color: #447df7;
+            border:1px solid #447df7;
+            border-radius: 4px;
+            background: #fff;
+        }
+
+
+        
+     </style>
 
     <!-- <style>
         .links_data .col-new,.links_data .col-old,.links_data .col-obj {
@@ -401,8 +439,6 @@
     {!! Html::script('admin/assets/vendors/bootstrap-daterangepicker/daterangepicker.js') !!}
     <!-- select2 -->
     <!-- {!! Html::script('admin/assets/build/new/Plugins/select2.min.js') !!} -->
-
-      {!! Html::script('admin/assets/build/huseynzade/js/application.js') !!}
 
    <!--  <script>
         var dateInput;
