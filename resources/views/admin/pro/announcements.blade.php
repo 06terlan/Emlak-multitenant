@@ -8,10 +8,10 @@
     
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 col-6">
                 <h3>Fərdi Elanlar</h3>
             </div>
-            <div class="col-md-3 ml-auto">
+            <div class="col-md-3 col-6 ml-auto">
                 @if( \App\Library\MyHelper::has_priv("announcement_pro", \App\Library\MyClass::PRIV_CAN_ADD) )
                     <a href="{{ route('announcement_insert',['announcement' => 0]) }}" style="margin-top: 35px; position: absolute; border-radius: 7px; background-color: red " class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> <span style="font-size: 16px"> Elan əlavə et </span></a>
                 @endif

@@ -7,136 +7,67 @@
         <a href="{{ route('tenant_add_edit',['tenant' => 0]) }}" class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> Şirkət Əlavə et</a>
     @endif -->
 
-    <div class="row">
-      <div class="col-md-12">
+       <div class="row">
+        <div class="col-md-12">
           <div class="card">
-            <div class="card-header card-header-rose card-header-icon">
-              <div class="card-icon">
-                <a href="{{ route('tenant_add_edit',['tenant' => 0]) }}"> <i class="material-icons" style="color: #fff">add_to_queue</i> </a>
+              <div class="card-header card-header-rose card-header-icon">
+                <div class="card-icon">
+                  <a href="{{ route('tenant_add_edit',['tenant' => 0]) }}"> <i class="material-icons" style="color: #fff">add_to_queue</i> </a>
+                </div>
+                <h4 class="card-title">Simple Table</h4>
+
               </div>
-              <h4 class="card-title">Şirkətlər</h4>
-            </div>
+
               <div class="card-body">
-                  <div class="toolbar">
-                      <!--        Here you can write extra buttons/actions for the toolbar              -->
+                  <div class="table-responsive">
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th class="text-center">#</th>
+                                  <th>Şirkətin adı</th>
+                                  <th>Tipi</th>
+                                  <th class="text-left">Yaranma vaxtı</th>
+                                  <th class="text-left">Bitmə vaxtı</th>
+                                  <th class="text-right">Tədbirlər</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @foreach ($tenans as $tenan)   
+                              <tr role="row" class="odd">
+                                      <td tabindex="0" class="sorting_1">{{ $tenans->perPage() * ($tenans->currentPage() - 1) + $loop->iteration }}</td>
+                                      <td>{{ $tenan->company_name }}</td>
+                                      <td>{{ $tenan->msk_type->name }}</td>
+                                      <td>{{ \App\Library\Date::d($tenan->created_at, "d-m-Y H:i") }}</td>
+                                      <td>{{ $tenan->last_date == null ? '-' : \App\Library\Date::d($tenan->last_date) }}</td>
+                                      <td class="text-right">
+                                        @if( \App\Library\MyHelper::has_priv('tenant', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
+                                          <a href="{{ route('tenant_add_edit', ['tenant' => $tenan->id]) }}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i></a>
+                                          <a href="{{ route('tenant_delete', ['tenant' => $tenan->id]) }}" class="btn btn-link btn-danger btn-just-icon edit"><i class="material-icons">close</i></a>
+                                          <a href="{{ route('tenant_payment', ['tenant' => $tenan->id]) }}" class="btn btn-link btn-warning btn-just-icon remove"><i class="material-icons">dvr</i></a>
+                                        @endif
+                                      </td>
+                                  </tr>
+                                  @endforeach
+                          </tbody>
+                      </table>
                   </div>
-                  <div class="material-datatables">
-
-                  <div id="datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                    <div class="row">
-                    	<div class="col-sm-12 col-md-6">
-                        <div class="dataTables_length" id="datatables_length">
-                        	<label class="form-group">Göstər <select name="datatables_length" aria-controls="datatables" class="form-control form-control-sm">
-                        		<option value="10">10</option>
-                        		<option value="25">25</option>
-                        		<option value="50">50</option>
-                        		<option value="-1">Bütün</option>
-                        	</select> sıra</label></div></div>
-                        	<div class="col-sm-12 col-md-6">
-                        		<div id="datatables_filter" class="dataTables_filter">
-                        			<label class="form-group bmd-form-group bmd-form-group-sm">
-                        				<input type="search" class="form-control form-control-sm" placeholder="Axtarış qeydləri" aria-controls="datatables">
-                        			</label>
-                        		</div>
-                        	</div>
-                        </div>
-
-                        <!-- Axtaris butonlari -->
-                        	<!-- <div class="row">
-
-                            <div class="col-lg-3 col-md-4 col-sm-3">
-                                <input name="company_name" value="{{ $request->get("company_name") }}" class="form-control formFind" style="margin-top: 15px" placeholder="Şirkətin adı">
-                            </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-3">
-                                <select class="selectpicker form-control formFind" name="type" data-size="7" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="Tipi">
-                                    @foreach (\App\Library\MyClass::$companyTypes as $typeK => $type)
-                                        <option value="{{ $typeK }}" {{ $typeK == $request->get("type") ? 'selected':'' }}> {{ $type }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-3">
-                                <input name="created_at" value="{{ $request->get("created_at") }}" class="form-control formFind" style="margin-top: 15px" placeholder="Yaranma vaxtı">
-                            </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-3">
-                                <input name="last_date" value="{{ $request->get("last_date") }}" class="form-control formFind" style="margin-top: 15px" placeholder="Bitmə vaxtı">
-                            </div>
-                        </div> -->
-                        <!-- Axtaris Butonlari son -->
-
-                        <div class="row">
-                        	<div class="col-sm-12">
-                        		<table id="datatables" class="table table-striped table-no-bordered table-hover dataTable dtr-inline" cellspacing="0" width="100%" style="width: 100%;" role="grid" aria-describedby="datatables_info">
-                      <thead>
-                          <tr role="row">
-                            <th></th>
-                            <th> <input name="company_name" value="{{ $request->get("company_name") }}" class="form-control formFind" style="margin-top: 15px" placeholder="Şirkətin adı"> </th>
-                            <th>
-                            	<select class="selectpicker form-control formFind" name="type" data-size="7" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="Tipi">
-                                    @foreach (\App\Library\MyClass::$companyTypes as $typeK => $type)
-                                        <option value="{{ $typeK }}" {{ $typeK == $request->get("type") ? 'selected':'' }}> {{ $type }} </option>
-                                    @endforeach
-                                </select>
-                            </th>
-                            <th> <input name="created_at" value="{{ $request->get("created_at") }}" class="form-control formFind" style="margin-top: 15px" placeholder="Yaranma vaxtı"> </th>
-                            <th > <input name="last_date" value="{{ $request->get("last_date") }}" class="form-control formFind" style="margin-top: 15px" placeholder="Bitmə vaxtı"> </th>
-                            <th ></th>
-                        </tr>
-                      </thead>
-
-                      <thead>
-                          <tr role="row">
-                            <th class="sorting_asc" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 152px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">ID</th>
-                            <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 152px;" aria-label="Position: activate to sort column ascending">Şirkətin adı</th>
-                            <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 153px;" aria-label="Office: activate to sort column ascending">Tipi</th>
-                            <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 153px;" aria-label="Age: activate to sort column ascending">Yaranma vaxtı</th>
-                            <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 153px;" aria-label="Date: activate to sort column ascending">Bitmə vaxtı</th>
-                            <th class="disabled-sorting text-right sorting" tabindex="0" aria-controls="datatables" rowspan="1" colspan="1" style="width: 153px;" aria-label="Actions: activate to sort column ascending">Tədbirlər</th>
-                        </tr>
-                      </thead>
-
-                      <tfoot>
-                          <tr><th rowspan="1" colspan="1">ID</th><th rowspan="1" colspan="1">Şirkətin adı</th><th rowspan="1" colspan="1">Tipi</th><th rowspan="1" colspan="1">Yaranma vaxtı</th><th rowspan="1" colspan="1">Bitmə vaxtı</th><th class="text-right" rowspan="1" colspan="1">Tədbirlər</th></tr>
-                      </tfoot>
-                      <tbody>          
-                       @foreach ($tenans as $tenan)   
-                      <tr role="row" class="odd">
-                              <td tabindex="0" class="sorting_1">{{ $tenans->perPage() * ($tenans->currentPage() - 1) + $loop->iteration }}</td>
-                              <td>{{ $tenan->company_name }}</td>
-                              <td>{{ $tenan->msk_type->name }}</td>
-                              <td>{{ \App\Library\Date::d($tenan->created_at, "d-m-Y H:i") }}</td>
-                              <td>{{ $tenan->last_date == null ? '-' : \App\Library\Date::d($tenan->last_date) }}</td>
-                              <td class="text-right">
-                                @if( \App\Library\MyHelper::has_priv('tenant', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
-                                  <a href="{{ route('tenant_add_edit', ['tenant' => $tenan->id]) }}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i></a>
-                                  <a href="{{ route('tenant_delete', ['tenant' => $tenan->id]) }}" class="btn btn-link btn-danger btn-just-icon edit"><i class="material-icons">close</i></a>
-                                  <a href="{{ route('tenant_payment', ['tenant' => $tenan->id]) }}" class="btn btn-link btn-warning btn-just-icon remove"><i class="material-icons">dvr</i></a>
-                                @endif
-                              </td>
-                          </tr>
-                          @endforeach
-                      </tbody>
-
-                  </table>
               </div>
-          </div>
+
+
         <div class="row" style="margin-top: 15px">
             <div class="col-sm-12 col-md-5">
-                <div class="dataTables_info" id="datatables_info" role="status" aria-live="polite">
-                	<span style="font-weight: 700">40 </span>Şirkətdən <span style="font-weight: 700">1</span> ilə <span style="font-weight: 700">10</span> arasında göstərilir </div>
+                <!-- <div class="dataTables_info" id="datatables_info" role="status" aria-live="polite">
+                  <span style="font-weight: 700">40 </span>Şirkətdən <span style="font-weight: 700">1</span> ilə <span style="font-weight: 700">10</span> arasında göstərilir </div> -->
             </div>
-        <div class="col-sm-12 col-md-7">
+        <div class="col-sm-12 col-md-7 ml-right mr-right">
             {{ $tenans->appends($request->except('page'))->links('admin.pagination', ['paginator' => $tenans]) }}
         </div>
     </div>
-</div>
-                  </div>
-              </div><!-- end content-->
-          </div><!--  end card  -->
-      </div> <!-- end col-md-12 -->
-  </div> <!-- end row -->
+      </div>
+    </div>
+  </div>
+
+
 
            
 
