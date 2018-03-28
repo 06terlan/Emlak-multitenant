@@ -232,7 +232,9 @@ class GetDatas extends Command
             'roomCountDom'  => ['#openhalf .infotd2', 1],
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
         ]))->getObjectData();
         $this->info(" vipemlak.az [new_bulding TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -255,7 +257,9 @@ class GetDatas extends Command
             'roomCountDom'  => ['#openhalf .infotd2', 1],
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
         ]))->getObjectData();
         $this->info(" vipemlak.az [new_bulding TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -279,7 +283,9 @@ class GetDatas extends Command
             'roomCountDom'  => ['#openhalf .infotd2', 1],
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
         ]))->getObjectData();
         $this->info(" vipemlak.az [old_building TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -302,7 +308,9 @@ class GetDatas extends Command
             'roomCountDom'  => ['#openhalf .infotd2', 1],
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
         ]))->getObjectData();
         $this->info(" vipemlak.az [old_building TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -326,7 +334,9 @@ class GetDatas extends Command
             'roomCountDom'  => ['#openhalf .infotd2', 1],
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" vipemlak.az [house TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -349,7 +359,9 @@ class GetDatas extends Command
             'roomCountDom'  => ['#openhalf .infotd2', 1],
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" vipemlak.az [house TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -373,7 +385,9 @@ class GetDatas extends Command
             'roomCountDom'  => ['#openhalf .infotd2', 1],
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
         ]))->getObjectData();
         $this->info(" vipemlak.az [object TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -396,7 +410,9 @@ class GetDatas extends Command
             'roomCountDom'  => ['#openhalf .infotd2', 1],
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
         ]))->getObjectData();
         $this->info(" vipemlak.az [object TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -420,7 +436,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => ['#openhalf .infotd2', 1],
             'placeDom'      => ['#openhalf .infotd100', 1],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" vipemlak.az [land TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -432,7 +450,7 @@ class GetDatas extends Command
         //new_bulding
         $count = (new SiteComp([
             'link'          => 'https://bina.az/items?q[city_id]=&q[category_id]=2&q[leased]=true',
-            'objectsDom'    => [['.items_list', 0] , ['.items-i']],
+            'objectsDom'    => [['.items_list', 1] , ['.items-i']],
             'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
@@ -448,14 +466,16 @@ class GetDatas extends Command
             'roomCountDom'  => [['.parameters tr', 3], ['td', 1]],
             'areaDom'       => [['.parameters tr', 2], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.parameters', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.parameters', 0]], //
         ]))->getObjectData();
         $this->info(" bina.az [new_bulding TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
 
         $count = (new SiteComp([
             'link'          => 'https://bina.az/items?q[city_id]=&q[category_id]=2&q[leased]=false',
-            'objectsDom'    => [['.items_list', 0] , ['.items-i']],
+            'objectsDom'    => [['.items_list', 1] , ['.items-i']],
             'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
@@ -471,7 +491,9 @@ class GetDatas extends Command
             'roomCountDom'  => [['.parameters tr', 3], ['td', 1]],
             'areaDom'       => [['.parameters tr', 2], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.parameters', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.parameters', 0]], //
         ]))->getObjectData();
         $this->info(" bina.az [new_bulding TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -479,7 +501,7 @@ class GetDatas extends Command
         //old_building
         $count = (new SiteComp([
             'link'          => 'https://bina.az/items?q[city_id]=&q[category_id]=3&q[leased]=true',
-            'objectsDom'    => [['.items_list', 0] , ['.items-i']],
+            'objectsDom'    => [['.items_list', 1] , ['.items-i']],
             'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
@@ -495,14 +517,16 @@ class GetDatas extends Command
             'roomCountDom'  => [['.parameters tr', 3], ['td', 1]],
             'areaDom'       => [['.parameters tr', 2], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.parameters', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.parameters', 0]], //
         ]))->getObjectData();
         $this->info(" bina.az [old_building TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
 
         $count = (new SiteComp([
             'link'          => 'https://bina.az/items?q[city_id]=&q[category_id]=3&q[leased]=false',
-            'objectsDom'    => [['.items_list', 0] , ['.items-i']],
+            'objectsDom'    => [['.items_list', 1] , ['.items-i']],
             'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
@@ -518,7 +542,9 @@ class GetDatas extends Command
             'roomCountDom'  => [['.parameters tr', 3], ['td', 1]],
             'areaDom'       => [['.parameters tr', 2], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.parameters', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.parameters', 0]], //
         ]))->getObjectData();
         $this->info(" bina.az [old_building TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -526,7 +552,7 @@ class GetDatas extends Command
         //land
         $count = (new SiteComp([
             'link'          => 'https://bina.az/items?q[city_id]=&q[category_id]=9&q[leased]=false',
-            'objectsDom'    => [['.items_list', 0] , ['.items-i']],
+            'objectsDom'    => [['.items_list', 1] , ['.items-i']],
             'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
@@ -542,7 +568,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" bina.az [land TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -550,7 +578,7 @@ class GetDatas extends Command
         //object
         $count = (new SiteComp([
             'link'          => 'https://bina.az/items?q[city_id]=&q[category_id]=10&q[leased]=true',
-            'objectsDom'    => [['.items_list', 0] , ['.items-i']],
+            'objectsDom'    => [['.items_list', 1] , ['.items-i']],
             'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
@@ -566,14 +594,16 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.side article', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.side article', 0]], //
         ]))->getObjectData();
         $this->info(" vipemlak.az [object TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
 
         $count = (new SiteComp([
             'link'          => 'https://bina.az/items?q[city_id]=&q[category_id]=10&q[leased]=false',
-            'objectsDom'    => [['.items_list', 0] , ['.items-i']],
+            'objectsDom'    => [['.items_list', 1] , ['.items-i']],
             'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
@@ -589,7 +619,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.side article', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.side article', 0]], //
         ]))->getObjectData();
         $this->info(" vipemlak.az [object TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -597,7 +629,7 @@ class GetDatas extends Command
         //office
         $count = (new SiteComp([
             'link'          => 'https://bina.az/items?q[city_id]=&q[category_id]=7&q[leased]=true',
-            'objectsDom'    => [['.items_list', 0] , ['.items-i']],
+            'objectsDom'    => [['.items_list', 1] , ['.items-i']],
             'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
@@ -613,14 +645,16 @@ class GetDatas extends Command
             'roomCountDom'  => [['.parameters tr', 3], ['td', 1]],
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.side article', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.side article', 0]], //
         ]))->getObjectData();
         $this->info(" bina.az [office TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
 
         $count = (new SiteComp([
             'link'          => 'https://bina.az/items?q[city_id]=&q[category_id]=7&q[leased]=false',
-            'objectsDom'    => [['.items_list', 0] , ['.items-i']],
+            'objectsDom'    => [['.items_list', 1] , ['.items-i']],
             'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
@@ -636,7 +670,9 @@ class GetDatas extends Command
             'roomCountDom'  => [['.parameters tr', 3], ['td', 1]],
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.side article', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.side article', 0]], //
         ]))->getObjectData();
         $this->info(" bina.az [office TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -644,7 +680,7 @@ class GetDatas extends Command
         //garden_house
         $count = (new SiteComp([
             'link'          => 'https://bina.az/items?q[city_id]=&q[category_id]=6&q[leased]=true',
-            'objectsDom'    => [['.items_list', 0] , ['.items-i']],
+            'objectsDom'    => [['.items_list', 1] , ['.items-i']],
             'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
@@ -660,14 +696,16 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" bina.az [garden_house TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
 
         $count = (new SiteComp([
             'link'          => 'https://bina.az/items?q[city_id]=&q[category_id]=6&q[leased]=false',
-            'objectsDom'    => [['.items_list', 0] , ['.items-i']],
+            'objectsDom'    => [['.items_list', 1] , ['.items-i']],
             'linkDom'       => ['a.item_link', 0],
             'location'      => 'https://bina.az',
             'headerDom'     => '.price_header .services-container h1',
@@ -683,7 +721,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" bina.az [garden_house TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -711,7 +751,9 @@ class GetDatas extends Command
             'roomCountDom'  => [['.property', 4], ['.property-value', 0]],
             'areaDom'       => [['.property', 3], ['.property-value', 0]],
             'placeDom'      => [['.property', 5], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.lot-body .lot-text', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.lot-body .lot-text', 0]], //
         ]))->getObjectData();
         $this->info(" tap.az [new_bulding TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -734,7 +776,9 @@ class GetDatas extends Command
             'roomCountDom'  => [['.property', 4], ['.property-value', 0]],
             'areaDom'       => [['.property', 3], ['.property-value', 0]],
             'placeDom'      => [['.property', 5], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.lot-body .lot-text', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.lot-body .lot-text', 0]], //
         ]))->getObjectData();
         $this->info(" tap.az [new_bulding TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -758,7 +802,9 @@ class GetDatas extends Command
             'roomCountDom'  => [['.property', 4], ['.property-value', 0]],
             'areaDom'       => [['.property', 3], ['.property-value', 0]],
             'placeDom'      => [['.property', 5], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.lot-body .lot-text', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.lot-body .lot-text', 0]], //
         ]))->getObjectData();
         $this->info(" tap.az [old_building TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -781,7 +827,9 @@ class GetDatas extends Command
             'roomCountDom'  => [['.property', 4], ['.property-value', 0]],
             'areaDom'       => [['.property', 3], ['.property-value', 0]],
             'placeDom'      => [['.property', 5], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.lot-body .lot-text', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.lot-body .lot-text', 0]], //
         ]))->getObjectData();
         $this->info(" tap.az [old_building TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -806,6 +854,8 @@ class GetDatas extends Command
             'areaDom'       => [['.property', 3], ['.property-value', 0]],
             'placeDom'      => [['.property', 4], ['.property-value', 0]],
             'metroDom'      => ['function', 'getMetroTapaz'], //
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" tap.az [garden_house TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -828,7 +878,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => [['.property', 3], ['.property-value', 0]],
             'placeDom'      => [['.property', 4], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" tap.az [garden_house TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -852,7 +904,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => [['.property', 3], ['.property-value', 0]],
             'placeDom'      => [['.property', 4], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" tap.az [house TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -875,7 +929,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => [['.property', 3], ['.property-value', 0]],
             'placeDom'      => [['.property', 4], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" tap.az [house TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -899,7 +955,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => [['.property', 3], ['.property-value', 0]],
             'placeDom'      => [['.property', 4], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" tap.az [villa TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -922,7 +980,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => [['.property', 3], ['.property-value', 0]],
             'placeDom'      => [['.property', 4], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" tap.az [villa TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -946,7 +1006,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => null,
             'placeDom'      => [['.property', 3], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.lot-body .lot-text', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.lot-body .lot-text', 0]], //
         ]))->getObjectData();
         $this->info(" tap.az [office TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -969,7 +1031,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => null,
             'placeDom'      => [['.property', 3], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.lot-body .lot-text', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.lot-body .lot-text', 0]], //
         ]))->getObjectData();
         $this->info(" tap.az [office TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -993,7 +1057,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => null,
             'placeDom'      => [['.property', 3], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.lot-body .lot-text', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.lot-body .lot-text', 0]], //
         ]))->getObjectData();
         $this->info(" tap.az [object TYPE_ICARE] count: ".$count." \n");
         $bar->advance();
@@ -1016,7 +1082,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => null,
             'placeDom'      => [['.property', 3], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.lot-body .lot-text', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.lot-body .lot-text', 0]], //
         ]))->getObjectData();
         $this->info(" tap.az [object TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -1040,7 +1108,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => [['.property', 1], ['.property-value', 0]],
             'placeDom'      => [['.property', 2], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" tap.az [land TYPE_SATISH] count: ".$count." \n");
         $bar->advance();
@@ -1064,7 +1134,9 @@ class GetDatas extends Command
             'roomCountDom'  => null,
             'areaDom'       => null,
             'placeDom'      => null,
-            'metroDom'      => ['function', 'getMetroTapaz'], //
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ]))->getObjectData();
         $this->info(" tap.az [garage TYPE_SATISH] count: ".$count." \n");
         $bar->advance();

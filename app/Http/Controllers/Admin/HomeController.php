@@ -124,27 +124,28 @@ class HomeController extends Controller
 
     public function test()
     {
-        $count = 0;/*(new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/apartments?p[740]=3724&p[747]=3850',
-            'objectsDom'    => '.categories-products .products .products-i',
-            'linkDom'       => '$this',
-            'location'      => 'http://tap.az',
-            'headerDom'     => '.lot-header .title-container h1',
-            'contentDom'    => '.lot-body .lot-text',
-            'amountDom'     => '.lot-header .price .price-val',
-            'dateDom'       => '.aside-page .lot-info',
-            'owner'         => ['.author .name', 0],
-            'mobnom'        => ['.author .phone', 0],
-            'type'          => 'building',
-            'buldingType'   => self::TYPE_ICARE,
-            'type2'         => 'new', //
-            'cityDom'       => ['function', 'tapazGetCity'],
-            'roomCountDom'  => [['.property', 4], ['.property-value', 0]],
-            'areaDom'       => [['.property', 3], ['.property-value', 0]],
-            'placeDom'      => [['.property', 5], ['.property-value', 0]],
-            'metroDom'      => ['function', 'getMetroTapaz'], //
-            'picDom'        => ['function', 'getMetroTapaz']
-        ],true))->getObjectData(false);*/
+        $count = (new SiteComp([
+            'link'          => 'http://vipemlak.az/heyet-evi-villa-satilir',
+            'objectsDom'    => '.pranto',
+            'linkDom'       => ['a', 0],
+            'location'      => 'http://vipemlak.az',
+            'headerDom'     => 'article h1',
+            'contentDom'    => '#openhalf .infotd100',
+            'amountDom'     => '.infotd2 .pricecolor',
+            'dateDom'       => '.clearfix .viewsbb',
+            'owner'         => ['#openhalf .infotd2', 4],
+            'mobnom'        => ['#openhalf .infotd2', 5],
+            'type'          => 'house',
+            'buldingType'   => self::TYPE_SATISH,
+            'type2'         => null,
+            'cityDom'       => ['function', 'vipemlakGetCity'],
+            'roomCountDom'  => ['#openhalf .infotd2', 1],
+            'areaDom'       => ['#openhalf .infotd2', 2],
+            'placeDom'      => ['#openhalf .infotd100', 1],
+            'metroDom'      => ['function', 'getMetroTapaz'],
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
+        ],true))->getObjectData(false);
 
         return "End " . $count;
     }

@@ -106,16 +106,32 @@ class SiteComp
 
             $metro = @$this->findEr($htmlAlt, $this->dataArr['metroDom'])['plaintext'];
 
+            if( $this->dataArr['locatedFloorDom'] !== null ) {
+                $locatedFloorDom = @$this->findEr($htmlAlt, $this->dataArr['locatedFloorDom'])['plaintext'];
+                //if($locatedFloorDom === null){ $this->errorLog->error("[" . $this->location.$link . "] Yerlsdiyi metebe tapilmadi -> [locatedFloorDom]"); continue; }
+            }
+            else{
+                $locatedFloorDom = null;
+            }
+
+            if( $this->dataArr['floorCountDom'] !== null ) {
+                $floorCountDom = @$this->findEr($htmlAlt, $this->dataArr['floorCountDom'])['plaintext'];
+                //if($floorCountDom === null){ $this->errorLog->error("[" . $this->location.$link . "] Yerlsdiyi metebe tapilmadi -> [floorCountDom]"); continue; }
+            }
+            else{
+                $floorCountDom = null;
+            }
+
             $date       = @$htmlAlt->find( $this->dataArr['dateDom'] )[0]->plaintext;
             $realDate	= $this->createDate($date);
             if($date === null || $realDate === false ){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [dateDom]"); continue; }
 
-            if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro ))
+            if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro, $locatedFloorDom, $floorCountDom ))
             {
             	break;
             }
 
-            $count++; //break;//sadasdasd
+            $count++; break;//sadasdasd
         }
 
         return $count;
@@ -144,7 +160,7 @@ class SiteComp
         return $match[0];
     }
 
-    private function InsetCheck( $link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro )
+    private function InsetCheck( $link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro, $locatedFloorDom, $floorCountDom )
     {
         if( $toDay === true && date("Y-m-d") != $realDate ) return false;
 
@@ -164,7 +180,9 @@ class SiteComp
         $announcement->place = str_limit(trim($placeDom),255,"");
         $announcement->owner = str_limit(trim($owner), 40, "");
         $announcement->metro_id = $metro;
-    	$announcement->save();
+        $announcement->locatedFloor = $locatedFloorDom;
+        $announcement->floorCount = $floorCountDom;
+        $announcement->save();
 
     	$numbers = [];
         foreach ($this->createMob($mobnom) as $number)
@@ -194,7 +212,8 @@ class SiteComp
         else if(isset($find[0]) && $find[0] == 'function')
         {
             $func = "App\Library\DataFunctions\Functions::" . $find[1];
-            return $func($this, $where);
+            $data = isset($find[2]) ? $find[2] : null;
+            return $func($this, $where, $data);
         }
 
         if( is_array($find) )

@@ -15,7 +15,7 @@ use App\Models\MskCity;
 
 class Functions
 {
-    # tapaz
+    #region tapaz
     public static function tapazGetCity($tt, $where)
     {
         $cityName     = @$tt->findEr($where, [['.property', 0], ['.property-value', 0]])->plaintext;
@@ -43,10 +43,44 @@ class Functions
         return ['plaintext' => null];
     }
 
-    # vipemlak
+    public static function getFloorCountTapaz($tt, $where, $data)
+    {
+        $floors     = @$tt->findEr($where, $data)->plaintext;
+        if($floors == null) ['plaintext' => null];
+
+        if(preg_match('/((\d+)[ -]{0,}m[əe]rt[əe]b[əe](li|nin))|((\d+)[-\w ]{0,}(том)?[ ]{0,}этаже)/iu', $floors, $matches))
+            return ['plaintext' => (int)$matches[0]];
+
+        if(preg_match('/(\d+)[ ]{0,}[\/-][ ]{0,}(\d+)/iu', $floors, $matches))
+            return ['plaintext' => (int)max($matches[1],$matches[2]) ];
+
+        return ['plaintext' => null];
+    }
+
+    public static function getlocatedFloorTapaz($tt, $where, $data)
+    {
+        $floors     = @$tt->findEr($where, $data)->plaintext;
+        if($floors == null) ['plaintext' => null];
+
+        if(preg_match('/((\d+)[cuüıi.\- ]+m[əe]rt[əe]b[əe]si)|((\d+)[-\w ](ти)? этажного)/iu', $floors, $matches))
+            return ['plaintext' => (int)$matches[0]];
+
+        if(preg_match('/(\d+)[ ]{0,}[\/-][ ]{0,}(\d+)/iu', $floors, $matches))
+            return ['plaintext' => (int)min($matches[1],$matches[2]) ];
+
+        return ['plaintext' => null];
+    }
+    #endregion
+
+    #region vipemlak
     public static function vipemlakGetCity($tt, $where)
     {
         $city = MskCity::where('pure_name', MyHelper::pureString('baki'))->first();
         return ['plaintext' => ( $city ? $city->id : 0 ) ];
     }
+    #endregion
+
+    #region binaaz
+
+    #endregion
 }
