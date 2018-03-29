@@ -34,7 +34,7 @@
             </ul>
         </nav>
         <div class="copyright pull-right">
-            &copy; <script>document.write(new Date().getFullYear())</script>, <i class="material-icons">favorite</i> by <a href="" target="_blank">Hüseynzadə</a>
+            &copy; <script>document.write(new Date().getFullYear())</script>,  <a href="" target="_blank">Hüseynzadə</a>
         </div>
     </div>
 
@@ -55,7 +55,7 @@
         </a>
 
         <ul class="dropdown-menu">
-                  <li class="header-title"> Sidebar Filters</li>
+                  <li class="header-title"> Menunun göstərİş rəngİ</li>
             <li class="adjustments-line">
                 <a href="javascript:void(0)" class="switch-trigger active-color">
                     <div class="ml-auto mr-auto">
@@ -71,7 +71,7 @@
                 </a>
             </li>
 
-            <li class="header-title">Sidebar Background</li>
+            <li class="header-title">Menu arxa fon</li>
               <li class="adjustments-line">
                   <a href="javascript:void(0)" class="switch-trigger background-color">
                       <div class="ml-auto mr-auto">
@@ -85,7 +85,7 @@
 
             <li class="adjustments-line">
                 <a href="javascript:void(0)" class="switch-trigger">
-                    <p>Sidebar Mini</p>
+                    <p>Kiçik menu</p>
                     <label class="ml-auto">
                       <div class="togglebutton switch-sidebar-mini">
                         <label>
@@ -100,7 +100,7 @@
 
             <li class="adjustments-line">
                 <a href="javascript:void(0)" class="switch-trigger">
-                    <p>Sidebar Images</p>
+                    <p>Menu Şəkili</p>
                     <label class="switch-mini ml-auto">
                       <div class="togglebutton switch-sidebar-image">
                         <label>
@@ -113,7 +113,7 @@
                 </a>
             </li>
 
-            <li class="header-title">Images</li>
+            <li class="header-title">Menunun şəkilləri</li>
 
             <li class="active">
                 <a class="img-holder switch-trigger" href="javascript:void(0)">
@@ -136,18 +136,18 @@
                 </a>
             </li>
 
-            <li class="button-container">
+            <!-- <li class="button-container">
                 <div>
-                    <a href="" target="_blank" class="btn btn-rose btn-block btn-fill">Buy now!</a>
+                    <a href="" target="_blank" class="btn btn-rose btn-block btn-fill">Sifariş ver</a>
                 </div>
-            </li>
+            </li> -->
 
-            <li class="button-container">
+            <!-- <li class="button-container">
                 <div>
                     <a href="" target="_blank" class="btn btn-info btn-block">Get free demo!</a>
                 </div>
-            </li>
-            <li class="header-title" id="sharrreTitle">Thank you for 95 shares!</li>
+            </li> -->
+            <li class="header-title" id="sharrreTitle"><span style="color: red; font-size: 16px;">95</span> Paylaşım üçün Təşəkkür edİrİk!</li>
 
             <li class="button-container">
                         <button id="twitter" class="btn btn-social btn-twitter btn-round sharrre"><i class="fa fa-twitter"></i> · 45</button>
