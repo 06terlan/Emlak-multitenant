@@ -115,7 +115,12 @@
                   <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
               </button>
             </div>
-                  <a class="navbar-brand" href="#huseynzade">Dashboard</a>
+
+          
+                  @if( \App\Library\MyHelper::has_priv($v['route'], $v['priv']) )
+                  <a class="navbar-brand" href="#huseynzade">{{ $val['name'] }}</a>
+                  @endif
+               
               </div>
 
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -145,20 +150,22 @@
             </p>
                     </a>
                 </li>
+                @php
+                            $count = App\Models\Announcement::todayAnnouncements()->count();
+                            $countStr = $count;
+                            if( $countStr > \App\Library\MyClass::INFO_COUNT ) $countStr = \App\Library\MyClass::INFO_COUNT."+";
+                        @endphp
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true" >
             <i class="material-icons">notifications</i>
-            <span class="notification">5</span>
+            <span class="notification" id="not-count">{{ $countStr }}</span>
                         <p>
                             <span class="d-lg-none d-md-block"> Gələn elan</span>
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        @php
-                            $count = App\Models\Announcement::todayAnnouncements()->count();
-                            $countStr = $count;
-                            if( $countStr > \App\Library\MyClass::INFO_COUNT ) $countStr = \App\Library\MyClass::INFO_COUNT."+";
-                        @endphp
+                        @include('admin.notfication', ['announcements' => App\Models\Announcement::todayAnnouncements()->take(\App\Library\MyClass::INFO_COUNT)->get()])
+                        
                     </div>
                 </li>
 

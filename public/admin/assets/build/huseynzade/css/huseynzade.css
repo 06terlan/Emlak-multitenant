@@ -235,3 +235,9 @@
         .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
             width: 100% !important;
         }
+
+    .btn-tekrar-modal {
+      padding: 5px 0;
+      width: 25px;
+      height: 25px;
+    }
