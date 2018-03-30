@@ -17,6 +17,7 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'tenant'] ], function(){
 
 	Route::get('{home?}', 'Admin\HomeController@home')->where('home','home')->name('home');
+    Route::get('/lock', 'Admin\HomeController@lock')->name('lock');
 
 	//dashboard
     Route::get('dashboard', 'Admin\HomeController@index')->where('dashboard','dashboard')->name('dashboard')->middleware('priv:dashboard,'.\App\Library\MyClass::PRIV_CAN_SEE);

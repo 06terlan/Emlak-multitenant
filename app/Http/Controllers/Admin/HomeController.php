@@ -39,6 +39,12 @@ class HomeController extends Controller
         return view( 'admin.home');
     }
 
+    public function lock()
+    {
+        return view( 'admin.lock');
+    }
+
+
     /**
      * Show the application dashboard.
      *
