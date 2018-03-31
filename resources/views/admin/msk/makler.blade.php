@@ -13,10 +13,10 @@
           <div class="card-header card-header-warning card-header-icon">
               <div class="card-icon">
                 @if( \App\Library\MyHelper::has_priv('msk_makler', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
-                <a href="{{ route('msk_makler_add_edit',['makler' => 0]) }}"> <i class="material-icons" style="color: #fff">location_city</i> </a>
+                <a href="{{ route('msk_makler_add_edit',['makler' => 0]) }}"> <i class="material-icons" style="color: #fff">perm_contact_calendar</i> </a>
                 @endif
               </div>
-              <h4 class="card-title">Şirkətlər</h4>
+              <h4 class="card-title">Agentlər</h4>
             </div>
 
             <div class="card-body table-responsive">

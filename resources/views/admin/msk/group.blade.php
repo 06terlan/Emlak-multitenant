@@ -13,10 +13,10 @@
           <div class="card-header card-header-warning card-header-icon">
               <div class="card-icon">
                 @if(\App\Library\MyHelper::has_priv("msk_group", \App\Library\MyClass::PRIV_CAN_ADD))
-                <a href="{{ route('msk_group_add_edit',['group' => 0]) }}"> <i class="material-icons" style="color: #fff">location_city</i> </a>
+                <a href="{{ route('msk_group_add_edit',['group' => 0]) }}"> <i class="material-icons" style="color: #fff">speaker_group</i> </a>
                 @endif
               </div>
-              <h4 class="card-title">Şirkətlər</h4>
+              <h4 class="card-title">Gruplar</h4>
             </div>
 
             <div class="card-body table-responsive">
