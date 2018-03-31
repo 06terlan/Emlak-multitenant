@@ -43,6 +43,24 @@ class Functions
         return ['plaintext' => null];
     }
 
+    public static function getDistrictTapaz($tt, $where)
+    {
+        if( $tt->pageData['placeDom'] ){
+            foreach (MyClass::$district as $key => $metro)
+                if(preg_match($metro[1], $tt->pageData['placeDom'])) return ['plaintext' => $key];
+        }
+        if( $tt->pageData['headerDom'] ){
+            foreach (MyClass::$district as $key => $metro)
+                if(preg_match($metro[1], $tt->pageData['headerDom'])) return ['plaintext' => $key];
+        }
+        if( $tt->pageData['contentDom'] ){
+            foreach (MyClass::$district as $key => $metro)
+                if(preg_match($metro[1], $tt->pageData['contentDom'])) return ['plaintext' => $key];
+        }
+
+        return ['plaintext' => null];
+    }
+
     public static function getFloorCountTapaz($tt, $where, $data)
     {
         $floors     = @$tt->findEr($where, $data)->plaintext;

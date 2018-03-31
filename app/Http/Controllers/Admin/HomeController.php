@@ -149,6 +149,7 @@ class HomeController extends Controller
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
         ],true))->getObjectData(false);
