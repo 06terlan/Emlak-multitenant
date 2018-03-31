@@ -145,7 +145,7 @@
                             </div>
                           </div>
 
-                          <div class="row rowHeightH ">
+                          <!-- <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
                               <h4 class="title text-right">Qəsəbə</h4>
                             </label>
@@ -168,7 +168,7 @@
                                             </option>
                                         </select>
                             </div>
-                          </div>
+                          </div> -->
 
                           <div class="row rowHeightH ">
                             <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">

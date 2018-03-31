@@ -83,9 +83,24 @@
                     </div>
                 </div>
             <div class="card-footer">
+
                 <div class="price">
                     <h4> <img src="assets/build/huseynzade/img/azn.png" style="width: 15px" alt="AZN"> {{ (int)$announcement->amount }} / {{ $announcement->getBuldingType() }}</h4>
+
                 </div>
+                <div class="form-check" style="margin-top: -15px">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" ann_id="{{ $announcement->id }}">
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                    </label>
+                </div>
+
+            <!--     <div class="check_div">
+                        <input type="checkbox" class="flat" ann_id="{{ $announcement->id }}">
+                    </div> -->
+
                 <div class="stats">
                     <p class="category"><i class="material-icons">place</i> {{ str_limit($announcement->city->name . '') }}, AZ</p>
                 </div>

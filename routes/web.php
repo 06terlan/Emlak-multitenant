@@ -18,7 +18,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'tenant'] ], functio
 
 	Route::get('{home?}', 'Admin\HomeController@home')->where('home','home')->name('home');
     Route::get('/lock', 'Admin\HomeController@lock')->name('lock');
-    Route::get('/password', 'Admin\HomeController@lock')->name('password');
 
 
 	//dashboard
@@ -29,9 +28,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'tenant'] ], functio
 	Route::post('profile/{which}', 'Admin\ProfileController@update')->where('which','[12]');
 
     //password/profile
-    /*Route::get('password', 'Admin\PasswordController@password');
+    Route::get('password', 'Admin\PasswordController@index');
+
     Route::post('password/{which}', 'Admin\PasswordController@password')->where('which','[12]');
-	*/
+	
 	//users
 	Route::get('users', 'Admin\UsersController@index')->name('users')->middleware('priv:users,'.\App\Library\MyClass::PRIV_CAN_SEE);
 	Route::get('users/addEdit/{user}', 'Admin\UsersController@addEdit')->where('user','[0-9]{1,}')->name('user_add_edit')->middleware('priv:users,'.\App\Library\MyClass::PRIV_CAN_ADD);
