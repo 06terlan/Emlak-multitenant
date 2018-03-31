@@ -9,7 +9,6 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
-use Validator;
 use Illuminate\Http\Request;
 
 class PasswordController extends Controller

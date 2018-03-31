@@ -164,8 +164,7 @@
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        
-                        @include('admin.notfication', ['announcements' => App\Models\Announcement::todayAnnouncements()->take(\App\Library\MyClass::INFO_COUNT)->get()])
+
                         
 
                         
