@@ -46,28 +46,7 @@ class PasswordController extends Controller
     }
 
      //
-    private function updateUserData(Request $request)
-    {
-        $user = User::find(Auth::user()->id);
-
-        if($request->hasFile('image') && $request->file('image')->isValid() && in_array($request->file('image')->getClientOriginalExtension(),MyClass::$imageTypes))
-        {
-            $image = $request->file('image');
-            $filename = str_random(20) . "." . $image->getClientOriginalExtension();
-            $path = public_path( MyClass::USER_PROFIL_PIC_DIR . $filename );
-
-            $user->deletePic();
-
-            Image::make($image->getRealPath())->resize(200, 200)->save($path);
-            $user->thumb = $filename;
-        }
-
-
-        $user->firstname    = $request->input("name");
-        $user->surname      = $request->input("surname","");
-        $user->email        = $request->input("email");
-        $user->save();
-    }
+  
    
     private function updateUserDataPass(Request $request)
     {

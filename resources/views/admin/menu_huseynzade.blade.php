@@ -1,10 +1,5 @@
-
-
-
-
-
-        <div class="wrapper">
-            <div class="sidebar" data-color="rose" data-background-color="black" data-image="../admin/assets/build/huseynzade/img/sidebar-1.jpg">
+    <div class="wrapper">
+            <div class="sidebar" data-color="rose" data-background-color="black" data-image="{{ asset('/admin/assets/build/huseynzade/img/sidebar-1.jpg') }}">
     <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -52,7 +47,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ URL::to('admin/password') }}">
                               <span class="sidebar-mini"> P </span>
                               <span class="sidebar-normal"> Parolu dəyiş </span>
                             </a>
@@ -143,7 +138,7 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="lock">
+                    <a class="nav-link" href="{{ URL::to('admin/lock') }}">
             <i class="material-icons">lock</i>
                         <p>
               <span class="d-lg-none d-md-block">bağla</span>
@@ -166,7 +161,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 
                         
-
+                      sdg
                         
                     </div>
                 </li>

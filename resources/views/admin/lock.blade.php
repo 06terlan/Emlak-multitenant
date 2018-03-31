@@ -38,7 +38,7 @@
                     </a>
                 </li> -->
                 <li class= "nav-item ">
-                    <a href="login.html" class="nav-link">
+                    <a href="{{ URL::to('admin/logout') }}" class="nav-link">
                         <i class="material-icons">fingerprint</i>
                         Çıxış
                     </a>
