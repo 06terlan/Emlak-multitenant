@@ -143,7 +143,7 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#huseynzade">
+                    <a class="nav-link" href="lock">
             <i class="material-icons">lock</i>
                         <p>
               <span class="d-lg-none d-md-block">bağla</span>
