@@ -131,26 +131,26 @@ class HomeController extends Controller
     public function test()
     {
         $count = (new SiteComp([
-            'link'          => 'http://vipemlak.az/heyet-evi-villa-satilir',
+            'link'          => 'http://vipemlak.az/yeni-tikili-satilir',
             'objectsDom'    => '.pranto',
             'linkDom'       => ['a', 0],
             'location'      => 'http://vipemlak.az',
             'headerDom'     => 'article h1',
             'contentDom'    => '#openhalf .infotd100',
-            'amountDom'     => '.infotd2 .pricecolor',
+            'amountDom'     => '.infotd2 span',
             'dateDom'       => '.clearfix .viewsbb',
             'owner'         => ['#openhalf .infotd2', 4],
             'mobnom'        => ['#openhalf .infotd2', 5],
-            'type'          => 'house',
+            'type'          => 'building',
             'buldingType'   => self::TYPE_SATISH,
-            'type2'         => null,
+            'type2'         => 'new',
             'cityDom'       => ['function', 'vipemlakGetCity'],
             'roomCountDom'  => ['#openhalf .infotd2', 1],
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
             'metroDom'      => ['function', 'getMetroTapaz'],
-            'locatedFloorDom'   => null, //
-            'floorCountDom'     => null, //
+            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
+            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
         ],true))->getObjectData(false);
 
         return "End " . $count;

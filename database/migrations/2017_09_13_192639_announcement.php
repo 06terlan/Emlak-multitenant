@@ -34,6 +34,7 @@ class Announcement extends Migration
 
             $table->smallInteger("locatedFloor")->nullable(); //new
             $table->smallInteger("floorCount")->nullable(); //new
+            $table->smallInteger("district_id")->nullable(); //new
 
             $table->date('date')->nullable();
             $table->timestamps();

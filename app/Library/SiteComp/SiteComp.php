@@ -5,6 +5,7 @@ namespace App\Library\SiteComp;
 use App\Library\DataFunctions\Functions;
 use App\Library\Dom\Dom;
 use App\Library\ErrorLog;
+use App\Library\MyClass;
 use App\Library\MyHelper;
 use App\Models\Announcement;
 use App\Models\MskCity;
@@ -76,8 +77,21 @@ class SiteComp
             $mobnom     = @$this->findEr($htmlAlt, $this->dataArr['mobnom'])->plaintext;
             if($mobnom === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [mobnom]"); continue; }
 
-            $city     = @$this->findEr($htmlAlt, $this->dataArr['cityDom'])['plaintext'];
+            #region location
+            if( $this->dataArr['placeDom'] !== null )
+            {
+                $placeDom     = @$this->findEr($htmlAlt, $this->dataArr['placeDom'])->plaintext;
+                if($placeDom === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [placeDom]"); continue; }
+                $this->pageData['placeDom'] = $placeDom;
+            }else{
+                $placeDom = null;
+            }
+
+            $metro = @$this->findEr($htmlAlt, $this->dataArr['metroDom'])['plaintext'];
+
+            $city     = ( $metro!=null ? MyClass::$metros[$metro][2]['city'] : @$this->findEr($htmlAlt, $this->dataArr['cityDom'])['plaintext'] );
             if($city === null || $city == 0){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [cityDom]"); continue; }
+            #endregion
 
             if( $this->dataArr['roomCountDom'] !== null )
             {
@@ -94,17 +108,6 @@ class SiteComp
             }else{
                 $areaDom = null;
             }
-
-            if( $this->dataArr['placeDom'] !== null )
-            {
-                $placeDom     = @$this->findEr($htmlAlt, $this->dataArr['placeDom'])->plaintext;
-                if($placeDom === null){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [placeDom]"); continue; }
-                $this->pageData['placeDom'] = $placeDom;
-            }else{
-                $placeDom = null;
-            }
-
-            $metro = @$this->findEr($htmlAlt, $this->dataArr['metroDom'])['plaintext'];
 
             if( $this->dataArr['locatedFloorDom'] !== null ) {
                 $locatedFloorDom = @$this->findEr($htmlAlt, $this->dataArr['locatedFloorDom'])['plaintext'];
