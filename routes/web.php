@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'tenant'] ], functio
 
     //password/profile
     Route::get('password', 'Admin\PasswordController@index');
+    
     Route::post('password/{which}', 'Admin\PasswordController@password')->where('which','[12]');
 	
 	//users
