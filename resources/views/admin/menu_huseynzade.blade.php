@@ -128,9 +128,11 @@
               <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <form class="navbar-form">
                 <div class="input-group no-border">
-                    <input type="text" value="" class="form-control" placeholder="Axtarış...">
-                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                      <i class="material-icons">search</i>
+                    <!-- <input type="text" value="" class="form-control" placeholder="Axtarış..."> -->
+                    <!-- <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                      <i class="material-icons">refresh</i> -->
+                      <!-- <i class="material-icons">search</i> -->
+                      <!-- <span style="color: yellowgreen">www.bazam.az</span> -->
                       <div class="ripple-container"></div>
                     </button>
                 </div>
@@ -161,7 +163,17 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 
                         
-                      sdg
+                      <!-- bildiris -->
+                     
+                    
+                            <a class="dropdown-item" href="#">
+                              <span>
+                                  <span>3 sot torpaq sahəsi, Binə...</span>
+                                  <span style="font-style: italic; font-weight: 700;">22 minutes ago</span>
+                              </span>
+                            </a>
+                    
+                      <!-- bildiris son -->
                         
                     </div>
                 </li>

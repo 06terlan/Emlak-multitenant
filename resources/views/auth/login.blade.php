@@ -168,7 +168,7 @@
                                     </ul>
                                 </nav>
                                 <div class="copyright pull-right">
-                                    &copy; <script>document.write(new Date().getFullYear())</script>, <i class="material-icons">favorite</i> by <a href="" target="_blank">Hüseynzadə</a>
+                                    &copy; <script>document.write(new Date().getFullYear())</script>, <a href="" target="_blank">bazam.az</a>
                                 </div>
                             </div>
 

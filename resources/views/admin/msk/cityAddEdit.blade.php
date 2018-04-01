@@ -32,7 +32,7 @@
                                         <div class="col-sm-2 col-md-4 mr-auto ml-auto">
                                         </div>
                                         <div class="col-sm-5 col-md-2 mr-auto ml-auto">
-                                            <button class="btn btn-success" type="submit">Success<div class="ripple-container"></div></button>
+                                            <button class="btn btn-success" type="submit">Saxla<div class="ripple-container"></div></button>
                                         </div>
                                         <div class="col-sm-5 col-md-6 mr-auto ml-auto">
                                             <button class="btn btn-danger" onclick="window.location.href='{{ redirect()->back()->getTargetUrl() }}'" type="reset">Geriyə<div class="ripple-container"></div></button>

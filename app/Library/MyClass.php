@@ -259,7 +259,7 @@ class MyClass
         'home' => ['name'=> 'İlk Səhifə', 'icon'=> 'timeline',  'route'=> 'home', 'priv'=> 0],
         'dashboard' => ['name'=> 'Göstəriş paneli', 'icon'=> 'dashboard',  'route'=> 'dashboard', 'priv'=> MyClass::PRIV_CAN_SEE],
         'tenant' => ['name'=> 'Şirkətlər', 'icon'=> 'add_to_queue',  'route'=> 'tenant', 'priv'=> MyClass::PRIV_SUPER_ADMIN_CAN_SEE],
-        'users' => ['name'=> 'İstifadəçilər', 'icon'=> 'record_voice_over',  'route'=> 'users', 'priv'=> MyClass::PRIV_CAN_SEE],
+        'users' => ['name'=> 'İstifadəçilər', 'icon'=> 'group',  'route'=> 'users', 'priv'=> MyClass::PRIV_CAN_SEE],
         'announcement' => ['name'=> 'Gələn Elanlar', 'icon'=> 'announcement',  'route'=> 'announcement', 'priv'=> MyClass::PRIV_CAN_SEE],
         'announcement_pro' => ['name'=> 'Fərdi Elanlar', 'icon'=> 'note_add', 'route'=> 'announcement_pro', 'priv'=> MyClass::PRIV_CAN_SEE],
         'search' => ['name'=> 'Axtarış', 'icon'=> 'search',  'route'=> 'search', 'priv'=> MyClass::PRIV_CAN_SEE],

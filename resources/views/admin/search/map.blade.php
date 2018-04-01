@@ -51,6 +51,9 @@
             width: 60%;
             margin-top: 10px;
         }
+        h2 {
+            font-size: 1rem !important;
+        }
 
         #pac-input:focus {
             border-color: #4d90fe;
@@ -117,7 +120,7 @@
                         </div>\
                         <div class="item col-md-12">\
                             <label class="control-label col-xs-3">Ətraflı:</label>\
-                            <div class="col-xs-9"> <a target="_blank" href="{{ route('announcement_pro_info',['announcement'=> $marker->id]) }}"> Link </a> </div>\
+                            <div class="col-xs-9"> <a target="_blank" href="{{ route('announcement_pro_info',['announcement'=> $marker->id]) }}"> Məlumat </a> </div>\
                         </div>\
                     </div>'
                 });

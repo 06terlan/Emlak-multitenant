@@ -144,7 +144,7 @@
                                     <!-- Modullar son -->
 
                                     <div class="row">
-                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Tipi</label>
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Şirkət növü</label>
 
                                         <div class="col-sm-10 col-md-8 mr-auto ml-auto">
                                             <div class="form-group">
@@ -160,10 +160,10 @@
                                     </div>
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="row" style="margin-top: 20px">
-                                        <div class="col-sm-2 col-md-4 mr-auto ml-auto">
+                                        <div class="col-sm-2 col-md-2 mr-auto ml-auto">
                                         </div>
                                         <div class="col-sm-5 col-md-2 mr-auto ml-auto">
-                                            <button class="btn btn-success" type="submit">Success<div class="ripple-container"></div></button>
+                                            <button class="btn btn-success" type="submit">Saxla<div class="ripple-container"></div></button>
                                         </div>
                                         <div class="col-sm-5 col-md-6 mr-auto ml-auto">
                                             <button class="btn btn-danger" onclick="window.location.href='{{ redirect()->back()->getTargetUrl() }}'" type="reset">Geriyə<div class="ripple-container"></div></button>

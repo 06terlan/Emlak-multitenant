@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="apple-touch-icon" href="../img/huseynzade-icon.png">
-<link rel="icon" href="assets/build/huseynzade/img/favicon.png">
+<link rel="icon" href="{{ asset('admin/assets/build/huseynzade/img/favicon.png') }}">
 
 
 <title>Online Emlak Bazası</title>

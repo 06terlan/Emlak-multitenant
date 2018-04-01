@@ -34,7 +34,7 @@
             </ul>
         </nav>
         <div class="copyright pull-right">
-            &copy; <script>document.write(new Date().getFullYear())</script>,  <a href="" target="_blank">Hüseynzadə</a>
+            &copy; <script>document.write(new Date().getFullYear())</script>, <a style="margin-left: 5px;" href="" target="_blank">bazam.az</a>
         </div>
     </div>
 
