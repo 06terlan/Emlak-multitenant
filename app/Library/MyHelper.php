@@ -36,7 +36,7 @@ class MyHelper
     */
     public static function pureString($string)
     {
-        return str_replace(['ü','ö','ğ','i','ı','ə','ç','ş',' '], ['u','o','g','i','i','e','c','s',''], mb_strtolower($string));
+        return trim(str_replace(['ü','ö','ğ','i','ı','ə','ç','ş',' '], ['u','o','g','i','i','e','c','s',''], mb_strtolower($string)));
     }
 
     /*

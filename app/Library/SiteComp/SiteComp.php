@@ -11,13 +11,14 @@ use App\Models\Announcement;
 use App\Models\MskCity;
 use App\Models\MskMakler;
 use App\Models\Number;
+use App\Models\Photo;
 
 class SiteComp
 {
 	private $linkListHtml = null;
 	private $errorLog = null;
 	private $dom = null;
-	private $location = null;
+	public $location = null;
 	private $dataArr = null;
 	public $pageData = [];
 
@@ -89,9 +90,19 @@ class SiteComp
 
             $metro = @$this->findEr($htmlAlt, $this->dataArr['metroDom'])['plaintext'];
 
-            $city     = ( $metro!=null ? MyClass::$metros[$metro][2]['city'] : @$this->findEr($htmlAlt, $this->dataArr['cityDom'])['plaintext'] );
+            $district = ( $metro != null ?  MyClass::$metros[$metro][2]['district'] : @$this->findEr($htmlAlt, $this->dataArr['districtDom'])['plaintext'] );
+
+            $city     = ( $metro!=null ? MyClass::$metros[$metro][2]['city'] : ( $district != null ? MyClass::$district[$district][2]['city'] : @$this->findEr($htmlAlt, $this->dataArr['cityDom'])['plaintext'] ) );
             if($city === null || $city == 0){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [cityDom]"); continue; }
             #endregion
+
+            if( $this->dataArr['imageDom'] !== null )
+            {
+                $imageDom     = @$this->findEr($htmlAlt, $this->dataArr['imageDom']);
+                if($imageDom === []){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [imageDom]"); continue; }
+            }else{
+                $imageDom = [];
+            }
 
             if( $this->dataArr['roomCountDom'] !== null )
             {
@@ -129,12 +140,12 @@ class SiteComp
             $realDate	= $this->createDate($date);
             if($date === null || $realDate === false ){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [dateDom]"); continue; }
 
-            if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro, $locatedFloorDom, $floorCountDom ))
+            if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro, $locatedFloorDom, $floorCountDom, $district, $imageDom ))
             {
             	break;
             }
 
-            $count++; break;//sadasdasd
+            $count++; //break;//sadasdasd
         }
 
         return $count;
@@ -163,7 +174,7 @@ class SiteComp
         return $match[0];
     }
 
-    private function InsetCheck( $link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro, $locatedFloorDom, $floorCountDom )
+    private function InsetCheck( $link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro, $locatedFloorDom, $floorCountDom, $district, $imageDom )
     {
         if( $toDay === true && date("Y-m-d") != $realDate ) return false;
 
@@ -185,8 +196,10 @@ class SiteComp
         $announcement->metro_id = $metro;
         $announcement->locatedFloor = $locatedFloorDom;
         $announcement->floorCount = $floorCountDom;
+        $announcement->district_id = $district;
         $announcement->save();
 
+        //numbers
     	$numbers = [];
         foreach ($this->createMob($mobnom) as $number)
         {
@@ -196,6 +209,14 @@ class SiteComp
 
             $numbers[] = $numberC->pure_number;
             $announcement->numbers()->save($numberC);
+        }
+        //images
+        foreach ($imageDom as $image)
+        {
+            $imageC = new Photo();
+            $imageC->file_name = $image;
+
+            $announcement->pictures()->save($imageC);
         }
         //is makler
         if( count($numbers) > 0 && MskMakler::whereIn('pure_number', $numbers)->count() > 0 )

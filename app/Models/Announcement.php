@@ -70,4 +70,9 @@ class Announcement extends Model
     {
         return isset(MyClass::$metros[$this->metro_id]) ? MyClass::$metros[$this->metro_id][0] : "-";
     }
+
+    public function pictures()
+    {
+        return $this->hasMany(Photo::class);
+    }
 }
