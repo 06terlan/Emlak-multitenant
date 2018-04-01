@@ -233,6 +233,7 @@ class GetDatas extends Command
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['#picsopen a'], 'href'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
@@ -259,6 +260,7 @@ class GetDatas extends Command
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['#picsopen a'], 'href'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
@@ -286,6 +288,7 @@ class GetDatas extends Command
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['#picsopen a'], 'href'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
@@ -312,6 +315,7 @@ class GetDatas extends Command
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['#picsopen a'], 'href'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
@@ -339,6 +343,7 @@ class GetDatas extends Command
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['#picsopen a'], 'href'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => null, //
             'floorCountDom'     => null, //
@@ -365,6 +370,7 @@ class GetDatas extends Command
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['#picsopen a'], 'href'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => null, //
             'floorCountDom'     => null, //
@@ -392,6 +398,7 @@ class GetDatas extends Command
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['#picsopen a'], 'href'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
@@ -418,6 +425,7 @@ class GetDatas extends Command
             'areaDom'       => ['#openhalf .infotd2', 2],
             'placeDom'      => ['#openhalf .infotd100', 1],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['#picsopen a'], 'href'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['#openhalf .infotd100', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['#openhalf .infotd100', 0]], //
@@ -445,6 +453,7 @@ class GetDatas extends Command
             'areaDom'       => ['#openhalf .infotd2', 1],
             'placeDom'      => ['#openhalf .infotd100', 1],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['#picsopen a'], 'href'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => null, //
             'floorCountDom'     => null, //
@@ -476,6 +485,7 @@ class GetDatas extends Command
             'areaDom'       => [['.parameters tr', 2], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['.photos .thumbnail'], 'data-mfp-src'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.parameters', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.parameters', 0]], //
@@ -502,6 +512,7 @@ class GetDatas extends Command
             'areaDom'       => [['.parameters tr', 2], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['.photos .thumbnail'], 'data-mfp-src'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.parameters', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.parameters', 0]], //
@@ -529,6 +540,7 @@ class GetDatas extends Command
             'areaDom'       => [['.parameters tr', 2], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['.photos .thumbnail'], 'data-mfp-src'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.parameters', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.parameters', 0]], //
@@ -555,6 +567,7 @@ class GetDatas extends Command
             'areaDom'       => [['.parameters tr', 2], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['.photos .thumbnail'], 'data-mfp-src'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.parameters', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.parameters', 0]], //
@@ -582,6 +595,7 @@ class GetDatas extends Command
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['.photos .thumbnail'], 'data-mfp-src'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => null, //
             'floorCountDom'     => null, //
@@ -609,6 +623,7 @@ class GetDatas extends Command
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['.photos .thumbnail'], 'data-mfp-src'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.side article', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.side article', 0]], //
@@ -635,6 +650,7 @@ class GetDatas extends Command
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['.photos .thumbnail'], 'data-mfp-src'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.side article', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.side article', 0]], //
@@ -662,6 +678,7 @@ class GetDatas extends Command
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['.photos .thumbnail'], 'data-mfp-src'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.side article', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.side article', 0]], //
@@ -688,6 +705,7 @@ class GetDatas extends Command
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['.photos .thumbnail'], 'data-mfp-src'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.side article', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.side article', 0]], //
@@ -715,6 +733,7 @@ class GetDatas extends Command
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['.photos .thumbnail'], 'data-mfp-src'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => null, //
             'floorCountDom'     => null, //
@@ -741,6 +760,7 @@ class GetDatas extends Command
             'areaDom'       => [['.parameters tr', 1], ['td', 1]],
             'placeDom'      => ['.badges_block .locations', 0],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'imageDom'      => ['function', 'getImagesVipemlak', [['.photos .thumbnail'], 'data-mfp-src'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => null, //
             'floorCountDom'     => null, //

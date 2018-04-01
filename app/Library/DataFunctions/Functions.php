@@ -21,8 +21,13 @@ class Functions
         $cityName     = @$tt->findEr($where, [['.property', 0], ['.property-value', 0]])->plaintext;
         if($cityName == null) return null;
 
-        $city = MskCity::where('pure_name', MyHelper::pureString($cityName))->first();
-        return ['plaintext' => ( $city ? $city->id : 0 ) ];
+        $cityName = MyHelper::pureString($cityName);
+
+        foreach(MyClass::$city as $key => $city){
+            if( $cityName == MyHelper::pureString($city[0])) return $key;
+        }
+
+        return ['plaintext' => 4];
     }
 
     public static function getMetroTapaz($tt, $where)
@@ -93,12 +98,34 @@ class Functions
     #region vipemlak
     public static function vipemlakGetCity($tt, $where)
     {
-        $city = MskCity::where('pure_name', MyHelper::pureString('baki'))->first();
-        return ['plaintext' => ( $city ? $city->id : 0 ) ];
+        return ['plaintext' => 4];
+    }
+
+    public static function getImagesVipemlak($tt, $where, $data)
+    {
+        $pictures     = @$tt->findEr($where, $data[0]);
+        if($pictures == null) ['plaintext' => null];
+
+        $arr = [];
+        foreach ($pictures as $picture){
+            $arr[] = self::makeLink($tt->location, $picture->{$data[1]} );
+        }
+
+        return $arr;
     }
     #endregion
 
     #region binaaz
 
     #endregion
+
+    public static function makeLink($site, $link){
+
+        if( strpos($link, 'http') !== false ){
+            return $link;
+        }
+        else{
+            return rtrim($site,"/") . "/" . ltrim($link, "/");
+        }
+    }
 }
