@@ -56,8 +56,8 @@
                 </div>
             </div>
         </div>
-        <ul class="nav">
-            @php $currentRoute = \Request::route()->getName(); @endphp
+        <ul class="nav" id="my-menu">
+            @php $currentRoute = \Request::route()->getName(); $currentRouteName = ""; @endphp
             @foreach(\App\Library\MyClass::$modules as $val)
                 @if( isset($val['child']) )
                     <li class="nav-item">
@@ -71,7 +71,7 @@
                             <ul class="nav">
                                 @foreach($val['child'] as $k => $v)
                                     @if( \App\Library\MyHelper::has_priv($v['route'], $v['priv']) )
-                                        <li class="nav-item ">
+                                        <li class="nav-item {{ $currentRoute == $v['route'] && ($currentRouteName = $v['name'])? 'active':'' }}">
                                             <a class="nav-link" href="{{ route($v['route']) }}">
                                                 <span class="sidebar-mini"> {{ $v['icon'] }} </span>
                                                 <span class="sidebar-normal"> {{ $v['name'] }} </span>
@@ -84,7 +84,7 @@
                     </li>
                 @else
                     @if( \App\Library\MyHelper::has_priv($val['route'], $val['priv']) )
-                        <li class="nav-item {{ $currentRoute == $val['route'] ? 'active':'' }}">
+                        <li class="nav-item {{ $currentRoute == $val['route'] && ($currentRouteName = $val['name']) ? 'active':'' }}">
                             <a class="nav-link" href="{{ route($val['route']) }}">
                                 <i class="material-icons">{{ $val['icon'] }}</i>
                                 <p> {{ $val['name'] }} </p>
@@ -110,13 +110,8 @@
                   <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
               </button>
             </div>
-
-          
-                  @if( \App\Library\MyHelper::has_priv($v['route'], $v['priv']) )
-                  <a class="navbar-brand" href="#huseynzade">{{ $val['name'] }}</a>
-                  @endif
-               
-              </div>
+                  <a class="navbar-brand" href="#huseynzade">{{ $currentRouteName }}</a>
+            </div>
 
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>

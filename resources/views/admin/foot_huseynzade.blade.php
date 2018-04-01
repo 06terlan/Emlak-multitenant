@@ -10,11 +10,6 @@
 {!! Html::script('admin/assets/build/huseynzade/js/perfect-scrollbar.jquery.min.js') !!}
 
 
-
-<!--  Google Maps Plugin  -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
-
-
 <!--  Plugin for Date Time Picker and Full Calendar Plugin  -->
 {!! Html::script('admin/assets/build/huseynzade/js/moment.min.js') !!}
 
@@ -177,6 +172,11 @@
 	      template: '<i class="fa fa-google-plus"></i> Google',
 	      url: 'http://demos.creative-tim.com/material-kit-pro/presentation.html'
 	    });
+
+        $(function () {
+            $("#my-menu .nav-item.active").parents("li:eq(0)").find("div.collapse:eq(0)").addClass("show");
+            $("#my-menu .nav-item.active").parents("li:eq(0)").find("a.nav-link:eq(0)").attr("aria-expanded", "true");
+        });
 	});
 
 
@@ -207,7 +207,6 @@
 	}catch(err) {
 		console.log('Facebook Track Error:', err);
 	}
-
 </script>
 
 

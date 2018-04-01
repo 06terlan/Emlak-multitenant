@@ -314,11 +314,23 @@
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Xəritə</label>
 
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group" style="height: 300px;">
+
+                                                <div id="map" style="width: 100%;height: 100%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     
                                     <div class="ln_solid"></div>
-                                    <input type="hidden" name="_token" value="">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                    <input type="hidden" id="loc_lat" name="loc_lat" value="{{ $id > 0 ? $announcement->getLocations()[0] : '40.4242696' }}">
+                                    <input type="hidden" id="loc_lng" name="loc_lng" value="{{ $id > 0 ? $announcement->getLocations()[1] : '49.8522489' }}">
 
                                     <div class="row" style="margin-top: 20px">
                                         <div class="col-sm-2 col-md-4 mr-auto ml-auto">
