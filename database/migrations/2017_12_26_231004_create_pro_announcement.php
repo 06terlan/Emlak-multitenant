@@ -39,6 +39,7 @@ class CreateProAnnouncement extends Migration
             $table->date('date');
 
             $table->smallInteger("district_id")->nullable(); //new
+            $table->smallInteger("sight_id")->nullable(); //new
 
             $table->tinyInteger("status");
 

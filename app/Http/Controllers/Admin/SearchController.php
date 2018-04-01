@@ -28,10 +28,12 @@ class SearchController extends Controller
         $announcementsForCount = clone $announcements;
 
         $announcements_count = $announcementsForCount->select(DB::raw('count(1) as c'))->unionAll($pro_announcements->select(DB::raw('count(1) as c')))->get()->toArray();
-        $announcements = $announcements->select('id','type',DB::raw('"0" as status'),'amount','owner','roomCount','area','link','site','owner_type','date','city_id','place','buldingType')
-                                        ->unionAll($pro_announcements->select('id','type','status','amount','owner','roomCount','area','link',DB::raw('"-"'),'owner_type','date','city_id','place','buldingType'))->orderBy('id', 'DESC')
-                                        ->offset($offset)->limit($rowCount)->get();
         $allCount = $announcements_count[0]['c'] + $announcements_count[1]['c'];
+
+        $announcements = $announcements->select('id','type',DB::raw('"0" as status'),'amount','owner','roomCount','area','link','site','owner_type','date','city_id','place','buldingType','type2','district_id')
+                                        ->unionAll($pro_announcements->select('id','type','status','amount','owner','roomCount','area','link',DB::raw('"-"'),'owner_type','date','city_id','place','buldingType','type2','district_id'))->orderBy('id', 'DESC')
+                                        ->offset($offset)->limit($rowCount)->get();
+
 
         //dd($announcements);
         $announcements = new LengthAwarePaginator($announcements, $allCount, $rowCount, $page, ['path' => $request->url(), 'query' => $request->query()]);
@@ -52,26 +54,52 @@ class SearchController extends Controller
 
         if($request->has('status') || ($request->has('which') && $request->get('which')==2)) $announcements->where(DB::raw('1=2'));
         if($request->has('type')) $announcements->where('type', $request->get('type'));
-        if($request->has('type') && $request->get('type') == "building" && $request->has('buldingSecondType')) $announcements->whereIn('type2', $request->get('buldingSecondType'));
-        if($request->has('city')) $announcements->whereIn('city_id', $request->get('city'));
-        if($request->has('buldingType')) $announcements->whereIn('buldingType', $request->get('buldingType'));
+        if($request->has('type') && $request->get('type') == "building" && $request->has('buldingSecondType')) $announcements->where('type2', $request->get('buldingSecondType'));
+        if($request->has('city')) $announcements->where('city_id', $request->get('city'));
+        if($request->has('district')) $announcements->whereIn('district_id', $request->get('district'));
+        if($request->has('metro')) $announcements->whereIn('metro_id', $request->get('metro'));
+        if($request->has('sight')) $announcements->whereIn('sight_id', $request->get('sight'));
+        if($request->has('buldingType')) $announcements->where('buldingType', $request->get('buldingType'));
         if($request->has('amount1')) $announcements->where("amount", '>=', $request->get('amount1'));
         if($request->has('amount2')) $announcements->where("amount", '<=', $request->get('amount2'));
         if($request->has('date1')) $announcements->where("date", '>=' ,Date::d($request->get('date1'), 'Y-m-d'));
         if($request->has('date2')) $announcements->where("date", '<=' ,Date::d($request->get('date2'), 'Y-m-d'));
         if($request->has('ownerType')) $announcements->where("owner_type", $request->get('ownerType'));
+        if($request->has('roomCount')){
+            if($request->get('roomCount') != -1) $announcements->where("roomCount", $request->get('roomCount'));
+            else $announcements->where("roomCount", ">=", 10);
+        }
+        if($request->has('locatedFloor1')) $announcements->where("locatedFloor", '>=', $request->get('locatedFloor1'));
+        if($request->has('locatedFloor2')) $announcements->where("locatedFloor", '<=', $request->get('locatedFloor2'));
+        if($request->has('floorCount1')) $announcements->where("floorCount", '>=', $request->get('floorCount1'));
+        if($request->has('floorCount2')) $announcements->where("floorCount", '<=', $request->get('floorCount2'));
+        if($request->has('area1')) $announcements->where("area", '>=', $request->get('area1'));
+        if($request->has('area2')) $announcements->where("area", '<=', $request->get('area2'));
 
         if($request->has('which') && $request->get('which')==1) $pro_announcements->where(DB::raw('1=2'));
         if($request->has('type')) $pro_announcements->where('type', $request->get('type'));
-        if($request->has('type') && $request->get('type') == "building" && $request->has('buldingSecondType')) $pro_announcements->whereIn('type2', $request->get('buldingSecondType'));
+        if($request->has('type') && $request->get('type') == "building" && $request->has('buldingSecondType')) $pro_announcements->where('type2', $request->get('buldingSecondType'));
         if($request->has('status')) $pro_announcements->whereIn('status', $request->get('status'));
-        if($request->has('city')) $pro_announcements->whereIn('city_id', $request->get('city'));
-        if($request->has('buldingType')) $pro_announcements->whereIn('buldingType', $request->get('buldingType'));
+        if($request->has('city')) $pro_announcements->where('city_id', $request->get('city'));
+        if($request->has('district')) $pro_announcements->whereIn('district_id', $request->get('district'));
+        if($request->has('metro')) $pro_announcements->whereIn('metro_id', $request->get('metro'));
+        if($request->has('sight')) $pro_announcements->whereIn('sight_id', $request->get('sight'));
+        if($request->has('buldingType')) $pro_announcements->where('buldingType', $request->get('buldingType'));
         if($request->has('amount1')) $pro_announcements->where("amount", '>=', $request->get('amount1'));
         if($request->has('amount2')) $pro_announcements->where("amount", '<=', $request->get('amount2'));
         if($request->has('date1')) $pro_announcements->where("date", '>=' ,Date::d($request->get('date1'), 'Y-m-d'));
         if($request->has('date2')) $pro_announcements->where("date", '<=' ,Date::d($request->get('date2'), 'Y-m-d'));
         if($request->has('ownerType')) $pro_announcements->where("owner_type", $request->get('ownerType'));
+        if($request->has('roomCount')){
+            if($request->get('roomCount') != -1) $pro_announcements->where("roomCount", $request->get('roomCount'));
+            else $pro_announcements->where("roomCount", ">=", 10);
+        }
+        if($request->has('locatedFloor1')) $pro_announcements->where("locatedFloor", '>=', $request->get('locatedFloor1'));
+        if($request->has('locatedFloor2')) $pro_announcements->where("locatedFloor", '<=', $request->get('locatedFloor2'));
+        if($request->has('floorCount1')) $pro_announcements->where("floorCount", '>=', $request->get('floorCount1'));
+        if($request->has('floorCount2')) $pro_announcements->where("floorCount", '<=', $request->get('floorCount2'));
+        if($request->has('area1')) $pro_announcements->where("area", '>=', $request->get('area1'));
+        if($request->has('area2')) $pro_announcements->where("area", '<=', $request->get('area2'));
     }
 
     public function getSorting($announcements, $request)

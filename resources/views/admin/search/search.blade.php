@@ -8,371 +8,373 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-
-     
-    
-
-
     <div class="col-md-12">
-        
+        <form method="get" action="">
+            <div class="card ">
 
-<div class="card ">
-    
-    <div class="card-header mr-auto ml-auto">
-    <h4 class="card-title">Navigation Pills - <small class="description">Horizontal Tabs</small></h4>
-    </div>
-    
-    <div class="card-body">
+            <div class="card-header mr-auto ml-auto">
+            <h4 class="card-title">Navigation Pills - <small class="description">Horizontal Tabs</small></h4>
+            </div>
 
-        <div class="row">
-            <div class="col-md-6">
+            <div class="card-body">
 
-                        <div class="row">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Elanın Seçimi">
-                                    <option></option>
-                                    <option value="1" {{ $request->get('which') == 1? 'selected':'' }}>Elanlar</option>
-                                    <option value="2" {{ $request->get('which') == 2? 'selected':'' }}>Fərdilər</option>
-                                </select>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-md-6">
 
-                        <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Obyektin növü</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px" >
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-orange" title="Obyektin növün seç">
-                                    <option></option>
-                                    @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
-                                    <option value="{{ $typeK }}" {{ $typeK == $request->get('type')? 'selected':'' }}> {{ $type }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                          </div>
+                                <div class="row">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Elanın Seçimi</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <select class="selectpicker" name="which" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Elanın Seçimi">
+                                            <option></option>
+                                            <option value="1" {{ $request->get('which') == 1? 'selected':'' }}>Elanlar</option>
+                                            <option value="2" {{ $request->get('which') == 2? 'selected':'' }}>Fərdilər</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                          <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Binanın növü</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-red" title="Binanın növün seç">
-                                    @foreach (\App\Library\MyClass::$buldingSecondType as $typeK => $type)
-                                    <option value="{{ $typeK }}" {{ in_array($typeK, $request->get('buldingSecondType',[])) ? 'selected':'' }}> {{ $type }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                          </div>
-
-                          <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın növü</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-goy" title="Elanın növün seç">
-                                    @foreach (\App\Library\MyClass::$buldingType as $typeK => $type)
-                                    <option value="{{ $typeK }}" {{ in_array($typeK, $request->get('buldingType',[])) ? 'selected':'' }}> {{ $type }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                          </div>
-
-                          <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Şəhər</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                
-                                        <select class="selectpicker  btn-select2-red" data-live-search="true" title="Select the product" name="">
-                                            @foreach (\App\Models\MskCity::get() as $type)
-                                            <option value="{{ $type['id'] }}" {{ in_array($type['id'], $request->get('city',[])) ? 'selected':'' }}> {{ $type->name }} </option>
+                                <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Obyektin növü</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px" >
+                                        <select class="selectpicker" name="type" data-style="btn btn-hm btn-new-hm btn-new-hm-orange" title="Obyektin növün seç">
+                                            <option></option>
+                                            @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
+                                                <option value="{{ $typeK }}" {{ $typeK == $request->get('type')? 'selected':'' }}> {{ $type }} </option>
                                             @endforeach
                                         </select>
-
-                            </div>
-                          </div>
-
-                          <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Rayon</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <select class="selectpicker  btn-select2-goy" data-live-search="true" multiple title="Select the product" name="">
-                                            <option data-tokens="Get Shit Done Kit" >
-                                                Get Shit Done Kit
-                                            </option>
-
-                                            <option data-tokens="" >
-                                                BB Shit Done Kit
-                                            </option>
-
-                                            <option data-tokens="" >
-                                                DD Shit Done Kit
-                                            </option>
-
-                                            <option data-tokens="" data-id="">
-                                                RRR Shit Done Kit
-                                            </option>
-                                        </select>
-                            </div>
-                          </div>
-
-                          <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Metro</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <select class="selectpicker  btn-select2-orange" multiple data-live-search="true" title="Select the product" name="">
-                                            <option data-tokens="Get Shit Done Kit" >
-                                                Get Shit Done Kit
-                                            </option>
-
-                                            <option data-tokens="" >
-                                                BB Shit Done Kit
-                                            </option>
-
-                                            <option data-tokens="" >
-                                                DD Shit Done Kit
-                                            </option>
-
-                                            <option data-tokens="" data-id="">
-                                                RRR Shit Done Kit
-                                            </option>
-                                        </select>
-                            </div>
-                          </div>
-
-                          <!-- <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Qəsəbə</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <select class="selectpicker  btn-select2-badimcan" multiple data-live-search="true" title="Select the product" name="">
-                                            <option data-tokens="Get Shit Done Kit" >
-                                                Get Shit Done Kit
-                                            </option>
-
-                                            <option data-tokens="" >
-                                                BB Shit Done Kit
-                                            </option>
-
-                                            <option data-tokens="" >
-                                                DD Shit Done Kit
-                                            </option>
-
-                                            <option data-tokens="" data-id="">
-                                                RRR Shit Done Kit
-                                            </option>
-                                        </select>
-                            </div>
-                          </div> -->
-
-                          <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Nişangah</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <select class="selectpicker  btn-select2-tundgoy" multiple data-live-search="true" title="Select the product" name="">
-                                            <option data-tokens="Get Shit Done Kit" >
-                                                Get Shit Done Kit
-                                            </option>
-
-                                            <option data-tokens="" >
-                                                BB Shit Done Kit
-                                            </option>
-
-                                            <option data-tokens="" >
-                                                DD Shit Done Kit
-                                            </option>
-
-                                            <option data-tokens="" data-id="">
-                                                RRR Shit Done Kit
-                                            </option>
-                                        </select>
-                            </div>
-                          </div>
-            </div> <!-- ilk col-6 1ci hisse -->
-
-            <div class="col-md-6">
-
-                        <div class="row">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Satıcının tipi</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-tundgoy" title="Satıcının tipin seç">
-                                    <option>Hamısı</option>
-                                    @foreach (\App\Library\MyClass::$ownerType as $typeK => $type)
-                                    <option value="{{ $typeK }}" {{ $request->has('ownerType') && $typeK == $request->get('ownerType',"") ? 'selected':'' }}> {{ $type }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Binanın çıxarışı</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-seher" title="Single Select">
-                                    <option disabled selected>Bina ev Mənzil</option>
-                                    <option value="2">Foobar</option>
-                                    <option value="3">Is great</option>
-                                </select>
-                            </div>
-                          </div>
-
-                          <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Otaq sayı</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
-                                    <option disabled selected>Binanın təmiri</option>
-                                    <option value="2">Foobar</option>
-                                    <option value="3">Is great</option>
-                                </select>
-                            </div>
-                          </div>
-
-                          <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Yerləşdiyi mər.</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <div class="row">
-                                    <div class="col-md-6 col-6 col-sm-6">
-                                        <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-seher" title="Single Select">
-                                            <option disabled selected>1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                        </select>
                                     </div>
-                                    <div class="col-md-6 col-6 col-sm-6">
-                                        <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-seher" title="Single Select">
-                                            <option disabled selected>1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
+                                  </div>
 
-                          <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Binanın m/s</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <div class="row">
-                                    <div class="col-md-6 col-6 col-sm-6">
-                                        <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-seher" title="Single Select">
-                                            <option disabled selected>1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 col-6 col-sm-6">
-                                        <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-seher" title="Single Select">
-                                            <option disabled selected>1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-
-                          <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Dəyəri</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <div class="row">
-                                    <div class="col-md-6 col-6 col-sm-6">
-                                        <input type="number" name="amount1" value="{{ $request->get('amount1') }}" class="form-control" placeholder="Minimum">
-                                    </div>
-                                    <div class="col-md-6 col-6 col-sm-6">
-                                        <input type="number" name="amount2" value="{{ $request->get('amount2') }}" class="form-control" placeholder="Maksimum">
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-
-                          <div class="row rowHeightH ">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Sahə m<sup>2</sup></h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <div class="row">
-                                    <div class="col-md-6 col-6 col-sm-6">
-                                        <input type="text" value="" class="form-control" placeholder="min...">
-                                    </div>
-                                    <div class="col-md-6 col-6 col-sm-6">
-                                        <input type="text" value="" class="form-control" placeholder="max...">
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-
-                          
-
-                          <div class="row rowHeightH">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" value="">
-                                            Təkrar elanları gizlət
-                                            <span class="form-check-sign">
-                                                <span class="check"></span>
-                                            </span>
+                                  <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Binanın növü</h4>
                                     </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <select class="selectpicker" name="buldingSecondType" data-style="btn btn-hm btn-new-hm btn-new-hm-red" title="Binanın növün seç">
+                                            @foreach (\App\Library\MyClass::$buldingSecondType as $typeK => $type)
+                                                <option value="{{ $typeK }}" {{ $typeK == $request->get('buldingSecondType')? 'selected':'' }}> {{ $type }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                  </div>
 
-                                    <button class="btn btn-tekrar-modal btn-info btn-round" rel="tooltip" data-placement="top" title="Müxtəlif saytlarda qoyulumuş eyni elanları bir elan şəklində göstərir">
-                                      ?
-                                    </button>
-                                    
-                              </div>
-                            </div>
-                          </div>
+                                  <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Elanın növü</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <select class="selectpicker" name="buldingType" data-style="btn btn-hm btn-new-hm btn-new-hm-goy" title="Elanın növün seç">
+                                            @foreach (\App\Library\MyClass::$buldingType as $typeK => $type)
+                                                <option value="{{ $typeK }}" {{ $typeK == $request->get('buldingType') ? 'selected':'' }}> {{ $type }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                  </div>
 
-                                
+                                  <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Şəhər</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <select class="selectpicker  btn-select2-red" data-live-search="true" title="Select the product" name="city">
+                                            @foreach (\App\Library\MyClass::$city as $key => $type)
+                                                <option value="{{ $key }}" {{ $key == $request->get('city') ? 'selected':'' }}> {{ $type[0] }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                  </div>
 
-                          <!-- <div class="row rowHeightH">
-                            <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
-                              <h4 class="title text-right">Elanın Seçimi</h4>
-                            </label>
-                            <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
-                                <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
-                                    <option disabled selected>Bina ev Mənzil</option>
-                                    <option value="2">Foobar</option>
-                                    <option value="3">Is great</option>
-                                </select>
-                            </div>
-                          </div> -->
-            </div> <!-- ilk col-6 2ci hisse -->
-        </div> <!-- ilk row -->
+                                  <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Rayon</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <select class="selectpicker  btn-select2-goy" data-live-search="true" multiple title="Select the product" name="district[]">
+                                            @foreach (\App\Library\MyClass::$district as $key => $type)
+                                                <option value="{{ $key }}" {{ in_array($key, $request->get('district',[])) ? 'selected':'' }}> {{ $type[0] }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                  </div>
 
-        <div class="row">
-            <div class="col-md-7 offset-md-5">
-                <button class="btn btn-success">
-                    <span class="btn-label">
-                        <i class="material-icons">check</i>
-                    </span>
-                    Axtar
-                    <div class="ripple-container"></div>
-                </button>
+                                  <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Metro</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <select class="selectpicker  btn-select2-orange" multiple data-live-search="true" title="Select the product" name="metro[]">
+                                            @foreach (\App\Library\MyClass::$metros as $key => $type)
+                                                <option value="{{ $key }}" {{ in_array($key, $request->get('metro',[])) ? 'selected':'' }}> {{ $type[0] }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                  </div>
+
+                                  <!-- <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Qəsəbə</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <select class="selectpicker  btn-select2-badimcan" multiple data-live-search="true" title="Select the product" name="">
+                                                    <option data-tokens="Get Shit Done Kit" >
+                                                        Get Shit Done Kit
+                                                    </option>
+
+                                                    <option data-tokens="" >
+                                                        BB Shit Done Kit
+                                                    </option>
+
+                                                    <option data-tokens="" >
+                                                        DD Shit Done Kit
+                                                    </option>
+
+                                                    <option data-tokens="" data-id="">
+                                                        RRR Shit Done Kit
+                                                    </option>
+                                                </select>
+                                    </div>
+                                  </div> -->
+
+                                  <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Nişangah</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <select class="selectpicker  btn-select2-tundgoy" multiple data-live-search="true" title="Select the product" name="sight[]">
+                                            @foreach (\App\Library\MyClass::$sight as $key => $type)
+                                                <option value="{{ $key }}" {{ in_array($key, $request->get('sight',[])) ? 'selected':'' }}> {{ $type[0] }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                  </div>
+                    </div> <!-- ilk col-6 1ci hisse -->
+
+                    <div class="col-md-6">
+
+                                <div class="row">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Satıcının tipi</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <select class="selectpicker" name="ownerType" data-style="btn btn-hm btn-new-hm btn-new-hm-tundgoy" title="Satıcının tipin seç">
+                                            <option>Hamısı</option>
+                                            @foreach (\App\Library\MyClass::$ownerType as $typeK => $type)
+                                                <option value="{{ $typeK }}" {{ $request->has('ownerType') && $typeK == $request->get('ownerType',"") ? 'selected':'' }}> {{ $type }} </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Binanın çıxarışı</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-seher" title="Single Select">
+                                            <option disabled selected>Bina ev Mənzil</option>
+                                        </select>
+                                    </div>
+                                  </div>
+
+                                  <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Otaq sayı</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <select class="selectpicker" name="roomCount" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Otaq sayı">
+                                            <option value="">Hamısı</option>
+                                            @for($i=1;$i<=10;$i++)
+                                                <option value="{{ $i }}" {{ $i == $request->get('roomCount',null) ? 'selected':'' }}>{{ $i }}</option>
+                                            @endfor
+                                                <option value="-1" {{ -1 == $request->get('roomCount',null) ? 'selected':'' }}>10 və daha cox</option>
+                                        </select>
+                                    </div>
+                                  </div>
+
+                                  <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Yerləşdiyi mər.</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <div class="row">
+                                            <div class="col-md-6 col-6 col-sm-6">
+                                                <select class="selectpicker" name="locatedFloor1" data-style="btn btn-hm btn-new-hm btn-new-hm-seher" title="Single Select">
+                                                    @for($i=1;$i<=31;$i++)
+                                                        <option value="{{ $i }}" {{ $i == $request->get('locatedFloor1',1) ? 'selected':'' }}>{{ $i }}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 col-6 col-sm-6">
+                                                <select class="selectpicker" name="locatedFloor2" data-style="btn btn-hm btn-new-hm btn-new-hm-seher" title="Single Select">
+                                                    @for($i=1;$i<=31;$i++)
+                                                        <option value="{{ $i }}" {{ $i == $request->get('locatedFloor2',31) ? 'selected':'' }}>{{ $i }}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Binanın m/s</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <div class="row">
+                                            <div class="col-md-6 col-6 col-sm-6">
+                                                <select class="selectpicker" name="floorCount1" data-style="btn btn-hm btn-new-hm btn-new-hm-seher" title="Single Select">
+                                                    @for($i=1;$i<=31;$i++)
+                                                        <option value="{{ $i }}" {{ $i == $request->get('floorCount1',1) ? 'selected':'' }}>{{ $i }}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 col-6 col-sm-6">
+                                                <select class="selectpicker" name="floorCount2" data-style="btn btn-hm btn-new-hm btn-new-hm-seher" title="Single Select">
+                                                    @for($i=1;$i<=31;$i++)
+                                                        <option value="{{ $i }}" {{ $i == $request->get('floorCount2',31) ? 'selected':'' }}>{{ $i }}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Dəyəri</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <div class="row">
+                                            <div class="col-md-6 col-6 col-sm-6">
+                                                <input type="number" name="amount1" value="{{ $request->get('amount1') }}" class="form-control" placeholder="Minimum">
+                                            </div>
+                                            <div class="col-md-6 col-6 col-sm-6">
+                                                <input type="number" name="amount2" value="{{ $request->get('amount2') }}" class="form-control" placeholder="Maksimum">
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row rowHeightH ">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Sahə m<sup>2</sup></h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <div class="row">
+                                            <div class="col-md-6 col-6 col-sm-6">
+                                                <input type="text" value="{{ $request->get('area1') }}" name="area1" class="form-control" placeholder="min...">
+                                            </div>
+                                            <div class="col-md-6 col-6 col-sm-6">
+                                                <input type="text" value="{{ $request->get('area2') }}" name="area2" class="form-control" placeholder="max...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+
+
+
+                                  <div class="row rowHeightH">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                    Təkrar elanları gizlət
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                            </label>
+
+                                            <button class="btn btn-tekrar-modal btn-info btn-round" rel="tooltip" data-placement="top" title="Müxtəlif saytlarda qoyulumuş eyni elanları bir elan şəklində göstərir">
+                                              ?
+                                            </button>
+
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+
+                                  <!-- <div class="row rowHeightH">
+                                    <label class="col-lg-4 col-md-4 col-sm-2 control-label text-info">
+                                      <h4 class="title text-right">Elanın Seçimi</h4>
+                                    </label>
+                                    <div class="col-lg-8 col-md-8 col-sm-3" style="margin-top: 10px">
+                                        <select class="selectpicker" data-size="7" data-style="btn btn-hm btn-new-hm btn-new-hm-badimcan" title="Single Select">
+                                            <option disabled selected>Bina ev Mənzil</option>
+                                            <option value="2">Foobar</option>
+                                            <option value="3">Is great</option>
+                                        </select>
+                                    </div>
+                                  </div> -->
+                    </div> <!-- ilk col-6 2ci hisse -->
+                </div> <!-- ilk row -->
+
+                <div class="row">
+                    <div class="col-md-7 offset-md-5">
+                        <button class="btn btn-success" type="submit">
+                            <span class="btn-label">
+                                <i class="material-icons">check</i>
+                            </span>
+                            Axtar
+                            <div class="ripple-container"></div>
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
-
+        </form>
     </div>
-</div></div>
+    <!-- Announcemets -->
+    <div class="row">
+        @foreach ($announcements as $announcement )
+            <div class="col-md-4">
+                <div class="card card-product">
+                    <div class="card-header card-header-image" data-header-animation="true">
+                        <a href="#pablo">
+                            <img class="img" style="height: 200px" src="assets/build/huseynzade/img/card-1.jpeg">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-actions text-center">
+                            <button type="button" class="btn btn-default btn-link" onclick="window.location.href='{{ route( ( $announcement->status > 0 ? 'announcement_pro_info' : 'announcement_info' ) ,['id'=>$announcement->id]) }}'" rel="tooltip" data-placement="bottom" title="Ətraflı">
+                                <i class="material-icons">art_track</i>
+                            </button>
+                        </div>
+                        <h4 class="card-title">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <a href="{{ $announcement->link }}"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;"> {{ $announcement->type == 'building' ? '(' . $announcement->getAnnouncementType2() . ')':'' }} </span>
+                                </div>
+                            </div>
+                            <div><span class="badge {!! $announcement['owner_type'] == 1 ? 'badge-danger' : 'badge-success' !!}">{!! $announcement['owner_type'] == 1 ? 'Vasitəçi' : 'Mülkiyyətçi' !!}</span> <!-- <label class="label-control">(Sahibkar)</label> --></div>
+                        </h4>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4 ml-auto mr-auto col-sm-6 text-center">{{ App\Library\Date::d($announcement->date,'d-m-Y') }}</div>
+                            <div class="col-md-4 ml-auto mr-auto col-sm-6 text-center"><span style="color:yellowgreen;" class="right">{{ $announcement->site }}</span></div><br />
+                        </div>
+                    </div>
+                    <div class="card-footer">
 
+                        <div class="price">
+                            <h4> <img src="assets/build/huseynzade/img/azn.png" style="width: 15px" alt="AZN"> {{ (int)$announcement->amount }} / {{ $announcement->getBuldingType() }}</h4>
+
+                        </div>
+
+                        <div class="stats">
+                            <p class="category"><i class="material-icons">place</i> {{ str_limit($announcement->city->name . '') }}, AZ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
 
 
 @endsection

@@ -19,108 +19,75 @@
                         </div>
                     </div>
 <br> 
-<div class="row">    
-@foreach ($announcements as $announcement )
-    <div class="col-md-4">
-        <div class="card card-product">
-            <div class="card-header card-header-image" data-header-animation="true">
-                <a href="#pablo">
-                    <img class="img" style="height: 200px" src="assets/build/huseynzade/img/card-1.jpeg">
-                </a>
-            </div>
-            <div class="card-body">
-                <div class="card-actions text-center">
-                    <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                        <i class="material-icons">build</i> Bərpa Et!
-                    </button>
-                    <button type="button" class="btn btn-default btn-link" onclick="window.location.href='{{ route('announcement_info',['id'=>$announcement->id]) }}'" rel="tooltip" data-placement="bottom" title="Ətraflı">
-                        <i class="material-icons">art_track</i>
-                    </button>
-                    <button type="button" class="btn btn-success btn-link" onclick="window.location.href='{{ route('announcement_pro_add_from',['id'=>$announcement->id]) }}'" rel="tooltip" data-placement="bottom" title="FE. Əlavə Et">
-                        <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" class="btn btn-danger btn-link" onclick="window.location.href='{{ route('announcement_delete',['id'=>$announcement->id]) }}'" rel="tooltip" data-placement="bottom" title="Sil Getsin">
-                        <i class="material-icons">close</i>
-                    </button>
+    <div class="row">
+    @foreach ($announcements as $announcement )
+        <div class="col-md-4">
+            <div class="card card-product">
+                <div class="card-header card-header-image" data-header-animation="true">
+                    <a href="#pablo">
+                        <img class="img" style="height: 200px" src="assets/build/huseynzade/img/card-1.jpeg">
+                    </a>
                 </div>
-                <h4 class="card-title">
-                    <!-- <div class="row"> -->
-                        <!-- <div class="col-md-2">
-                            <div class="form-check mr-auto">
-                              <label class="form-check-label">
-                                  <input class="form-check-input" type="checkbox" value="">
-                                  <span class="form-check-sign">
-                                      <span class="check"></span>
-                                  </span>
-                              </label>
-                            </div>
-                        </div> -->
-                       <!--  <div class="col-md-8"> -->
-                        <div class="row">
-                            <!-- <div class="col-md-2">
-                                <div class="form-check" style="margin-top: -10px;">
-                                    <label class="form-check-label check_div">
-                                        <input class="form-check-input" type="checkbox" ann_id="{{ $announcement->id }}">
-                                        <span class="form-check-sign">
-                                              <span class="check"></span>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div> -->
-                            <div class="col-md-12 text-center">
-                                <a href="{{ $announcement->link }}"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;"> {{ $announcement->type == 'building' ? '(' . $announcement->getAnnouncementType2() . ')':'' }} </span>
-                            </div>
-                        </div>
-                           <!--  <a href="#pablo"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;">(Yeni Tikili)</span> -->
-                        <!-- </div> -->
-                    <!-- </div> -->
-                    <div><span class="badge {!! $announcement['owner_type'] == 1 ? 'badge-danger' : 'badge-success' !!}">{!! $announcement['owner_type'] == 1 ? 'Vasitəçi' : 'Mülkiyyətçi' !!}</span> <!-- <label class="label-control">(Sahibkar)</label> --></div>
-                </h4>
-                <br />
-                <div class="row">
-                    <div class="col-md-4 ml-auto mr-auto col-sm-6 text-center">{{ App\Library\Date::d($announcement->date,'d-m-Y') }}</div>
-                        <div class="col-md-4 ml-auto mr-auto col-sm-6 text-center"><span style="color:yellowgreen;" class="right">{{ $announcement->site }}</span></div><br />
+                <div class="card-body">
+                    <div class="card-actions text-center">
+                        <button type="button" class="btn btn-danger btn-link fix-broken-card">
+                            <i class="material-icons">build</i> Bərpa Et!
+                        </button>
+                        <button type="button" class="btn btn-default btn-link" onclick="window.location.href='{{ route('announcement_info',['id'=>$announcement->id]) }}'" rel="tooltip" data-placement="bottom" title="Ətraflı">
+                            <i class="material-icons">art_track</i>
+                        </button>
+                        <button type="button" class="btn btn-success btn-link" onclick="window.location.href='{{ route('announcement_pro_add_from',['id'=>$announcement->id]) }}'" rel="tooltip" data-placement="bottom" title="FE. Əlavə Et">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-link" onclick="window.location.href='{{ route('announcement_delete',['id'=>$announcement->id]) }}'" rel="tooltip" data-placement="bottom" title="Sil Getsin">
+                            <i class="material-icons">close</i>
+                        </button>
                     </div>
-                </div>
-            <div class="card-footer">
+                    <h4 class="card-title">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <a href="{{ $announcement->link }}"> {{ $announcement->getAnnouncementType() }}</a> <span style="font-size: 16px; color:red;"> {{ $announcement->type == 'building' ? '(' . $announcement->getAnnouncementType2() . ')':'' }} </span>
+                                </div>
+                            </div>
+                        <div><span class="badge {!! $announcement['owner_type'] == 1 ? 'badge-danger' : 'badge-success' !!}">{!! $announcement['owner_type'] == 1 ? 'Vasitəçi' : 'Mülkiyyətçi' !!}</span> <!-- <label class="label-control">(Sahibkar)</label> --></div>
+                    </h4>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4 ml-auto mr-auto col-sm-6 text-center">{{ App\Library\Date::d($announcement->date,'d-m-Y') }}</div>
+                            <div class="col-md-4 ml-auto mr-auto col-sm-6 text-center"><span style="color:yellowgreen;" class="right">{{ $announcement->site }}</span></div><br />
+                        </div>
+                    </div>
+                <div class="card-footer">
 
-                <div class="price">
-                    <h4> <img src="assets/build/huseynzade/img/azn.png" style="width: 15px" alt="AZN"> {{ (int)$announcement->amount }} / {{ $announcement->getBuldingType() }}</h4>
+                    <div class="price">
+                        <h4> <img src="assets/build/huseynzade/img/azn.png" style="width: 15px" alt="AZN"> {{ (int)$announcement->amount }} / {{ $announcement->getBuldingType() }}</h4>
 
-                </div>
-                <div class="form-check" style="margin-top: -15px">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" ann_id="{{ $announcement->id }}">
-                            <span class="form-check-sign">
-                                <span class="check"></span>
-                            </span>
-                    </label>
-                </div>
-
-            <!--     <div class="check_div">
-                        <input type="checkbox" class="flat" ann_id="{{ $announcement->id }}">
-                    </div> -->
-
-                <div class="stats">
-                    <p class="category"><i class="material-icons">place</i> {{ str_limit($announcement->city->name . '') }}, AZ</p>
+                    </div>
+                    <div class="form-check" style="margin-top: -15px">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" ann_id="{{ $announcement->id }}">
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                        </label>
+                    </div>
+                    <div class="stats">
+                        <p class="category"><i class="material-icons">place</i> {{ str_limit($announcement->city->name . '') }}, AZ</p>
+                    </div>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
-    @endforeach
-    <div></div>
-                    <div class="row">
-                        <div class="col-md-3 ml-auto mr-auto"></div>
-                        <div class="col-md-1 ml-auto mr-auto">
-                            <div class="">
-                                {{ $announcements->appends($request->except('page'))->links('admin.pagination', ['paginator' => $announcements]) }}
-                            </div>
-                            
-                        </div>
-                    </div>
+    <div class="row">
+        <div class="col-md-3 ml-auto mr-auto"></div>
+        <div class="col-md-1 ml-auto mr-auto">
+            <div class="">
+                {{ $announcements->appends($request->except('page'))->links('admin.pagination', ['paginator' => $announcements]) }}
+            </div>
 
-</div>
-
+        </div>
+    </div>
               
 
     @endsection
