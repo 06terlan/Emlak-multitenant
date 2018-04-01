@@ -24,12 +24,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'tenant'] ], functio
     Route::get('dashboard', 'Admin\HomeController@index')->where('dashboard','dashboard')->name('dashboard')->middleware('priv:dashboard,'.\App\Library\MyClass::PRIV_CAN_SEE);
 	
 	//profile
-	Route::get('profile', 'Admin\ProfileController@index');
+	Route::get('profile', 'Admin\ProfileController@index')->name('profile');
 	Route::post('profile/{which}', 'Admin\ProfileController@update')->where('which','[12]');
+    Route::get('profile/info', 'Admin\ProfileController@user_info')->name('profile_info');
 
     //password/profile
-    Route::get('password', 'Admin\PasswordController@index');
-
+    Route::get('password', 'Admin\PasswordController@index')->name('profile_password');
     Route::post('password/{which}', 'Admin\PasswordController@password')->where('which','[12]');
 	
 	//users

@@ -35,19 +35,19 @@
                 <div class="collapse" id="collapseExample">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('profile_info') }}">
                               <span class="sidebar-mini"> MH </span>
                               <span class="sidebar-normal"> Mənim hesabım </span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ URL::to('admin/profile') }}">
+                            <a class="nav-link" href="{{ route('profile') }}">
                               <span class="sidebar-mini"> EP </span>
                               <span class="sidebar-normal"> Profilə düzəliş et </span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ URL::to('admin/password') }}">
+                            <a class="nav-link" href="{{ route('profile_password') }}">
                               <span class="sidebar-mini"> P </span>
                               <span class="sidebar-normal"> Parolu dəyiş </span>
                             </a>
