@@ -30,45 +30,6 @@
 	                                <div class="card-header card-header-image" data-header-animation="true">
 						                <a href="#pablo">
 						                    <img class="img" style="height: 400px" src="../../assets/build/huseynzade/img/card-1.jpeg">
-
-
-
-						                    <div class="listing-carousel property-carousel">
-					<div class="swiper-wrapper">
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/1_1AFXFU1-1032x3096.jpeg 1032w, https://property-com-fj.s3.amazonaws.com/listings/1_1AFXFU1-2064x3096.jpeg 2064w, https://property-com-fj.s3.amazonaws.com/listings/1_1AFXFU1-258x3096.jpeg 258w, https://property-com-fj.s3.amazonaws.com/listings/1_1AFXFU1-516x3096.jpeg 516w, https://property-com-fj.s3.amazonaws.com/listings/1_1AFXFU1.jpeg 4128w"></div></a>
-							</div>
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/2_bUIKlsu-1032x3096.jpeg 1032w, https://property-com-fj.s3.amazonaws.com/listings/2_bUIKlsu-2064x3096.jpeg 2064w, https://property-com-fj.s3.amazonaws.com/listings/2_bUIKlsu-258x3096.jpeg 258w, https://property-com-fj.s3.amazonaws.com/listings/2_bUIKlsu-516x3096.jpeg 516w, https://property-com-fj.s3.amazonaws.com/listings/2_bUIKlsu.jpeg 4128w"></div></a>
-							</div>
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/3_ppvqfuS-408x1836.jpg 408w, https://property-com-fj.s3.amazonaws.com/listings/3_ppvqfuS-816x1836.jpg 816w, https://property-com-fj.s3.amazonaws.com/listings/3_ppvqfuS-204x1836.jpg 204w, https://property-com-fj.s3.amazonaws.com/listings/3_ppvqfuS.jpg 3264w, https://property-com-fj.s3.amazonaws.com/listings/3_ppvqfuS-1632x1836.jpg 1632w"></div></a>
-							</div>
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/4_4db92bK-1032x3096.jpeg 1032w, https://property-com-fj.s3.amazonaws.com/listings/4_4db92bK-2064x3096.jpeg 2064w, https://property-com-fj.s3.amazonaws.com/listings/4_4db92bK-258x3096.jpeg 258w, https://property-com-fj.s3.amazonaws.com/listings/4_4db92bK-516x3096.jpeg 516w, https://property-com-fj.s3.amazonaws.com/listings/4_4db92bK.jpeg 4128w"></div></a>
-							</div>
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/5_9n6j4qu-1032x3096.jpeg 1032w, https://property-com-fj.s3.amazonaws.com/listings/5_9n6j4qu-2064x3096.jpeg 2064w, https://property-com-fj.s3.amazonaws.com/listings/5_9n6j4qu-258x3096.jpeg 258w, https://property-com-fj.s3.amazonaws.com/listings/5_9n6j4qu-516x3096.jpeg 516w, https://property-com-fj.s3.amazonaws.com/listings/5_9n6j4qu.jpeg 4128w"></div></a>
-							</div>
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/6_bDkws4v-408x1836.jpg 408w, https://property-com-fj.s3.amazonaws.com/listings/6_bDkws4v-816x1836.jpg 816w, https://property-com-fj.s3.amazonaws.com/listings/6_bDkws4v-204x1836.jpg 204w, https://property-com-fj.s3.amazonaws.com/listings/6_bDkws4v.jpg 3264w, https://property-com-fj.s3.amazonaws.com/listings/6_bDkws4v-1632x1836.jpg 1632w"></div></a>
-							</div>
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/7_Doeyww0-408x1836.jpg 408w, https://property-com-fj.s3.amazonaws.com/listings/7_Doeyww0-816x1836.jpg 816w, https://property-com-fj.s3.amazonaws.com/listings/7_Doeyww0-204x1836.jpg 204w, https://property-com-fj.s3.amazonaws.com/listings/7_Doeyww0.jpg 3264w, https://property-com-fj.s3.amazonaws.com/listings/7_Doeyww0-1632x1836.jpg 1632w"></div></a>
-							</div>
-						
-					</div>
-					<div class="swiper-pagination swiper-gallery-pagintation"></div>
-					<div class="swiper-button-prev swiper-button-prev-top"></div>
-					<div class="swiper-button-next swiper-button-next-top"></div>
-				</div>
 						                </a>
 						            </div>
 
