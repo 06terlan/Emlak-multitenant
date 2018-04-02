@@ -131,7 +131,12 @@ class ProAnnouncement extends Model
 
     public function city()
     {
-        return $this->belongsTo(MskCity::class);
+        return isset(MyClass::$city[$this->city_id]) ? MyClass::$city[$this->city_id][0] : "-";
+    }
+
+    public function sight()
+    {
+        return isset(MyClass::$sight[$this->sight_id]) ? MyClass::$sight[$this->sight_id][0] : "-";
     }
 
     public function pictures()

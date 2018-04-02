@@ -16,7 +16,7 @@ class PostController extends Controller
 {
     public function index(PostRequest $request)
     {
-        $announcements = Announcement::realAnnouncements(true)->with('city');
+        $announcements = Announcement::realAnnouncements(true);
 
         $announcements->whereIn('type', json_decode(Auth::user()->group->available_types) );
         $announcements->whereIn('buldingType', json_decode(Auth::user()->group->available_building_types) );

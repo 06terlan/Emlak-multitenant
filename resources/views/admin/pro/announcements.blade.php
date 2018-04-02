@@ -112,7 +112,7 @@
                     </label>
                 </div>
                 <div class="stats">
-                    <p class="category"><i class="material-icons">place</i> {{ str_limit($announcement->city->name . '') }}, AZ</p>
+                    <p class="category"><i class="material-icons">place</i> {{ $announcement->city() }}, AZ</p>
                 </div>
             </div>
         </div>

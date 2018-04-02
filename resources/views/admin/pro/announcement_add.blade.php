@@ -131,8 +131,8 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 <select style="width: 100%" class="select2" name="city" required="">
-                                                    @foreach ( \App\Models\MskCity::all() as $city)
-                                                        <option value="{{ $city['id'] }}" {{ $city['id'] == $announcement['city_id']? 'selected':'' }}> {{ $city->name }} </option>
+                                                    @foreach (\App\Library\MyClass::$city as $key => $city)
+                                                        <option value="{{ $key }}" {{ $key == $announcement['city_id']? 'selected':'' }}> {{ $city[0] }} </option>
                                                     @endforeach
                                                     
                                                 </select>

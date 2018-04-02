@@ -342,7 +342,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card-actions text-center">
-                            <button type="button" class="btn btn-default btn-link" onclick="window.location.href='{{ route( ( $announcement->status > 0 ? 'announcement_pro_info' : 'announcement_info' ) ,['id'=>$announcement->id]) }}'" rel="tooltip" data-placement="bottom" title="Ətraflı">
+                            <button type="button" class="btn btn-default btn-link" onclick="window.open('{{ route( ( $announcement->status > 0 ? 'announcement_pro_info' : 'announcement_info' ) ,['id'=>$announcement->id]) }}', '_blank');" rel="tooltip" data-placement="bottom" title="Ətraflı">
                                 <i class="material-icons">art_track</i>
                             </button>
                         </div>

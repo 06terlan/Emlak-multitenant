@@ -194,13 +194,13 @@
 				                <p style="margin-top: -10px; color: red">{{ $announcement->getAnnouncementType2() }}</p>
 				                @endif
 				                <h5 class="text-left" style="">Elanın növü: <span class="pull-right text-success">{{ $announcement->getBuldingType() }}</span></h5>
-				                <h5 class="text-left">Şəhər: <span class="pull-right text-success">{{ $announcement->city->name }} AZ</span></h5>
+				                <h5 class="text-left">Şəhər: <span class="pull-right text-success">{{ $announcement->city() }} AZ</span></h5>
 				                <h5 class="text-left">Yerləşir: <span class="pull-right text-success">{{ $announcement->place }}</span></h5>
-				                <h5 class="text-left">Metro: <span class="pull-right"></span></h5>
-				                <h5 class="text-left">Nişangah: <span class="pull-right"></span></h5>
+				                <h5 class="text-left">Metro: <span class="pull-right text-success">{{ $announcement->metro() }}</span></h5>
+				                <h5 class="text-left">Nişangah: <span class="pull-right text-success">{{ $announcement->sight() }}</span></h5>
 				                <h5 class="text-left">Sahə: <span class="pull-right text-success">{{ $announcement->area }} m<sup>2</sup></span></h5>
-				                <h5 class="text-left">Binanın mərtəbə sayı: <span class="pull-right"></span></h5>
-				                <h5 class="text-left">Yerləşdiyi mərtəbə: <span class="pull-right"></span></h5>
+				                <h5 class="text-left">Binanın mərtəbə sayı: <span class="pull-right text-success">{{ $announcement->floorCount }}</span></h5>
+				                <h5 class="text-left">Yerləşdiyi mərtəbə: <span class="pull-right text-success">{{ $announcement->locatedFloor }}</span></h5>
 				                
 				                @if($announcement->type != 'land')
 				                <h5 class="text-left">Otaq sayı: <span class="pull-right text-success">{{ $announcement->roomCount }}</span></h5>
