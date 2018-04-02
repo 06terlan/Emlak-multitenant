@@ -12,7 +12,9 @@
           <div class="card">
             <div class="card-header card-header-rose card-header-icon">
               <div class="card-icon">
-                <a href="{{ route('tenant_add_edit',['tenant' => 0]) }}"> <i class="material-icons" style="color: #fff">add_to_queue</i> </a>
+                  @if( \App\Library\MyHelper::has_priv('tenant', \App\Library\MyClass::PRIV_SUPER_ADMIN_CAN_ADD) )
+                    <a href="{{ route('tenant_add_edit',['tenant' => 0]) }}"> <i class="material-icons" style="color: #fff">add_to_queue</i> </a>
+                  @endif
               </div>
               <h4 class="card-title">Şirkətlər</h4>
             </div>
@@ -23,49 +25,6 @@
                   <div class="material-datatables">
 
                   <div id="datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                    <div class="row">
-                    	<div class="col-sm-12 col-md-6">
-                        <div class="dataTables_length" id="datatables_length">
-                        	<label class="form-group">Göstər <select name="datatables_length" aria-controls="datatables" class="form-control form-control-sm">
-                        		<option value="10">10</option>
-                        		<option value="25">25</option>
-                        		<option value="50">50</option>
-                        		<option value="-1">Bütün</option>
-                        	</select> sıra</label></div></div>
-                        	<div class="col-sm-12 col-md-6">
-                        		<div id="datatables_filter" class="dataTables_filter">
-                        			<label class="form-group bmd-form-group bmd-form-group-sm">
-                        				<input type="search" class="form-control form-control-sm" placeholder="Axtarış qeydləri" aria-controls="datatables">
-                        			</label>
-                        		</div>
-                        	</div>
-                        </div>
-
-                        <!-- Axtaris butonlari -->
-                        	<!-- <div class="row">
-
-                            <div class="col-lg-3 col-md-4 col-sm-3">
-                                <input name="company_name" value="{{ $request->get("company_name") }}" class="form-control formFind" style="margin-top: 15px" placeholder="Şirkətin adı">
-                            </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-3">
-                                <select class="selectpicker form-control formFind" name="type" data-size="7" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="Tipi">
-                                    @foreach (\App\Library\MyClass::$companyTypes as $typeK => $type)
-                                        <option value="{{ $typeK }}" {{ $typeK == $request->get("type") ? 'selected':'' }}> {{ $type }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-3">
-                                <input name="created_at" value="{{ $request->get("created_at") }}" class="form-control formFind" style="margin-top: 15px" placeholder="Yaranma vaxtı">
-                            </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-3">
-                                <input name="last_date" value="{{ $request->get("last_date") }}" class="form-control formFind" style="margin-top: 15px" placeholder="Bitmə vaxtı">
-                            </div>
-                        </div> -->
-                        <!-- Axtaris Butonlari son -->
-
                         <div class="row">
                         	<div class="col-sm-12">
                         		<table id="datatables" class="table table-striped table-no-bordered table-hover dataTable dtr-inline" cellspacing="0" width="100%" style="width: 100%;" role="grid" aria-describedby="datatables_info">
@@ -137,65 +96,7 @@
           </div><!--  end card  -->
       </div> <!-- end col-md-12 -->
   </div> <!-- end row -->
-
-           
-
-
 @endsection
-
-<script>
-    var lastId = 17669;
-    var notficationCount = 200;
-    var _token = "Rkd9ZEEpJk0TgZxUqRDTnlFAnoOQtpgXaJfeTpW9";
-    var link = "http://emlakbazasi.com/public/index.php/admin/announcement/getLast";
-</script>
-
-<script type="text/javascript">
-     
-
-    $(document).ready(function() {
-        $('#datatables').DataTable({
-            "pagingType": "full_numbers",
-            "lengthMenu": [
-                [10, 25, 50, -1],
-                [10, 25, 50, "All"]
-            ],
-            responsive: true,
-            language: {
-                search: "_INPUT_",
-                searchPlaceholder: "Search records",
-            }
-
-        });
-
-
-        var table = $('#datatables').DataTable();
-
-        // Edit record
-        table.on('click', '.edit', function() {
-            $tr = $(this).closest('tr');
-
-            var data = table.row($tr).data();
-            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-        });
-
-        // Delete a record
-        table.on('click', '.remove', function(e) {
-            $tr = $(this).closest('tr');
-            table.row($tr).remove().draw();
-            e.preventDefault();
-        });
-
-        //Like record
-        table.on('click', '.like', function() {
-            alert('You clicked on Like button');
-        });
-
-        $('.card .material-datatables label').addClass('form-group');
-    });
-
-
-</script>
 
 @section('css')
     {{--  bootstrap-wysiwyg --}}
@@ -207,4 +108,49 @@
 <!--     {!! Html::script('admin/assets/build/huseynzade/js/jquery-confirm.js') !!}
 
     {!! Html::script('admin/assets/vendors/jquery-confirm-master/js/jquery-confirm.js') !!} -->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#datatables').DataTable({
+                "pagingType": "full_numbers",
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                responsive: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search records",
+                }
+
+            });
+
+
+            var table = $('#datatables').DataTable();
+
+            // Edit record
+            table.on('click', '.edit', function() {
+                $tr = $(this).closest('tr');
+
+                var data = table.row($tr).data();
+                alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+            });
+
+            // Delete a record
+            table.on('click', '.remove', function(e) {
+                $tr = $(this).closest('tr');
+                table.row($tr).remove().draw();
+                e.preventDefault();
+            });
+
+            //Like record
+            table.on('click', '.like', function() {
+                alert('You clicked on Like button');
+            });
+
+            $('.card .material-datatables label').addClass('form-group');
+        });
+
+
+    </script>
 @endsection
