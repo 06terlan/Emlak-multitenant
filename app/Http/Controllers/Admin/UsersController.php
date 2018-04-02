@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Library\MyClass;
 use App\Library\MyHelper;
+use App\Models\Tenant;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\UpdateSaveUserRequest;
@@ -55,6 +56,8 @@ class UsersController extends Controller
     public function addEditUser(UpdateSaveUserRequest $request,$id)
     {
         $tenant_id = Auth::user()->tenant_id;
+        $maxUser = Auth::user()->tenant->msk_type->user_count;
+        $userCount = User::realUsers()->count();
 
         if( Auth::user()->group->super_admin == 1 )
         {
@@ -62,13 +65,15 @@ class UsersController extends Controller
             if($validate->fails()) return redirect()->back()->withErrors($validate);
 
             $tenant_id = $request->get('tenant');
+            $userCount = User::where('tenant_id', $tenant_id)->count();
+            $maxUser = Tenant::find($tenant_id)->msk_type->user_count;
         }
 
         if($id == 0)
         {
             $validate = Validator::make($request->all(), ['password' => 'required|string|min:6|max:20']);
             //check user count
-            if( User::realUsers()->count() >= Auth::user()->tenant->msk_type->user_count )
+            if( $userCount >= $maxUser )
             {
                 $validate->errors()->add('no', 'İstifadəçi əlavə olunma sayısını aşırsız.');
                 return redirect()->back()->withErrors($validate);

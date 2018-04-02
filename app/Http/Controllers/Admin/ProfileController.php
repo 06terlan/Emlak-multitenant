@@ -27,6 +27,11 @@ class ProfileController extends Controller
         return view('admin.profile');
     }
 
+    public function user_info()
+    {
+        return view('admin.profile_info');
+    }
+
     public function update(Request $request,$which)
     {
         if($which==1)

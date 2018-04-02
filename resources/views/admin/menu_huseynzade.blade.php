@@ -1,10 +1,5 @@
-
-
-
-
-
-        <div class="wrapper">
-            <div class="sidebar" data-color="rose" data-background-color="black" data-image="../admin/assets/build/huseynzade/img/sidebar-1.jpg">
+    <div class="wrapper">
+            <div class="sidebar" data-color="rose" data-background-color="black" data-image="{{ asset('/admin/assets/build/huseynzade/img/sidebar-1.jpg') }}">
     <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -40,19 +35,19 @@
                 <div class="collapse" id="collapseExample">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('profile_info') }}">
                               <span class="sidebar-mini"> MH </span>
                               <span class="sidebar-normal"> Mənim hesabım </span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ URL::to('admin/profile') }}">
+                            <a class="nav-link" href="{{ route('profile') }}">
                               <span class="sidebar-mini"> EP </span>
                               <span class="sidebar-normal"> Profilə düzəliş et </span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('profile_password') }}">
                               <span class="sidebar-mini"> P </span>
                               <span class="sidebar-normal"> Parolu dəyiş </span>
                             </a>
@@ -61,8 +56,8 @@
                 </div>
             </div>
         </div>
-        <ul class="nav">
-            @php $currentRoute = \Request::route()->getName(); @endphp
+        <ul class="nav" id="my-menu">
+            @php $currentRoute = \Request::route()->getName(); $currentRouteName = ""; @endphp
             @foreach(\App\Library\MyClass::$modules as $val)
                 @if( isset($val['child']) )
                     <li class="nav-item">
@@ -76,7 +71,7 @@
                             <ul class="nav">
                                 @foreach($val['child'] as $k => $v)
                                     @if( \App\Library\MyHelper::has_priv($v['route'], $v['priv']) )
-                                        <li class="nav-item ">
+                                        <li class="nav-item {{ $currentRoute == $v['route'] && ($currentRouteName = $v['name'])? 'active':'' }}">
                                             <a class="nav-link" href="{{ route($v['route']) }}">
                                                 <span class="sidebar-mini"> {{ $v['icon'] }} </span>
                                                 <span class="sidebar-normal"> {{ $v['name'] }} </span>
@@ -89,7 +84,7 @@
                     </li>
                 @else
                     @if( \App\Library\MyHelper::has_priv($val['route'], $val['priv']) )
-                        <li class="nav-item {{ $currentRoute == $val['route'] ? 'active':'' }}">
+                        <li class="nav-item {{ $currentRoute == $val['route'] && ($currentRouteName = $val['name']) ? 'active':'' }}">
                             <a class="nav-link" href="{{ route($val['route']) }}">
                                 <i class="material-icons">{{ $val['icon'] }}</i>
                                 <p> {{ $val['name'] }} </p>
@@ -115,8 +110,8 @@
                   <i class="material-icons design_bullet-list-67 visible-on-sidebar-mini">view_list</i>
               </button>
             </div>
-                  <a class="navbar-brand" href="#huseynzade">Dashboard</a>
-              </div>
+                  <a class="navbar-brand" href="#huseynzade">{{ $currentRouteName }}</a>
+            </div>
 
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -128,9 +123,11 @@
               <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <form class="navbar-form">
                 <div class="input-group no-border">
-                    <input type="text" value="" class="form-control" placeholder="Axtarış...">
-                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                      <i class="material-icons">search</i>
+                    <!-- <input type="text" value="" class="form-control" placeholder="Axtarış..."> -->
+                    <!-- <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                      <i class="material-icons">refresh</i> -->
+                      <!-- <i class="material-icons">search</i> -->
+                      <!-- <span style="color: yellowgreen">www.bazam.az</span> -->
                       <div class="ripple-container"></div>
                     </button>
                 </div>
@@ -138,27 +135,41 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#huseynzade">
+                    <a class="nav-link" href="{{ URL::to('admin/lock') }}">
             <i class="material-icons">lock</i>
                         <p>
               <span class="d-lg-none d-md-block">bağla</span>
             </p>
                     </a>
                 </li>
+                @php
+                            $count = App\Models\Announcement::todayAnnouncements()->count();
+                            $countStr = $count;
+                            if( $countStr > \App\Library\MyClass::INFO_COUNT ) $countStr = \App\Library\MyClass::INFO_COUNT."+";
+                        @endphp
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="javascript:;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true" >
             <i class="material-icons">notifications</i>
-            <span class="notification">5</span>
+            <span class="notification" id="not-count">{{ $countStr }}</span>
                         <p>
                             <span class="d-lg-none d-md-block"> Gələn elan</span>
                         </p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        @php
-                            $count = App\Models\Announcement::todayAnnouncements()->count();
-                            $countStr = $count;
-                            if( $countStr > \App\Library\MyClass::INFO_COUNT ) $countStr = \App\Library\MyClass::INFO_COUNT."+";
-                        @endphp
+
+                        
+                      <!-- bildiris -->
+                     
+                    
+                            <a class="dropdown-item" href="#">
+                              <span>
+                                  <span>3 sot torpaq sahəsi, Binə...</span>
+                                  <span style="font-style: italic; font-weight: 700;">22 minutes ago</span>
+                              </span>
+                            </a>
+                    
+                      <!-- bildiris son -->
+                        
                     </div>
                 </li>
 

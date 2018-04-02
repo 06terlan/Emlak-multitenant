@@ -29,7 +29,10 @@
 <nav class="navbar navbar-expand-lg bg-primary navbar-transparent navbar-absolute" color-on-scroll="500">
     <div class="container">
     <div class="navbar-wrapper">
-          <a class="navbar-brand" href="#pablo">Online Əmlak Bazası</a>
+          <!-- <a class="navbar-brand" href="#pablo">Online Əmlak Bazası</a> -->
+          <a class="navbar-brand" href="#pablo">
+              <img style="width: 150px; height: 100px; margin-top: -25px" src="assets/build/huseynzade/img/login_ag.png">
+          </a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
       <span class="sr-only">Menu</span>
@@ -40,19 +43,19 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="../dashboard.html" class="nav-link">
+                    <a href="dashboard" class="nav-link">
                         <i class="material-icons">dashboard</i>
                         Göstəriş paneli
                     </a>
                 </li>
                 <li class= "nav-item ">
-                    <a href="register.html" class="nav-link">
+                    <a href="register" class="nav-link">
                         <i class="material-icons">person_add</i>
                         Qeydiyyat
                     </a>
                 </li>
                 <li class= "nav-item  active ">
-                    <a href="login.html" class="nav-link">
+                    <a href="#login" class="nav-link">
                         <i class="material-icons">fingerprint</i>
                         Daxil ol
                     </a>
@@ -84,13 +87,13 @@
                                     <div class="card-header card-header-rose text-center">
                                     <h4 class="card-title">Giriş</h4>
                                         <div class="social-line">
-                                            <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                                            <a href="#facebook" class="btn btn-just-icon btn-link btn-white">
                                                 <i class="fa fa-facebook-square"></i>
                                             </a>
-                                            <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                                            <a href="#twitter" class="btn btn-just-icon btn-link btn-white">
                                                 <i class="fa fa-twitter"></i>
                                             </a>
-                                            <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                                            <a href="#google" class="btn btn-just-icon btn-link btn-white">
                                                 <i class="fa fa-google-plus"></i>
                                             </a>
                                         </div>
@@ -165,7 +168,7 @@
                                     </ul>
                                 </nav>
                                 <div class="copyright pull-right">
-                                    &copy; <script>document.write(new Date().getFullYear())</script>, <i class="material-icons">favorite</i> by <a href="" target="_blank">Hüseynzadə</a>
+                                    &copy; <script>document.write(new Date().getFullYear())</script>, <a href="" target="_blank">bazam.az</a>
                                 </div>
                             </div>
 

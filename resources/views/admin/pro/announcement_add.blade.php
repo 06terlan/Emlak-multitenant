@@ -21,13 +21,14 @@
         
         
                             <form autocomplete="off" enctype="multipart/form-data" class="form-horizontal" novalidate=""  method="post" action="{{ isset($from) && $from > 0 ? route('announcement_insert_act_from',['announcement' => $from]) : route('announcement_insert_act',['announcement' => $id]) }}">
+                                <input type="hidden" value="{{ isset($from) ? $from : 0 }}" name="from" />
                                     
                                     <div class="row">
                                         <label class="col-sm-2 col-form-label text-right">Elanın başlığı</label>
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <input required="" name="header" data-validate-length-range="5,200" type="text" class="form-control" placeholder="Elanın başlığı" value="{{ $announcement['header'] }}">
+                                                <input required="" name="header" data-validate-length-range="5,200" type="text" class="form-control" placeholder="Header" value="{{ $announcement['header'] }}">
                                             </div>
                                         </div>
                                     </div>
@@ -37,7 +38,7 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-orange" title="">
+                                                <select name="type" required="" class="selectpicker"  data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-orange">
                                                     @foreach (\App\Library\MyClass::$announcementTypes as $typeK => $type)
 
                                                         <option value="{{ $typeK }}" {{ $typeK == $announcement['type']? 'selected':'' }}> {{ $type }} </option>
@@ -54,7 +55,7 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-red" title="">
+                                                <select class="selectpicker" name="type2" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-red">
                                                     @foreach (\App\Library\MyClass::$buldingSecondType as $typeK => $type)
 
                                                         <option value="{{ $typeK }}" {{ $typeK == $announcement['type2']? 'selected':'' }}> {{ $type }} </option>
@@ -71,7 +72,7 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-goy" title="">
+                                                <select class="selectpicker" name="buldingType" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-goy">
                                                     @foreach (\App\Library\MyClass::$buldingType as $typeK => $type)
 
                                                         <option value="{{ $typeK }}" {{ $typeK == $announcement['buldingType']? 'selected':'' }}> {{ $type }} </option>
@@ -101,7 +102,7 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 
-                                                <input type="number" data-validate-minmax="1," name="area" type="text" class="form-control" placeholder="Sahə" value="{{ $announcement['area'] }}">
+                                               <input type="number" data-validate-minmax="1," name="area" type="text" class="form-control" placeholder="Sahə" value="{{ $announcement['area'] }}">
                                                 
                                             </div>
                                         </div>
@@ -112,7 +113,7 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select style="width: 100%" class="select2 " name="group_id" required="" title="">
+                                                <select style="width: 100%" class="select2 " name="metro" required="">
                                                     @foreach (\App\Library\MyClass::$metros as $key => $metro)
 
                                                         <option value="{{ $key }}" {{ $key == $announcement['metro_id']? 'selected':'' }}> {{ $metro[0] }} </option>
@@ -129,7 +130,7 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select style="width: 100%" class="select2" name="group_id" required="" title="">
+                                                <select style="width: 100%" class="select2" name="city" required="">
                                                     @foreach ( \App\Models\MskCity::all() as $city)
                                                         <option value="{{ $city['id'] }}" {{ $city['id'] == $announcement['city_id']? 'selected':'' }}> {{ $city->name }} </option>
                                                     @endforeach
@@ -145,7 +146,7 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 
-                                                <input type="text" data-validate-minmax="1,255" name="place" class="form-control" placeholder="Elanın Ünvanı" value="{{ $announcement['place'] }}">
+                                                <input type="text" data-validate-minmax="1,255" name="place" class="form-control" placeholder="Address" value="{{ $announcement['place'] }}">
                                                 
                                             </div>
                                         </div>
@@ -192,7 +193,7 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-sened" title="">
+                                                <select class="selectpicker" name="documentType" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-sened">
                                                     @foreach (\App\Library\MyClass::$documentTypes as $typeK => $type)
 
                                                         <option value="{{ $typeK }}" {{ $typeK == $announcement['documentType']? 'selected':'' }}> {{ $type }} </option>
@@ -209,7 +210,7 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
-                                                <select class="selectpicker" name="group_id" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan" title="">
+                                                <select class="selectpicker" name="repairing" required="" data-style="btn btn-round btn-hm btn-new-hm btn-new-hm-badimcan">
                                                     @foreach (\App\Library\MyClass::$repairingTypes as $typeK => $type)
 
                                                         <option value="{{ $typeK }}" {{ $typeK == $announcement['repairing']? 'selected':'' }}> {{ $type }} </option>
@@ -237,7 +238,7 @@
                                     <div class="row">
                                         <label class="col-sm-2 col-form-label text-right">Şəxsin nömrəsi</label>
 
-                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto" id="allNubers">
                                             <div class="form-group">
                                                 
                                                 @if($announcement['numbers'] != null)
@@ -263,7 +264,7 @@
                                     <!-- photo -->
                                     <div class="row">
                                         <label class="col-sm-2 col-form-label text-right"></label>
-                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto" id="allPictures">
                                             <h4 class="title">Regular Image</h4>
                                             <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                                                 <div class="fileinput-new thumbnail">
@@ -290,7 +291,7 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group">
                                                 
-                                                <textarea id="descr" class="form-control" style="width:100%;height:251px !important; font-style: italic; color: #d43d1a" placeholder="Ətraflı məlumat" name="content">{{ strip_tags($announcement['content']) }}</textarea>
+                                                <textarea id="descr" class="form-control" rows="5" id="exampleInputTextarea" name="content">{{ strip_tags($announcement['content']) }}</textarea>
                                                 
                                             </div>
                                         </div>
@@ -314,11 +315,23 @@
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label" style="margin: 15px 0">Xəritə</label>
 
+                                        <div class="col-sm-10 col-md-6 mr-auto ml-auto">
+                                            <div class="form-group" style="height: 300px;">
+                                                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                                                <div id="map" style="width: 100%;height: 100%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     
                                     <div class="ln_solid"></div>
-                                    <input type="hidden" name="_token" value="">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                    <input type="hidden" id="loc_lat" name="loc_lat" value="{{ $id > 0 ? $announcement->getLocations()[0] : '40.4242696' }}">
+                                    <input type="hidden" id="loc_lng" name="loc_lng" value="{{ $id > 0 ? $announcement->getLocations()[1] : '49.8522489' }}">
 
                                     <div class="row" style="margin-top: 20px">
                                         <div class="col-sm-2 col-md-4 mr-auto ml-auto">

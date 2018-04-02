@@ -33,17 +33,17 @@ class SearchRequest extends FormRequest
         return [
             'type' => ['string', 'nullable', Rule::in(array_keys(MyClass::$announcementTypes))],
 
-            'buldingSecondType' => 'array|nullable',
+            'buldingSecondType' => ['string', 'nullable', Rule::in(array_keys(MyClass::$buldingSecondType))],
 
-            'buldingSecondType.*' => ['string', Rule::in(array_keys(MyClass::$buldingSecondType))],
+            //'buldingSecondType.*' => ['string', Rule::in(array_keys(MyClass::$buldingSecondType))],
 
-            'buldingType' => 'array|nullable',
+            'buldingType' => ['string', 'nullable', Rule::in(array_keys(MyClass::$buldingType))],
 
-            'buldingType.*' => ['string', Rule::in(array_keys(MyClass::$buldingType))],
+            //'buldingType.*' => ['string', Rule::in(array_keys(MyClass::$buldingType))],
 
-            'city' => 'array|nullable',
+            'city' => ['nullable', 'integer', Rule::in(array_keys(MyClass::$city))],
 
-            'city.*' => 'integer|exists:msk_cities,id',
+            //'city.*' => 'integer|exists:msk_cities,id',
 
             'date1'         => 'nullable|date_format:d-m-Y',
 
@@ -51,17 +51,39 @@ class SearchRequest extends FormRequest
 
             'ownerType' => ['integer', 'nullable', Rule::in(array_keys(MyClass::$ownerType))],
 
-            'locatedFloor1'  => 'integer|nullable|max:30000',
+            'locatedFloor1'  => 'integer|max:31',
 
-            'locatedFloor2'  => 'integer|nullable|max:30000',
+            'locatedFloor2'  => 'integer|max:31',
+
+            'floorCount1'  => 'integer|max:31',
+
+            'floorCount2'  => 'integer|max:31',
 
             'amount1'        => 'numeric|nullable|max:99999999',
 
             'amount2'        => 'numeric|nullable|max:99999999',
 
+            'area1'        => 'integer|nullable|max:99999999',
+
+            'area2'        => 'integer|nullable|max:99999999',
+
+            'roomCount'        => 'integer|nullable|max:11',
+
             'status'        => 'array|nullable',
 
             'status.*'        => ['integer', Rule::in(array_keys(MyClass::$buttonStatus2))],
+
+            'district'        => 'array|nullable',
+
+            'district.*'        => ['integer', Rule::in(array_keys(MyClass::$district))],
+
+            'metro'        => 'array|nullable',
+
+            'metro.*'        => ['integer', Rule::in(array_keys(MyClass::$metros))],
+
+            'sight'        => 'array|nullable',
+
+            'sight.*'        => ['integer', Rule::in(array_keys(MyClass::$sight))],
 
             'which' =>  'integer|nullable|in:1,2',
         ];

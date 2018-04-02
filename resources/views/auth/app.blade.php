@@ -9,7 +9,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="img/huseynzade-icon.png">
-    <link rel="icon" href="img/favicon.png">
+    <link rel="icon" href="{{ asset('admin/assets/build/huseynzade/img/favicon.png') }}">
 
     <!-- Extra details for Live View on GitHub Pages -->
     <!-- Canonical SEO -->

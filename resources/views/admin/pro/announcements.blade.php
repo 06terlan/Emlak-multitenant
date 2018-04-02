@@ -8,10 +8,10 @@
     
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 col-6">
                 <h3>Fərdi Elanlar</h3>
             </div>
-            <div class="col-md-3 ml-auto">
+            <div class="col-md-3 col-6 ml-auto">
                 @if( \App\Library\MyHelper::has_priv("announcement_pro", \App\Library\MyClass::PRIV_CAN_ADD) )
                     <a href="{{ route('announcement_insert',['announcement' => 0]) }}" style="margin-top: 35px; position: absolute; border-radius: 7px; background-color: red " class="btn btn-round btn-success btn_add_standart"><i class="fa fa-plus"></i> <span style="font-size: 16px"> Elan əlavə et </span></a>
                 @endif
@@ -102,6 +102,14 @@
             <div class="card-footer">
                 <div class="price">
                     <h4> <img src="assets/build/huseynzade/img/azn.png" style="width: 15px" alt="AZN"> {{ (int)$announcement->amount }} / {{ $announcement->getBuldingType() }}</h4>
+                </div>
+                <div class="form-check" style="margin-top: -15px">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" ann_id="{{ $announcement->id }}">
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                    </label>
                 </div>
                 <div class="stats">
                     <p class="category"><i class="material-icons">place</i> {{ str_limit($announcement->city->name . '') }}, AZ</p>

@@ -17,13 +17,20 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'tenant'] ], function(){
 
 	Route::get('{home?}', 'Admin\HomeController@home')->where('home','home')->name('home');
+    Route::get('/lock', 'Admin\HomeController@lock')->name('lock');
+
 
 	//dashboard
     Route::get('dashboard', 'Admin\HomeController@index')->where('dashboard','dashboard')->name('dashboard')->middleware('priv:dashboard,'.\App\Library\MyClass::PRIV_CAN_SEE);
 	
 	//profile
-	Route::get('profile', 'Admin\ProfileController@index');
+	Route::get('profile', 'Admin\ProfileController@index')->name('profile');
 	Route::post('profile/{which}', 'Admin\ProfileController@update')->where('which','[12]');
+    Route::get('profile/info', 'Admin\ProfileController@user_info')->name('profile_info');
+
+    //password/profile
+    Route::get('password', 'Admin\PasswordController@index')->name('profile_password');
+    Route::post('password/{which}', 'Admin\PasswordController@password')->where('which','[12]');
 	
 	//users
 	Route::get('users', 'Admin\UsersController@index')->name('users')->middleware('priv:users,'.\App\Library\MyClass::PRIV_CAN_SEE);

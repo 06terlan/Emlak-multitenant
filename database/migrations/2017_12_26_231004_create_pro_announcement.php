@@ -19,7 +19,7 @@ class CreateProAnnouncement extends Migration
             $table->string('header',200)->nullable();
             $table->longText('content')->nullable();
             $table->string('type',50)->nullable();
-            $table->string('type2',5)->nullable(); //new
+            $table->string('type2',5)->nullable();
             $table->tinyInteger("buldingType");
             $table->decimal('amount',10,2)->nullable();
             $table->smallInteger("area")->nullable();
@@ -34,9 +34,12 @@ class CreateProAnnouncement extends Migration
             $table->string("owner", 40)->nullable();
             $table->string('link', 200)->nullable();
             $table->string('locations', 50)->nullable();
-            $table->string("place", 255)->nullable(); //new
-            $table->boolean("owner_type", 20)->default(0); //new
+            $table->string("place", 255)->nullable();
+            $table->boolean("owner_type", 20)->default(0);
             $table->date('date');
+
+            $table->smallInteger("district_id")->nullable(); //new
+            $table->smallInteger("sight_id")->nullable(); //new
 
             $table->tinyInteger("status");
 
