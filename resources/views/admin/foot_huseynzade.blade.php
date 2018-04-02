@@ -173,10 +173,10 @@
 	      url: 'http://demos.creative-tim.com/material-kit-pro/presentation.html'
 	    });
 
-        $(function () {
-            $("#my-menu .nav-item.active").parents("li:eq(0)").find("div.collapse:eq(0)").addClass("show");
-            $("#my-menu .nav-item.active").parents("li:eq(0)").find("a.nav-link:eq(0)").attr("aria-expanded", "true");
-        });
+		//menu
+		$("#my-menu .nav-item.active").parents("li:eq(0)").find("div.collapse:eq(0)").addClass("show");
+		$("#my-menu .nav-item.active").parents("li:eq(0)").find("a.nav-link:eq(0)").attr("aria-expanded", "true");
+		$("#my-menu ul:not(:has(li))").parents("li:eq(0)").remove();
 	});
 
 

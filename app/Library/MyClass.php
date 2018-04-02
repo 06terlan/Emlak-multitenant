@@ -410,7 +410,7 @@ class MyClass
 
     public static $sight =
     [
-        1 => ["28 Mall", '/(28[ ]+mall)|(28[ ]+малл)/iu', ['city'=>4, 'district'=>7]],
+        1 => ["28 Mall", '/(28[ ]+mall)|(28[ ]+малл)/iu'],
         2 => ["Absheron Marriott otel", '/((ab[sş]h?eron|marriot)[\w ]+otel)|(отеля[\w ]+абшерон)/iu'],
         3 => ["ABŞ səfirliyi", '/((amerika|ab[sş]h?)[\w ]+s[əe]fir)|(америка[\w ]+(сефир|посольст))|(посольства[\w ]+США)/iu'],
         4 => ["ADA universiteti", '/((ADA|)[\w ]+uni)|(университет[ ]+ада)/iu'],

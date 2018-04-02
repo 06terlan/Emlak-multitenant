@@ -142,7 +142,7 @@
                                         </div>
                                     </div>
                                     <!-- Modullar son -->
-
+                                @if( Auth::user()->group->super_admin == 1 )
                                     <div class="row">
                                         <label class="col-sm-2 col-form-label" style="margin: 15px 0">Şirkət növü</label>
 
@@ -158,6 +158,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                @endif
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="row" style="margin-top: 20px">
                                         <div class="col-sm-2 col-md-2 mr-auto ml-auto">

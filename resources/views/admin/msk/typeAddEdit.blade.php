@@ -46,7 +46,7 @@
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group has-success">
 
-                                                <input required="" name="user_count" data-validate-length-range="1,20" type="text" class="form-control" placeholder="Grupun adı" value="{{ $type['user_count'] }}">
+                                                <input required="" name="user_count" data-validate-length-range="1,20" type="text" class="form-control" placeholder="İstifadəçi sayı" value="{{ $type['user_count'] }}">
 
                                             </div>
                                         </div>

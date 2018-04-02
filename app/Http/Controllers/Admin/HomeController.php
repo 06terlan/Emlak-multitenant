@@ -149,8 +149,9 @@ class HomeController extends Controller
             'areaDom'       => [['.property', 3], ['.property-value', 0]],
             'placeDom'      => [['.property', 5], ['.property-value', 0]],
             'metroDom'      => ['function', 'getMetroTapaz'],
+            'sightDom'       => ['function', 'getSightTapaz'], //
+            'districtDom'   => ['function', 'getDistrictTapaz'], //
             'imageDom'      => ['function', 'getImagesVipemlak', [['.thumbnails a'], 'href'] ], //
-            'districtDom'    => ['function', 'getDistrictTapaz'], //
             'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.lot-body .lot-text', 0]], //
             'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.lot-body .lot-text', 0]], //
         ],true))->getObjectData(false);

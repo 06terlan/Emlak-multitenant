@@ -26,7 +26,7 @@ class Announcement extends Migration
             $table->smallInteger("city_id")->nullable();
             $table->decimal('amount',10,2)->nullable();
             $table->tinyInteger("roomCount")->nullable();
-            $table->smallInteger("area")->nullable();
+            $table->integer("area")->nullable(); //
             $table->string("owner", 40)->nullable();
             $table->string("place", 255)->nullable();
             $table->tinyInteger('owner_type')->default(0);

@@ -90,6 +90,8 @@ class SiteComp
 
             $metro = @$this->findEr($htmlAlt, $this->dataArr['metroDom'])['plaintext'];
 
+            $sight = @$this->findEr($htmlAlt, $this->dataArr['sightDom'])['plaintext'];
+
             $district = ( $metro != null ?  MyClass::$metros[$metro][2]['district'] : @$this->findEr($htmlAlt, $this->dataArr['districtDom'])['plaintext'] );
 
             $city     = ( $metro!=null ? MyClass::$metros[$metro][2]['city'] : ( $district != null ? MyClass::$district[$district][2]['city'] : @$this->findEr($htmlAlt, $this->dataArr['cityDom'])['plaintext'] ) );
@@ -140,7 +142,7 @@ class SiteComp
             $realDate	= $this->createDate($date);
             if($date === null || $realDate === false ){ $this->errorLog->error("[" . $this->location.$link . "] Info tapilmadi -> [dateDom]"); continue; }
 
-            if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro, $locatedFloorDom, $floorCountDom, $district, $imageDom ))
+            if(!$this->InsetCheck( $this->location.$link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro, $locatedFloorDom, $floorCountDom, $district, $imageDom, $sight ))
             {
             	break;
             }
@@ -174,7 +176,7 @@ class SiteComp
         return $match[0];
     }
 
-    private function InsetCheck( $link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro, $locatedFloorDom, $floorCountDom, $district, $imageDom )
+    private function InsetCheck( $link, $header, $content, $amount, $realDate, $owner, $mobnom, $toDay, $city, $roomCountDom, $areaDom, $placeDom, $metro, $locatedFloorDom, $floorCountDom, $district, $imageDom, $sight )
     {
         if( $toDay === true && date("Y-m-d") != $realDate ) return false;
 
@@ -197,6 +199,7 @@ class SiteComp
         $announcement->locatedFloor = $locatedFloorDom;
         $announcement->floorCount = $floorCountDom;
         $announcement->district_id = $district;
+        $announcement->sight_id = $sight;
         $announcement->save();
 
         //numbers

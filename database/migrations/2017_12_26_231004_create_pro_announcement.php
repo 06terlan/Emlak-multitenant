@@ -22,7 +22,7 @@ class CreateProAnnouncement extends Migration
             $table->string('type2',5)->nullable();
             $table->tinyInteger("buldingType");
             $table->decimal('amount',10,2)->nullable();
-            $table->smallInteger("area")->nullable();
+            $table->integer("area")->nullable(); //
             $table->tinyInteger("roomCount")->nullable();
             $table->smallInteger("locatedFloor")->nullable();
             $table->smallInteger("floorCount")->nullable();

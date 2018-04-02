@@ -244,13 +244,13 @@
                                                 @if($announcement['numbers'] != null)
                                                 @foreach ($announcement['numbers'] as $typeK => $num)
                                                     <div class="numb">
-                                                        <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="'mask' : '(999) 999-9999'" name="mobnom[]" type="text" class="form-control" value="{{ $num['number'] }}" placeholder="Nömrə">
-                                                        <button type="button" class="btn btn-danger btn-link deleteAction" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="material-icons">close</i></button>
+                                                        <input style="width: 80%;display: inline-block;" required="" type="text" name="mobnom[]" type="text" class="form-control" value="{{ $num['number'] }}" placeholder="Nömrə">
+                                                        <button type="button" class="btn btn-danger btn-link" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="material-icons">close</i></button><i class="material-icons">close</i></button>
                                                     </div>
                                                 @endforeach
                                             @else
                                                     <div class="numb">
-                                                        <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="'mask' : '(999) 999-9999'" name="mobnom[]" type="text" class="form-control" value="" placeholder="Nömrə">
+                                                        <input style="width: 80%;display: inline-block;" required="" type="text" name="mobnom[]" type="text" class="form-control" value="" placeholder="Nömrə">
                                                         <button type="button" class="btn btn-danger btn-link" onclick="$(this).parents('.numb:eq(0)').remove()"><i class="material-icons">close</i></button>
                                                     </div>
                                             @endif
@@ -320,7 +320,7 @@
 
                                         <div class="col-sm-10 col-md-6 mr-auto ml-auto">
                                             <div class="form-group" style="height: 300px;">
-                                                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                                                <input id="pac-input" class="form-control" type="text" placeholder="Search Box">
                                                 <div id="map" style="width: 100%;height: 100%"></div>
                                             </div>
                                         </div>
@@ -364,10 +364,10 @@
     {!! Html::style('admin/assets/build/new/Plugins/select2.css') !!}
 
     {{--  bootstrap-wysiwyg --}}
-    <!-- <style>
-        .numb{
+    <style>
+        /*.numb{
             width: 190px;
-        }
+        }*/
         #map {
             height: 500px;
         }
@@ -386,7 +386,7 @@
         #pac-input:focus {
             border-color: #4d90fe;
         }
-    </style> -->
+    </style>
 @endsection
 
 
@@ -398,33 +398,6 @@
     {!! Html::script('admin/assets/build/new/Plugins/select2.min.js') !!}
 
     {!! Html::script('admin/assets/vendors/validator/validator.js') !!}
-
-
-    <script type="text/javascript">
-
-        $(document).ready(function(){
-
-          //init DateTimePickers
-          md.initFormExtendedDatetimepickers();
-
-
-          // Sliders Init
-          md.initSliders();
-
-        });
-
-    </script>
-
-      <script type="text/javascript">
-    $().ready(function(){
-        demo.checkFullPageBackgroundImage();
-
-        setTimeout(function(){
-            // after 1000 ms we add the class animated to the login/register card
-            $('.card').removeClass('card-hidden');
-        }, 700)
-    });
-    </script>
 
     <script type="text/javascript">
         $(".select2").select2({
@@ -466,6 +439,7 @@
             }
         }).trigger("change");
 
+        //$("#allNubers .numb input").inputmask("mask", {"mask": "(999) 999-9999"});
         $(".addNumber").click(function(){
             $(this).before('<div class="numb"> <input style="width: 80%;display: inline-block;" required="" type="text" data-inputmask="\'mask\' : \'(999) 999-9999\'" name="mobnom[]" type="text" class="form-control" placeholder="Nömrə"> <button type="submit" class="btn btn-danger btn-xs deleteAction" onclick="$(this).parents(\'.numb:eq(0)\').remove()"><i class="fa fa-trash"></i></button> </div>');
             $("#allNubers .numb:last input").inputmask("mask", {"mask": "(999) 999-9999"});
