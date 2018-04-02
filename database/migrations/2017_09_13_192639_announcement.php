@@ -31,9 +31,9 @@ class Announcement extends Migration
             $table->string("place", 255)->nullable();
             $table->tinyInteger('owner_type')->default(0);
             $table->tinyInteger('metro_id')->nullable();
-            $table->smallInteger("locatedFloor")->nullable();
-            $table->smallInteger("floorCount")->nullable();
 
+            $table->smallInteger("locatedFloor")->nullable(); //
+            $table->smallInteger("floorCount")->nullable(); //
             $table->smallInteger("district_id")->nullable(); //new
             $table->smallInteger("sight_id")->nullable(); //new
 
