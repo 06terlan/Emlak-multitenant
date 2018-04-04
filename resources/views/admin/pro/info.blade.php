@@ -154,7 +154,7 @@
                                 <p style="margin-top: -10px; color: red">{{ $announcement->getAnnouncementType2() }}</p>
                                 @endif
                                 <h5 class="text-left" style="">Elanın növü: <span class="pull-right text-success">{{ $announcement->getBuldingType() }}</span></h5>
-                                <h5 class="text-left">Şəhər: <span class="pull-right text-success">{{ $announcement->city->name }} AZ</span></h5>
+                                <h5 class="text-left">Şəhər: <span class="pull-right text-success">{{ $announcement->city() }} AZ</span></h5>
                                 <h5 class="text-left">Yerləşir: <span class="pull-right text-success">{{ $announcement->place }}</span></h5>
 
                                 <h5 class="text-left">Metro: <span class="pull-right text-success">{{ $announcement->metro() }}</span></h5>
