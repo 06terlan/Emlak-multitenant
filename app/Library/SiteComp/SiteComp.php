@@ -12,6 +12,7 @@ use App\Models\MskCity;
 use App\Models\MskMakler;
 use App\Models\Number;
 use App\Models\Photo;
+use Intervention\Image\Facades\Image;
 
 class SiteComp
 {
@@ -147,7 +148,7 @@ class SiteComp
             	break;
             }
 
-            $count++; //break;//sadasdasd
+            $count++; break;//sadasdasd
         }
 
         return $count;
@@ -216,10 +217,15 @@ class SiteComp
         //images
         foreach ($imageDom as $image)
         {
-            $imageC = new Photo();
-            $imageC->file_name = $image;
+            $ext = explode('.', $image);
+            $ext =  end($ext);
+            $newName = uniqid() . "." . $ext;
 
+            $imageC = new Photo();
+            $imageC->file_name = $newName;
             $announcement->pictures()->save($imageC);
+
+            Image::make($image)->resize(400, 400)->save( public_path( MyClass::ANN_PIC_DIR . $newName ) );
         }
         //is makler
         if( count($numbers) > 0 && MskMakler::whereIn('pure_number', $numbers)->count() > 0 )

@@ -19,12 +19,12 @@ class Functions
     public static function tapazGetCity($tt, $where)
     {
         $cityName     = @$tt->findEr($where, [['.property', 0], ['.property-value', 0]])->plaintext;
-        if($cityName == null) return null;
+        if($cityName === null) return null;
 
         $cityName = MyHelper::pureString($cityName);
 
         foreach(MyClass::$city as $key => $city){
-            if( $cityName == MyHelper::pureString($city[0])) return $key;
+            if( $cityName == MyHelper::pureString($city[0])) return ['plaintext' => $key];
         }
 
         return ['plaintext' => 4];

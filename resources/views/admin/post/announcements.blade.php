@@ -25,7 +25,7 @@
             <div class="card card-product">
                 <div class="card-header card-header-image" data-header-animation="true">
                     <a href="#pablo">
-                        <img class="img" style="height: 200px" src="assets/build/huseynzade/img/card-1.jpeg">
+                        <img class="img" style="height: 200px" src="{{ $announcement->pictures != null && isset($announcement->pictures[0]) ? asset(\App\Library\MyClass::ANN_PIC_DIR . $announcement->pictures[0]->file_name) : asset('admin/assets/build/huseynzade/img/card-1.jpeg') }}">
                     </a>
                 </div>
                 <div class="card-body">

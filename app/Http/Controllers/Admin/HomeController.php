@@ -131,7 +131,7 @@ class HomeController extends Controller
     public function test()
     {
         $count = (new SiteComp([
-            'link'          => 'http://tap.az/all/real-estate/apartments?p[740]=3724&p[747]=3849',
+            'link'          => 'http://tap.az/all/real-estate/land',
             'objectsDom'    => '.categories-products .products .products-i',
             'linkDom'       => '$this',
             'location'      => 'http://tap.az',
@@ -141,19 +141,19 @@ class HomeController extends Controller
             'dateDom'       => '.aside-page .lot-info',
             'owner'         => ['.author .name', 0],
             'mobnom'        => ['.author .phone', 0],
-            'type'          => 'building',
-            'buldingType'   => self::TYPE_ICARE,
-            'type2'         => 'new',
+            'type'          => 'land',
+            'buldingType'   => self::TYPE_SATISH,
+            'type2'         => null,
             'cityDom'       => ['function', 'tapazGetCity'],
-            'roomCountDom'  => [['.property', 4], ['.property-value', 0]],
-            'areaDom'       => [['.property', 3], ['.property-value', 0]],
-            'placeDom'      => [['.property', 5], ['.property-value', 0]],
+            'roomCountDom'  => null,
+            'areaDom'       => [['.property', 1], ['.property-value', 0]],
+            'placeDom'      => [['.property', 2], ['.property-value', 0]],
             'metroDom'      => ['function', 'getMetroTapaz'],
             'sightDom'       => ['function', 'getSightTapaz'], //
             'imageDom'      => ['function', 'getImagesVipemlak', [['.thumbnails a'], 'href'] ], //
             'districtDom'    => ['function', 'getDistrictTapaz'], //
-            'locatedFloorDom'   => ['function', 'getlocatedFloorTapaz', ['.lot-body .lot-text', 0]], //
-            'floorCountDom'     => ['function', 'getFloorCountTapaz', ['.lot-body .lot-text', 0]], //
+            'locatedFloorDom'   => null, //
+            'floorCountDom'     => null, //
         ],true))->getObjectData(false);
 
         return "End " . $count;
