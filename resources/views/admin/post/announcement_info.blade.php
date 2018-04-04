@@ -28,48 +28,46 @@
                                 <div class="tab-pane active" id="link1">
 
 	                                <div class="card-header card-header-image" data-header-animation="true">
-						                <a href="#pablo">
-						                    <img class="img" style="height: 400px" src="../../assets/build/huseynzade/img/card-1.jpeg">
+										<!--         carousel  -->
+										<div class="section" id="carousel" style="padding: 0 0 !important">
 
+											<div class="row">
+												<div class="col-md-12 mr-auto ml-auto">
+													<!-- Carousel Card -->
+													<div class="card card-raised card-carousel">
+														<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+															<ol class="carousel-indicators">
+																@if($announcement->pictures != null)
+																	@foreach($announcement->pictures as $key => $picture)
+																		<li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}" class="{{ $key==0 ? 'active':'' }}"></li>
+																	@endforeach
+																@endif
+															</ol>
+															<div class="carousel-inner">
+																@if($announcement->pictures != null)
+																	@foreach($announcement->pictures as $key => $picture)
+																			<div class="carousel-item {{ $key==0 ? 'active':'' }}">
+																				<img class="d-block w-100" style="height: 400px" src="{{ asset(\App\Library\MyClass::ANN_PIC_DIR . $picture->file_name) }}" alt="First slide">
+																			</div>
+																	@endforeach
+																@endif
+															</div>
+															<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+																<i class="material-icons">keyboard_arrow_left</i>
+																<span class="sr-only">Previous</span>
+															</a>
+															<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+																<i class="material-icons">keyboard_arrow_right</i>
+																<span class="sr-only">Next</span>
+															</a>
+														</div>
+													</div>
+													<!-- End Carousel Card -->
+												</div>
+											</div>
+										</div>
 
-
-						                    <div class="listing-carousel property-carousel">
-					<div class="swiper-wrapper">
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/1_1AFXFU1-1032x3096.jpeg 1032w, https://property-com-fj.s3.amazonaws.com/listings/1_1AFXFU1-2064x3096.jpeg 2064w, https://property-com-fj.s3.amazonaws.com/listings/1_1AFXFU1-258x3096.jpeg 258w, https://property-com-fj.s3.amazonaws.com/listings/1_1AFXFU1-516x3096.jpeg 516w, https://property-com-fj.s3.amazonaws.com/listings/1_1AFXFU1.jpeg 4128w"></div></a>
-							</div>
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/2_bUIKlsu-1032x3096.jpeg 1032w, https://property-com-fj.s3.amazonaws.com/listings/2_bUIKlsu-2064x3096.jpeg 2064w, https://property-com-fj.s3.amazonaws.com/listings/2_bUIKlsu-258x3096.jpeg 258w, https://property-com-fj.s3.amazonaws.com/listings/2_bUIKlsu-516x3096.jpeg 516w, https://property-com-fj.s3.amazonaws.com/listings/2_bUIKlsu.jpeg 4128w"></div></a>
-							</div>
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/3_ppvqfuS-408x1836.jpg 408w, https://property-com-fj.s3.amazonaws.com/listings/3_ppvqfuS-816x1836.jpg 816w, https://property-com-fj.s3.amazonaws.com/listings/3_ppvqfuS-204x1836.jpg 204w, https://property-com-fj.s3.amazonaws.com/listings/3_ppvqfuS.jpg 3264w, https://property-com-fj.s3.amazonaws.com/listings/3_ppvqfuS-1632x1836.jpg 1632w"></div></a>
-							</div>
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/4_4db92bK-1032x3096.jpeg 1032w, https://property-com-fj.s3.amazonaws.com/listings/4_4db92bK-2064x3096.jpeg 2064w, https://property-com-fj.s3.amazonaws.com/listings/4_4db92bK-258x3096.jpeg 258w, https://property-com-fj.s3.amazonaws.com/listings/4_4db92bK-516x3096.jpeg 516w, https://property-com-fj.s3.amazonaws.com/listings/4_4db92bK.jpeg 4128w"></div></a>
-							</div>
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/5_9n6j4qu-1032x3096.jpeg 1032w, https://property-com-fj.s3.amazonaws.com/listings/5_9n6j4qu-2064x3096.jpeg 2064w, https://property-com-fj.s3.amazonaws.com/listings/5_9n6j4qu-258x3096.jpeg 258w, https://property-com-fj.s3.amazonaws.com/listings/5_9n6j4qu-516x3096.jpeg 516w, https://property-com-fj.s3.amazonaws.com/listings/5_9n6j4qu.jpeg 4128w"></div></a>
-							</div>
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/6_bDkws4v-408x1836.jpg 408w, https://property-com-fj.s3.amazonaws.com/listings/6_bDkws4v-816x1836.jpg 816w, https://property-com-fj.s3.amazonaws.com/listings/6_bDkws4v-204x1836.jpg 204w, https://property-com-fj.s3.amazonaws.com/listings/6_bDkws4v.jpg 3264w, https://property-com-fj.s3.amazonaws.com/listings/6_bDkws4v-1632x1836.jpg 1632w"></div></a>
-							</div>
-						
-							<div class="swiper-slide">
-								<a data-open="overlay-media-box"><div class="listing-thumb lazyload" data-sizes="auto" data-bgset="https://property-com-fj.s3.amazonaws.com/listings/7_Doeyww0-408x1836.jpg 408w, https://property-com-fj.s3.amazonaws.com/listings/7_Doeyww0-816x1836.jpg 816w, https://property-com-fj.s3.amazonaws.com/listings/7_Doeyww0-204x1836.jpg 204w, https://property-com-fj.s3.amazonaws.com/listings/7_Doeyww0.jpg 3264w, https://property-com-fj.s3.amazonaws.com/listings/7_Doeyww0-1632x1836.jpg 1632w"></div></a>
-							</div>
-						
-					</div>
-					<div class="swiper-pagination swiper-gallery-pagintation"></div>
-					<div class="swiper-button-prev swiper-button-prev-top"></div>
-					<div class="swiper-button-next swiper-button-next-top"></div>
-				</div>
-						                </a>
+										<!--         end carousel -->
 						            </div>
 
                                 	

@@ -192,7 +192,7 @@ class SiteComp
         $announcement->buldingType = $this->dataArr['buldingType'];
         $announcement->type2 = $this->dataArr['type2'];
         $announcement->city_id = $city;
-        $announcement->roomCount = (int)$roomCountDom;
+        $announcement->roomCount = $roomCountDom == null || $roomCountDom > 100 ? null : $roomCountDom;
         $announcement->area = (int)$areaDom;
         $announcement->place = str_limit(trim($placeDom),255,"");
         $announcement->owner = str_limit(trim($owner), 40, "");

@@ -60,7 +60,7 @@ class ErrorLog
 
 		if( $this->debug === true )
 		{
-            var_dump($error);
+            //var_dump($error);
             exit();
         }
 	}
